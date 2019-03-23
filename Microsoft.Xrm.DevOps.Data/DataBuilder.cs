@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
@@ -8,41 +9,44 @@ namespace Microsoft.Xrm.DevOps.Data
 {
     public class DataBuilder
     {
-        private Dictionary<String, List<Entity>> _EntityData { get; set; }
-        private Dictionary<String, EntityMetadata> _EntityMetadata { get; set; }
-
-        public DataBuilder()
+        private Dictionary<String, BuilderEntityMetadata> _Entities { get; set; }
+        private void VerifyEntityExists(String logicalName)
         {
-            _EntityData = new Dictionary<String, List<Entity>>();
-            _EntityMetadata = new Dictionary<String, EntityMetadata>();
-        }
-
-        public void AddData(Entity entity)
-        {
-            if (!_EntityData.ContainsKey(entity.LogicalName))
+            if (!_Entities.ContainsKey(logicalName))
             {
-                _EntityData[entity.LogicalName] = new List<Entity>();
-            }
+                _Entities[logicalName] = new BuilderEntityMetadata();
 
-            _EntityData[entity.LogicalName].Add(entity);
+            }
         }
 
-        public void AddData(EntityCollection entityCollection)
+    public DataBuilder()
+        {
+
+        }
+
+        public void AppendData(Entity entity)
+        {
+            VerifyEntityExists(entity.LogicalName);
+            _Entities[entity.LogicalName].Entities.Enqueue(entity);
+        }
+
+        public void AppendData(EntityCollection entityCollection)
         {
             foreach (var entity in entityCollection.Entities)
             {
-                _EntityData[entity.LogicalName].Add(entity);
+                AppendData(entity);
             }
         }
 
-        public void AddData(String logicalName, Dictionary<String, Object> entity)
+        public void AppendData(String logicalName, Dictionary<String, Object> entity)
         {
             Entity newEntity = new Entity(logicalName);
             foreach (var keyValuePair in entity)
             {
-                if (newEntity.Id == Guid.Empty 
-                    || (keyValuePair.Key.ToLower().TrimEnd() == "returnproperty_id") // trimend to compensate for MS bug that adds extra whitespace
-                    || (keyValuePair.Key.ToLower() == logicalName.ToLower() + "id"))
+                // trimend to compensate for MS bug that adds extra whitespace
+                if (newEntity.Id == Guid.Empty && 
+                      ((keyValuePair.Key.ToLower().TrimEnd() == "returnproperty_id")
+                    || (keyValuePair.Key.ToLower() == logicalName.ToLower() + "id")))
                 {
                     newEntity.Id = Guid.Parse(keyValuePair.Value.ToString());
                 }
@@ -50,20 +54,25 @@ namespace Microsoft.Xrm.DevOps.Data
                 newEntity[keyValuePair.Key] = keyValuePair.Value;
             }
 
-            AddData(newEntity);
+            AppendData(newEntity);
         }
 
-        public void AddData(String logicalName, Dictionary<String, Object>[] entities)
+        public void AppendData(String logicalName, Dictionary<String, Object>[] entities)
         {
             foreach (var entity in entities)
             {
-                AddData(logicalName, entity);
+                AppendData(logicalName, entity);
             }
         }
         
         public void AddMetadata(EntityMetadata entityMetadata)
         {
-            _EntityMetadata[entityMetadata.LogicalName] = entityMetadata;
+            if (!_Entities.ContainsKey(entityMetadata.LogicalName))
+            {
+                _Entities[entityMetadata.LogicalName] = new BuilderEntityMetadata();
+            }
+
+            _Entities[entityMetadata.LogicalName].Metadata = entityMetadata;
         }
 
         public void AddMetadata(EntityMetadata[] entityMetadata)
@@ -74,18 +83,27 @@ namespace Microsoft.Xrm.DevOps.Data
             }
         }
 
+        public void SetIdentifier(String logicalName, List<String> identifiers)
+        {
+            VerifyEntityExists(logicalName);
+            _Entities[logicalName].Identifiers = identifiers;
+        }
+
+        public void SetIdentifier(String logicalName, String identifier)
+        {
+            VerifyEntityExists(logicalName);
+            _Entities[logicalName].Identifiers = new List<string>() { identifier };
+        }
+
+        public void SetPluginsDisabled(String logicalName, Boolean disabled)
+        {
+            VerifyEntityExists(logicalName);
+            _Entities[logicalName].PluginsDisabled = disabled;
+        }
+
         public String[] ToList()
         {
             List<String> responses = new List<string>();
-
-            //foreach (var _OrganizationResponse in _OrganizationResponses)
-            //{
-            //    if (!_EntityMetadata.ContainsKey(_OrganizationResponse.Key))
-            //    {
-            //        throw new Exception("Metadata missing from DataBuilder");
-            //    }
-            //}
-
             return responses.ToArray();
         }
 
