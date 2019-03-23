@@ -1,0 +1,7 @@
+<entities >
+  <entity name="msdyn_resourcerequirementdetail" displayname="Resource Requirement Detail" etc="10022" primaryidfield="msdyn_resourcerequirementdetailid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Hours" name="msdyn_hours" type="decimal" customfield="true" />
+    </fields>
+  </entity>
+</entities>

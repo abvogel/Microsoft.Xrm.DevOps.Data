@@ -17,6 +17,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <IsTestProject>true</IsTestProject>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
@@ -106,11 +107,33 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTests_MissingData.cs" />
+    <Compile Include="UnitTests_Configurations.cs" />
+    <Compile Include="UnitTests_Exceptions.cs" />
+    <Compile Include="UnitTests_Primitives.cs" />
+    <Compile Include="UnitTests_SpecialLogic.cs" />
+    <Compile Include="lib\SupportMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="lib\PrimitiveTypes\BooleanTypeSchema.zip" />
+    <None Include="lib\PrimitiveTypes\CustomerType.zip" />
+    <None Include="lib\PrimitiveTypes\DateTimeType.zip" />
+    <None Include="lib\PrimitiveTypes\DecimalType.zip" />
+    <None Include="lib\PrimitiveTypes\DoubleType.zip" />
+    <None Include="lib\PrimitiveTypes\ImageType.zip" />
+    <None Include="lib\PrimitiveTypes\IntegerType.zip" />
+    <None Include="lib\PrimitiveTypes\LookupType.zip" />
+    <None Include="lib\PrimitiveTypes\m2mRelationshipType.zip" />
+    <None Include="lib\PrimitiveTypes\MemoType.zip" />
+    <None Include="lib\PrimitiveTypes\MoneyType.zip" />
+    <None Include="lib\PrimitiveTypes\OwnerType.zip" />
+    <None Include="lib\PrimitiveTypes\PartyListType.zip" />
+    <None Include="lib\PrimitiveTypes\PicklistType.zip" />
+    <None Include="lib\PrimitiveTypes\StateType.zip" />
+    <None Include="lib\PrimitiveTypes\StatusType.zip" />
+    <None Include="lib\PrimitiveTypes\StringType.zip" />
+    <None Include="lib\PrimitiveTypes\UniqueIdentifierType.zip" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +141,27 @@
       <Project>{529034bd-2e55-4ada-aac9-be47da1de108}</Project>
       <Name>Microsoft.Xrm.DevOps.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\Notes.txt" />
+    <Content Include="lib\PrimitiveTypes\BooleanTypeSchema.xml" />
+    <Content Include="lib\PrimitiveTypes\CustomerType.xml" />
+    <Content Include="lib\PrimitiveTypes\DateTimeType.xml" />
+    <Content Include="lib\PrimitiveTypes\DecimalType.xml" />
+    <Content Include="lib\PrimitiveTypes\DoubleType.xml" />
+    <Content Include="lib\PrimitiveTypes\ImageType.xml" />
+    <Content Include="lib\PrimitiveTypes\IntegerType.xml" />
+    <Content Include="lib\PrimitiveTypes\LookupType.xml" />
+    <Content Include="lib\PrimitiveTypes\m2mRelationshipType.xml" />
+    <Content Include="lib\PrimitiveTypes\MemoType.xml" />
+    <Content Include="lib\PrimitiveTypes\MoneyType.xml" />
+    <Content Include="lib\PrimitiveTypes\OwnerType.xml" />
+    <Content Include="lib\PrimitiveTypes\PartyListType.xml" />
+    <Content Include="lib\PrimitiveTypes\PicklistType.xml" />
+    <Content Include="lib\PrimitiveTypes\StateType.xml" />
+    <Content Include="lib\PrimitiveTypes\StatusType.xml" />
+    <Content Include="lib\PrimitiveTypes\StringType.xml" />
+    <Content Include="lib\PrimitiveTypes\UniqueidentifierType.xml" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

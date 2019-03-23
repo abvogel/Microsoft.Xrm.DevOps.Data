@@ -1,31 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using System;
 
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
-    [TestClass]
-    public class DataBuilder_Tests
-    {
-        [TestMethod]
-        public void DataBuilder_Builds()
-        {
-            DataBuilder DataBuilder = new DataBuilder();
-
-            Assert.IsInstanceOfType(DataBuilder, typeof(Microsoft.Xrm.DevOps.Data.DataBuilder));
-        }
-
-        [TestMethod]
-        public void DataBuilder_MissingMetadata_Throws()
-        {
-            DataBuilder DataBuilder = new DataBuilder();
-
-            DataBuilder.AddOrganizationResponse("contact", SupportMethods.GetOrganizationResponse_Contact());
-
-            Assert.ThrowsException<Exception>(() => DataBuilder.ToList());
-        }
-    }
-
     public class SupportMethods
     {
         public static OrganizationResponse GetOrganizationResponse_Contact()

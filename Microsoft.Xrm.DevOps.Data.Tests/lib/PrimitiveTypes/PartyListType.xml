@@ -1,0 +1,7 @@
+<entities >
+  <entity name="msdyn_approval" displayname="Approval" etc="10032" primaryidfield="activityid" primarynamefield="subject" disableplugins="false">
+    <fields>
+      <field displayname="Customers" name="customers" type="partylist" />
+    </fields>
+  </entity>
+</entities>

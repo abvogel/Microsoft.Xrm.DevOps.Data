@@ -1,0 +1,7 @@
+<entities >
+  <entity name="invoice" displayname="Invoice" etc="1090" primaryidfield="invoiceid" primarynamefield="name" disableplugins="false">
+    <fields>
+      <field displayname="Total Tax" name="totaltax" type="money" />
+    </fields>
+  </entity>
+</entities>

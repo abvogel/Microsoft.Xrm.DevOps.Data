@@ -1,0 +1,67 @@
+ConnectedOrgVersion            : 9.1.0.876
+
+$Meta = Get-CrmEntityAllMetadata -conn $Conn -EntityFilters All
+@($meta | Where { $_.IsImportable -eq "True" }).Attributes 
+    | Where { $_.IsValidForUpdate -eq "True" } 
+    | Select LogicalName,EntityLogicalName -ExpandProperty AttributetypeName 
+    | Sort -Property Value -Unique 
+    | Select Value, LogicalName, EntityLogicalName
+
+Value                LogicalName                        EntityLogicalName                         
+-----                -----------                        -----------------                         
+BooleanType          readyforreview                     knowledgearticle
+CustomerType         customerid                         incident                                  
+DateTimeType         publishon                          knowledgearticle
+DecimalType          msdyn_hours                        msdyn_resourcerequirementdetail           
+DoubleType           msdyn_quantity                     msdyn_purchaseorderproduct                
+EntityNameType       owneridtype                        knowledgearticle                    How to handle? modify XML to export?                                    
+ImageType            entityimage                        contract
+IntegerType          expirationstateid                  knowledgearticle
+LookupType           previousarticlecontentid           knowledgearticle
+ManagedPropertyType  iscustomizable                     kbarticletemplate                   Was not successful exporting. Skip for now.
+MemoType             keywords                           knowledgearticle
+MoneyType            totaltax                           invoice                                   
+OwnerType            ownerid                            knowledgearticle                           
+PartyListType        customers                          msdyn_approval
+PicklistType         expiredreviewoptions               knowledgearticle
+StateType            statecode                          knowledgearticle  
+StatusType           statuscode                         knowledgearticle
+StringType           description                        knowledgearticle
+UniqueidentifierType stageid                            knowledgearticle
+VirtualType          servicetypename                    sharepointdocument                  Was not successful viewing or exporting. Skip for now.
+
+namespace Microsoft.Xrm.Tooling.Connector: public enum CrmFieldType
+    CrmBoolean,
+    CrmDateTime,
+    CrmDecimal,
+    CrmFloat,
+    CrmMoney,
+    CrmNumber,
+    Customer,
+    Key,
+    Lookup,
+    Picklist,
+    String,
+    UniqueIdentifier,
+    Raw
+
+Identifying all ManagedPropertyType's in the system and what their actual "type" is:
+$meta.attributes | Where { $_.AttributeType -eq "ManagedProperty" } | Select ValueAttributeTypeCode,AttributeType,SchemaName | Sort -Property SchemaName -Unique
+ValueAttributeTypeCode   AttributeType SchemaName    
+----------------------   ------------- ----------    
+               Boolean ManagedProperty CanBeDeleted  
+               Boolean ManagedProperty IsCustomizable
+               Boolean ManagedProperty IsHidden      
+               Boolean ManagedProperty IsPublished   
+
+$request = [Microsoft.Crm.Sdk.Messages.FetchXmlToQueryExpressionRequest]::new()
+$request.FetchXml = "<fetch distinct='false' no-lock='false' top='50' mapping='logical'><entity name='knowledgearticle'><attribute name='readyforreview'/></entity></fetch>";
+$result = $Conn.Execute($request)
+$request = [Microsoft.Xrm.Sdk.Messages.RetrieveMultipleRequest]::new()
+$request.Query = $result.Query;
+$result = $Conn.Execute($request)
+$result.EntityCollection.Entities.count
+
+Input will be either EntityCollection, or Dictionary <string, object>, or PSCustomObject (which will grab .original which is the Dictionary)
+Dictionary corresponds to $Conn.GetEntityDataByFetchSearch();
+EntityCollection corresponds to $Conn.GetEntityDataByFetchSearchEC();
