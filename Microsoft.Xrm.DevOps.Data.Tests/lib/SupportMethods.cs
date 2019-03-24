@@ -4,7 +4,7 @@ using System;
 
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
-    public class SupportMethods
+    public partial class SupportMethods
     {
         public static OrganizationResponse GetOrganizationResponse_Contact()
         {

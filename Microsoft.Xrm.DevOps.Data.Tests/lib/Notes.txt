@@ -9,26 +9,46 @@ $Meta = Get-CrmEntityAllMetadata -conn $Conn -EntityFilters All
 
 Value                LogicalName                        EntityLogicalName                         
 -----                -----------                        -----------------                         
-BooleanType          readyforreview                     knowledgearticle
+BooleanType          isdefaulttheme                     theme 
 CustomerType         customerid                         incident                                  
 DateTimeType         publishon                          knowledgearticle
 DecimalType          msdyn_hours                        msdyn_resourcerequirementdetail           
 DoubleType           msdyn_quantity                     msdyn_purchaseorderproduct                
 EntityNameType       owneridtype                        knowledgearticle                    How to handle? modify XML to export?                                    
-ImageType            entityimage                        contract
+ImageType            entityimage                        contract                            Is not enabled for "IsRetrievable"
 IntegerType          expirationstateid                  knowledgearticle
 LookupType           previousarticlecontentid           knowledgearticle
-ManagedPropertyType  iscustomizable                     kbarticletemplate                   Was not successful exporting. Skip for now.
+ManagedPropertyType  iscustomizable                     kbarticletemplate                   Is not enabled for "IsRetrievable"
 MemoType             keywords                           knowledgearticle
 MoneyType            totaltax                           invoice                                   
 OwnerType            ownerid                            knowledgearticle                           
-PartyListType        customers                          msdyn_approval
+PartyListType        customers                          msdyn_approval                      Is not enabled for "IsRetrievable", but it appears to work.. so will include
 PicklistType         expiredreviewoptions               knowledgearticle
 StateType            statecode                          knowledgearticle  
 StatusType           statuscode                         knowledgearticle
 StringType           description                        knowledgearticle
 UniqueidentifierType stageid                            knowledgearticle
-VirtualType          servicetypename                    sharepointdocument                  Was not successful viewing or exporting. Skip for now.
+VirtualType          servicetypename                    sharepointdocument                  Is not enabled for "IsRetrievable"
+
+Ignore below data for now. It has additional filter to remove IsRetrievable when False. Needed it for the first Boolean, which was initially failing.
+Value                LogicalName            EntityLogicalName               
+-----                -----------            -----------------               
+BooleanType          adx_ignoredefaultvalue adx_entityformmetadata          
+CustomerType         customerid             salesorder                      
+DateTimeType         enddate                entitlement                     
+DecimalType          msdyn_quantity         msdyn_actual                    
+DoubleType           msdyn_qtyonhand        msdyn_productinventory          
+EntityNameType       objecttypecode         annotation                      
+IntegerType          adx_pagesize           adx_entitylist                  
+LookupType           msdyn_purchaseorder    msdyn_purchaseorderreceipt      
+MemoType             msdyn_schedulesettings msdyn_systemuserschedulersetting
+MoneyType            totalamount            invoice                         
+OwnerType            ownerid                bby_userassignments             
+PicklistType         prioritycode           phonecall                       
+StateType            statecode              fax                             
+StatusType           statuscode             adx_contentaccesslevel          
+StringType           name                   channelaccessprofile            
+UniqueidentifierType navigationsettingid    navigationsetting     
 
 namespace Microsoft.Xrm.Tooling.Connector: public enum CrmFieldType
     CrmBoolean,
@@ -65,3 +85,26 @@ $result.EntityCollection.Entities.count
 Input will be either EntityCollection, or Dictionary <string, object>, or PSCustomObject (which will grab .original which is the Dictionary)
 Dictionary corresponds to $Conn.GetEntityDataByFetchSearch();
 EntityCollection corresponds to $Conn.GetEntityDataByFetchSearchEC();
+
+Retrieve Fetch in various formats to reference when generating test objects:
+Function RF {
+    param
+    (
+        [String] $fetch
+    )
+
+    $Global:resultsEC = $Conn.GetEntityDataByFetchSearchEC($fetch, [guid]::Empty); 
+    $Global:v1 = $resultsEC.Entities[0];
+
+    $Global:results = $Conn.GetEntityDataByFetchSearch($fetch, [guid]::Empty);
+    $Global:v2 = $Global:results.Values | Where { $_."ReturnProperty_Id " -eq ($Global:v1.Id.Guid) }
+
+    Write-Output "Entity:";
+    Write-Output ($Global:v1);
+    Write-Output ($Global:v1.Attributes | Format-Table);
+    Write-Output " ";
+    Write-Output "Dictionary:";
+    Write-Output ($Global:v2 | Format-Table);
+}
+
+RF -fetch "<fetch><entity name='incident'><attribute name='customerid'/><filter type='and'><condition attribute='customerid' operator='not-null'/></filter></entity></fetch>";

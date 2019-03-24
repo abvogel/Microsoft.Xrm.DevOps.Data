@@ -1,7 +1,0 @@
-<entities >
-  <entity name="contract" displayname="Contract" etc="1010" primaryidfield="contractid" primarynamefield="title" disableplugins="false">
-    <fields>
-      <field displayname="Entity Image" name="entityimage" type="imagedata" />
-    </fields>
-  </entity>
-</entities>

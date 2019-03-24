@@ -76,6 +76,11 @@ namespace Microsoft.Xrm.DevOps.Data
             DistinctEntities.Keys.ToList<String>().ForEach(key => Entities.Enqueue(DistinctEntities[key]));
         }
 
+        public XmlNode SchemaToXML()
+        {
+            return new XmlNode();
+        }
+
         private String GetIdentifierFromEntity(Entity entity)
         {
             List<Object> EntityIdentifier = new List<Object>();
