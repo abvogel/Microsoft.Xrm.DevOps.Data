@@ -107,6 +107,23 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="lib\PrimitiveTypes\BooleanTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\CustomerTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\DateTimeTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\DecimalTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\DoubleTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\IntegerTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\LookupTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\m2mRelationshipTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\MemoTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\MoneyTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\OwnerTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\PartyListTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\PickListTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\StateTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\StatusTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\StringTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\UniqueIdentifierTypeEntity.cs" />
     <Compile Include="UnitTests_Configurations.cs" />
     <Compile Include="UnitTests_Exceptions.cs" />
     <Compile Include="UnitTests_Primitives.cs" />
@@ -116,24 +133,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="lib\PrimitiveTypes\BooleanTypeSchema.zip" />
-    <None Include="lib\PrimitiveTypes\CustomerType.zip" />
-    <None Include="lib\PrimitiveTypes\DateTimeType.zip" />
-    <None Include="lib\PrimitiveTypes\DecimalType.zip" />
-    <None Include="lib\PrimitiveTypes\DoubleType.zip" />
-    <None Include="lib\PrimitiveTypes\ImageType.zip" />
-    <None Include="lib\PrimitiveTypes\IntegerType.zip" />
-    <None Include="lib\PrimitiveTypes\LookupType.zip" />
-    <None Include="lib\PrimitiveTypes\m2mRelationshipType.zip" />
-    <None Include="lib\PrimitiveTypes\MemoType.zip" />
-    <None Include="lib\PrimitiveTypes\MoneyType.zip" />
-    <None Include="lib\PrimitiveTypes\OwnerType.zip" />
-    <None Include="lib\PrimitiveTypes\PartyListType.zip" />
-    <None Include="lib\PrimitiveTypes\PicklistType.zip" />
-    <None Include="lib\PrimitiveTypes\StateType.zip" />
-    <None Include="lib\PrimitiveTypes\StatusType.zip" />
-    <None Include="lib\PrimitiveTypes\StringType.zip" />
-    <None Include="lib\PrimitiveTypes\UniqueIdentifierType.zip" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -144,24 +143,58 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="lib\Notes.txt" />
-    <Content Include="lib\PrimitiveTypes\BooleanTypeSchema.xml" />
+    <Content Include="lib\PrimitiveTypes\BooleanType.xml" />
+    <Content Include="lib\PrimitiveTypes\BooleanTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\BooleanTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\CustomerType.xml" />
+    <Content Include="lib\PrimitiveTypes\CustomerTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\CustomerTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\DateTimeType.xml" />
+    <Content Include="lib\PrimitiveTypes\DateTimeTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\DateTimeTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\DecimalType.xml" />
+    <Content Include="lib\PrimitiveTypes\DecimalTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\DecimalTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\DoubleType.xml" />
-    <Content Include="lib\PrimitiveTypes\ImageType.xml" />
+    <Content Include="lib\PrimitiveTypes\DoubleTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\DoubleTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\IntegerType.xml" />
+    <Content Include="lib\PrimitiveTypes\IntegerTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\IntegerTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\LookupType.xml" />
+    <Content Include="lib\PrimitiveTypes\LookupTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\LookupTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\m2mRelationshipType.xml" />
+    <Content Include="lib\PrimitiveTypes\m2mRelationshipTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\m2mRelationshipTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\MemoType.xml" />
+    <Content Include="lib\PrimitiveTypes\MemoTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\MemoTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\MoneyType.xml" />
+    <Content Include="lib\PrimitiveTypes\MoneyTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\MoneyTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\OwnerType.xml" />
+    <Content Include="lib\PrimitiveTypes\OwnerTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\OwnerTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\PartyListType.xml" />
+    <Content Include="lib\PrimitiveTypes\PartyListTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\PartyListTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\PicklistType.xml" />
+    <Content Include="lib\PrimitiveTypes\PicklistTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\PicklistTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\StateType.xml" />
+    <Content Include="lib\PrimitiveTypes\StateTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\StateTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\StatusType.xml" />
+    <Content Include="lib\PrimitiveTypes\StatusTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\StatusTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\StringType.xml" />
+    <Content Include="lib\PrimitiveTypes\StringTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\StringTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\UniqueidentifierType.xml" />
+    <Content Include="lib\PrimitiveTypes\UniqueIdentifierTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\UniqueIdentifierTypedata_schema.xml" />
+    <Content Include="lib\PrimitiveTypes\[Content_Types].xml" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
