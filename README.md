@@ -6,5 +6,5 @@ This module builds on the DevOps.Data DLL providing a full PowerShell wrapper fo
 https://github.com/abvogel/Microsoft.Xrm.DevOps.PowerShell/
 
 # Example Code
-PowerShell: DataBuilder.AddData($fetchCRMResults.CrmRecords[0].logicalname, $fetchCRMResults.CrmRecords.original);
-C#: DataBuilder.AddData(EntityCollectionRecords);
+  PowerShell: DataBuilder.AddData($fetchCRMResults.CrmRecords[0].logicalname, $fetchCRMResults.CrmRecords.original);
+  C#: DataBuilder.AddData(EntityCollectionRecords);
