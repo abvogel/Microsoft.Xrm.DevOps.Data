@@ -84,7 +84,6 @@
   <ItemGroup>
     <Compile Include="BuilderEntityMetadata.cs" />
     <Compile Include="DataBuilder.cs" />
-    <Compile Include="iConfigurationMigrationData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XMLBuilder.cs" />
     <Compile Include="XMLData.cs" />
