@@ -89,3 +89,5 @@ Function RF {
 }
 
 RF -fetch "<fetch><entity name='incident'><attribute name='customerid'/><filter type='and'><condition attribute='customerid' operator='not-null'/></filter></entity></fetch>";
+
+test
