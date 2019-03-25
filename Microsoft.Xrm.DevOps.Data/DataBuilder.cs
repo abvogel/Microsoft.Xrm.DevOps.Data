@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
-using System.Xml;
 
 namespace Microsoft.Xrm.DevOps.Data
 {
@@ -101,23 +99,9 @@ namespace Microsoft.Xrm.DevOps.Data
             _Entities[logicalName].PluginsDisabled = disabled;
         }
 
-        public override String ToString()
+        public Dictionary<String,String> Build()
         {
-            StringBuilder response = new StringBuilder();
-            response.Append(ToStrings());
-            return response.ToString();
-        }
-
-        public String[] ToStrings()
-        {
-            List<String> responses = new List<string>();
-            return responses.ToArray();
-        }
-
-        public XmlNode ToXML() {
-            //List<XmlNode> schemaBody = 
-
-            return new XmlNode();
+            return XMLBuilder.ToStrings(_Entities);
         }
     }
 }

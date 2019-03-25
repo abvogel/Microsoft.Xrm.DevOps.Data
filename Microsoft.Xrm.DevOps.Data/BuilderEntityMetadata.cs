@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
+//using Microsoft.Xrm.DevOps.Data.XMLSchema;
 
 namespace Microsoft.Xrm.DevOps.Data
 {
@@ -76,11 +77,6 @@ namespace Microsoft.Xrm.DevOps.Data
             DistinctEntities.Keys.ToList<String>().ForEach(key => Entities.Enqueue(DistinctEntities[key]));
         }
 
-        public XmlNode SchemaToXML()
-        {
-            return new XmlNode();
-        }
-
         private String GetIdentifierFromEntity(Entity entity)
         {
             List<Object> EntityIdentifier = new List<Object>();
@@ -94,6 +90,11 @@ namespace Microsoft.Xrm.DevOps.Data
             });
 
             return String.Join("|", EntityIdentifier);
+        }
+
+        public XmlNode SchemaToXML()
+        {
+            return new XmlNode();
         }
     }
 }
