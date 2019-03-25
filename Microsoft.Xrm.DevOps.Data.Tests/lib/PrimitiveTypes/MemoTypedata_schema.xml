@@ -1,0 +1,7 @@
+<entities >
+  <entity name="knowledgearticle" displayname="Knowledge Article" etc="9953" primaryidfield="knowledgearticleid" primarynamefield="title" disableplugins="false">
+    <fields>
+      <field displayname="Keywords" name="keywords" type="string" />
+    </fields>
+  </entity>
+</entities>

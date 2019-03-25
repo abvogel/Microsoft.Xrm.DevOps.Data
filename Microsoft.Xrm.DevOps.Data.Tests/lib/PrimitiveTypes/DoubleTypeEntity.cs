@@ -26,7 +26,6 @@
 // ReturnProperty_EntityName             msdyn_purchaseorderproduct                                          
 // ReturnProperty_Id                     fbb6f525-794d-e911-a96a-000d3a1d23d3     
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using System;
 

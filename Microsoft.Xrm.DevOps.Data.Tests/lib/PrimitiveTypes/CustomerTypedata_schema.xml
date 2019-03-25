@@ -1,0 +1,7 @@
+<entities >
+  <entity name="incident" displayname="Case" etc="112" primaryidfield="incidentid" primarynamefield="title" disableplugins="false">
+    <fields>
+      <field displayname="Customer" name="customerid" type="entityreference" lookupType="account|contact" />
+    </fields>
+  </entity>
+</entities>

@@ -26,7 +26,6 @@
 // ReturnProperty_EntityName                  msdyn_resourcerequirementdetail                                 
 // ReturnProperty_Id                          73d453d8-774d-e911-a96a-000d3a1d23d3      
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using System;
 

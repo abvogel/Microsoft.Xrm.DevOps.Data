@@ -30,7 +30,6 @@
 // LogicalName   : knowledgearticle
 // Name          : demo Article for QA 
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using System;
 

@@ -25,7 +25,6 @@
 // ReturnProperty_EntityName theme                                          
 // ReturnProperty_Id         581ba8b5-f3cf-422e-8030-e2a645b39971           
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using System;
 
@@ -36,7 +35,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public static Entity GetBooleanTypeEntity()
         {
             Entity result = new Entity("theme");
-            result.Id = Guid.Parse("f499443d-2082-4938-8842-e7ee62de9a23");
+            result.Id = Guid.Parse("581ba8b5-f3cf-422e-8030-e2a645b39971");
             result["themeid"] = result.Id;
             result["isdefaulttheme"] = Boolean.Parse("false");
             result.FormattedValues.Add("isdefaulttheme", "No");

@@ -1,4 +1,5 @@
 ConnectedOrgVersion            : 9.1.0.876
+DataMigrationUtilityVersion    : 3.3.0.975
 
 $Meta = Get-CrmEntityAllMetadata -conn $Conn -EntityFilters All
 @($meta | Where { $_.IsImportable -eq "True" }).Attributes 
@@ -29,26 +30,6 @@ StatusType           statuscode                         knowledgearticle
 StringType           description                        knowledgearticle
 UniqueidentifierType stageid                            knowledgearticle
 VirtualType          servicetypename                    sharepointdocument                  Is not enabled for "IsRetrievable"
-
-Ignore below data for now. It has additional filter to remove IsRetrievable when False. Needed it for the first Boolean, which was initially failing.
-Value                LogicalName            EntityLogicalName               
------                -----------            -----------------               
-BooleanType          adx_ignoredefaultvalue adx_entityformmetadata          
-CustomerType         customerid             salesorder                      
-DateTimeType         enddate                entitlement                     
-DecimalType          msdyn_quantity         msdyn_actual                    
-DoubleType           msdyn_qtyonhand        msdyn_productinventory          
-EntityNameType       objecttypecode         annotation                      
-IntegerType          adx_pagesize           adx_entitylist                  
-LookupType           msdyn_purchaseorder    msdyn_purchaseorderreceipt      
-MemoType             msdyn_schedulesettings msdyn_systemuserschedulersetting
-MoneyType            totalamount            invoice                         
-OwnerType            ownerid                bby_userassignments             
-PicklistType         prioritycode           phonecall                       
-StateType            statecode              fax                             
-StatusType           statuscode             adx_contentaccesslevel          
-StringType           name                   channelaccessprofile            
-UniqueidentifierType navigationsettingid    navigationsetting     
 
 namespace Microsoft.Xrm.Tooling.Connector: public enum CrmFieldType
     CrmBoolean,

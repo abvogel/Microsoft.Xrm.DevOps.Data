@@ -25,7 +25,6 @@
 // ReturnProperty_EntityName   knowledgearticle                                          
 // ReturnProperty_Id           4bfd843b-e99e-e711-9401-0003ff66fbff                      
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using System;
 

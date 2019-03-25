@@ -1,0 +1,38 @@
+
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" timestamp="3/23/2019 10:07:22 AM">
+  <entity name="msdyn_approval" displayname="Approval">
+    <records>
+      <record id="3ff9afe1-7c4d-e911-a96a-000d3a1d23d3">
+        <field name="customers" value="" lookupentity="" lookupentityname="">
+          <activitypointerrecords id="3d12ac27-7d4d-e911-a96a-000d3a1d23d3">
+            <field name="partyid" value="9a913e9f-cbb8-e711-a968-000d3a192387" lookupentity="contact" lookupentityname="Andrew Vogel" />
+            <field name="activityid" value="3ff9afe1-7c4d-e911-a96a-000d3a1d23d3" lookupentity="activitypointer" />
+            <field name="ownerid" value="be9135c6-f5a9-e711-a95c-000d3a192e9a" lookupentity="systemuser" />
+            <field name="participationtypemask" value="11" />
+            <field name="instancetypecode" value="0" />
+            <field name="donotemail" value="False" />
+            <field name="donotfax" value="False" />
+            <field name="donotpostalmail" value="False" />
+            <field name="donotphone" value="False" />
+            <field name="ispartydeleted" value="False" />
+            <field name="activitypartyid" value="3d12ac27-7d4d-e911-a96a-000d3a1d23d3" />
+          </activitypointerrecords>
+          <activitypointerrecords id="3e12ac27-7d4d-e911-a96a-000d3a1d23d3">
+            <field name="partyid" value="669537c3-a4bd-e711-a950-000d3a1087a0" lookupentity="account" lookupentityname="test" />
+            <field name="activityid" value="3ff9afe1-7c4d-e911-a96a-000d3a1d23d3" lookupentity="activitypointer" />
+            <field name="ownerid" value="be9135c6-f5a9-e711-a95c-000d3a192e9a" lookupentity="systemuser" />
+            <field name="participationtypemask" value="11" />
+            <field name="instancetypecode" value="0" />
+            <field name="donotemail" value="False" />
+            <field name="donotfax" value="False" />
+            <field name="donotpostalmail" value="False" />
+            <field name="donotphone" value="False" />
+            <field name="ispartydeleted" value="False" />
+            <field name="activitypartyid" value="3e12ac27-7d4d-e911-a96a-000d3a1d23d3" />
+          </activitypointerrecords>
+        </field>
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+</entities>

@@ -71,7 +71,6 @@
 // roleid               systemuserroles   e186d6f0-28d6-4bfc-bea5-71e44c3e13a4 System.Runtime.Serialization.ExtensionDataObject
 // roleid               systemuserroles   52d9415f-86f4-e611-8128-e0071b6a4261 System.Runtime.Serialization.ExtensionDataObject
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using System;
 

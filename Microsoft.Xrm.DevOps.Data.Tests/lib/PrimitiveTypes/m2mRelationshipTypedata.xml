@@ -1,0 +1,19 @@
+
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" timestamp="3/23/2019 10:34:54 AM">
+  <entity name="systemuser" displayname="User">
+    <records>
+      <record id="00e7b0b9-1ace-e711-a970-000d3a192311" />
+    </records>
+    <m2mrelationships>
+      <m2mrelationship sourceid="00e7b0b9-1ace-e711-a970-000d3a192311" targetentityname="role" targetentitynameidfield="roleid" m2mrelationshipname="systemuserroles">
+        <targetids>
+          <targetid>cad52a75-568c-e611-80d4-00155d42a122</targetid>
+          <targetid>3dac4d9e-568c-e611-80d4-00155d42a122</targetid>
+          <targetid>85d865b5-fea1-e611-8116-00155da84013</targetid>
+          <targetid>e186d6f0-28d6-4bfc-bea5-71e44c3e13a4</targetid>
+          <targetid>52d9415f-86f4-e611-8128-e0071b6a4261</targetid>
+        </targetids>
+      </m2mrelationship>
+    </m2mrelationships>
+  </entity>
+</entities>

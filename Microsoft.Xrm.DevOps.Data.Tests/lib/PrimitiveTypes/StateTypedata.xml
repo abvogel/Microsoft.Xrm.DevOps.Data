@@ -1,0 +1,11 @@
+
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" timestamp="3/23/2019 9:03:40 AM">
+  <entity name="knowledgearticle" displayname="Knowledge Article">
+    <records>
+      <record id="4bfd843b-e99e-e711-9401-0003ff66fbff">
+        <field name="statecode" value="3" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+</entities>

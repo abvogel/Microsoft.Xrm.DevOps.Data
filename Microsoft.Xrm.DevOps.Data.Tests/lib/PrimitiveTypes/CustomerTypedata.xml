@@ -1,0 +1,11 @@
+
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" timestamp="3/23/2019 9:24:55 AM">
+  <entity name="incident" displayname="Case">
+    <records>
+      <record id="616f5b50-774d-e911-a96a-000d3a1d23d3">
+        <field name="customerid" value="9a913e9f-cbb8-e711-a968-000d3a192387" lookupentity="contact" lookupentityname="Andrew Vogel" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+</entities>

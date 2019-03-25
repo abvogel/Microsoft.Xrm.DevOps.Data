@@ -1,0 +1,11 @@
+
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" timestamp="3/23/2019 8:58:45 AM">
+  <entity name="knowledgearticle" displayname="Knowledge Article">
+    <records>
+      <record id="f835a513-ed9e-e711-9401-0003ff66fbff">
+        <field name="expirationstateid" value="3" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+</entities>

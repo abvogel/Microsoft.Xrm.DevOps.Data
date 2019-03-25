@@ -1,0 +1,11 @@
+
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" timestamp="3/23/2019 8:59:55 AM">
+  <entity name="knowledgearticle" displayname="Knowledge Article">
+    <records>
+      <record id="165ef3a6-ef9e-e711-80fd-3863bb2eb058">
+        <field name="previousarticlecontentid" value="f835a513-ed9e-e711-9401-0003ff66fbff" lookupentity="knowledgearticle" lookupentityname="demo Article for QA " />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+</entities>

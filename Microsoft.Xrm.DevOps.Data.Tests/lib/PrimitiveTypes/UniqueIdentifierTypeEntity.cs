@@ -30,7 +30,6 @@
 // ----                                
 // 0c6ed1c6-e9f1-4b43-8d9b-f680fded9b67
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using System;
 

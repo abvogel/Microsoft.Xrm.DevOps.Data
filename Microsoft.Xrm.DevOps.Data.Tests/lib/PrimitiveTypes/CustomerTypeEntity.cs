@@ -27,7 +27,6 @@
 // LogicalName   : contact
 // Name          : Andrew Vogel
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using System;
 

@@ -30,7 +30,6 @@
 // ----- -------------                                   
 //     3 System.Runtime.Serialization.ExtensionDataObject    
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using System;
 

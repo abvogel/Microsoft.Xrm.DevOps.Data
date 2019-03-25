@@ -43,7 +43,6 @@
 // LogicalName   : transactioncurrency
 // Name          : US Dollar
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using System;
 
@@ -53,7 +52,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
     {
         public static Entity GetMoneyTypeEntity()
         {
-            Money m = new Money(Decimal.Parse("0.00"));
+            Money m = new Money(Decimal.Parse("0.0000"));
             EntityReference t = new EntityReference("transactioncurrencyid", Guid.Parse("ff4bc237-a3a4-e711-a967-000d3a192828"));
                 t.Name = "US Dollar";
 

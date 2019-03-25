@@ -25,7 +25,6 @@
 // ReturnProperty_EntityName   knowledgearticle                                          
 // ReturnProperty_Id           4bfd843b-e99e-e711-9401-0003ff66fbff                      
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using System;
 
@@ -33,7 +32,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 {
     public partial class SupportMethods
     {
-        public static Entity GetMemoTypeClass()
+        public static Entity GetMemoTypeEntity()
         {
             Entity result = new Entity("knowledgearticle");
             result.Id = Guid.Parse("4bfd843b-e99e-e711-9401-0003ff66fbff");
