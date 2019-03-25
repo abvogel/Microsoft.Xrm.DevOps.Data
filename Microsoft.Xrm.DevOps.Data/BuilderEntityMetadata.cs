@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
-//using Microsoft.Xrm.DevOps.Data.XMLSchema;
 
 namespace Microsoft.Xrm.DevOps.Data
 {
@@ -67,9 +66,8 @@ namespace Microsoft.Xrm.DevOps.Data
                     {
                         priorEntity[attribute.Key] = attribute.Value;
                     }
-                    DistinctEntities.Add(EntityIdentifier, priorEntity);
-                } else
-                {
+                    DistinctEntities[EntityIdentifier] = priorEntity;
+                } else {
                     DistinctEntities.Add(EntityIdentifier, entity);
                 }
             }
@@ -90,11 +88,6 @@ namespace Microsoft.Xrm.DevOps.Data
             });
 
             return String.Join("|", EntityIdentifier);
-        }
-
-        public XmlNode SchemaToXML()
-        {
-            return new XmlNode();
         }
     }
 }
