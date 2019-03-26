@@ -32,14 +32,14 @@ namespace Microsoft.Xrm.DevOps.Data
 
         private static String GetDataSchema(Dictionary<string, BuilderEntityMetadata> entities)
         {
-            return String.Empty;
             // TBD
+            return String.Empty;
         }
 
         private static String GetData(Dictionary<string, BuilderEntityMetadata> entities)
         {
-            return String.Empty;
             // TBD
+            return String.Empty;
         }
     }
 }
