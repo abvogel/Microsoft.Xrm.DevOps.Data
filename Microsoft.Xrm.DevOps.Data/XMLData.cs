@@ -3,51 +3,90 @@ using System.Xml.Serialization;
 
 namespace Microsoft.Xrm.DevOps.Data.XMLData
 {
-    [XmlRoot(ElementName = "attribute", Namespace = "http://www.w3.org/2001/XMLSchema")]
-    public class Attribute
-    {
-        [XmlAttribute(AttributeName = "name")]
-        public string Name { get; set; }
-        [XmlAttribute(AttributeName = "type")]
-        public string Type { get; set; }
-    }
+	[XmlRoot(ElementName="activitypointerrecords")]
+	public class Activitypointerrecords {
+		[XmlElement(ElementName="field")]
+		public List<Field> Field { get; set; }
+		[XmlAttribute(AttributeName="id")]
+		public string Id { get; set; }
+	}
 
-    [XmlRoot(ElementName = "complexType", Namespace = "http://www.w3.org/2001/XMLSchema")]
-    public class ComplexType
-    {
-        [XmlElement(ElementName = "attribute", Namespace = "http://www.w3.org/2001/XMLSchema")]
-        public List<Attribute> Attribute { get; set; }
-    }
+	[XmlRoot(ElementName="entities")]
+	public class Entities {
+		[XmlElement(ElementName="entity")]
+		public List<Entity> Entity { get; set; }
+		[XmlAttribute(AttributeName="timestamp")]
+		public string Timestamp { get; set; }
+		[XmlAttribute(AttributeName="xsd", Namespace="http://www.w3.org/2000/xmlns/")]
+		public string Xsd { get; set; }
+		[XmlAttribute(AttributeName="xsi", Namespace="http://www.w3.org/2000/xmlns/")]
+		public string Xsi { get; set; }
+	}
 
-    [XmlRoot(ElementName = "element", Namespace = "http://www.w3.org/2001/XMLSchema")]
-    public class Element
-    {
-        [XmlElement(ElementName = "complexType", Namespace = "http://www.w3.org/2001/XMLSchema")]
-        public ComplexType ComplexType { get; set; }
-        [XmlAttribute(AttributeName = "maxOccurs")]
-        public string MaxOccurs { get; set; }
-        [XmlAttribute(AttributeName = "name")]
-        public string Name { get; set; }
-    }
+	[XmlRoot(ElementName="entity")]
+	public class Entity {
+		[XmlAttribute(AttributeName="displayname")]
+		public string Displayname { get; set; }
+		[XmlElement(ElementName="m2mrelationships")]
+		public M2mrelationships M2mrelationships { get; set; }
+		[XmlAttribute(AttributeName="name")]
+		public string Name { get; set; }
+		[XmlElement(ElementName="records")]
+		public Records Records { get; set; }
+	}
 
-    [XmlRoot(ElementName = "schema", Namespace = "http://www.w3.org/2001/XMLSchema")]
-    public class Schema
-    {
-        [XmlAttribute(AttributeName = "attributeFormDefault")]
-        public string AttributeFormDefault { get; set; }
-        [XmlElement(ElementName = "element", Namespace = "http://www.w3.org/2001/XMLSchema")]
-        public Element Element { get; set; }
-        [XmlAttribute(AttributeName = "elementFormDefault")]
-        public string ElementFormDefault { get; set; }
-        [XmlAttribute(AttributeName = "xs", Namespace = "http://www.w3.org/2000/xmlns/")]
-        public string Xs { get; set; }
-    }
+	[XmlRoot(ElementName="field")]
+	public class Field {
+		[XmlElement(ElementName="activitypointerrecords")]
+		public List<Activitypointerrecords> Activitypointerrecords { get; set; }
+		[XmlAttribute(AttributeName="lookupentity")]
+		public string Lookupentity { get; set; }
+		[XmlAttribute(AttributeName="lookupentityname")]
+		public string Lookupentityname { get; set; }
+		[XmlAttribute(AttributeName="name")]
+		public string Name { get; set; }
+		[XmlAttribute(AttributeName="value")]
+		public string Value { get; set; }
+	}
 
-    [XmlRoot(ElementName = "sequence", Namespace = "http://www.w3.org/2001/XMLSchema")]
-    public class Sequence
-    {
-        [XmlElement(ElementName = "element", Namespace = "http://www.w3.org/2001/XMLSchema")]
-        public Element Element { get; set; }
-    }
+	[XmlRoot(ElementName="m2mrelationship")]
+	public class M2mrelationship {
+		[XmlAttribute(AttributeName="m2mrelationshipname")]
+		public string M2mrelationshipname { get; set; }
+		[XmlAttribute(AttributeName="sourceid")]
+		public string Sourceid { get; set; }
+		[XmlAttribute(AttributeName="targetentityname")]
+		public string Targetentityname { get; set; }
+		[XmlAttribute(AttributeName="targetentitynameidfield")]
+		public string Targetentitynameidfield { get; set; }
+		[XmlElement(ElementName="targetids")]
+		public Targetids Targetids { get; set; }
+	}
+
+	[XmlRoot(ElementName="m2mrelationships")]
+	public class M2mrelationships {
+		[XmlElement(ElementName="m2mrelationship")]
+		public List<M2mrelationship> M2mrelationship { get; set; }
+	}
+
+	[XmlRoot(ElementName="record")]
+	public class Record {
+		[XmlElement(ElementName="field")]
+		public List<Field> Field { get; set; }
+		[XmlAttribute(AttributeName="id")]
+		public string Id { get; set; }
+	}
+
+	[XmlRoot(ElementName="records")]
+	public class Records {
+		[XmlElement(ElementName="record")]
+		public List<Record> Record { get; set; }
+	}
+
+	[XmlRoot(ElementName="targetids")]
+	public class Targetids {
+		[XmlElement(ElementName="targetid")]
+		public List<string> Targetid { get; set; }
+	}
 
 }
