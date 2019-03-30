@@ -1,25 +1,63 @@
 ﻿using System;
+using System.Xml;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
+using Microsoft.Xrm.Sdk.Messages;
 
 namespace Microsoft.Xrm.DevOps.Data
 {
     public class DataBuilder
     {
         private Dictionary<String, BuilderEntityMetadata> _Entities { get; set; }
+        private Boolean _PluginsDisabled { get; set; }
+        public IOrganizationService Service { 
+            //Microsoft.Xrm.Tooling.Connector.CrmServiceClient inherits from this
+            private get { 
+                return Service; 
+            }
+            set {
+                Service = value;
+                foreach (var kvp in _Entities) {
+                    VerifyMetadataExists(kvp.Key);
+                }
+            }
+        }
+
         private void VerifyEntityExists(String logicalName)
         {
             if (!_Entities.ContainsKey(logicalName))
             {
                 _Entities[logicalName] = new BuilderEntityMetadata();
             }
+
+            VerifyMetadataExists(logicalName);
         }
 
-    public DataBuilder()
-        {
+        private void VerifyMetadataExists(String logicalName) {
+            if (_Entities[logicalName].Metadata == null
+                    && this.Service != null) {
+                var retrieveEntityRequest = new RetrieveEntityRequest();
+                retrieveEntityRequest.LogicalName = logicalName;
+                retrieveEntityRequest.EntityFilters = EntityFilters.Attributes;
+                RetrieveEntityResponse RetrieveEntityResponse = (RetrieveEntityResponse)Service.Execute(retrieveEntityRequest);
+                
+                if (RetrieveEntityResponse != null) {
+                    _Entities[logicalName].Metadata = RetrieveEntityResponse.EntityMetadata;
+                } else { 
+                    throw new Exception(String.Format("Metadata does not exist for entity {0}", logicalName));
+                }
+            }
+        }
 
+        public DataBuilder() {
+
+        }
+
+        public DataBuilder(IOrganizationService service)
+        {
+            this.Service = service;
         }
 
         public void AppendData(Entity entity)
@@ -63,24 +101,6 @@ namespace Microsoft.Xrm.DevOps.Data
             }
         }
         
-        public void AddMetadata(EntityMetadata entityMetadata)
-        {
-            if (!_Entities.ContainsKey(entityMetadata.LogicalName))
-            {
-                _Entities[entityMetadata.LogicalName] = new BuilderEntityMetadata();
-            }
-
-            _Entities[entityMetadata.LogicalName].Metadata = entityMetadata;
-        }
-
-        public void AddMetadata(EntityMetadata[] entityMetadata)
-        {
-            foreach (var entity in entityMetadata)
-            {
-                AddMetadata(entity);
-            }
-        }
-
         public void SetIdentifier(String logicalName, List<String> identifiers)
         {
             VerifyEntityExists(logicalName);
@@ -93,15 +113,26 @@ namespace Microsoft.Xrm.DevOps.Data
             _Entities[logicalName].Identifiers = new List<string>() { identifier };
         }
 
+        public void SetPluginsDisabled(Boolean disabled) {
+            _PluginsDisabled = disabled;
+        }
+
         public void SetPluginsDisabled(String logicalName, Boolean disabled)
         {
             VerifyEntityExists(logicalName);
             _Entities[logicalName].PluginsDisabled = disabled;
         }
 
-        public Dictionary<String,String> Build()
-        {
-            return XMLBuilder.ToStrings(_Entities);
+        public void SetConnection(IOrganizationService service) {
+            //Microsoft.Xrm.Tooling.Connector CrmServiceClient inherits from IOrganizationService
+        }
+
+        public XmlDocument BuildSchemaXML() {
+            return XmlSchemaBuilder.ToXmlDocument(_Entities, _PluginsDisabled);
+        }
+
+        public XmlDocument BuildDataXML() {
+            return XmlDataBuilder.ToXmlDocument(_Entities, _PluginsDisabled);
         }
     }
 }
