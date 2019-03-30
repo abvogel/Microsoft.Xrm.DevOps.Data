@@ -11,7 +11,7 @@ namespace Microsoft.Xrm.DevOps.Data
     public class DataBuilder
     {
         private Dictionary<String, BuilderEntityMetadata> _Entities { get; set; }
-        private Boolean _PluginsDisabled { get; set; }
+        private Boolean _PluginsDisabled = true;
         public IOrganizationService Service { 
             //Microsoft.Xrm.Tooling.Connector.CrmServiceClient inherits from this
             private get { 
