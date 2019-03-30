@@ -82,13 +82,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuilderEntityMetadata.cs" />
-    <Compile Include="DataBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XmlDataBuilder.cs" />
-    <Compile Include="XmlSchemaBuilder.cs" />
-    <Compile Include="DataXmlTemplate.cs" />
-    <Compile Include="SchemaXmlTemplate.cs" />
+    <Compile Include="Builders\DataBuilder.cs" />
+    <Compile Include="Builders\XmlDataBuilder.cs" />
+    <Compile Include="Builders\XmlSchemaBuilder.cs" />
+    <Compile Include="SupportClasses\BuilderEntityMetadata.cs" />
+    <Compile Include="SupportClasses\DataXmlTemplate.cs" />
+    <Compile Include="SupportClasses\SchemaXmlTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
