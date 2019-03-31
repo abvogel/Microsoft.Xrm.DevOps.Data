@@ -43,10 +43,5 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 
             return result;
         }
-
-        public static String GetDecimalTypeFetch()
-        {
-            return "<fetch top='1'><entity name='msdyn_resourcerequirementdetail'><attribute name='msdyn_hours'/><filter type='and'><condition attribute='msdyn_hours' operator='not-null'/></filter></entity></fetch>";
-        }
     }
 }

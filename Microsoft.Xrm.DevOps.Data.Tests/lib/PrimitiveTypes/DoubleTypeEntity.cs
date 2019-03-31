@@ -43,10 +43,5 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 
             return result;
         }
-
-        public static String GetDoubleTypeFetch()
-        {
-            return "<fetch top='1'><entity name='msdyn_purchaseorderproduct'><attribute name='msdyn_quantity'/><filter type='and'><condition attribute='msdyn_quantity' operator='not-null'/></filter></entity></fetch>";
-        }
     }
 }

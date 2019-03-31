@@ -46,10 +46,5 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 
             return result;
         }
-
-        public static String GetUniqueIdentifierTypeFetch()
-        {
-            return "<fetch top='1'><entity name='knowledgearticle'><attribute name='stageid'/><filter type='and'><condition attribute='stageid' operator='not-null'/></filter></entity></fetch>";
-        }
     }
 }

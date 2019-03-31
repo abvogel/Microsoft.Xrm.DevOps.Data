@@ -42,10 +42,5 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 
             return result;
         }
-
-        public static String GetIntegerTypeFetch()
-        {
-            return "<fetch top='1'><entity name='knowledgearticle'><attribute name='expirationstateid'/><filter type='and'><condition attribute='expirationstateid' operator='not-null'/></filter></entity></fetch>";
-        }
     }
 }

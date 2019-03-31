@@ -42,10 +42,5 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 
             return result;
         }
-
-        public static String GetPicklistTypeFetch()
-        {
-            return "<fetch top='1'><entity name='knowledgearticle'><attribute name='expiredreviewoptions'/><filter type='and'><condition attribute='expiredreviewoptions' operator='not-null'/></filter></entity></fetch>";
-        }
     }
 }

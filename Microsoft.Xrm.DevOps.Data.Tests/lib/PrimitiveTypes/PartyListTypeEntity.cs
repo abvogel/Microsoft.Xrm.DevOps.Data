@@ -335,10 +335,5 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 
             return result;
         }
-
-        public static String GetPartyListTypeFetch()
-        {
-            return "<fetch top='1'><entity name='msdyn_approval'><attribute name='customers'/><filter type='and'></filter></entity></fetch>";
-        }
     }
 }

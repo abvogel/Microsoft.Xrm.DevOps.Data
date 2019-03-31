@@ -14,24 +14,19 @@ namespace Microsoft.Xrm.DevOps.Data
         internal static XmlDocument ToXmlDocument(Dictionary<string, BuilderEntityMetadata> entities, Boolean pluginsdisabled)
         {
             XmlDocument xd = null;
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof (DataXml.Entities));
+            XmlSerializer xmlSerializer = new XmlSerializer(String.Empty.GetType());
             using (MemoryStream memStm = new MemoryStream())
             {
-                using (XmlWriter writer = XmlWriter.Create(memStm, new XmlWriterSettings { OmitXmlDeclaration = true }))
+                xmlSerializer.Serialize(memStm, GenerateDataXml(entities));
+
+                memStm.Position = 0;
+                var settings = new XmlReaderSettings();
+                settings.IgnoreWhitespace = true;
+
+                using (var xtr = XmlReader.Create(memStm, settings))
                 {
-                    xmlSerializer.Serialize(writer, GenerateDataXml(entities));
-
-                    memStm.Position = 0;
-                    var settings = new XmlReaderSettings
-                    {
-                        IgnoreWhitespace = true
-                    };
-
-                    using (var xtr = XmlReader.Create(memStm, settings))
-                    {
-                        xd = new XmlDocument();
-                        xd.Load(xtr);
-                    }
+                    xd = new XmlDocument();
+                    xd.Load(xtr);
                 }
             }
 
@@ -54,14 +49,10 @@ namespace Microsoft.Xrm.DevOps.Data
 
         private static DataXml.Entity GenerateEntityNode(String logicalName, BuilderEntityMetadata builderEntityMetadata)
         {
-            //var m2mRelationshipsNode = new DataXml.M2mrelationships();
-            //m2mRelationshipsNode.M2mrelationship = new List<DataXml.M2mrelationship>();
-
             var EntityNode = new DataXml.Entity
             {
                 Name = logicalName,
-                Displayname = builderEntityMetadata.Metadata.DisplayName.LocalizedLabels[0].Label
-                //M2mrelationships = m2mRelationshipsNode
+                Displayname = builderEntityMetadata.Metadata.DisplayName.UserLocalizedLabel.Label
             };
 
             var RecordsNode = new DataXml.Records
@@ -132,9 +123,13 @@ namespace Microsoft.Xrm.DevOps.Data
                     FieldNode.Lookupentityname = String.Empty;
                     throw new NotImplementedException();
                 case Sdk.Metadata.AttributeTypeCode.CalendarRules:
+                    throw new NotImplementedException();
                 case Sdk.Metadata.AttributeTypeCode.Virtual:
+                    throw new NotImplementedException();
                 case Sdk.Metadata.AttributeTypeCode.BigInt:
+                    throw new NotImplementedException();
                 case Sdk.Metadata.AttributeTypeCode.ManagedProperty:
+                    throw new NotImplementedException();
                 case Sdk.Metadata.AttributeTypeCode.EntityName:
                     throw new NotImplementedException();
                 default:

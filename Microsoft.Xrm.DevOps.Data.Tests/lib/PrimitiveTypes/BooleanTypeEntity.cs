@@ -27,7 +27,6 @@
 
 using Microsoft.Xrm.Sdk;
 using System;
-using System.Xml;
 
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
@@ -42,26 +41,6 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             result.FormattedValues.Add("isdefaulttheme", "No");
 
             return result;
-        }
-
-        public static String GetBooleanTypeFetch()
-        {
-            return "<fetch top='1'><entity name='theme'><attribute name='isdefaulttheme'/><filter type='and'><condition attribute='isdefaulttheme' operator='not-null'/></filter></entity></fetch>";
-        }
-
-        public static String GetBooleanTypeExpectedData()
-        {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(@"../../lib/PrimitiveTypes/BooleanTypedata.xml");
-            doc.FirstChild.Attributes.RemoveNamedItem("timestamp");
-            return doc.InnerXml;
-        }
-
-        public static String GetBooleanTypeExpectedSchema()
-        {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(@"../../lib/PrimitiveTypes/BooleanTypedata_schema.xml");
-            return doc.InnerXml;
         }
     }
 }
