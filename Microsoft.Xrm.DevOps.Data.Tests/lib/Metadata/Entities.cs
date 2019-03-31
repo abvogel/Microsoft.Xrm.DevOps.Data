@@ -53,8 +53,6 @@ namespace CrmEarlyBound
 		
 		public const string PrimaryNameAttribute = "title";
 
-        public const string DisplayName = "Case";
-
         public const int EntityTypeCode = 112;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -4002,7 +4000,6 @@ namespace CrmEarlyBound
 		{
 		}
 
-        public const string DisplayName = "Knowledge Article";
         public const string EntityLogicalName = "knowledgearticle";
 		
 		public const string PrimaryIdAttribute = "knowledgearticleid";
@@ -6522,7 +6519,6 @@ namespace CrmEarlyBound
 		{
 		}
 
-        public const string DisplayName = "Purchase Order Product";
         public const string EntityLogicalName = "msdyn_purchaseorderproduct";
 		
 		public const string PrimaryIdAttribute = "msdyn_purchaseorderproductid";
@@ -7388,7 +7384,6 @@ namespace CrmEarlyBound
 		{
 		}
 
-        public const string DisplayName = "Resource Requirement Detail";
         public const string EntityLogicalName = "msdyn_resourcerequirementdetail";
 		
 		public const string PrimaryIdAttribute = "msdyn_resourcerequirementdetailid";
@@ -7955,12 +7950,11 @@ namespace CrmEarlyBound
 		{
 		}
 
-        public const string DisplayName = "Theme";
         public const string EntityLogicalName = "theme";
 		
 		public const string PrimaryIdAttribute = "themeid";
 		
-		public const string PrimaryNameAttribute = "name"; // TBD add DisplayName...
+		public const string PrimaryNameAttribute = "name"; 
 		
 		public const int EntityTypeCode = 2015;
 
