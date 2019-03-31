@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Xrm.DevOps.Data",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Xrm.DevOps.Data.Tests", "Microsoft.Xrm.DevOps.Data.Tests\Microsoft.Xrm.DevOps.Data.Tests.csproj", "{884F72BF-53B3-4514-A30E-F1FBE6972118}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Xrm.DevOps.Data.Console", "Microsoft.Xrm.DevOps.Data.Console\Microsoft.Xrm.DevOps.Data.Console.csproj", "{A64E98ED-D69F-48A6-A714-CC9E19B6C359}"
+	ProjectSection(ProjectDependencies) = postProject
+		{529034BD-2E55-4ADA-AAC9-BE47DA1DE108} = {529034BD-2E55-4ADA-AAC9-BE47DA1DE108}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +26,10 @@ Global
 		{884F72BF-53B3-4514-A30E-F1FBE6972118}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{884F72BF-53B3-4514-A30E-F1FBE6972118}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{884F72BF-53B3-4514-A30E-F1FBE6972118}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A64E98ED-D69F-48A6-A714-CC9E19B6C359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A64E98ED-D69F-48A6-A714-CC9E19B6C359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A64E98ED-D69F-48A6-A714-CC9E19B6C359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A64E98ED-D69F-48A6-A714-CC9E19B6C359}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

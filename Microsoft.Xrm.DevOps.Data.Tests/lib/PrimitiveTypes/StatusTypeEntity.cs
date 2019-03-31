@@ -47,5 +47,10 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 
             return result;
         }
+
+        public static String GetStatusTypeFetch()
+        {
+            return "<fetch top='1'><entity name='knowledgearticle'><attribute name='statuscode'/><filter type='and'><condition attribute='statuscode' operator='not-null'/></filter></entity></fetch>";
+        }
     }
 }

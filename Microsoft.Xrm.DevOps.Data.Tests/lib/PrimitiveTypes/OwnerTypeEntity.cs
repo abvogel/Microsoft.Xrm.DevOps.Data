@@ -27,7 +27,7 @@
 
 // Id            : cdffaae5-55b0-e711-a95c-000d3a192e9a
 // LogicalName   : systemuser
-// Name          : Kishore Bethi
+// Name          : Andrew Vogel
 
 using Microsoft.Xrm.Sdk;
 using System;
@@ -48,6 +48,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             result.FormattedValues.Add("ownerid", "Andrew Vogel");
 
             return result;
+        }
+
+        public static String GetOwnerTypeFetch()
+        {
+            return "<fetch top='1'><entity name='knowledgearticle'><attribute name='ownerid'/><filter type='and'><condition attribute='ownerid' operator='not-null'/></filter></entity></fetch>";
         }
     }
 }

@@ -107,6 +107,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="lib\Metadata\Entities.cs" />
     <Compile Include="lib\PrimitiveTypes\BooleanTypeEntity.cs" />
     <Compile Include="lib\PrimitiveTypes\CustomerTypeEntity.cs" />
     <Compile Include="lib\PrimitiveTypes\DateTimeTypeEntity.cs" />
@@ -133,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="lib\Metadata\CrmSchema.dat" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +197,9 @@
     <Content Include="lib\PrimitiveTypes\UniqueIdentifierTypedata.xml" />
     <Content Include="lib\PrimitiveTypes\UniqueIdentifierTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\[Content_Types].xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

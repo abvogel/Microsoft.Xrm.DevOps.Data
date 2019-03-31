@@ -23,16 +23,31 @@ namespace Microsoft.Xrm.DevOps.Data.DataXml
 		public string Xsi { get; set; }
 	}
 
-	[XmlRoot(ElementName="entity")]
-	public class Entity {
-		[XmlAttribute(AttributeName="displayname")]
-		public string Displayname { get; set; }
-		[XmlElement(ElementName="m2mrelationships")]
-		public M2mrelationships M2mrelationships { get; set; }
-		[XmlAttribute(AttributeName="name")]
-		public string Name { get; set; }
+    [XmlRoot(ElementName = "entity")]
+    public class Entity
+    {
+        [XmlAttribute(AttributeName = "name")]
+        public string Name { get; set; }
+        [XmlAttribute(AttributeName = "displayname")]
+        public string Displayname { get; set; }
 		[XmlElement(ElementName="records")]
 		public Records Records { get; set; }
+        [XmlElement(ElementName = "m2mrelationships", IsNullable = true)]
+        public M2mrelationships M2mrelationships
+        {
+            get
+            {
+                return new M2mrelationships();
+            }
+            set
+            {
+            }
+        }
+
+        public bool ShouldSerializem2mrelationships()
+        {
+            return true;
+        }
 	}
 
 	[XmlRoot(ElementName="field")]

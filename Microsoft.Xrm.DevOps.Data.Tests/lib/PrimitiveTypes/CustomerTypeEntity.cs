@@ -47,5 +47,10 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 
             return result;
         }
+
+        public static String GetCustomerTypeFetch()
+        {
+            return "<fetch top='1'><entity name='incident'><attribute name='customerid'/><filter type='and'><condition attribute='customerid' operator='not-null'/></filter></entity></fetch>";
+        }
     }
 }

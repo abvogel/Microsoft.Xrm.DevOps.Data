@@ -1,6 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using FakeXrmEasy;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Messages;
 using System;
+using System.Reflection;
 
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
@@ -10,11 +13,13 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         [TestMethod]
         public void BooleanType()
         {
-            // BooleanType          readyforreview                     knowledgearticle 
-            // <fetch distinct='false' no-lock='false' top='50' mapping='logical'><entity name='knowledgearticle'><attribute name='readyforreview'/></entity></fetch>
-            DataBuilder DataBuilder = new DataBuilder();
-            Assert.IsTrue(true);
-        }
+            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService("theme", "Theme", SupportMethods.GetBooleanTypeEntity());
+
+            DataBuilder DataBuilder = new DataBuilder(fakedService);
+            DataBuilder.AppendData(SupportMethods.GetBooleanTypeFetch());
+            String result = DataBuilder.BuildDataXML().InnerXml;
+            Assert.AreEqual(result, SupportMethods.GetBooleanTypeExpectedData());
+        }        
 
         [TestMethod]
         public void CustomerType()
