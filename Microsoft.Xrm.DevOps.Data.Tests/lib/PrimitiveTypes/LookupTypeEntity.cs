@@ -55,5 +55,15 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         {
             return "<fetch top='1'><entity name='knowledgearticle'><attribute name='previousarticlecontentid'/><filter type='and'><condition attribute='previousarticlecontentid' operator='not-null'/></filter></entity></fetch>";
         }
+
+        public static String GetLookupTypeExpectedData()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/LookupTypedata.xml");
+        }
+
+        public static String GetLookupTypeExpectedSchema()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/LookupTypedata_schema.xml");
+        }
     }
 }

@@ -47,5 +47,15 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         {
             return "<fetch top='1'><entity name='knowledgearticle'><attribute name='expiredreviewoptions'/><filter type='and'><condition attribute='expiredreviewoptions' operator='not-null'/></filter></entity></fetch>";
         }
+
+        public static String GetPicklistTypeExpectedData()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/PicklistTypedata.xml");
+        }
+
+        public static String GetPicklistTypeExpectedSchema()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/PicklistTypedata_schema.xml");
+        }
     }
 }

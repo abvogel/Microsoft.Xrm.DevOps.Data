@@ -51,5 +51,15 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         {
             return "<fetch top='1'><entity name='knowledgearticle'><attribute name='stageid'/><filter type='and'><condition attribute='stageid' operator='not-null'/></filter></entity></fetch>";
         }
+
+        public static String GetUniqueIdentifierTypeExpectedData()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/UniqueIdentifierTypedata.xml");
+        }
+
+        public static String GetUniqueIdentifierTypeExpectedSchema()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/UniqueIdentifierTypedata_schema.xml");
+        }
     }
 }

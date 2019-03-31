@@ -52,5 +52,15 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         {
             return "<fetch top='1'><entity name='knowledgearticle'><attribute name='statecode'/><filter type='and'><condition attribute='statecode' operator='not-null'/></filter></entity></fetch>";
         }
+
+        public static String GetStateTypeExpectedData()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/StateTypedata.xml");
+        }
+
+        public static String GetStateTypeExpectedSchema()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/StateTypedata_schema.xml");
+        }
     }
 }

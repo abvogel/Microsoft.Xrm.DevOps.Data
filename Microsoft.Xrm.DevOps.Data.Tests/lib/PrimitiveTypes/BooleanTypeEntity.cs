@@ -59,9 +59,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 
         public static String GetBooleanTypeExpectedSchema()
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(@"../../lib/PrimitiveTypes/BooleanTypedata_schema.xml");
-            return doc.InnerXml;
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/BooleanTypedata_schema.xml");
         }
     }
 }

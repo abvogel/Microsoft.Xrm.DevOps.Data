@@ -11,32 +11,28 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void SingleIdentifier()
         {
             // BooleanType          readyforreview                     knowledgearticle 
-            DataBuilder DataBuilder = new DataBuilder();
-            Assert.IsTrue(true);
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void MultipleIdentifiers()
         {
             // BooleanType          readyforreview                     knowledgearticle 
-            DataBuilder DataBuilder = new DataBuilder();
-            Assert.IsTrue(true);
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void SingleEntity_PluginsDisabled()
         {
             // BooleanType          readyforreview                     knowledgearticle 
-            DataBuilder DataBuilder = new DataBuilder();
-            Assert.IsTrue(true);
+            throw new NotImplementedException();
         }
         
         [TestMethod]
         public void AllEntities_PluginsDisabled()
         {
             // BooleanType          readyforreview                     knowledgearticle 
-            DataBuilder DataBuilder = new DataBuilder();
-            Assert.IsTrue(true);
+            throw new NotImplementedException();
         }
     }
 }

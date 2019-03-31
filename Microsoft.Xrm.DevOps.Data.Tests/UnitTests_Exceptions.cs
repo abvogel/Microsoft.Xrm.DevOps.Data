@@ -14,15 +14,5 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 
             Assert.IsInstanceOfType(DataBuilder, typeof(Microsoft.Xrm.DevOps.Data.DataBuilder));
         }
-
-        [TestMethod]
-        public void MissingMetaddata_Throws()
-        {
-            DataBuilder DataBuilder = new DataBuilder();
-
-            //DataBuilder.AddOrganizationResponse("contact", SupportMethods.GetOrganizationResponse_Contact());
-
-            //Assert.ThrowsException<Exception>(() => DataBuilder.ToList());
-        }
     }
 }

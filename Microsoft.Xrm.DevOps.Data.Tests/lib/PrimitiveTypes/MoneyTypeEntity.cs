@@ -71,5 +71,15 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         {
             return "<fetch top='1'><entity name='invoice'><attribute name='totaltax'/><filter type='and'><condition attribute='totaltax' operator='not-null'/></filter></entity></fetch>";
         }
+
+        public static String GetMoneyTypeExpectedData()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/MoneyTypedata.xml");
+        }
+
+        public static String GetMoneyTypeExpectedSchema()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/MoneyTypedata_schema.xml");
+        }
     }
 }

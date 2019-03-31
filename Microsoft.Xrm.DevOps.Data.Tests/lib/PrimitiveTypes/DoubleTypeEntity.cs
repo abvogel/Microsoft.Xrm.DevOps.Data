@@ -48,5 +48,15 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         {
             return "<fetch top='1'><entity name='msdyn_purchaseorderproduct'><attribute name='msdyn_quantity'/><filter type='and'><condition attribute='msdyn_quantity' operator='not-null'/></filter></entity></fetch>";
         }
+
+        public static String GetDoubleTypeExpectedData()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/DoubleTypedata.xml");
+        }
+
+        public static String GetDoubleTypeExpectedSchema()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/DoubleTypedata_schema.xml");
+        }
     }
 }

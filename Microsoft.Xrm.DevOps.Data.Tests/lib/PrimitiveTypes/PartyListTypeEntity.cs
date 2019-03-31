@@ -340,5 +340,15 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         {
             return "<fetch top='1'><entity name='msdyn_approval'><attribute name='customers'/><filter type='and'></filter></entity></fetch>";
         }
+
+        public static String GetPartyListTypeExpectedData()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/PartyListTypedata.xml");
+        }
+
+        public static String GetPartyListTypeExpectedSchema()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/PartyListTypedata_schema.xml");
+        }
     }
 }

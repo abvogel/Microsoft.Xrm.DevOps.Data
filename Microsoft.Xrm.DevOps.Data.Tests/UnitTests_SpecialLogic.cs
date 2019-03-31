@@ -11,24 +11,21 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void InternalLookup()
         {
             // BooleanType          readyforreview                     knowledgearticle 
-            DataBuilder DataBuilder = new DataBuilder();
-            Assert.IsTrue(true);
+            throw new NotImplementedException();
         }
-        
+
         [TestMethod]
         public void ExternalLookup()
         {
             // BooleanType          readyforreview                     knowledgearticle 
-            DataBuilder DataBuilder = new DataBuilder();
-            Assert.IsTrue(true);
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void ReflexiveRelationship()
         {
             // BooleanType          readyforreview                     knowledgearticle 
-            DataBuilder DataBuilder = new DataBuilder();
-            Assert.IsTrue(true);
+            throw new NotImplementedException();
         }
     }
 }

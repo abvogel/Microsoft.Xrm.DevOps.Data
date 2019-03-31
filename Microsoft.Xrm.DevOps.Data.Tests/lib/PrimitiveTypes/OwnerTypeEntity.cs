@@ -54,5 +54,15 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         {
             return "<fetch top='1'><entity name='knowledgearticle'><attribute name='ownerid'/><filter type='and'><condition attribute='ownerid' operator='not-null'/></filter></entity></fetch>";
         }
+
+        public static String GetOwnerTypeExpectedData()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/OwnerTypedata.xml");
+        }
+
+        public static String GetOwnerTypeExpectedSchema()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/OwnerTypedata_schema.xml");
+        }
     }
 }

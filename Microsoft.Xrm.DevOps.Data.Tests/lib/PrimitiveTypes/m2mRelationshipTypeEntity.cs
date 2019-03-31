@@ -123,5 +123,15 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         {
             return "<fetch><entity name='systemuser'><attribute name='systemuserid'/><link-entity name='systemuserroles' from='systemuserid' to='systemuserid' intersect='true'><link-entity name='role' from='roleid' to='roleid'/><attribute name='roleid'/></link-entity><filter><condition attribute='systemuserid' operator='eq' value='00e7b0b9-1ace-e711-a970-000d3a192311'/></filter></entity></fetch>";
         }
+
+        public static String Getm2mRelationshipTypeExpectedData()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/m2mRelationshipTypedata.xml");
+        }
+
+        public static String Getm2mRelationshipTypeExpectedSchema()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/m2mRelationshipTypedata_schema.xml");
+        }
     }
 }

@@ -46,5 +46,15 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         {
             return "<fetch top='1'><entity name='knowledgearticle'><attribute name='keywords'/><filter type='and'><condition attribute='keywords' operator='not-null'/></filter></entity></fetch>";
         }
+
+        public static String GetMemoTypeExpectedData()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/MemoTypedata.xml");
+        }
+
+        public static String GetMemoTypeExpectedSchema()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/MemoTypedata_schema.xml");
+        }
     }
 }

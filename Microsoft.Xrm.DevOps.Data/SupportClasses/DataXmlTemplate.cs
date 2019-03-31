@@ -51,17 +51,18 @@ namespace Microsoft.Xrm.DevOps.Data.DataXml
 	}
 
 	[XmlRoot(ElementName="field")]
-	public class Field {
-		[XmlElement(ElementName="activitypointerrecords")]
+	public class Field
+    {
+        [XmlAttribute(AttributeName = "name")]
+        public string Name { get; set; }
+        [XmlAttribute(AttributeName = "value")]
+        public string Value { get; set; }
+        [XmlAttribute(AttributeName = "lookupentity")]
+        public string Lookupentity { get; set; }
+        [XmlAttribute(AttributeName = "lookupentityname")]
+        public string Lookupentityname { get; set; }
+        [XmlElement(ElementName="activitypointerrecords")]
 		public List<Activitypointerrecords> Activitypointerrecords { get; set; }
-		[XmlAttribute(AttributeName="lookupentity")]
-		public string Lookupentity { get; set; }
-		[XmlAttribute(AttributeName="lookupentityname")]
-		public string Lookupentityname { get; set; }
-		[XmlAttribute(AttributeName="name")]
-		public string Name { get; set; }
-		[XmlAttribute(AttributeName="value")]
-		public string Value { get; set; }
 	}
 
 	[XmlRoot(ElementName="m2mrelationship")]

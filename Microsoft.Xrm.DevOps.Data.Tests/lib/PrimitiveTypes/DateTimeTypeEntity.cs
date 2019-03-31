@@ -48,5 +48,15 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         {
             return "<fetch top='1'><entity name='knowledgearticle'><attribute name='publishon'/><filter type='and'><condition attribute='publishon' operator='not-null'/></filter></entity></fetch>";
         }
+
+        public static String GetDateTimeTypeExpectedData()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/DateTimeTypedata.xml");
+        }
+
+        public static String GetDateTimeTypeExpectedSchema()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/DateTimeTypedata_schema.xml");
+        }
     }
 }

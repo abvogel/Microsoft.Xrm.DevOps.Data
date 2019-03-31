@@ -29,6 +29,7 @@
 
 using Microsoft.Xrm.Sdk;
 using System;
+using System.Xml;
 
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
@@ -51,6 +52,16 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public static String GetCustomerTypeFetch()
         {
             return "<fetch top='1'><entity name='incident'><attribute name='customerid'/><filter type='and'><condition attribute='customerid' operator='not-null'/></filter></entity></fetch>";
+        }
+
+        public static String GetCustomerTypeExpectedData()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/CustomerTypedata.xml");
+        }
+
+        public static String GetCustomerTypeExpectedSchema()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/CustomerTypedata_schema.xml");
         }
     }
 }

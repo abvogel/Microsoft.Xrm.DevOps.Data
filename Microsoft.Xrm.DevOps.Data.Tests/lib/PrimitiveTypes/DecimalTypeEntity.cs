@@ -48,5 +48,15 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         {
             return "<fetch top='1'><entity name='msdyn_resourcerequirementdetail'><attribute name='msdyn_hours'/><filter type='and'><condition attribute='msdyn_hours' operator='not-null'/></filter></entity></fetch>";
         }
+
+        public static String GetDecimalTypeExpectedData()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/DecimalTypedata.xml");
+        }
+
+        public static String GetDecimalTypeExpectedSchema()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/DecimalTypedata_schema.xml");
+        }
     }
 }

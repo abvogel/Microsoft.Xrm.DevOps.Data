@@ -47,5 +47,15 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         {
             return "<fetch top='1'><entity name='knowledgearticle'><attribute name='expirationstateid'/><filter type='and'><condition attribute='expirationstateid' operator='not-null'/></filter></entity></fetch>";
         }
+
+        public static String GetIntegerTypeExpectedData()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/IntegerTypedata.xml");
+        }
+
+        public static String GetIntegerTypeExpectedSchema()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/IntegerTypedata_schema.xml");
+        }
     }
 }
