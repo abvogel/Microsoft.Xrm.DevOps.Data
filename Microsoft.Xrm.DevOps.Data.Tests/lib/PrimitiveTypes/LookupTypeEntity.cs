@@ -50,5 +50,10 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 
             return result;
         }
+
+        public static String GetLookupTypeFetch()
+        {
+            return "<fetch top='1'><entity name='knowledgearticle'><attribute name='previousarticlecontentid'/><filter type='and'><condition attribute='previousarticlecontentid' operator='not-null'/></filter></entity></fetch>";
+        }
     }
 }

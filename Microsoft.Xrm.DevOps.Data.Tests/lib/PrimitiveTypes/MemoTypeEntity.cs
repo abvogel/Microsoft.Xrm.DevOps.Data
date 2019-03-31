@@ -41,5 +41,10 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 
             return result;
         }
+
+        public static String GetMemoTypeFetch()
+        {
+            return "<fetch top='1'><entity name='knowledgearticle'><attribute name='keywords'/><filter type='and'><condition attribute='keywords' operator='not-null'/></filter></entity></fetch>";
+        }
     }
 }

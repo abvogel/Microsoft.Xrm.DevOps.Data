@@ -118,5 +118,10 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             DC.Add(result5);
             return (DataCollection<Entity>)DC;
         }
+
+        public static String Getm2mRelationshipTypeFetch()
+        {
+            return "<fetch><entity name='systemuser'><attribute name='systemuserid'/><link-entity name='systemuserroles' from='systemuserid' to='systemuserid' intersect='true'><link-entity name='role' from='roleid' to='roleid'/><attribute name='roleid'/></link-entity><filter><condition attribute='systemuserid' operator='eq' value='00e7b0b9-1ace-e711-a970-000d3a192311'/></filter></entity></fetch>";
+        }
     }
 }

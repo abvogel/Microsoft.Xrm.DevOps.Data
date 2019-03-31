@@ -43,5 +43,10 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 
             return result;
         }
+
+        public static String GetDateTimeTypeFetch()
+        {
+            return "<fetch top='1'><entity name='knowledgearticle'><attribute name='publishon'/><filter type='and'><condition attribute='publishon' operator='not-null'/></filter></entity></fetch>";
+        }
     }
 }
