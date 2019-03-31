@@ -66,5 +66,10 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 
             return result;
         }
+
+        public static String GetMoneyTypeFetch()
+        {
+            return "<fetch top='1'><entity name='invoice'><attribute name='totaltax'/><filter type='and'><condition attribute='totaltax' operator='not-null'/></filter></entity></fetch>";
+        }
     }
 }

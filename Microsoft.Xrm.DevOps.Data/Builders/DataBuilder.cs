@@ -5,22 +5,24 @@ using System.Text;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 using Microsoft.Xrm.Sdk.Messages;
+using Microsoft.Xrm.Tooling.Connector;
+using Microsoft.Xrm.Sdk.Query;
 
 namespace Microsoft.Xrm.DevOps.Data
 {
     public class DataBuilder
     {
-        private Dictionary<String, BuilderEntityMetadata> _Entities { get; set; }
+        private Dictionary<String, BuilderEntityMetadata> _Entities = new Dictionary<String, BuilderEntityMetadata>();
         private Boolean _PluginsDisabled = true;
-        public IOrganizationService Service { 
-            //Microsoft.Xrm.Tooling.Connector.CrmServiceClient inherits from this
-            private get { 
-                return Service; 
+        private IOrganizationService _service;
+        public IOrganizationService Service {
+            get { 
+                return _service; 
             }
             set {
-                Service = value;
-                foreach (var kvp in _Entities) {
-                    VerifyMetadataExists(kvp.Key);
+                this._service = value;
+                foreach (var kvp in _Entities.Keys) {
+                    VerifyMetadataExists(kvp);
                 }
             }
         }
@@ -52,7 +54,6 @@ namespace Microsoft.Xrm.DevOps.Data
         }
 
         public DataBuilder() {
-
         }
 
         public DataBuilder(IOrganizationService service)
@@ -100,6 +101,22 @@ namespace Microsoft.Xrm.DevOps.Data
                 AppendData(logicalName, entity);
             }
         }
+
+        public void AppendData(String fetchXml)
+        {
+            RetrieveMultipleRequest req = new RetrieveMultipleRequest
+            {
+                Query = new FetchExpression(fetchXml)
+            };
+
+            RetrieveMultipleResponse retrieveMultipleResponse = (RetrieveMultipleResponse)this._service.Execute(req);
+
+            if (retrieveMultipleResponse != null) {
+                AppendData(retrieveMultipleResponse.EntityCollection);
+            } else {
+                throw new Exception("Failed to retrieve fetch results.");
+            }
+        }
         
         public void SetIdentifier(String logicalName, List<String> identifiers)
         {
@@ -121,10 +138,6 @@ namespace Microsoft.Xrm.DevOps.Data
         {
             VerifyEntityExists(logicalName);
             _Entities[logicalName].PluginsDisabled = disabled;
-        }
-
-        public void SetConnection(IOrganizationService service) {
-            //Microsoft.Xrm.Tooling.Connector CrmServiceClient inherits from IOrganizationService
         }
 
         public XmlDocument BuildSchemaXML() {
