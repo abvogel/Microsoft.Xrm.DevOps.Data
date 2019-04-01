@@ -11,485 +11,506 @@
 
 namespace CrmEarlyBound
 {
-
-
-    /// <summary>
-    /// Person or group associated with an activity. An activity can have multiple activity parties.
-    /// </summary>
-    [System.Runtime.Serialization.DataContractAttribute()]
-    [Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("activityparty")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
-    public partial class ActivityParty : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
-    {
-
-        /// <summary>
-        /// Default Constructor.
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public ActivityParty() :
-                base(EntityLogicalName)
-        {
-        }
-
-        public const string EntityLogicalName = "activityparty";
-
-        public const string PrimaryIdAttribute = "activitypartyid";
-
-        public const string PrimaryNameAttribute = "partyidname";
-
-        public const int EntityTypeCode = 135;
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        private void OnPropertyChanged(string propertyName)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        private void OnPropertyChanging(string propertyName)
-        {
-            if ((this.PropertyChanging != null))
-            {
-                this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the activity associated with the activity party. (A "party" is any person who is associated with an activity.)
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
-        public Microsoft.Xrm.Sdk.EntityReference ActivityId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("activityid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ActivityId");
-                this.SetAttributeValue("activityid", value);
-                this.OnPropertyChanged("ActivityId");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the activity party.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activitypartyid")]
-        public System.Nullable<System.Guid> ActivityPartyId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("activitypartyid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ActivityPartyId");
-                this.SetAttributeValue("activitypartyid", value);
-                if (value.HasValue)
-                {
-                    base.Id = value.Value;
-                }
-                else
-                {
-                    base.Id = System.Guid.Empty;
-                }
-                this.OnPropertyChanged("ActivityPartyId");
-            }
-        }
-
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activitypartyid")]
-        public override System.Guid Id
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return base.Id;
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.ActivityPartyId = value;
-            }
-        }
-
-        /// <summary>
-        /// Email address to which an email is delivered, and which is associated with the target entity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("addressused")]
-        public string AddressUsed
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("addressused");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("AddressUsed");
-                this.SetAttributeValue("addressused", value);
-                this.OnPropertyChanged("AddressUsed");
-            }
-        }
-
-        /// <summary>
-        /// Email address column number from associated party.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("addressusedemailcolumnnumber")]
-        public System.Nullable<int> AddressUsedEmailColumnNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("addressusedemailcolumnnumber");
-            }
-        }
-
-        /// <summary>
-        /// Information about whether to allow sending email to the activity party.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("donotemail")]
-        public System.Nullable<bool> DoNotEmail
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("donotemail");
-            }
-        }
-
-        /// <summary>
-        /// Information about whether to allow sending faxes to the activity party.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("donotfax")]
-        public System.Nullable<bool> DoNotFax
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("donotfax");
-            }
-        }
-
-        /// <summary>
-        /// Information about whether to allow phone calls to the lead.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("donotphone")]
-        public System.Nullable<bool> DoNotPhone
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("donotphone");
-            }
-        }
-
-        /// <summary>
-        /// Information about whether to allow sending postal mail to the lead.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("donotpostalmail")]
-        public System.Nullable<bool> DoNotPostalMail
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("donotpostalmail");
-            }
-        }
-
-        /// <summary>
-        /// Amount of effort used by the resource in a service appointment activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("effort")]
-        public System.Nullable<double> Effort
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<double>>("effort");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Effort");
-                this.SetAttributeValue("effort", value);
-                this.OnPropertyChanged("Effort");
-            }
-        }
-
-        /// <summary>
-        /// For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangeentryid")]
-        public string ExchangeEntryId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("exchangeentryid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ExchangeEntryId");
-                this.SetAttributeValue("exchangeentryid", value);
-                this.OnPropertyChanged("ExchangeEntryId");
-            }
-        }
-
-        /// <summary>
-        /// Type of instance of a recurring series.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("instancetypecode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue InstanceTypeCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("instancetypecode");
-            }
-        }
-
-        /// <summary>
-        /// Information about whether the underlying entity record is deleted.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ispartydeleted")]
-        public System.Nullable<bool> IsPartyDeleted
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("ispartydeleted");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the user or team who owns the activity_party.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
-        public Microsoft.Xrm.Sdk.EntityReference OwnerId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
-            }
-        }
-
-        /// <summary>
-        /// Role of the person in the activity, such as sender, to, cc, bcc, required, optional, organizer, regarding, or owner.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("participationtypemask")]
-        public Microsoft.Xrm.Sdk.OptionSetValue ParticipationTypeMask
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("participationtypemask");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ParticipationTypeMask");
-                this.SetAttributeValue("participationtypemask", value);
-                this.OnPropertyChanged("ParticipationTypeMask");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the party associated with the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
-        public Microsoft.Xrm.Sdk.EntityReference PartyId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("partyid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("PartyId");
-                this.SetAttributeValue("partyid", value);
-                this.OnPropertyChanged("PartyId");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the resource specification for the activity party.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resourcespecid")]
-        public Microsoft.Xrm.Sdk.EntityReference ResourceSpecId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("resourcespecid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ResourceSpecId");
-                this.SetAttributeValue("resourcespecid", value);
-                this.OnPropertyChanged("ResourceSpecId");
-            }
-        }
-
-        /// <summary>
-        /// Scheduled end time of the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scheduledend")]
-        public System.Nullable<System.DateTime> ScheduledEnd
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("scheduledend");
-            }
-        }
-
-        /// <summary>
-        /// Scheduled start time of the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scheduledstart")]
-        public System.Nullable<System.DateTime> ScheduledStart
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("scheduledstart");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
-        public System.Nullable<long> VersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
-            }
-        }
-
-        /// <summary>
-        /// N:1 incident_activity_parties
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_activity_parties")]
-        public CrmEarlyBound.Incident incident_activity_parties
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntity<CrmEarlyBound.Incident>("incident_activity_parties", null);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("incident_activity_parties");
-                this.SetRelatedEntity<CrmEarlyBound.Incident>("incident_activity_parties", null, value);
-                this.OnPropertyChanged("incident_activity_parties");
-            }
-        }
-
-        /// <summary>
-        /// N:1 invoice_activity_parties
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoice_activity_parties")]
-        public CrmEarlyBound.Invoice invoice_activity_parties
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntity<CrmEarlyBound.Invoice>("invoice_activity_parties", null);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("invoice_activity_parties");
-                this.SetRelatedEntity<CrmEarlyBound.Invoice>("invoice_activity_parties", null, value);
-                this.OnPropertyChanged("invoice_activity_parties");
-            }
-        }
-
-        /// <summary>
-        /// N:1 knowledgearticle_activity_parties
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_activity_parties")]
-        public CrmEarlyBound.KnowledgeArticle knowledgearticle_activity_parties
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_activity_parties", null);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("knowledgearticle_activity_parties");
-                this.SetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_activity_parties", null, value);
-                this.OnPropertyChanged("knowledgearticle_activity_parties");
-            }
-        }
-
-        /// <summary>
-        /// N:1 msdyn_approval_activity_parties
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_approval_activity_parties")]
-        public CrmEarlyBound.msdyn_approval msdyn_approval_activity_parties
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntity<CrmEarlyBound.msdyn_approval>("msdyn_approval_activity_parties", null);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_approval_activity_parties");
-                this.SetRelatedEntity<CrmEarlyBound.msdyn_approval>("msdyn_approval_activity_parties", null, value);
-                this.OnPropertyChanged("msdyn_approval_activity_parties");
-            }
-        }
-
-        /// <summary>
-        /// Constructor for populating via LINQ queries given a LINQ anonymous type
-        /// <param name="anonymousType">LINQ anonymous type.</param>
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public ActivityParty(object anonymousType) :
-                this()
-        {
+	
+	
+	/// <summary>
+	/// Person or group associated with an activity. An activity can have multiple activity parties.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("activityparty")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public partial class ActivityParty : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public ActivityParty() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "activityparty";
+		
+		public const string PrimaryIdAttribute = "activitypartyid";
+		
+		public const string PrimaryNameAttribute = "partyidname";
+		
+		public const int EntityTypeCode = 135;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the activity associated with the activity party. (A "party" is any person who is associated with an activity.)
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
+		public Microsoft.Xrm.Sdk.EntityReference ActivityId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("activityid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ActivityId");
+				this.SetAttributeValue("activityid", value);
+				this.OnPropertyChanged("ActivityId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the activity party.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activitypartyid")]
+		public System.Nullable<System.Guid> ActivityPartyId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("activitypartyid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ActivityPartyId");
+				this.SetAttributeValue("activitypartyid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("ActivityPartyId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activitypartyid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.ActivityPartyId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Email address to which an email is delivered, and which is associated with the target entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("addressused")]
+		public string AddressUsed
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("addressused");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("AddressUsed");
+				this.SetAttributeValue("addressused", value);
+				this.OnPropertyChanged("AddressUsed");
+			}
+		}
+		
+		/// <summary>
+		/// Email address column number from associated party.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("addressusedemailcolumnnumber")]
+		public System.Nullable<int> AddressUsedEmailColumnNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("addressusedemailcolumnnumber");
+			}
+		}
+		
+		/// <summary>
+		/// Information about whether to allow sending email to the activity party.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("donotemail")]
+		public System.Nullable<bool> DoNotEmail
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("donotemail");
+			}
+		}
+		
+		/// <summary>
+		/// Information about whether to allow sending faxes to the activity party.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("donotfax")]
+		public System.Nullable<bool> DoNotFax
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("donotfax");
+			}
+		}
+		
+		/// <summary>
+		/// Information about whether to allow phone calls to the lead.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("donotphone")]
+		public System.Nullable<bool> DoNotPhone
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("donotphone");
+			}
+		}
+		
+		/// <summary>
+		/// Information about whether to allow sending postal mail to the lead.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("donotpostalmail")]
+		public System.Nullable<bool> DoNotPostalMail
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("donotpostalmail");
+			}
+		}
+		
+		/// <summary>
+		/// Amount of effort used by the resource in a service appointment activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("effort")]
+		public System.Nullable<double> Effort
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<double>>("effort");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Effort");
+				this.SetAttributeValue("effort", value);
+				this.OnPropertyChanged("Effort");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangeentryid")]
+		public string ExchangeEntryId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("exchangeentryid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ExchangeEntryId");
+				this.SetAttributeValue("exchangeentryid", value);
+				this.OnPropertyChanged("ExchangeEntryId");
+			}
+		}
+		
+		/// <summary>
+		/// Type of instance of a recurring series.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("instancetypecode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue InstanceTypeCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("instancetypecode");
+			}
+		}
+		
+		/// <summary>
+		/// Information about whether the underlying entity record is deleted.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ispartydeleted")]
+		public System.Nullable<bool> IsPartyDeleted
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ispartydeleted");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user or team who owns the activity_party.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
+		public Microsoft.Xrm.Sdk.EntityReference OwnerId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
+			}
+		}
+		
+		/// <summary>
+		/// Role of the person in the activity, such as sender, to, cc, bcc, required, optional, organizer, regarding, or owner.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("participationtypemask")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ParticipationTypeMask
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("participationtypemask");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ParticipationTypeMask");
+				this.SetAttributeValue("participationtypemask", value);
+				this.OnPropertyChanged("ParticipationTypeMask");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the party associated with the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
+		public Microsoft.Xrm.Sdk.EntityReference PartyId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("partyid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PartyId");
+				this.SetAttributeValue("partyid", value);
+				this.OnPropertyChanged("PartyId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the resource specification for the activity party.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resourcespecid")]
+		public Microsoft.Xrm.Sdk.EntityReference ResourceSpecId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("resourcespecid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ResourceSpecId");
+				this.SetAttributeValue("resourcespecid", value);
+				this.OnPropertyChanged("ResourceSpecId");
+			}
+		}
+		
+		/// <summary>
+		/// Scheduled end time of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scheduledend")]
+		public System.Nullable<System.DateTime> ScheduledEnd
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("scheduledend");
+			}
+		}
+		
+		/// <summary>
+		/// Scheduled start time of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scheduledstart")]
+		public System.Nullable<System.DateTime> ScheduledStart
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("scheduledstart");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 incident_activity_parties
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_activity_parties")]
+		public CrmEarlyBound.Incident incident_activity_parties
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.Incident>("incident_activity_parties", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("incident_activity_parties");
+				this.SetRelatedEntity<CrmEarlyBound.Incident>("incident_activity_parties", null, value);
+				this.OnPropertyChanged("incident_activity_parties");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 invoice_activity_parties
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoice_activity_parties")]
+		public CrmEarlyBound.Invoice invoice_activity_parties
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.Invoice>("invoice_activity_parties", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("invoice_activity_parties");
+				this.SetRelatedEntity<CrmEarlyBound.Invoice>("invoice_activity_parties", null, value);
+				this.OnPropertyChanged("invoice_activity_parties");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 knowledgearticle_activity_parties
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_activity_parties")]
+		public CrmEarlyBound.KnowledgeArticle knowledgearticle_activity_parties
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_activity_parties", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("knowledgearticle_activity_parties");
+				this.SetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_activity_parties", null, value);
+				this.OnPropertyChanged("knowledgearticle_activity_parties");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 msdyn_approval_activity_parties
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_approval_activity_parties")]
+		public CrmEarlyBound.msdyn_approval msdyn_approval_activity_parties
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.msdyn_approval>("msdyn_approval_activity_parties", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_approval_activity_parties");
+				this.SetRelatedEntity<CrmEarlyBound.msdyn_approval>("msdyn_approval_activity_parties", null, value);
+				this.OnPropertyChanged("msdyn_approval_activity_parties");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 system_user_activity_parties
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_activity_parties")]
+		public CrmEarlyBound.SystemUser system_user_activity_parties
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("system_user_activity_parties", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("system_user_activity_parties");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("system_user_activity_parties", null, value);
+				this.OnPropertyChanged("system_user_activity_parties");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public ActivityParty(object anonymousType) : 
+				this()
+		{
             foreach (var p in anonymousType.GetType().GetProperties())
             {
                 var value = p.GetValue(anonymousType, null);
                 var name = p.Name.ToLower();
-
+            
                 if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
                 {
-                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int)value);
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
                     name = name.Remove(name.Length - "enum".Length);
                 }
-
+            
                 switch (name)
                 {
                     case "id":
@@ -497,8 +518,8 @@ namespace CrmEarlyBound
                         Attributes["activitypartyid"] = base.Id;
                         break;
                     case "activitypartyid":
-                        var id = (System.Nullable<System.Guid>)value;
-                        if (id == null) { continue; }
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
                         base.Id = id.Value;
                         Attributes[name] = base.Id;
                         break;
@@ -511,2087 +532,2171 @@ namespace CrmEarlyBound
                         break;
                 }
             }
-        }
-
-    }
-
-    [System.Runtime.Serialization.DataContractAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
-    public enum IncidentState
-    {
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Active = 0,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Resolved = 1,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Canceled = 2,
-    }
-
-    /// <summary>
-    /// Service request case associated with a contract.
-    /// </summary>
-    [System.Runtime.Serialization.DataContractAttribute()]
-    [Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("incident")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
-    public partial class Incident : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
-    {
-
-        /// <summary>
-        /// Default Constructor.
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public Incident() :
-                base(EntityLogicalName)
-        {
-        }
-
-        public const string EntityLogicalName = "incident";
-
-        public const string PrimaryIdAttribute = "incidentid";
-
-        public const string PrimaryNameAttribute = "title";
-
-        public const int EntityTypeCode = 112;
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        private void OnPropertyChanged(string propertyName)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        private void OnPropertyChanging(string propertyName)
-        {
-            if ((this.PropertyChanging != null))
-            {
-                this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the account with which the case is associated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountid")]
-        public Microsoft.Xrm.Sdk.EntityReference AccountId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("accountid");
-            }
-        }
-
-        /// <summary>
-        /// This attribute is used for Sample Service Business Processes.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activitiescomplete")]
-        public System.Nullable<bool> ActivitiesComplete
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("activitiescomplete");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ActivitiesComplete");
-                this.SetAttributeValue("activitiescomplete", value);
-                this.OnPropertyChanged("ActivitiesComplete");
-            }
-        }
-
-        /// <summary>
-        /// Type the number of service units that were actually required to resolve the case.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actualserviceunits")]
-        public System.Nullable<int> ActualServiceUnits
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("actualserviceunits");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ActualServiceUnits");
-                this.SetAttributeValue("actualserviceunits", value);
-                this.OnPropertyChanged("ActualServiceUnits");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_createdbyipaddress")]
-        public string Adx_CreatedByIPAddress
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("adx_createdbyipaddress");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Adx_CreatedByIPAddress");
-                this.SetAttributeValue("adx_createdbyipaddress", value);
-                this.OnPropertyChanged("Adx_CreatedByIPAddress");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_createdbyusername")]
-        public string Adx_CreatedByUsername
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("adx_createdbyusername");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Adx_CreatedByUsername");
-                this.SetAttributeValue("adx_createdbyusername", value);
-                this.OnPropertyChanged("Adx_CreatedByUsername");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_modifiedbyipaddress")]
-        public string Adx_ModifiedByIPAddress
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("adx_modifiedbyipaddress");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Adx_ModifiedByIPAddress");
-                this.SetAttributeValue("adx_modifiedbyipaddress", value);
-                this.OnPropertyChanged("Adx_ModifiedByIPAddress");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_modifiedbyusername")]
-        public string Adx_ModifiedByUsername
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("adx_modifiedbyusername");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Adx_ModifiedByUsername");
-                this.SetAttributeValue("adx_modifiedbyusername", value);
-                this.OnPropertyChanged("Adx_ModifiedByUsername");
-            }
-        }
-
-        /// <summary>
-        /// If set to Yes, the case will be visible and searchable on portals connected to this organization.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_publishtoweb")]
-        public System.Nullable<bool> adx_publishtoweb
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("adx_publishtoweb");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("adx_publishtoweb");
-                this.SetAttributeValue("adx_publishtoweb", value);
-                this.OnPropertyChanged("adx_publishtoweb");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_resolution")]
-        public string adx_resolution
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("adx_resolution");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("adx_resolution");
-                this.SetAttributeValue("adx_resolution", value);
-                this.OnPropertyChanged("adx_resolution");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_resolutiondate")]
-        public System.Nullable<System.DateTime> adx_resolutiondate
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("adx_resolutiondate");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("adx_resolutiondate");
-                this.SetAttributeValue("adx_resolutiondate", value);
-                this.OnPropertyChanged("adx_resolutiondate");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_stepstoreproduce")]
-        public string adx_stepstoreproduce
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("adx_stepstoreproduce");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("adx_stepstoreproduce");
-                this.SetAttributeValue("adx_stepstoreproduce", value);
-                this.OnPropertyChanged("adx_stepstoreproduce");
-            }
-        }
-
-        /// <summary>
-        /// Type the number of service units that were billed to the customer for the case.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billedserviceunits")]
-        public System.Nullable<int> BilledServiceUnits
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("billedserviceunits");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("BilledServiceUnits");
-                this.SetAttributeValue("billedserviceunits", value);
-                this.OnPropertyChanged("BilledServiceUnits");
-            }
-        }
-
-        /// <summary>
-        /// Details whether the profile is blocked or not.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("blockedprofile")]
-        public System.Nullable<bool> BlockedProfile
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("blockedprofile");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("BlockedProfile");
-                this.SetAttributeValue("blockedprofile", value);
-                this.OnPropertyChanged("BlockedProfile");
-            }
-        }
-
-        /// <summary>
-        /// Select how contact about the case was originated, such as email, phone, or web, for use in reporting and analysis.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("caseorigincode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue CaseOriginCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("caseorigincode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("CaseOriginCode");
-                this.SetAttributeValue("caseorigincode", value);
-                this.OnPropertyChanged("CaseOriginCode");
-            }
-        }
-
-        /// <summary>
-        /// Select the type of case to identify the incident for use in case routing and analysis.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("casetypecode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue CaseTypeCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("casetypecode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("CaseTypeCode");
-                this.SetAttributeValue("casetypecode", value);
-                this.OnPropertyChanged("CaseTypeCode");
-            }
-        }
-
-        /// <summary>
-        /// This attribute is used for Sample Service Business Processes.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("checkemail")]
-        public System.Nullable<bool> CheckEmail
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("checkemail");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("CheckEmail");
-                this.SetAttributeValue("checkemail", value);
-                this.OnPropertyChanged("CheckEmail");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the contact associated with the case.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contactid")]
-        public Microsoft.Xrm.Sdk.EntityReference ContactId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("contactid");
-            }
-        }
-
-        /// <summary>
-        /// Choose the contract line that the case should be logged under to make sure the customer is charged correctly.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contractdetailid")]
-        public Microsoft.Xrm.Sdk.EntityReference ContractDetailId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("contractdetailid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ContractDetailId");
-                this.SetAttributeValue("contractdetailid", value);
-                this.OnPropertyChanged("ContractDetailId");
-            }
-        }
-
-        /// <summary>
-        /// Choose the service contract that the case should be logged under to make sure the customer is eligible for support services.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contractid")]
-        public Microsoft.Xrm.Sdk.EntityReference ContractId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("contractid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ContractId");
-                this.SetAttributeValue("contractid", value);
-                this.OnPropertyChanged("ContractId");
-            }
-        }
-
-        /// <summary>
-        /// Select the service level for the case to make sure the case is handled correctly.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contractservicelevelcode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue ContractServiceLevelCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("contractservicelevelcode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ContractServiceLevelCode");
-                this.SetAttributeValue("contractservicelevelcode", value);
-                this.OnPropertyChanged("ContractServiceLevelCode");
-            }
-        }
-
-        /// <summary>
-        /// Shows who created the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
-        public Microsoft.Xrm.Sdk.EntityReference CreatedBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
-            }
-        }
-
-        /// <summary>
-        /// Shows the external party who created the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdbyexternalparty")]
-        public Microsoft.Xrm.Sdk.EntityReference CreatedByExternalParty
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdbyexternalparty");
-            }
-        }
-
-        /// <summary>
-        /// Date and time when the record was created.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
-        public System.Nullable<System.DateTime> CreatedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
-            }
-        }
-
-        /// <summary>
-        /// Shows who created the record on behalf of another user.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
-        public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("CreatedOnBehalfBy");
-                this.SetAttributeValue("createdonbehalfby", value);
-                this.OnPropertyChanged("CreatedOnBehalfBy");
-            }
-        }
-
-        /// <summary>
-        /// Tells whether customer service representative has contacted the customer or not.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customercontacted")]
-        public System.Nullable<bool> CustomerContacted
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("customercontacted");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("CustomerContacted");
-                this.SetAttributeValue("customercontacted", value);
-                this.OnPropertyChanged("CustomerContacted");
-            }
-        }
-
-        /// <summary>
-        /// Select the customer account or contact to provide a quick link to additional customer details, such as account information, activities, and opportunities.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
-        public Microsoft.Xrm.Sdk.EntityReference CustomerId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("customerid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("CustomerId");
-                this.SetAttributeValue("customerid", value);
-                this.OnPropertyChanged("CustomerId");
-            }
-        }
-
-        /// <summary>
-        /// Select the customer's level of satisfaction with the handling and resolution of the case.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customersatisfactioncode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue CustomerSatisfactionCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("customersatisfactioncode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("CustomerSatisfactionCode");
-                this.SetAttributeValue("customersatisfactioncode", value);
-                this.OnPropertyChanged("CustomerSatisfactionCode");
-            }
-        }
-
-        /// <summary>
-        /// Shows whether terms of the associated entitlement should be decremented or not.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("decremententitlementterm")]
-        public System.Nullable<bool> DecrementEntitlementTerm
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("decremententitlementterm");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("DecrementEntitlementTerm");
-                this.SetAttributeValue("decremententitlementterm", value);
-                this.OnPropertyChanged("DecrementEntitlementTerm");
-            }
-        }
-
-        /// <summary>
-        /// Type additional information to describe the case to assist the service team in reaching a resolution.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
-        public string Description
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("description");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Description");
-                this.SetAttributeValue("description", value);
-                this.OnPropertyChanged("Description");
-            }
-        }
-
-        /// <summary>
-        /// The primary email address for the entity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailaddress")]
-        public string EmailAddress
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("emailaddress");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("EmailAddress");
-                this.SetAttributeValue("emailaddress", value);
-                this.OnPropertyChanged("EmailAddress");
-            }
-        }
-
-        /// <summary>
-        /// Choose the entitlement that is applicable for the case.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entitlementid")]
-        public Microsoft.Xrm.Sdk.EntityReference EntitlementId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("entitlementid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("EntitlementId");
-                this.SetAttributeValue("entitlementid", value);
-                this.OnPropertyChanged("EntitlementId");
-            }
-        }
-
-        /// <summary>
-        /// The default image for the entity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage")]
-        public byte[] EntityImage
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<byte[]>("entityimage");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("EntityImage");
-                this.SetAttributeValue("entityimage", value);
-                this.OnPropertyChanged("EntityImage");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage_timestamp")]
-        public System.Nullable<long> EntityImage_Timestamp
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<long>>("entityimage_timestamp");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage_url")]
-        public string EntityImage_URL
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("entityimage_url");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimageid")]
-        public System.Nullable<System.Guid> EntityImageId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("entityimageid");
-            }
-        }
-
-        /// <summary>
-        /// Indicates the date and time when the case was escalated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("escalatedon")]
-        public System.Nullable<System.DateTime> EscalatedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("escalatedon");
-            }
-        }
-
-        /// <summary>
-        /// Shows the conversion rate of the record's currency. The exchange rate is used to convert all money fields in the record from the local currency to the system's default currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangerate")]
-        public System.Nullable<decimal> ExchangeRate
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
-            }
-        }
-
-        /// <summary>
-        /// Select an existing case for the customer that has been populated. For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("existingcase")]
-        public Microsoft.Xrm.Sdk.EntityReference ExistingCase
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("existingcase");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ExistingCase");
-                this.SetAttributeValue("existingcase", value);
-                this.OnPropertyChanged("ExistingCase");
-            }
-        }
-
-        /// <summary>
-        /// For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("firstresponsebykpiid")]
-        public Microsoft.Xrm.Sdk.EntityReference FirstResponseByKPIId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("firstresponsebykpiid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("FirstResponseByKPIId");
-                this.SetAttributeValue("firstresponsebykpiid", value);
-                this.OnPropertyChanged("FirstResponseByKPIId");
-            }
-        }
-
-        /// <summary>
-        /// Indicates if the first response has been sent.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("firstresponsesent")]
-        public System.Nullable<bool> FirstResponseSent
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("firstresponsesent");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("FirstResponseSent");
-                this.SetAttributeValue("firstresponsesent", value);
-                this.OnPropertyChanged("FirstResponseSent");
-            }
-        }
-
-        /// <summary>
-        /// Shows the status of the initial response time for the case according to the terms of the SLA.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("firstresponseslastatus")]
-        public Microsoft.Xrm.Sdk.OptionSetValue FirstResponseSLAStatus
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("firstresponseslastatus");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("FirstResponseSLAStatus");
-                this.SetAttributeValue("firstresponseslastatus", value);
-                this.OnPropertyChanged("FirstResponseSLAStatus");
-            }
-        }
-
-        /// <summary>
-        /// Enter the date by which a customer service representative has to follow up with the customer on this case.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("followupby")]
-        public System.Nullable<System.DateTime> FollowupBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("followupby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("FollowupBy");
-                this.SetAttributeValue("followupby", value);
-                this.OnPropertyChanged("FollowupBy");
-            }
-        }
-
-        /// <summary>
-        /// This attribute is used for Sample Service Business Processes.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("followuptaskcreated")]
-        public System.Nullable<bool> FollowUpTaskCreated
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("followuptaskcreated");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("FollowUpTaskCreated");
-                this.SetAttributeValue("followuptaskcreated", value);
-                this.OnPropertyChanged("FollowUpTaskCreated");
-            }
-        }
-
-        /// <summary>
-        /// Sequence number of the import that created this record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
-        public System.Nullable<int> ImportSequenceNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ImportSequenceNumber");
-                this.SetAttributeValue("importsequencenumber", value);
-                this.OnPropertyChanged("ImportSequenceNumber");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the case.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incidentid")]
-        public System.Nullable<System.Guid> IncidentId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("incidentid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("IncidentId");
-                this.SetAttributeValue("incidentid", value);
-                if (value.HasValue)
-                {
-                    base.Id = value.Value;
-                }
-                else
-                {
-                    base.Id = System.Guid.Empty;
-                }
-                this.OnPropertyChanged("IncidentId");
-            }
-        }
-
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incidentid")]
-        public override System.Guid Id
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return base.Id;
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.IncidentId = value;
-            }
-        }
-
-        /// <summary>
-        /// Select the current stage of the service process for the case to assist service team members when they review or transfer a case.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incidentstagecode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue IncidentStageCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("incidentstagecode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("IncidentStageCode");
-                this.SetAttributeValue("incidentstagecode", value);
-                this.OnPropertyChanged("IncidentStageCode");
-            }
-        }
-
-        /// <summary>
-        /// Will contain the Influencer score coming from NetBreeze.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("influencescore")]
-        public System.Nullable<double> InfluenceScore
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<double>>("influencescore");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("InfluenceScore");
-                this.SetAttributeValue("influencescore", value);
-                this.OnPropertyChanged("InfluenceScore");
-            }
-        }
-
-        /// <summary>
-        /// For system use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdecrementing")]
-        public System.Nullable<bool> IsDecrementing
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("isdecrementing");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("IsDecrementing");
-                this.SetAttributeValue("isdecrementing", value);
-                this.OnPropertyChanged("IsDecrementing");
-            }
-        }
-
-        /// <summary>
-        /// Indicates if the case has been escalated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isescalated")]
-        public System.Nullable<bool> IsEscalated
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("isescalated");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("IsEscalated");
-                this.SetAttributeValue("isescalated", value);
-                this.OnPropertyChanged("IsEscalated");
-            }
-        }
-
-        /// <summary>
-        /// Choose the article that contains additional information or a resolution for the case, for reference during research or follow up with the customer.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("kbarticleid")]
-        public Microsoft.Xrm.Sdk.EntityReference KbArticleId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("kbarticleid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("KbArticleId");
-                this.SetAttributeValue("kbarticleid", value);
-                this.OnPropertyChanged("KbArticleId");
-            }
-        }
-
-        /// <summary>
-        /// Contains the date time stamp of the last on hold time.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastonholdtime")]
-        public System.Nullable<System.DateTime> LastOnHoldTime
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("lastonholdtime");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("LastOnHoldTime");
-                this.SetAttributeValue("lastonholdtime", value);
-                this.OnPropertyChanged("LastOnHoldTime");
-            }
-        }
-
-        /// <summary>
-        /// Choose the primary case the current case was merged into.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("masterid")]
-        public Microsoft.Xrm.Sdk.EntityReference MasterId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("masterid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("MasterId");
-                this.SetAttributeValue("masterid", value);
-                this.OnPropertyChanged("MasterId");
-            }
-        }
-
-        /// <summary>
-        /// Tells whether the incident has been merged with another incident.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("merged")]
-        public System.Nullable<bool> Merged
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("merged");
-            }
-        }
-
-        /// <summary>
-        /// Shows whether the post originated as a public or private message.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("messagetypecode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue MessageTypeCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("messagetypecode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("MessageTypeCode");
-                this.SetAttributeValue("messagetypecode", value);
-                this.OnPropertyChanged("MessageTypeCode");
-            }
-        }
-
-        /// <summary>
-        /// Shows who last updated the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
-        public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
-            }
-        }
-
-        /// <summary>
-        /// Shows the external party who modified the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedbyexternalparty")]
-        public Microsoft.Xrm.Sdk.EntityReference ModifiedByExternalParty
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedbyexternalparty");
-            }
-        }
-
-        /// <summary>
-        /// Date and time when the record was modified.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
-        public System.Nullable<System.DateTime> ModifiedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
-            }
-        }
-
-        /// <summary>
-        /// Shows who last updated the record on behalf of another user.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
-        public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ModifiedOnBehalfBy");
-                this.SetAttributeValue("modifiedonbehalfby", value);
-                this.OnPropertyChanged("ModifiedOnBehalfBy");
-            }
-        }
-
-        /// <summary>
-        /// Allows a partner contact to be assigned to a specific case.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msa_partnercontactid")]
-        public Microsoft.Xrm.Sdk.EntityReference msa_partnercontactid
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msa_partnercontactid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msa_partnercontactid");
-                this.SetAttributeValue("msa_partnercontactid", value);
-                this.OnPropertyChanged("msa_partnercontactid");
-            }
-        }
-
-        /// <summary>
-        /// Creates a Relationship between a Partner (account) and a case for indirect service arrangements.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msa_partnerid")]
-        public Microsoft.Xrm.Sdk.EntityReference msa_partnerid
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msa_partnerid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msa_partnerid");
-                this.SetAttributeValue("msa_partnerid", value);
-                this.OnPropertyChanged("msa_partnerid");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for Incident Type associated with Case.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_incidenttype")]
-        public Microsoft.Xrm.Sdk.EntityReference msdyn_IncidentType
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_incidenttype");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_IncidentType");
-                this.SetAttributeValue("msdyn_incidenttype", value);
-                this.OnPropertyChanged("msdyn_IncidentType");
-            }
-        }
-
-        /// <summary>
-        /// Number of child incidents associated with the incident.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("numberofchildincidents")]
-        public System.Nullable<int> NumberOfChildIncidents
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("numberofchildincidents");
-            }
-        }
-
-        /// <summary>
-        /// Shows the duration in minutes for which the case was on hold.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("onholdtime")]
-        public System.Nullable<int> OnHoldTime
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("onholdtime");
-            }
-        }
-
-        /// <summary>
-        /// Date and time that the record was migrated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
-        public System.Nullable<System.DateTime> OverriddenCreatedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("OverriddenCreatedOn");
-                this.SetAttributeValue("overriddencreatedon", value);
-                this.OnPropertyChanged("OverriddenCreatedOn");
-            }
-        }
-
-        /// <summary>
-        /// Owner Id
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
-        public Microsoft.Xrm.Sdk.EntityReference OwnerId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("OwnerId");
-                this.SetAttributeValue("ownerid", value);
-                this.OnPropertyChanged("OwnerId");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for the business unit that owns the record
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for the team that owns the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningTeam
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for the user that owns the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningUser
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
-            }
-        }
-
-        /// <summary>
-        /// Choose the parent case for a case.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentcaseid")]
-        public Microsoft.Xrm.Sdk.EntityReference ParentCaseId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("parentcaseid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ParentCaseId");
-                this.SetAttributeValue("parentcaseid", value);
-                this.OnPropertyChanged("ParentCaseId");
-            }
-        }
-
-        /// <summary>
-        /// Select a primary contact for this case.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("primarycontactid")]
-        public Microsoft.Xrm.Sdk.EntityReference PrimaryContactId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("primarycontactid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("PrimaryContactId");
-                this.SetAttributeValue("primarycontactid", value);
-                this.OnPropertyChanged("PrimaryContactId");
-            }
-        }
-
-        /// <summary>
-        /// Select the priority so that preferred customers or critical issues are handled quickly.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("prioritycode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue PriorityCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("prioritycode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("PriorityCode");
-                this.SetAttributeValue("prioritycode", value);
-                this.OnPropertyChanged("PriorityCode");
-            }
-        }
-
-        /// <summary>
-        /// Contains the id of the process associated with the entity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processid")]
-        public System.Nullable<System.Guid> ProcessId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("processid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ProcessId");
-                this.SetAttributeValue("processid", value);
-                this.OnPropertyChanged("ProcessId");
-            }
-        }
-
-        /// <summary>
-        /// Choose the product associated with the case to identify warranty, service, or other product issues and be able to report the number of incidents for each product.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("productid")]
-        public Microsoft.Xrm.Sdk.EntityReference ProductId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("productid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ProductId");
-                this.SetAttributeValue("productid", value);
-                this.OnPropertyChanged("ProductId");
-            }
-        }
-
-        /// <summary>
-        /// Type the serial number of the product that is associated with this case, so that the number of cases per product can be reported.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("productserialnumber")]
-        public string ProductSerialNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("productserialnumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ProductSerialNumber");
-                this.SetAttributeValue("productserialnumber", value);
-                this.OnPropertyChanged("ProductSerialNumber");
-            }
-        }
-
-        /// <summary>
-        /// Enter the date by when the case must be resolved.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resolveby")]
-        public System.Nullable<System.DateTime> ResolveBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("resolveby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ResolveBy");
-                this.SetAttributeValue("resolveby", value);
-                this.OnPropertyChanged("ResolveBy");
-            }
-        }
-
-        /// <summary>
-        /// For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resolvebykpiid")]
-        public Microsoft.Xrm.Sdk.EntityReference ResolveByKPIId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("resolvebykpiid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ResolveByKPIId");
-                this.SetAttributeValue("resolvebykpiid", value);
-                this.OnPropertyChanged("ResolveByKPIId");
-            }
-        }
-
-        /// <summary>
-        /// Shows the status of the resolution time for the case according to the terms of the SLA.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resolvebyslastatus")]
-        public Microsoft.Xrm.Sdk.OptionSetValue ResolveBySLAStatus
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("resolvebyslastatus");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ResolveBySLAStatus");
-                this.SetAttributeValue("resolvebyslastatus", value);
-                this.OnPropertyChanged("ResolveBySLAStatus");
-            }
-        }
-
-        /// <summary>
-        /// For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("responseby")]
-        public System.Nullable<System.DateTime> ResponseBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("responseby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ResponseBy");
-                this.SetAttributeValue("responseby", value);
-                this.OnPropertyChanged("ResponseBy");
-            }
-        }
-
-        /// <summary>
-        /// Choose an additional customer contact who can also help resolve the case.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("responsiblecontactid")]
-        [System.ObsoleteAttribute()]
-        public Microsoft.Xrm.Sdk.EntityReference ResponsibleContactId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("responsiblecontactid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ResponsibleContactId");
-                this.SetAttributeValue("responsiblecontactid", value);
-                this.OnPropertyChanged("ResponsibleContactId");
-            }
-        }
-
-        /// <summary>
-        /// Tells whether the incident has been routed to queue or not.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("routecase")]
-        public System.Nullable<bool> RouteCase
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("routecase");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("RouteCase");
-                this.SetAttributeValue("routecase", value);
-                this.OnPropertyChanged("RouteCase");
-            }
-        }
-
-        /// <summary>
-        /// Value derived after assessing words commonly associated with a negative, neutral, or positive sentiment that occurs in a social post. Sentiment information can also be reported as numeric values.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sentimentvalue")]
-        public System.Nullable<double> SentimentValue
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<double>>("sentimentvalue");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("SentimentValue");
-                this.SetAttributeValue("sentimentvalue", value);
-                this.OnPropertyChanged("SentimentValue");
-            }
-        }
-
-        /// <summary>
-        /// Select the stage, in the case resolution process, that the case is in.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("servicestage")]
-        public Microsoft.Xrm.Sdk.OptionSetValue ServiceStage
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("servicestage");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ServiceStage");
-                this.SetAttributeValue("servicestage", value);
-                this.OnPropertyChanged("ServiceStage");
-            }
-        }
-
-        /// <summary>
-        /// Select the severity of this case to indicate the incident's impact on the customer's business.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("severitycode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue SeverityCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("severitycode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("SeverityCode");
-                this.SetAttributeValue("severitycode", value);
-                this.OnPropertyChanged("SeverityCode");
-            }
-        }
-
-        /// <summary>
-        /// Choose the service level agreement (SLA) that you want to apply to the case record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slaid")]
-        public Microsoft.Xrm.Sdk.EntityReference SLAId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("slaid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("SLAId");
-                this.SetAttributeValue("slaid", value);
-                this.OnPropertyChanged("SLAId");
-            }
-        }
-
-        /// <summary>
-        /// Last SLA that was applied to this case. This field is for internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slainvokedid")]
-        public Microsoft.Xrm.Sdk.EntityReference SLAInvokedId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("slainvokedid");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the social profile with which the case is associated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("socialprofileid")]
-        public Microsoft.Xrm.Sdk.EntityReference SocialProfileId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("socialprofileid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("SocialProfileId");
-                this.SetAttributeValue("socialprofileid", value);
-                this.OnPropertyChanged("SocialProfileId");
-            }
-        }
-
-        /// <summary>
-        /// Contains the id of the stage where the entity is located.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
-        public System.Nullable<System.Guid> StageId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("stageid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("StageId");
-                this.SetAttributeValue("stageid", value);
-                this.OnPropertyChanged("StageId");
-            }
-        }
-
-        /// <summary>
-        /// Shows whether the case is active, resolved, or canceled. Resolved and canceled cases are read-only and can't be edited unless they are reactivated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-        public System.Nullable<CrmEarlyBound.IncidentState> StateCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
-                if ((optionSet != null))
-                {
-                    return ((CrmEarlyBound.IncidentState)(System.Enum.ToObject(typeof(CrmEarlyBound.IncidentState), optionSet.Value)));
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("StateCode");
-                if ((value == null))
-                {
-                    this.SetAttributeValue("statecode", null);
-                }
-                else
-                {
-                    this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
-                }
-                this.OnPropertyChanged("StateCode");
-            }
-        }
-
-        /// <summary>
-        /// Select the case's status.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("StatusCode");
-                this.SetAttributeValue("statuscode", value);
-                this.OnPropertyChanged("StatusCode");
-            }
-        }
-
-        /// <summary>
-        /// Choose the subject for the case, such as catalog request or product complaint, so customer service managers can identify frequent requests or problem areas. Administrators can configure subjects under Business Management in the Settings area.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("subjectid")]
-        public Microsoft.Xrm.Sdk.EntityReference SubjectId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("subjectid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("SubjectId");
-                this.SetAttributeValue("subjectid", value);
-                this.OnPropertyChanged("SubjectId");
-            }
-        }
-
-        /// <summary>
-        /// Shows the case number for customer reference and searching capabilities. This cannot be modified.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ticketnumber")]
-        public string TicketNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("ticketnumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TicketNumber");
-                this.SetAttributeValue("ticketnumber", value);
-                this.OnPropertyChanged("TicketNumber");
-            }
-        }
-
-        /// <summary>
-        /// For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
-        public System.Nullable<int> TimeZoneRuleVersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TimeZoneRuleVersionNumber");
-                this.SetAttributeValue("timezoneruleversionnumber", value);
-                this.OnPropertyChanged("TimeZoneRuleVersionNumber");
-            }
-        }
-
-        /// <summary>
-        /// Type a subject or descriptive name, such as the request, issue, or company name, to identify the case in Microsoft Dynamics 365 views.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("title")]
-        public string Title
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("title");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Title");
-                this.SetAttributeValue("title", value);
-                this.OnPropertyChanged("Title");
-            }
-        }
-
-        /// <summary>
-        /// Choose the local currency for the record to make sure budgets are reported in the correct currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
-        public Microsoft.Xrm.Sdk.EntityReference TransactionCurrencyId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("transactioncurrencyid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TransactionCurrencyId");
-                this.SetAttributeValue("transactioncurrencyid", value);
-                this.OnPropertyChanged("TransactionCurrencyId");
-            }
-        }
-
-        /// <summary>
-        /// A comma separated list of string values representing the unique identifiers of stages in a Business Process Flow Instance in the order that they occur.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("traversedpath")]
-        public string TraversedPath
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("traversedpath");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TraversedPath");
-                this.SetAttributeValue("traversedpath", value);
-                this.OnPropertyChanged("TraversedPath");
-            }
-        }
-
-        /// <summary>
-        /// Time zone code that was in use when the record was created.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
-        public System.Nullable<int> UTCConversionTimeZoneCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("UTCConversionTimeZoneCode");
-                this.SetAttributeValue("utcconversiontimezonecode", value);
-                this.OnPropertyChanged("UTCConversionTimeZoneCode");
-            }
-        }
-
-        /// <summary>
-        /// Version Number
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
-        public System.Nullable<long> VersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
-            }
-        }
-
-        /// <summary>
-        /// 1:N incident_activity_parties
-        /// </summary>
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_activity_parties")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> incident_activity_parties
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntities<CrmEarlyBound.ActivityParty>("incident_activity_parties", null);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("incident_activity_parties");
-                this.SetRelatedEntities<CrmEarlyBound.ActivityParty>("incident_activity_parties", null, value);
-                this.OnPropertyChanged("incident_activity_parties");
-            }
-        }
-
-        /// <summary>
-        /// 1:N incident_existingcase
-        /// </summary>
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_existingcase", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.Incident> Referencedincident_existingcase
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntities<CrmEarlyBound.Incident>("incident_existingcase", Microsoft.Xrm.Sdk.EntityRole.Referenced);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Referencedincident_existingcase");
-                this.SetRelatedEntities<CrmEarlyBound.Incident>("incident_existingcase", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
-                this.OnPropertyChanged("Referencedincident_existingcase");
-            }
-        }
-
-        /// <summary>
-        /// 1:N incident_master_incident
-        /// </summary>
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_master_incident", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.Incident> Referencedincident_master_incident
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntities<CrmEarlyBound.Incident>("incident_master_incident", Microsoft.Xrm.Sdk.EntityRole.Referenced);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Referencedincident_master_incident");
-                this.SetRelatedEntities<CrmEarlyBound.Incident>("incident_master_incident", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
-                this.OnPropertyChanged("Referencedincident_master_incident");
-            }
-        }
-
-        /// <summary>
-        /// 1:N incident_msdyn_approvals
-        /// </summary>
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_msdyn_approvals")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_approval> incident_msdyn_approvals
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntities<CrmEarlyBound.msdyn_approval>("incident_msdyn_approvals", null);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("incident_msdyn_approvals");
-                this.SetRelatedEntities<CrmEarlyBound.msdyn_approval>("incident_msdyn_approvals", null, value);
-                this.OnPropertyChanged("incident_msdyn_approvals");
-            }
-        }
-
-        /// <summary>
-        /// 1:N incident_parent_incident
-        /// </summary>
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_parent_incident", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.Incident> Referencedincident_parent_incident
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntities<CrmEarlyBound.Incident>("incident_parent_incident", Microsoft.Xrm.Sdk.EntityRole.Referenced);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Referencedincident_parent_incident");
-                this.SetRelatedEntities<CrmEarlyBound.Incident>("incident_parent_incident", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
-                this.OnPropertyChanged("Referencedincident_parent_incident");
-            }
-        }
-
-        /// <summary>
-        /// N:1 incident_existingcase
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("existingcase")]
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_existingcase", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-        public CrmEarlyBound.Incident Referencingincident_existingcase
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntity<CrmEarlyBound.Incident>("incident_existingcase", Microsoft.Xrm.Sdk.EntityRole.Referencing);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Referencingincident_existingcase");
-                this.SetRelatedEntity<CrmEarlyBound.Incident>("incident_existingcase", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
-                this.OnPropertyChanged("Referencingincident_existingcase");
-            }
-        }
-
-        /// <summary>
-        /// N:1 incident_master_incident
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("masterid")]
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_master_incident", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-        public CrmEarlyBound.Incident Referencingincident_master_incident
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntity<CrmEarlyBound.Incident>("incident_master_incident", Microsoft.Xrm.Sdk.EntityRole.Referencing);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Referencingincident_master_incident");
-                this.SetRelatedEntity<CrmEarlyBound.Incident>("incident_master_incident", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
-                this.OnPropertyChanged("Referencingincident_master_incident");
-            }
-        }
-
-        /// <summary>
-        /// N:1 incident_parent_incident
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentcaseid")]
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_parent_incident", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-        public CrmEarlyBound.Incident Referencingincident_parent_incident
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntity<CrmEarlyBound.Incident>("incident_parent_incident", Microsoft.Xrm.Sdk.EntityRole.Referencing);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Referencingincident_parent_incident");
-                this.SetRelatedEntity<CrmEarlyBound.Incident>("incident_parent_incident", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
-                this.OnPropertyChanged("Referencingincident_parent_incident");
-            }
-        }
-
-        /// <summary>
-        /// Constructor for populating via LINQ queries given a LINQ anonymous type
-        /// <param name="anonymousType">LINQ anonymous type.</param>
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public Incident(object anonymousType) :
-                this()
-        {
+		}
+		
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public enum IncidentState
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Resolved = 1,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Canceled = 2,
+	}
+	
+	/// <summary>
+	/// Service request case associated with a contract.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("incident")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public partial class Incident : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public Incident() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "incident";
+		
+		public const string PrimaryIdAttribute = "incidentid";
+		
+		public const string PrimaryNameAttribute = "title";
+		
+		public const int EntityTypeCode = 112;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the account with which the case is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountid")]
+		public Microsoft.Xrm.Sdk.EntityReference AccountId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("accountid");
+			}
+		}
+		
+		/// <summary>
+		/// This attribute is used for Sample Service Business Processes.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activitiescomplete")]
+		public System.Nullable<bool> ActivitiesComplete
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("activitiescomplete");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ActivitiesComplete");
+				this.SetAttributeValue("activitiescomplete", value);
+				this.OnPropertyChanged("ActivitiesComplete");
+			}
+		}
+		
+		/// <summary>
+		/// Type the number of service units that were actually required to resolve the case.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actualserviceunits")]
+		public System.Nullable<int> ActualServiceUnits
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("actualserviceunits");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ActualServiceUnits");
+				this.SetAttributeValue("actualserviceunits", value);
+				this.OnPropertyChanged("ActualServiceUnits");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_createdbyipaddress")]
+		public string Adx_CreatedByIPAddress
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("adx_createdbyipaddress");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Adx_CreatedByIPAddress");
+				this.SetAttributeValue("adx_createdbyipaddress", value);
+				this.OnPropertyChanged("Adx_CreatedByIPAddress");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_createdbyusername")]
+		public string Adx_CreatedByUsername
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("adx_createdbyusername");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Adx_CreatedByUsername");
+				this.SetAttributeValue("adx_createdbyusername", value);
+				this.OnPropertyChanged("Adx_CreatedByUsername");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_modifiedbyipaddress")]
+		public string Adx_ModifiedByIPAddress
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("adx_modifiedbyipaddress");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Adx_ModifiedByIPAddress");
+				this.SetAttributeValue("adx_modifiedbyipaddress", value);
+				this.OnPropertyChanged("Adx_ModifiedByIPAddress");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_modifiedbyusername")]
+		public string Adx_ModifiedByUsername
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("adx_modifiedbyusername");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Adx_ModifiedByUsername");
+				this.SetAttributeValue("adx_modifiedbyusername", value);
+				this.OnPropertyChanged("Adx_ModifiedByUsername");
+			}
+		}
+		
+		/// <summary>
+		/// If set to Yes, the case will be visible and searchable on portals connected to this organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_publishtoweb")]
+		public System.Nullable<bool> adx_publishtoweb
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("adx_publishtoweb");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("adx_publishtoweb");
+				this.SetAttributeValue("adx_publishtoweb", value);
+				this.OnPropertyChanged("adx_publishtoweb");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_resolution")]
+		public string adx_resolution
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("adx_resolution");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("adx_resolution");
+				this.SetAttributeValue("adx_resolution", value);
+				this.OnPropertyChanged("adx_resolution");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_resolutiondate")]
+		public System.Nullable<System.DateTime> adx_resolutiondate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("adx_resolutiondate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("adx_resolutiondate");
+				this.SetAttributeValue("adx_resolutiondate", value);
+				this.OnPropertyChanged("adx_resolutiondate");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("adx_stepstoreproduce")]
+		public string adx_stepstoreproduce
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("adx_stepstoreproduce");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("adx_stepstoreproduce");
+				this.SetAttributeValue("adx_stepstoreproduce", value);
+				this.OnPropertyChanged("adx_stepstoreproduce");
+			}
+		}
+		
+		/// <summary>
+		/// Type the number of service units that were billed to the customer for the case.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billedserviceunits")]
+		public System.Nullable<int> BilledServiceUnits
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("billedserviceunits");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BilledServiceUnits");
+				this.SetAttributeValue("billedserviceunits", value);
+				this.OnPropertyChanged("BilledServiceUnits");
+			}
+		}
+		
+		/// <summary>
+		/// Details whether the profile is blocked or not.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("blockedprofile")]
+		public System.Nullable<bool> BlockedProfile
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("blockedprofile");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BlockedProfile");
+				this.SetAttributeValue("blockedprofile", value);
+				this.OnPropertyChanged("BlockedProfile");
+			}
+		}
+		
+		/// <summary>
+		/// Select how contact about the case was originated, such as email, phone, or web, for use in reporting and analysis.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("caseorigincode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue CaseOriginCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("caseorigincode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CaseOriginCode");
+				this.SetAttributeValue("caseorigincode", value);
+				this.OnPropertyChanged("CaseOriginCode");
+			}
+		}
+		
+		/// <summary>
+		/// Select the type of case to identify the incident for use in case routing and analysis.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("casetypecode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue CaseTypeCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("casetypecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CaseTypeCode");
+				this.SetAttributeValue("casetypecode", value);
+				this.OnPropertyChanged("CaseTypeCode");
+			}
+		}
+		
+		/// <summary>
+		/// This attribute is used for Sample Service Business Processes.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("checkemail")]
+		public System.Nullable<bool> CheckEmail
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("checkemail");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CheckEmail");
+				this.SetAttributeValue("checkemail", value);
+				this.OnPropertyChanged("CheckEmail");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the contact associated with the case.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contactid")]
+		public Microsoft.Xrm.Sdk.EntityReference ContactId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("contactid");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the contract line that the case should be logged under to make sure the customer is charged correctly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contractdetailid")]
+		public Microsoft.Xrm.Sdk.EntityReference ContractDetailId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("contractdetailid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ContractDetailId");
+				this.SetAttributeValue("contractdetailid", value);
+				this.OnPropertyChanged("ContractDetailId");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the service contract that the case should be logged under to make sure the customer is eligible for support services.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contractid")]
+		public Microsoft.Xrm.Sdk.EntityReference ContractId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("contractid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ContractId");
+				this.SetAttributeValue("contractid", value);
+				this.OnPropertyChanged("ContractId");
+			}
+		}
+		
+		/// <summary>
+		/// Select the service level for the case to make sure the case is handled correctly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contractservicelevelcode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ContractServiceLevelCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("contractservicelevelcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ContractServiceLevelCode");
+				this.SetAttributeValue("contractservicelevelcode", value);
+				this.OnPropertyChanged("ContractServiceLevelCode");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the external party who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdbyexternalparty")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedByExternalParty
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdbyexternalparty");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who created the record on behalf of another user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Tells whether customer service representative has contacted the customer or not.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customercontacted")]
+		public System.Nullable<bool> CustomerContacted
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("customercontacted");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CustomerContacted");
+				this.SetAttributeValue("customercontacted", value);
+				this.OnPropertyChanged("CustomerContacted");
+			}
+		}
+		
+		/// <summary>
+		/// Select the customer account or contact to provide a quick link to additional customer details, such as account information, activities, and opportunities.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
+		public Microsoft.Xrm.Sdk.EntityReference CustomerId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("customerid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CustomerId");
+				this.SetAttributeValue("customerid", value);
+				this.OnPropertyChanged("CustomerId");
+			}
+		}
+		
+		/// <summary>
+		/// Select the customer's level of satisfaction with the handling and resolution of the case.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customersatisfactioncode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue CustomerSatisfactionCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("customersatisfactioncode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CustomerSatisfactionCode");
+				this.SetAttributeValue("customersatisfactioncode", value);
+				this.OnPropertyChanged("CustomerSatisfactionCode");
+			}
+		}
+		
+		/// <summary>
+		/// Shows whether terms of the associated entitlement should be decremented or not.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("decremententitlementterm")]
+		public System.Nullable<bool> DecrementEntitlementTerm
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("decremententitlementterm");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("DecrementEntitlementTerm");
+				this.SetAttributeValue("decremententitlementterm", value);
+				this.OnPropertyChanged("DecrementEntitlementTerm");
+			}
+		}
+		
+		/// <summary>
+		/// Type additional information to describe the case to assist the service team in reaching a resolution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("description");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Description");
+				this.SetAttributeValue("description", value);
+				this.OnPropertyChanged("Description");
+			}
+		}
+		
+		/// <summary>
+		/// The primary email address for the entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailaddress")]
+		public string EmailAddress
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("emailaddress");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EmailAddress");
+				this.SetAttributeValue("emailaddress", value);
+				this.OnPropertyChanged("EmailAddress");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the entitlement that is applicable for the case.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entitlementid")]
+		public Microsoft.Xrm.Sdk.EntityReference EntitlementId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("entitlementid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EntitlementId");
+				this.SetAttributeValue("entitlementid", value);
+				this.OnPropertyChanged("EntitlementId");
+			}
+		}
+		
+		/// <summary>
+		/// The default image for the entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage")]
+		public byte[] EntityImage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<byte[]>("entityimage");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EntityImage");
+				this.SetAttributeValue("entityimage", value);
+				this.OnPropertyChanged("EntityImage");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage_timestamp")]
+		public System.Nullable<long> EntityImage_Timestamp
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("entityimage_timestamp");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage_url")]
+		public string EntityImage_URL
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("entityimage_url");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimageid")]
+		public System.Nullable<System.Guid> EntityImageId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("entityimageid");
+			}
+		}
+		
+		/// <summary>
+		/// Indicates the date and time when the case was escalated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("escalatedon")]
+		public System.Nullable<System.DateTime> EscalatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("escalatedon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the conversion rate of the record's currency. The exchange rate is used to convert all money fields in the record from the local currency to the system's default currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangerate")]
+		public System.Nullable<decimal> ExchangeRate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
+			}
+		}
+		
+		/// <summary>
+		/// Select an existing case for the customer that has been populated. For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("existingcase")]
+		public Microsoft.Xrm.Sdk.EntityReference ExistingCase
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("existingcase");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ExistingCase");
+				this.SetAttributeValue("existingcase", value);
+				this.OnPropertyChanged("ExistingCase");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("firstresponsebykpiid")]
+		public Microsoft.Xrm.Sdk.EntityReference FirstResponseByKPIId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("firstresponsebykpiid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("FirstResponseByKPIId");
+				this.SetAttributeValue("firstresponsebykpiid", value);
+				this.OnPropertyChanged("FirstResponseByKPIId");
+			}
+		}
+		
+		/// <summary>
+		/// Indicates if the first response has been sent.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("firstresponsesent")]
+		public System.Nullable<bool> FirstResponseSent
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("firstresponsesent");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("FirstResponseSent");
+				this.SetAttributeValue("firstresponsesent", value);
+				this.OnPropertyChanged("FirstResponseSent");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the status of the initial response time for the case according to the terms of the SLA.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("firstresponseslastatus")]
+		public Microsoft.Xrm.Sdk.OptionSetValue FirstResponseSLAStatus
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("firstresponseslastatus");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("FirstResponseSLAStatus");
+				this.SetAttributeValue("firstresponseslastatus", value);
+				this.OnPropertyChanged("FirstResponseSLAStatus");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the date by which a customer service representative has to follow up with the customer on this case.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("followupby")]
+		public System.Nullable<System.DateTime> FollowupBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("followupby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("FollowupBy");
+				this.SetAttributeValue("followupby", value);
+				this.OnPropertyChanged("FollowupBy");
+			}
+		}
+		
+		/// <summary>
+		/// This attribute is used for Sample Service Business Processes.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("followuptaskcreated")]
+		public System.Nullable<bool> FollowUpTaskCreated
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("followuptaskcreated");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("FollowUpTaskCreated");
+				this.SetAttributeValue("followuptaskcreated", value);
+				this.OnPropertyChanged("FollowUpTaskCreated");
+			}
+		}
+		
+		/// <summary>
+		/// Sequence number of the import that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ImportSequenceNumber");
+				this.SetAttributeValue("importsequencenumber", value);
+				this.OnPropertyChanged("ImportSequenceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the case.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incidentid")]
+		public System.Nullable<System.Guid> IncidentId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("incidentid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IncidentId");
+				this.SetAttributeValue("incidentid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("IncidentId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incidentid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.IncidentId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Select the current stage of the service process for the case to assist service team members when they review or transfer a case.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incidentstagecode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue IncidentStageCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("incidentstagecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IncidentStageCode");
+				this.SetAttributeValue("incidentstagecode", value);
+				this.OnPropertyChanged("IncidentStageCode");
+			}
+		}
+		
+		/// <summary>
+		/// Will contain the Influencer score coming from NetBreeze.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("influencescore")]
+		public System.Nullable<double> InfluenceScore
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<double>>("influencescore");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("InfluenceScore");
+				this.SetAttributeValue("influencescore", value);
+				this.OnPropertyChanged("InfluenceScore");
+			}
+		}
+		
+		/// <summary>
+		/// For system use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdecrementing")]
+		public System.Nullable<bool> IsDecrementing
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdecrementing");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsDecrementing");
+				this.SetAttributeValue("isdecrementing", value);
+				this.OnPropertyChanged("IsDecrementing");
+			}
+		}
+		
+		/// <summary>
+		/// Indicates if the case has been escalated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isescalated")]
+		public System.Nullable<bool> IsEscalated
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isescalated");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsEscalated");
+				this.SetAttributeValue("isescalated", value);
+				this.OnPropertyChanged("IsEscalated");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the article that contains additional information or a resolution for the case, for reference during research or follow up with the customer.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("kbarticleid")]
+		public Microsoft.Xrm.Sdk.EntityReference KbArticleId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("kbarticleid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("KbArticleId");
+				this.SetAttributeValue("kbarticleid", value);
+				this.OnPropertyChanged("KbArticleId");
+			}
+		}
+		
+		/// <summary>
+		/// Contains the date time stamp of the last on hold time.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastonholdtime")]
+		public System.Nullable<System.DateTime> LastOnHoldTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("lastonholdtime");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("LastOnHoldTime");
+				this.SetAttributeValue("lastonholdtime", value);
+				this.OnPropertyChanged("LastOnHoldTime");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the primary case the current case was merged into.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("masterid")]
+		public Microsoft.Xrm.Sdk.EntityReference MasterId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("masterid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("MasterId");
+				this.SetAttributeValue("masterid", value);
+				this.OnPropertyChanged("MasterId");
+			}
+		}
+		
+		/// <summary>
+		/// Tells whether the incident has been merged with another incident.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("merged")]
+		public System.Nullable<bool> Merged
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("merged");
+			}
+		}
+		
+		/// <summary>
+		/// Shows whether the post originated as a public or private message.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("messagetypecode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue MessageTypeCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("messagetypecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("MessageTypeCode");
+				this.SetAttributeValue("messagetypecode", value);
+				this.OnPropertyChanged("MessageTypeCode");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who last updated the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the external party who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedbyexternalparty")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedByExternalParty
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedbyexternalparty");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who last updated the record on behalf of another user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Allows a partner contact to be assigned to a specific case.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msa_partnercontactid")]
+		public Microsoft.Xrm.Sdk.EntityReference msa_partnercontactid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msa_partnercontactid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msa_partnercontactid");
+				this.SetAttributeValue("msa_partnercontactid", value);
+				this.OnPropertyChanged("msa_partnercontactid");
+			}
+		}
+		
+		/// <summary>
+		/// Creates a Relationship between a Partner (account) and a case for indirect service arrangements.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msa_partnerid")]
+		public Microsoft.Xrm.Sdk.EntityReference msa_partnerid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msa_partnerid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msa_partnerid");
+				this.SetAttributeValue("msa_partnerid", value);
+				this.OnPropertyChanged("msa_partnerid");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for Incident Type associated with Case.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_incidenttype")]
+		public Microsoft.Xrm.Sdk.EntityReference msdyn_IncidentType
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_incidenttype");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_IncidentType");
+				this.SetAttributeValue("msdyn_incidenttype", value);
+				this.OnPropertyChanged("msdyn_IncidentType");
+			}
+		}
+		
+		/// <summary>
+		/// Number of child incidents associated with the incident.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("numberofchildincidents")]
+		public System.Nullable<int> NumberOfChildIncidents
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("numberofchildincidents");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the duration in minutes for which the case was on hold.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("onholdtime")]
+		public System.Nullable<int> OnHoldTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("onholdtime");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// Owner Id
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
+		public Microsoft.Xrm.Sdk.EntityReference OwnerId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OwnerId");
+				this.SetAttributeValue("ownerid", value);
+				this.OnPropertyChanged("OwnerId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the business unit that owns the record
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the team that owns the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningTeam
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the user that owns the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningUser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the parent case for a case.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentcaseid")]
+		public Microsoft.Xrm.Sdk.EntityReference ParentCaseId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("parentcaseid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ParentCaseId");
+				this.SetAttributeValue("parentcaseid", value);
+				this.OnPropertyChanged("ParentCaseId");
+			}
+		}
+		
+		/// <summary>
+		/// Select a primary contact for this case.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("primarycontactid")]
+		public Microsoft.Xrm.Sdk.EntityReference PrimaryContactId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("primarycontactid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PrimaryContactId");
+				this.SetAttributeValue("primarycontactid", value);
+				this.OnPropertyChanged("PrimaryContactId");
+			}
+		}
+		
+		/// <summary>
+		/// Select the priority so that preferred customers or critical issues are handled quickly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("prioritycode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue PriorityCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("prioritycode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PriorityCode");
+				this.SetAttributeValue("prioritycode", value);
+				this.OnPropertyChanged("PriorityCode");
+			}
+		}
+		
+		/// <summary>
+		/// Contains the id of the process associated with the entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processid")]
+		public System.Nullable<System.Guid> ProcessId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("processid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ProcessId");
+				this.SetAttributeValue("processid", value);
+				this.OnPropertyChanged("ProcessId");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the product associated with the case to identify warranty, service, or other product issues and be able to report the number of incidents for each product.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("productid")]
+		public Microsoft.Xrm.Sdk.EntityReference ProductId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("productid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ProductId");
+				this.SetAttributeValue("productid", value);
+				this.OnPropertyChanged("ProductId");
+			}
+		}
+		
+		/// <summary>
+		/// Type the serial number of the product that is associated with this case, so that the number of cases per product can be reported.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("productserialnumber")]
+		public string ProductSerialNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("productserialnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ProductSerialNumber");
+				this.SetAttributeValue("productserialnumber", value);
+				this.OnPropertyChanged("ProductSerialNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the date by when the case must be resolved.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resolveby")]
+		public System.Nullable<System.DateTime> ResolveBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("resolveby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ResolveBy");
+				this.SetAttributeValue("resolveby", value);
+				this.OnPropertyChanged("ResolveBy");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resolvebykpiid")]
+		public Microsoft.Xrm.Sdk.EntityReference ResolveByKPIId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("resolvebykpiid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ResolveByKPIId");
+				this.SetAttributeValue("resolvebykpiid", value);
+				this.OnPropertyChanged("ResolveByKPIId");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the status of the resolution time for the case according to the terms of the SLA.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resolvebyslastatus")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ResolveBySLAStatus
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("resolvebyslastatus");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ResolveBySLAStatus");
+				this.SetAttributeValue("resolvebyslastatus", value);
+				this.OnPropertyChanged("ResolveBySLAStatus");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("responseby")]
+		public System.Nullable<System.DateTime> ResponseBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("responseby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ResponseBy");
+				this.SetAttributeValue("responseby", value);
+				this.OnPropertyChanged("ResponseBy");
+			}
+		}
+		
+		/// <summary>
+		/// Choose an additional customer contact who can also help resolve the case.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("responsiblecontactid")]
+		[System.ObsoleteAttribute()]
+		public Microsoft.Xrm.Sdk.EntityReference ResponsibleContactId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("responsiblecontactid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ResponsibleContactId");
+				this.SetAttributeValue("responsiblecontactid", value);
+				this.OnPropertyChanged("ResponsibleContactId");
+			}
+		}
+		
+		/// <summary>
+		/// Tells whether the incident has been routed to queue or not.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("routecase")]
+		public System.Nullable<bool> RouteCase
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("routecase");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("RouteCase");
+				this.SetAttributeValue("routecase", value);
+				this.OnPropertyChanged("RouteCase");
+			}
+		}
+		
+		/// <summary>
+		/// Value derived after assessing words commonly associated with a negative, neutral, or positive sentiment that occurs in a social post. Sentiment information can also be reported as numeric values.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sentimentvalue")]
+		public System.Nullable<double> SentimentValue
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<double>>("sentimentvalue");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SentimentValue");
+				this.SetAttributeValue("sentimentvalue", value);
+				this.OnPropertyChanged("SentimentValue");
+			}
+		}
+		
+		/// <summary>
+		/// Select the stage, in the case resolution process, that the case is in.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("servicestage")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ServiceStage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("servicestage");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ServiceStage");
+				this.SetAttributeValue("servicestage", value);
+				this.OnPropertyChanged("ServiceStage");
+			}
+		}
+		
+		/// <summary>
+		/// Select the severity of this case to indicate the incident's impact on the customer's business.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("severitycode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue SeverityCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("severitycode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SeverityCode");
+				this.SetAttributeValue("severitycode", value);
+				this.OnPropertyChanged("SeverityCode");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the service level agreement (SLA) that you want to apply to the case record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slaid")]
+		public Microsoft.Xrm.Sdk.EntityReference SLAId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("slaid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SLAId");
+				this.SetAttributeValue("slaid", value);
+				this.OnPropertyChanged("SLAId");
+			}
+		}
+		
+		/// <summary>
+		/// Last SLA that was applied to this case. This field is for internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slainvokedid")]
+		public Microsoft.Xrm.Sdk.EntityReference SLAInvokedId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("slainvokedid");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the social profile with which the case is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("socialprofileid")]
+		public Microsoft.Xrm.Sdk.EntityReference SocialProfileId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("socialprofileid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SocialProfileId");
+				this.SetAttributeValue("socialprofileid", value);
+				this.OnPropertyChanged("SocialProfileId");
+			}
+		}
+		
+		/// <summary>
+		/// Contains the id of the stage where the entity is located.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
+		public System.Nullable<System.Guid> StageId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("stageid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StageId");
+				this.SetAttributeValue("stageid", value);
+				this.OnPropertyChanged("StageId");
+			}
+		}
+		
+		/// <summary>
+		/// Shows whether the case is active, resolved, or canceled. Resolved and canceled cases are read-only and can't be edited unless they are reactivated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public System.Nullable<CrmEarlyBound.IncidentState> StateCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+				if ((optionSet != null))
+				{
+					return ((CrmEarlyBound.IncidentState)(System.Enum.ToObject(typeof(CrmEarlyBound.IncidentState), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StateCode");
+				if ((value == null))
+				{
+					this.SetAttributeValue("statecode", null);
+				}
+				else
+				{
+					this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
+				}
+				this.OnPropertyChanged("StateCode");
+			}
+		}
+		
+		/// <summary>
+		/// Select the case's status.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the subject for the case, such as catalog request or product complaint, so customer service managers can identify frequent requests or problem areas. Administrators can configure subjects under Business Management in the Settings area.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("subjectid")]
+		public Microsoft.Xrm.Sdk.EntityReference SubjectId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("subjectid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SubjectId");
+				this.SetAttributeValue("subjectid", value);
+				this.OnPropertyChanged("SubjectId");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the case number for customer reference and searching capabilities. This cannot be modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ticketnumber")]
+		public string TicketNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("ticketnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TicketNumber");
+				this.SetAttributeValue("ticketnumber", value);
+				this.OnPropertyChanged("TicketNumber");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TimeZoneRuleVersionNumber");
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+				this.OnPropertyChanged("TimeZoneRuleVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Type a subject or descriptive name, such as the request, issue, or company name, to identify the case in Microsoft Dynamics 365 views.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("title")]
+		public string Title
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("title");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Title");
+				this.SetAttributeValue("title", value);
+				this.OnPropertyChanged("Title");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the local currency for the record to make sure budgets are reported in the correct currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
+		public Microsoft.Xrm.Sdk.EntityReference TransactionCurrencyId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("transactioncurrencyid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TransactionCurrencyId");
+				this.SetAttributeValue("transactioncurrencyid", value);
+				this.OnPropertyChanged("TransactionCurrencyId");
+			}
+		}
+		
+		/// <summary>
+		/// A comma separated list of string values representing the unique identifiers of stages in a Business Process Flow Instance in the order that they occur.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("traversedpath")]
+		public string TraversedPath
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("traversedpath");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TraversedPath");
+				this.SetAttributeValue("traversedpath", value);
+				this.OnPropertyChanged("TraversedPath");
+			}
+		}
+		
+		/// <summary>
+		/// Time zone code that was in use when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UTCConversionTimeZoneCode");
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+				this.OnPropertyChanged("UTCConversionTimeZoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// Version Number
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N incident_activity_parties
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_activity_parties")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> incident_activity_parties
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.ActivityParty>("incident_activity_parties", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("incident_activity_parties");
+				this.SetRelatedEntities<CrmEarlyBound.ActivityParty>("incident_activity_parties", null, value);
+				this.OnPropertyChanged("incident_activity_parties");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N incident_existingcase
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_existingcase", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Incident> Referencedincident_existingcase
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Incident>("incident_existingcase", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencedincident_existingcase");
+				this.SetRelatedEntities<CrmEarlyBound.Incident>("incident_existingcase", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.OnPropertyChanged("Referencedincident_existingcase");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N incident_master_incident
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_master_incident", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Incident> Referencedincident_master_incident
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Incident>("incident_master_incident", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencedincident_master_incident");
+				this.SetRelatedEntities<CrmEarlyBound.Incident>("incident_master_incident", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.OnPropertyChanged("Referencedincident_master_incident");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N incident_msdyn_approvals
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_msdyn_approvals")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_approval> incident_msdyn_approvals
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_approval>("incident_msdyn_approvals", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("incident_msdyn_approvals");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_approval>("incident_msdyn_approvals", null, value);
+				this.OnPropertyChanged("incident_msdyn_approvals");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N incident_parent_incident
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_parent_incident", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Incident> Referencedincident_parent_incident
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Incident>("incident_parent_incident", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencedincident_parent_incident");
+				this.SetRelatedEntities<CrmEarlyBound.Incident>("incident_parent_incident", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.OnPropertyChanged("Referencedincident_parent_incident");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 incident_existingcase
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("existingcase")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_existingcase", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public CrmEarlyBound.Incident Referencingincident_existingcase
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.Incident>("incident_existingcase", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencingincident_existingcase");
+				this.SetRelatedEntity<CrmEarlyBound.Incident>("incident_existingcase", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.OnPropertyChanged("Referencingincident_existingcase");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 incident_master_incident
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("masterid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_master_incident", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public CrmEarlyBound.Incident Referencingincident_master_incident
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.Incident>("incident_master_incident", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencingincident_master_incident");
+				this.SetRelatedEntity<CrmEarlyBound.Incident>("incident_master_incident", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.OnPropertyChanged("Referencingincident_master_incident");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 incident_parent_incident
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentcaseid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_parent_incident", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public CrmEarlyBound.Incident Referencingincident_parent_incident
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.Incident>("incident_parent_incident", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencingincident_parent_incident");
+				this.SetRelatedEntity<CrmEarlyBound.Incident>("incident_parent_incident", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.OnPropertyChanged("Referencingincident_parent_incident");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_incidentbase_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_incidentbase_createdby")]
+		public CrmEarlyBound.SystemUser lk_incidentbase_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_incidentbase_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_incidentbase_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_incidentbase_createdonbehalfby")]
+		public CrmEarlyBound.SystemUser lk_incidentbase_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_incidentbase_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_incidentbase_createdonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("lk_incidentbase_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_incidentbase_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_incidentbase_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_incidentbase_modifiedby")]
+		public CrmEarlyBound.SystemUser lk_incidentbase_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_incidentbase_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_incidentbase_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_incidentbase_modifiedonbehalfby")]
+		public CrmEarlyBound.SystemUser lk_incidentbase_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_incidentbase_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_incidentbase_modifiedonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("lk_incidentbase_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_incidentbase_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 system_user_incidents
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_incidents")]
+		public CrmEarlyBound.SystemUser system_user_incidents
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("system_user_incidents", null);
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public Incident(object anonymousType) : 
+				this()
+		{
             foreach (var p in anonymousType.GetType().GetProperties())
             {
                 var value = p.GetValue(anonymousType, null);
                 var name = p.Name.ToLower();
-
+            
                 if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
                 {
-                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int)value);
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
                     name = name.Remove(name.Length - "enum".Length);
                 }
-
+            
                 switch (name)
                 {
                     case "id":
@@ -2599,8 +2704,8 @@ namespace CrmEarlyBound
                         Attributes["incidentid"] = base.Id;
                         break;
                     case "incidentid":
-                        var id = (System.Nullable<System.Guid>)value;
-                        if (id == null) { continue; }
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
                         base.Id = id.Value;
                         Attributes[name] = base.Id;
                         break;
@@ -2613,1904 +2718,1988 @@ namespace CrmEarlyBound
                         break;
                 }
             }
-        }
-
-    }
-
-    [System.Runtime.Serialization.DataContractAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
-    public enum InvoiceState
-    {
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Active = 0,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Closed = 1,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Paid = 2,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Canceled = 3,
-    }
-
-    /// <summary>
-    /// Order that has been billed.
-    /// </summary>
-    [System.Runtime.Serialization.DataContractAttribute()]
-    [Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("invoice")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
-    public partial class Invoice : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
-    {
-
-        /// <summary>
-        /// Default Constructor.
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public Invoice() :
-                base(EntityLogicalName)
-        {
-        }
-
-        public const string EntityLogicalName = "invoice";
-
-        public const string PrimaryIdAttribute = "invoiceid";
-
-        public const string PrimaryNameAttribute = "name";
-
-        public const int EntityTypeCode = 1090;
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        private void OnPropertyChanged(string propertyName)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        private void OnPropertyChanging(string propertyName)
-        {
-            if ((this.PropertyChanging != null))
-            {
-                this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the account with which the invoice is associated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountid")]
-        public Microsoft.Xrm.Sdk.EntityReference AccountId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("accountid");
-            }
-        }
-
-        /// <summary>
-        /// Type the city for the customer's billing address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_city")]
-        public string BillTo_City
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("billto_city");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("BillTo_City");
-                this.SetAttributeValue("billto_city", value);
-                this.OnPropertyChanged("BillTo_City");
-            }
-        }
-
-        /// <summary>
-        /// Shows the complete Bill To address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_composite")]
-        public string BillTo_Composite
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("billto_composite");
-            }
-        }
-
-        /// <summary>
-        /// Type the country or region for the customer's billing address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_country")]
-        public string BillTo_Country
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("billto_country");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("BillTo_Country");
-                this.SetAttributeValue("billto_country", value);
-                this.OnPropertyChanged("BillTo_Country");
-            }
-        }
-
-        /// <summary>
-        /// Type the fax number for the customer's billing address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_fax")]
-        public string BillTo_Fax
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("billto_fax");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("BillTo_Fax");
-                this.SetAttributeValue("billto_fax", value);
-                this.OnPropertyChanged("BillTo_Fax");
-            }
-        }
-
-        /// <summary>
-        /// Type the first line of the customer's billing address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_line1")]
-        public string BillTo_Line1
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("billto_line1");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("BillTo_Line1");
-                this.SetAttributeValue("billto_line1", value);
-                this.OnPropertyChanged("BillTo_Line1");
-            }
-        }
-
-        /// <summary>
-        /// Type the second line of the customer's billing address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_line2")]
-        public string BillTo_Line2
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("billto_line2");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("BillTo_Line2");
-                this.SetAttributeValue("billto_line2", value);
-                this.OnPropertyChanged("BillTo_Line2");
-            }
-        }
-
-        /// <summary>
-        /// Type the third line of the billing address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_line3")]
-        public string BillTo_Line3
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("billto_line3");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("BillTo_Line3");
-                this.SetAttributeValue("billto_line3", value);
-                this.OnPropertyChanged("BillTo_Line3");
-            }
-        }
-
-        /// <summary>
-        /// Type a name for the customer's billing address, such as "Headquarters" or "Field office", to identify the address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_name")]
-        public string BillTo_Name
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("billto_name");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("BillTo_Name");
-                this.SetAttributeValue("billto_name", value);
-                this.OnPropertyChanged("BillTo_Name");
-            }
-        }
-
-        /// <summary>
-        /// Type the ZIP Code or postal code for the billing address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_postalcode")]
-        public string BillTo_PostalCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("billto_postalcode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("BillTo_PostalCode");
-                this.SetAttributeValue("billto_postalcode", value);
-                this.OnPropertyChanged("BillTo_PostalCode");
-            }
-        }
-
-        /// <summary>
-        /// Type the state or province for the billing address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_stateorprovince")]
-        public string BillTo_StateOrProvince
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("billto_stateorprovince");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("BillTo_StateOrProvince");
-                this.SetAttributeValue("billto_stateorprovince", value);
-                this.OnPropertyChanged("BillTo_StateOrProvince");
-            }
-        }
-
-        /// <summary>
-        /// Type the phone number for the customer's billing address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_telephone")]
-        public string BillTo_Telephone
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("billto_telephone");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("BillTo_Telephone");
-                this.SetAttributeValue("billto_telephone", value);
-                this.OnPropertyChanged("BillTo_Telephone");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the contact associated with the invoice.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contactid")]
-        public Microsoft.Xrm.Sdk.EntityReference ContactId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("contactid");
-            }
-        }
-
-        /// <summary>
-        /// Shows who created the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
-        public Microsoft.Xrm.Sdk.EntityReference CreatedBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
-            }
-        }
-
-        /// <summary>
-        /// Date and time when the record was created.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
-        public System.Nullable<System.DateTime> CreatedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
-            }
-        }
-
-        /// <summary>
-        /// Shows who created the record on behalf of another user.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
-        public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("CreatedOnBehalfBy");
-                this.SetAttributeValue("createdonbehalfby", value);
-                this.OnPropertyChanged("CreatedOnBehalfBy");
-            }
-        }
-
-        /// <summary>
-        /// Select the customer account or contact to provide a quick link to additional customer details, such as account information, activities, and opportunities.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
-        public Microsoft.Xrm.Sdk.EntityReference CustomerId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("customerid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("CustomerId");
-                this.SetAttributeValue("customerid", value);
-                this.OnPropertyChanged("CustomerId");
-            }
-        }
-
-        /// <summary>
-        /// Enter the date when the products included in the invoice were delivered.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("datedelivered")]
-        public System.Nullable<System.DateTime> DateDelivered
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("datedelivered");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("DateDelivered");
-                this.SetAttributeValue("datedelivered", value);
-                this.OnPropertyChanged("DateDelivered");
-            }
-        }
-
-        /// <summary>
-        /// Type additional information to describe the invoice, such as shipping details or product substitutions.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
-        public string Description
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("description");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Description");
-                this.SetAttributeValue("description", value);
-                this.OnPropertyChanged("Description");
-            }
-        }
-
-        /// <summary>
-        /// Type the discount amount for the invoice if the customer is eligible for special savings.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("discountamount")]
-        public Microsoft.Xrm.Sdk.Money DiscountAmount
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("discountamount");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("DiscountAmount");
-                this.SetAttributeValue("discountamount", value);
-                this.OnPropertyChanged("DiscountAmount");
-            }
-        }
-
-        /// <summary>
-        /// Value of the Invoice Discount Amount in base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("discountamount_base")]
-        public Microsoft.Xrm.Sdk.Money DiscountAmount_Base
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("discountamount_base");
-            }
-        }
-
-        /// <summary>
-        /// Type the discount rate that should be applied to the Detail Amount field, for use in calculating the Pre-Freight Amount and Total Amount values for the invoice.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("discountpercentage")]
-        public System.Nullable<decimal> DiscountPercentage
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<decimal>>("discountpercentage");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("DiscountPercentage");
-                this.SetAttributeValue("discountpercentage", value);
-                this.OnPropertyChanged("DiscountPercentage");
-            }
-        }
-
-        /// <summary>
-        /// Enter the date by which the invoice should be paid by the customer.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duedate")]
-        public System.Nullable<System.DateTime> DueDate
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("duedate");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("DueDate");
-                this.SetAttributeValue("duedate", value);
-                this.OnPropertyChanged("DueDate");
-            }
-        }
-
-        /// <summary>
-        /// The primary email address for the entity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailaddress")]
-        public string EmailAddress
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("emailaddress");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("EmailAddress");
-                this.SetAttributeValue("emailaddress", value);
-                this.OnPropertyChanged("EmailAddress");
-            }
-        }
-
-        /// <summary>
-        /// The default image for the entity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage")]
-        public byte[] EntityImage
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<byte[]>("entityimage");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("EntityImage");
-                this.SetAttributeValue("entityimage", value);
-                this.OnPropertyChanged("EntityImage");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage_timestamp")]
-        public System.Nullable<long> EntityImage_Timestamp
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<long>>("entityimage_timestamp");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage_url")]
-        public string EntityImage_URL
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("entityimage_url");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimageid")]
-        public System.Nullable<System.Guid> EntityImageId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("entityimageid");
-            }
-        }
-
-        /// <summary>
-        /// Shows the conversion rate of the record's currency. The exchange rate is used to convert all money fields in the record from the local currency to the system's default currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangerate")]
-        public System.Nullable<decimal> ExchangeRate
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
-            }
-        }
-
-        /// <summary>
-        /// Type the cost of freight or shipping for the products included in the invoice for use in calculating the total amount due.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("freightamount")]
-        public Microsoft.Xrm.Sdk.Money FreightAmount
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("freightamount");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("FreightAmount");
-                this.SetAttributeValue("freightamount", value);
-                this.OnPropertyChanged("FreightAmount");
-            }
-        }
-
-        /// <summary>
-        /// Value of the Freight Amount in base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("freightamount_base")]
-        public Microsoft.Xrm.Sdk.Money FreightAmount_Base
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("freightamount_base");
-            }
-        }
-
-        /// <summary>
-        /// Sequence number of the import that created this record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
-        public System.Nullable<int> ImportSequenceNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ImportSequenceNumber");
-                this.SetAttributeValue("importsequencenumber", value);
-                this.OnPropertyChanged("ImportSequenceNumber");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the invoice.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("invoiceid")]
-        public System.Nullable<System.Guid> InvoiceId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("invoiceid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("InvoiceId");
-                this.SetAttributeValue("invoiceid", value);
-                if (value.HasValue)
-                {
-                    base.Id = value.Value;
-                }
-                else
-                {
-                    base.Id = System.Guid.Empty;
-                }
-                this.OnPropertyChanged("InvoiceId");
-            }
-        }
-
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("invoiceid")]
-        public override System.Guid Id
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return base.Id;
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.InvoiceId = value;
-            }
-        }
-
-        /// <summary>
-        /// Shows the identifying number or code of the invoice.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("invoicenumber")]
-        public string InvoiceNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("invoicenumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("InvoiceNumber");
-                this.SetAttributeValue("invoicenumber", value);
-                this.OnPropertyChanged("InvoiceNumber");
-            }
-        }
-
-        /// <summary>
-        /// Select whether prices specified on the invoice are locked from any further updates.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ispricelocked")]
-        public System.Nullable<bool> IsPriceLocked
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("ispricelocked");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("IsPriceLocked");
-                this.SetAttributeValue("ispricelocked", value);
-                this.OnPropertyChanged("IsPriceLocked");
-            }
-        }
-
-        /// <summary>
-        /// Enter the date and time when the invoice was last submitted to an accounting or ERP system for processing.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastbackofficesubmit")]
-        public System.Nullable<System.DateTime> LastBackofficeSubmit
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("lastbackofficesubmit");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("LastBackofficeSubmit");
-                this.SetAttributeValue("lastbackofficesubmit", value);
-                this.OnPropertyChanged("LastBackofficeSubmit");
-            }
-        }
-
-        /// <summary>
-        /// Contains the date time stamp of the last on hold time.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastonholdtime")]
-        public System.Nullable<System.DateTime> LastOnHoldTime
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("lastonholdtime");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("LastOnHoldTime");
-                this.SetAttributeValue("lastonholdtime", value);
-                this.OnPropertyChanged("LastOnHoldTime");
-            }
-        }
-
-        /// <summary>
-        /// Shows who last updated the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
-        public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
-            }
-        }
-
-        /// <summary>
-        /// Date and time when the record was modified.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
-        public System.Nullable<System.DateTime> ModifiedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
-            }
-        }
-
-        /// <summary>
-        /// Shows who last updated the record on behalf of another user.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
-        public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ModifiedOnBehalfBy");
-                this.SetAttributeValue("modifiedonbehalfby", value);
-                this.OnPropertyChanged("ModifiedOnBehalfBy");
-            }
-        }
-
-        /// <summary>
-        /// Enter the amount due on this invoice.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_amountdue")]
-        public Microsoft.Xrm.Sdk.Money msdyn_AmountDue
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("msdyn_amountdue");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_AmountDue");
-                this.SetAttributeValue("msdyn_amountdue", value);
-                this.OnPropertyChanged("msdyn_AmountDue");
-            }
-        }
-
-        /// <summary>
-        /// Value of the Amount Due in base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_amountdue_base")]
-        public Microsoft.Xrm.Sdk.Money msdyn_amountdue_Base
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("msdyn_amountdue_base");
-            }
-        }
-
-        /// <summary>
-        /// Indicates if this invoice contains corrections to previous invoices.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_hascorrections")]
-        public System.Nullable<bool> msdyn_HasCorrections
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("msdyn_hascorrections");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_HasCorrections");
-                this.SetAttributeValue("msdyn_hascorrections", value);
-                this.OnPropertyChanged("msdyn_HasCorrections");
-            }
-        }
-
-        /// <summary>
-        /// Document date of the Invoice for use in calculation of payment due date
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_invoicedate")]
-        public System.Nullable<System.DateTime> msdyn_InvoiceDate
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("msdyn_invoicedate");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_InvoiceDate");
-                this.SetAttributeValue("msdyn_invoicedate", value);
-                this.OnPropertyChanged("msdyn_InvoiceDate");
-            }
-        }
-
-        /// <summary>
-        /// Whether the Invoice is for an Item-based or a service maintainence-based sale
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_ordertype")]
-        public Microsoft.Xrm.Sdk.OptionSetValue msdyn_OrderType
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("msdyn_ordertype");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_OrderType");
-                this.SetAttributeValue("msdyn_ordertype", value);
-                this.OnPropertyChanged("msdyn_OrderType");
-            }
-        }
-
-        /// <summary>
-        /// Project specific status
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_projectinvoicestatus")]
-        public Microsoft.Xrm.Sdk.OptionSetValue msdyn_projectinvoicestatus
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("msdyn_projectinvoicestatus");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_projectinvoicestatus");
-                this.SetAttributeValue("msdyn_projectinvoicestatus", value);
-                this.OnPropertyChanged("msdyn_projectinvoicestatus");
-            }
-        }
-
-        /// <summary>
-        /// Type a descriptive name for the invoice.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
-        public string Name
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("name");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Name");
-                this.SetAttributeValue("name", value);
-                this.OnPropertyChanged("Name");
-            }
-        }
-
-        /// <summary>
-        /// Shows the duration in minutes for which the invoice was on hold.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("onholdtime")]
-        public System.Nullable<int> OnHoldTime
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("onholdtime");
-            }
-        }
-
-        /// <summary>
-        /// Choose the opportunity that the invoice is related to for reporting and analytics.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("opportunityid")]
-        public Microsoft.Xrm.Sdk.EntityReference OpportunityId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("opportunityid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("OpportunityId");
-                this.SetAttributeValue("opportunityid", value);
-                this.OnPropertyChanged("OpportunityId");
-            }
-        }
-
-        /// <summary>
-        /// Date and time that the record was migrated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
-        public System.Nullable<System.DateTime> OverriddenCreatedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("OverriddenCreatedOn");
-                this.SetAttributeValue("overriddencreatedon", value);
-                this.OnPropertyChanged("OverriddenCreatedOn");
-            }
-        }
-
-        /// <summary>
-        /// Owner Id
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
-        public Microsoft.Xrm.Sdk.EntityReference OwnerId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("OwnerId");
-                this.SetAttributeValue("ownerid", value);
-                this.OnPropertyChanged("OwnerId");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for the business unit that owns the record
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for the team that owns the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningTeam
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for the user that owns the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningUser
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
-            }
-        }
-
-        /// <summary>
-        /// Select the payment terms to indicate when the customer needs to pay the total amount.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("paymenttermscode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue PaymentTermsCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("paymenttermscode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("PaymentTermsCode");
-                this.SetAttributeValue("paymenttermscode", value);
-                this.OnPropertyChanged("PaymentTermsCode");
-            }
-        }
-
-        /// <summary>
-        /// Choose the price list associated with this record to make sure the products associated with the campaign are offered at the correct prices.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pricelevelid")]
-        public Microsoft.Xrm.Sdk.EntityReference PriceLevelId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("pricelevelid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("PriceLevelId");
-                this.SetAttributeValue("pricelevelid", value);
-                this.OnPropertyChanged("PriceLevelId");
-            }
-        }
-
-        /// <summary>
-        /// Type of pricing error for the invoice.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pricingerrorcode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue PricingErrorCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("pricingerrorcode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("PricingErrorCode");
-                this.SetAttributeValue("pricingerrorcode", value);
-                this.OnPropertyChanged("PricingErrorCode");
-            }
-        }
-
-        /// <summary>
-        /// Select the priority so that preferred customers or critical issues are handled quickly.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("prioritycode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue PriorityCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("prioritycode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("PriorityCode");
-                this.SetAttributeValue("prioritycode", value);
-                this.OnPropertyChanged("PriorityCode");
-            }
-        }
-
-        /// <summary>
-        /// Contains the id of the process associated with the entity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processid")]
-        public System.Nullable<System.Guid> ProcessId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("processid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ProcessId");
-                this.SetAttributeValue("processid", value);
-                this.OnPropertyChanged("ProcessId");
-            }
-        }
-
-        /// <summary>
-        /// Choose the order related to the invoice to make sure the order is fulfilled and invoiced correctly.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salesorderid")]
-        public Microsoft.Xrm.Sdk.EntityReference SalesOrderId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("salesorderid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("SalesOrderId");
-                this.SetAttributeValue("salesorderid", value);
-                this.OnPropertyChanged("SalesOrderId");
-            }
-        }
-
-        /// <summary>
-        /// Select a shipping method for deliveries sent to this address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shippingmethodcode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue ShippingMethodCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("shippingmethodcode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ShippingMethodCode");
-                this.SetAttributeValue("shippingmethodcode", value);
-                this.OnPropertyChanged("ShippingMethodCode");
-            }
-        }
-
-        /// <summary>
-        /// Type the city for the customer's shipping address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_city")]
-        public string ShipTo_City
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("shipto_city");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ShipTo_City");
-                this.SetAttributeValue("shipto_city", value);
-                this.OnPropertyChanged("ShipTo_City");
-            }
-        }
-
-        /// <summary>
-        /// Shows the complete Ship To address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_composite")]
-        public string ShipTo_Composite
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("shipto_composite");
-            }
-        }
-
-        /// <summary>
-        /// Type the country or region for the customer's shipping address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_country")]
-        public string ShipTo_Country
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("shipto_country");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ShipTo_Country");
-                this.SetAttributeValue("shipto_country", value);
-                this.OnPropertyChanged("ShipTo_Country");
-            }
-        }
-
-        /// <summary>
-        /// Type the fax number for the customer's shipping address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_fax")]
-        public string ShipTo_Fax
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("shipto_fax");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ShipTo_Fax");
-                this.SetAttributeValue("shipto_fax", value);
-                this.OnPropertyChanged("ShipTo_Fax");
-            }
-        }
-
-        /// <summary>
-        /// Select the freight terms to make sure shipping orders are processed correctly.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_freighttermscode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue ShipTo_FreightTermsCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("shipto_freighttermscode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ShipTo_FreightTermsCode");
-                this.SetAttributeValue("shipto_freighttermscode", value);
-                this.OnPropertyChanged("ShipTo_FreightTermsCode");
-            }
-        }
-
-        /// <summary>
-        /// Type the first line of the customer's shipping address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_line1")]
-        public string ShipTo_Line1
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("shipto_line1");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ShipTo_Line1");
-                this.SetAttributeValue("shipto_line1", value);
-                this.OnPropertyChanged("ShipTo_Line1");
-            }
-        }
-
-        /// <summary>
-        /// Type the second line of the customer's shipping address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_line2")]
-        public string ShipTo_Line2
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("shipto_line2");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ShipTo_Line2");
-                this.SetAttributeValue("shipto_line2", value);
-                this.OnPropertyChanged("ShipTo_Line2");
-            }
-        }
-
-        /// <summary>
-        /// Type the third line of the shipping address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_line3")]
-        public string ShipTo_Line3
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("shipto_line3");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ShipTo_Line3");
-                this.SetAttributeValue("shipto_line3", value);
-                this.OnPropertyChanged("ShipTo_Line3");
-            }
-        }
-
-        /// <summary>
-        /// Type a name for the customer's shipping address, such as "Headquarters" or "Field office",  to identify the address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_name")]
-        public string ShipTo_Name
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("shipto_name");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ShipTo_Name");
-                this.SetAttributeValue("shipto_name", value);
-                this.OnPropertyChanged("ShipTo_Name");
-            }
-        }
-
-        /// <summary>
-        /// Type the ZIP Code or postal code for the shipping address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_postalcode")]
-        public string ShipTo_PostalCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("shipto_postalcode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ShipTo_PostalCode");
-                this.SetAttributeValue("shipto_postalcode", value);
-                this.OnPropertyChanged("ShipTo_PostalCode");
-            }
-        }
-
-        /// <summary>
-        /// Type the state or province for the shipping address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_stateorprovince")]
-        public string ShipTo_StateOrProvince
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("shipto_stateorprovince");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ShipTo_StateOrProvince");
-                this.SetAttributeValue("shipto_stateorprovince", value);
-                this.OnPropertyChanged("ShipTo_StateOrProvince");
-            }
-        }
-
-        /// <summary>
-        /// Type the phone number for the customer's shipping address.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_telephone")]
-        public string ShipTo_Telephone
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("shipto_telephone");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ShipTo_Telephone");
-                this.SetAttributeValue("shipto_telephone", value);
-                this.OnPropertyChanged("ShipTo_Telephone");
-            }
-        }
-
-        /// <summary>
-        /// Choose the service level agreement (SLA) that you want to apply to the invoice record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slaid")]
-        public Microsoft.Xrm.Sdk.EntityReference SLAId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("slaid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("SLAId");
-                this.SetAttributeValue("slaid", value);
-                this.OnPropertyChanged("SLAId");
-            }
-        }
-
-        /// <summary>
-        /// Last SLA that was applied to this invoice. This field is for internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slainvokedid")]
-        public Microsoft.Xrm.Sdk.EntityReference SLAInvokedId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("slainvokedid");
-            }
-        }
-
-        /// <summary>
-        /// Contains the id of the stage where the entity is located.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
-        public System.Nullable<System.Guid> StageId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("stageid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("StageId");
-                this.SetAttributeValue("stageid", value);
-                this.OnPropertyChanged("StageId");
-            }
-        }
-
-        /// <summary>
-        /// Shows whether the invoice is active, paid, or canceled. Paid and canceled invoices are read-only and can't be edited unless they are reactivated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-        public System.Nullable<CrmEarlyBound.InvoiceState> StateCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
-                if ((optionSet != null))
-                {
-                    return ((CrmEarlyBound.InvoiceState)(System.Enum.ToObject(typeof(CrmEarlyBound.InvoiceState), optionSet.Value)));
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("StateCode");
-                if ((value == null))
-                {
-                    this.SetAttributeValue("statecode", null);
-                }
-                else
-                {
-                    this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
-                }
-                this.OnPropertyChanged("StateCode");
-            }
-        }
-
-        /// <summary>
-        /// Select the invoice's status.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("StatusCode");
-                this.SetAttributeValue("statuscode", value);
-                this.OnPropertyChanged("StatusCode");
-            }
-        }
-
-        /// <summary>
-        /// For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
-        public System.Nullable<int> TimeZoneRuleVersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TimeZoneRuleVersionNumber");
-                this.SetAttributeValue("timezoneruleversionnumber", value);
-                this.OnPropertyChanged("TimeZoneRuleVersionNumber");
-            }
-        }
-
-        /// <summary>
-        /// Shows the total amount due, calculated as the sum of the products, discount, freight, and taxes for the invoice.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totalamount")]
-        public Microsoft.Xrm.Sdk.Money TotalAmount
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totalamount");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TotalAmount");
-                this.SetAttributeValue("totalamount", value);
-                this.OnPropertyChanged("TotalAmount");
-            }
-        }
-
-        /// <summary>
-        /// Value of the Total Amount in base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totalamount_base")]
-        public Microsoft.Xrm.Sdk.Money TotalAmount_Base
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totalamount_base");
-            }
-        }
-
-        /// <summary>
-        /// Shows the total product amount due, minus any discounts. This value is added to freight and tax amounts in the calculation for the total amount due for the invoice.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totalamountlessfreight")]
-        public Microsoft.Xrm.Sdk.Money TotalAmountLessFreight
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totalamountlessfreight");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TotalAmountLessFreight");
-                this.SetAttributeValue("totalamountlessfreight", value);
-                this.OnPropertyChanged("TotalAmountLessFreight");
-            }
-        }
-
-        /// <summary>
-        /// Value of the Total Pre-Freight Amount in base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totalamountlessfreight_base")]
-        public Microsoft.Xrm.Sdk.Money TotalAmountLessFreight_Base
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totalamountlessfreight_base");
-            }
-        }
-
-        /// <summary>
-        /// Shows the total discount amount, based on the discount price and rate entered on the invoice.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totaldiscountamount")]
-        public Microsoft.Xrm.Sdk.Money TotalDiscountAmount
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totaldiscountamount");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TotalDiscountAmount");
-                this.SetAttributeValue("totaldiscountamount", value);
-                this.OnPropertyChanged("TotalDiscountAmount");
-            }
-        }
-
-        /// <summary>
-        /// Value of the Total Discount Amount in base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totaldiscountamount_base")]
-        public Microsoft.Xrm.Sdk.Money TotalDiscountAmount_Base
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totaldiscountamount_base");
-            }
-        }
-
-        /// <summary>
-        /// Shows the sum of all existing and write-in products included on the invoice, based on the specified price list and quantities.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totallineitemamount")]
-        public Microsoft.Xrm.Sdk.Money TotalLineItemAmount
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totallineitemamount");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TotalLineItemAmount");
-                this.SetAttributeValue("totallineitemamount", value);
-                this.OnPropertyChanged("TotalLineItemAmount");
-            }
-        }
-
-        /// <summary>
-        /// Value of the Total Detail Amount in base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totallineitemamount_base")]
-        public Microsoft.Xrm.Sdk.Money TotalLineItemAmount_Base
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totallineitemamount_base");
-            }
-        }
-
-        /// <summary>
-        /// Shows the Manual Discount amounts specified on all products included in the invoice. This value is reflected in the Detail Amount field on the invoice and is added to any discount amount or rate specified on the invoice.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totallineitemdiscountamount")]
-        public Microsoft.Xrm.Sdk.Money TotalLineItemDiscountAmount
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totallineitemdiscountamount");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TotalLineItemDiscountAmount");
-                this.SetAttributeValue("totallineitemdiscountamount", value);
-                this.OnPropertyChanged("TotalLineItemDiscountAmount");
-            }
-        }
-
-        /// <summary>
-        /// Value of the Total Line Item Discount Amount in base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totallineitemdiscountamount_base")]
-        public Microsoft.Xrm.Sdk.Money TotalLineItemDiscountAmount_Base
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totallineitemdiscountamount_base");
-            }
-        }
-
-        /// <summary>
-        /// Shows the total of the Tax amounts specified on all products included in the invoice, included in the Total Amount due calculation for the invoice.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totaltax")]
-        public Microsoft.Xrm.Sdk.Money TotalTax
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totaltax");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TotalTax");
-                this.SetAttributeValue("totaltax", value);
-                this.OnPropertyChanged("TotalTax");
-            }
-        }
-
-        /// <summary>
-        /// Value of the Total Tax in base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totaltax_base")]
-        public Microsoft.Xrm.Sdk.Money TotalTax_Base
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totaltax_base");
-            }
-        }
-
-        /// <summary>
-        /// Choose the local currency for the record to make sure budgets are reported in the correct currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
-        public Microsoft.Xrm.Sdk.EntityReference TransactionCurrencyId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("transactioncurrencyid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TransactionCurrencyId");
-                this.SetAttributeValue("transactioncurrencyid", value);
-                this.OnPropertyChanged("TransactionCurrencyId");
-            }
-        }
-
-        /// <summary>
-        /// A comma separated list of string values representing the unique identifiers of stages in a Business Process Flow Instance in the order that they occur.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("traversedpath")]
-        public string TraversedPath
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("traversedpath");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TraversedPath");
-                this.SetAttributeValue("traversedpath", value);
-                this.OnPropertyChanged("TraversedPath");
-            }
-        }
-
-        /// <summary>
-        /// Time zone code that was in use when the record was created.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
-        public System.Nullable<int> UTCConversionTimeZoneCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("UTCConversionTimeZoneCode");
-                this.SetAttributeValue("utcconversiontimezonecode", value);
-                this.OnPropertyChanged("UTCConversionTimeZoneCode");
-            }
-        }
-
-        /// <summary>
-        /// Version Number
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
-        public System.Nullable<long> VersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
-            }
-        }
-
-        /// <summary>
-        /// Select whether the products included in the invoice should be shipped to the specified address or held until the customer calls with further pick up or delivery instructions.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("willcall")]
-        public System.Nullable<bool> WillCall
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("willcall");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("WillCall");
-                this.SetAttributeValue("willcall", value);
-                this.OnPropertyChanged("WillCall");
-            }
-        }
-
-        /// <summary>
-        /// 1:N invoice_activity_parties
-        /// </summary>
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoice_activity_parties")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> invoice_activity_parties
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntities<CrmEarlyBound.ActivityParty>("invoice_activity_parties", null);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("invoice_activity_parties");
-                this.SetRelatedEntities<CrmEarlyBound.ActivityParty>("invoice_activity_parties", null, value);
-                this.OnPropertyChanged("invoice_activity_parties");
-            }
-        }
-
-        /// <summary>
-        /// 1:N invoice_msdyn_approvals
-        /// </summary>
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoice_msdyn_approvals")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_approval> invoice_msdyn_approvals
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntities<CrmEarlyBound.msdyn_approval>("invoice_msdyn_approvals", null);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("invoice_msdyn_approvals");
-                this.SetRelatedEntities<CrmEarlyBound.msdyn_approval>("invoice_msdyn_approvals", null, value);
-                this.OnPropertyChanged("invoice_msdyn_approvals");
-            }
-        }
-
-        /// <summary>
-        /// Constructor for populating via LINQ queries given a LINQ anonymous type
-        /// <param name="anonymousType">LINQ anonymous type.</param>
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public Invoice(object anonymousType) :
-                this()
-        {
+		}
+		
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public enum InvoiceState
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Closed = 1,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Paid = 2,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Canceled = 3,
+	}
+	
+	/// <summary>
+	/// Order that has been billed.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("invoice")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public partial class Invoice : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public Invoice() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "invoice";
+		
+		public const string PrimaryIdAttribute = "invoiceid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const int EntityTypeCode = 1090;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the account with which the invoice is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountid")]
+		public Microsoft.Xrm.Sdk.EntityReference AccountId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("accountid");
+			}
+		}
+		
+		/// <summary>
+		/// Type the city for the customer's billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_city")]
+		public string BillTo_City
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_city");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_City");
+				this.SetAttributeValue("billto_city", value);
+				this.OnPropertyChanged("BillTo_City");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the complete Bill To address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_composite")]
+		public string BillTo_Composite
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_composite");
+			}
+		}
+		
+		/// <summary>
+		/// Type the country or region for the customer's billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_country")]
+		public string BillTo_Country
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_country");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_Country");
+				this.SetAttributeValue("billto_country", value);
+				this.OnPropertyChanged("BillTo_Country");
+			}
+		}
+		
+		/// <summary>
+		/// Type the fax number for the customer's billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_fax")]
+		public string BillTo_Fax
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_fax");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_Fax");
+				this.SetAttributeValue("billto_fax", value);
+				this.OnPropertyChanged("BillTo_Fax");
+			}
+		}
+		
+		/// <summary>
+		/// Type the first line of the customer's billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_line1")]
+		public string BillTo_Line1
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_line1");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_Line1");
+				this.SetAttributeValue("billto_line1", value);
+				this.OnPropertyChanged("BillTo_Line1");
+			}
+		}
+		
+		/// <summary>
+		/// Type the second line of the customer's billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_line2")]
+		public string BillTo_Line2
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_line2");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_Line2");
+				this.SetAttributeValue("billto_line2", value);
+				this.OnPropertyChanged("BillTo_Line2");
+			}
+		}
+		
+		/// <summary>
+		/// Type the third line of the billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_line3")]
+		public string BillTo_Line3
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_line3");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_Line3");
+				this.SetAttributeValue("billto_line3", value);
+				this.OnPropertyChanged("BillTo_Line3");
+			}
+		}
+		
+		/// <summary>
+		/// Type a name for the customer's billing address, such as "Headquarters" or "Field office", to identify the address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_name")]
+		public string BillTo_Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_Name");
+				this.SetAttributeValue("billto_name", value);
+				this.OnPropertyChanged("BillTo_Name");
+			}
+		}
+		
+		/// <summary>
+		/// Type the ZIP Code or postal code for the billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_postalcode")]
+		public string BillTo_PostalCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_postalcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_PostalCode");
+				this.SetAttributeValue("billto_postalcode", value);
+				this.OnPropertyChanged("BillTo_PostalCode");
+			}
+		}
+		
+		/// <summary>
+		/// Type the state or province for the billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_stateorprovince")]
+		public string BillTo_StateOrProvince
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_stateorprovince");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_StateOrProvince");
+				this.SetAttributeValue("billto_stateorprovince", value);
+				this.OnPropertyChanged("BillTo_StateOrProvince");
+			}
+		}
+		
+		/// <summary>
+		/// Type the phone number for the customer's billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_telephone")]
+		public string BillTo_Telephone
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_telephone");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_Telephone");
+				this.SetAttributeValue("billto_telephone", value);
+				this.OnPropertyChanged("BillTo_Telephone");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the contact associated with the invoice.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contactid")]
+		public Microsoft.Xrm.Sdk.EntityReference ContactId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("contactid");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who created the record on behalf of another user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Select the customer account or contact to provide a quick link to additional customer details, such as account information, activities, and opportunities.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
+		public Microsoft.Xrm.Sdk.EntityReference CustomerId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("customerid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CustomerId");
+				this.SetAttributeValue("customerid", value);
+				this.OnPropertyChanged("CustomerId");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the date when the products included in the invoice were delivered.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("datedelivered")]
+		public System.Nullable<System.DateTime> DateDelivered
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("datedelivered");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("DateDelivered");
+				this.SetAttributeValue("datedelivered", value);
+				this.OnPropertyChanged("DateDelivered");
+			}
+		}
+		
+		/// <summary>
+		/// Type additional information to describe the invoice, such as shipping details or product substitutions.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("description");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Description");
+				this.SetAttributeValue("description", value);
+				this.OnPropertyChanged("Description");
+			}
+		}
+		
+		/// <summary>
+		/// Type the discount amount for the invoice if the customer is eligible for special savings.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("discountamount")]
+		public Microsoft.Xrm.Sdk.Money DiscountAmount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("discountamount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("DiscountAmount");
+				this.SetAttributeValue("discountamount", value);
+				this.OnPropertyChanged("DiscountAmount");
+			}
+		}
+		
+		/// <summary>
+		/// Value of the Invoice Discount Amount in base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("discountamount_base")]
+		public Microsoft.Xrm.Sdk.Money DiscountAmount_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("discountamount_base");
+			}
+		}
+		
+		/// <summary>
+		/// Type the discount rate that should be applied to the Detail Amount field, for use in calculating the Pre-Freight Amount and Total Amount values for the invoice.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("discountpercentage")]
+		public System.Nullable<decimal> DiscountPercentage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<decimal>>("discountpercentage");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("DiscountPercentage");
+				this.SetAttributeValue("discountpercentage", value);
+				this.OnPropertyChanged("DiscountPercentage");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the date by which the invoice should be paid by the customer.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("duedate")]
+		public System.Nullable<System.DateTime> DueDate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("duedate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("DueDate");
+				this.SetAttributeValue("duedate", value);
+				this.OnPropertyChanged("DueDate");
+			}
+		}
+		
+		/// <summary>
+		/// The primary email address for the entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailaddress")]
+		public string EmailAddress
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("emailaddress");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EmailAddress");
+				this.SetAttributeValue("emailaddress", value);
+				this.OnPropertyChanged("EmailAddress");
+			}
+		}
+		
+		/// <summary>
+		/// The default image for the entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage")]
+		public byte[] EntityImage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<byte[]>("entityimage");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EntityImage");
+				this.SetAttributeValue("entityimage", value);
+				this.OnPropertyChanged("EntityImage");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage_timestamp")]
+		public System.Nullable<long> EntityImage_Timestamp
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("entityimage_timestamp");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage_url")]
+		public string EntityImage_URL
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("entityimage_url");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimageid")]
+		public System.Nullable<System.Guid> EntityImageId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("entityimageid");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the conversion rate of the record's currency. The exchange rate is used to convert all money fields in the record from the local currency to the system's default currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangerate")]
+		public System.Nullable<decimal> ExchangeRate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
+			}
+		}
+		
+		/// <summary>
+		/// Type the cost of freight or shipping for the products included in the invoice for use in calculating the total amount due.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("freightamount")]
+		public Microsoft.Xrm.Sdk.Money FreightAmount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("freightamount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("FreightAmount");
+				this.SetAttributeValue("freightamount", value);
+				this.OnPropertyChanged("FreightAmount");
+			}
+		}
+		
+		/// <summary>
+		/// Value of the Freight Amount in base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("freightamount_base")]
+		public Microsoft.Xrm.Sdk.Money FreightAmount_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("freightamount_base");
+			}
+		}
+		
+		/// <summary>
+		/// Sequence number of the import that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ImportSequenceNumber");
+				this.SetAttributeValue("importsequencenumber", value);
+				this.OnPropertyChanged("ImportSequenceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the invoice.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("invoiceid")]
+		public System.Nullable<System.Guid> InvoiceId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("invoiceid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("InvoiceId");
+				this.SetAttributeValue("invoiceid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("InvoiceId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("invoiceid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.InvoiceId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Shows the identifying number or code of the invoice.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("invoicenumber")]
+		public string InvoiceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("invoicenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("InvoiceNumber");
+				this.SetAttributeValue("invoicenumber", value);
+				this.OnPropertyChanged("InvoiceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Select whether prices specified on the invoice are locked from any further updates.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ispricelocked")]
+		public System.Nullable<bool> IsPriceLocked
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ispricelocked");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsPriceLocked");
+				this.SetAttributeValue("ispricelocked", value);
+				this.OnPropertyChanged("IsPriceLocked");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the date and time when the invoice was last submitted to an accounting or ERP system for processing.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastbackofficesubmit")]
+		public System.Nullable<System.DateTime> LastBackofficeSubmit
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("lastbackofficesubmit");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("LastBackofficeSubmit");
+				this.SetAttributeValue("lastbackofficesubmit", value);
+				this.OnPropertyChanged("LastBackofficeSubmit");
+			}
+		}
+		
+		/// <summary>
+		/// Contains the date time stamp of the last on hold time.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastonholdtime")]
+		public System.Nullable<System.DateTime> LastOnHoldTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("lastonholdtime");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("LastOnHoldTime");
+				this.SetAttributeValue("lastonholdtime", value);
+				this.OnPropertyChanged("LastOnHoldTime");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who last updated the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who last updated the record on behalf of another user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the amount due on this invoice.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_amountdue")]
+		public Microsoft.Xrm.Sdk.Money msdyn_AmountDue
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("msdyn_amountdue");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_AmountDue");
+				this.SetAttributeValue("msdyn_amountdue", value);
+				this.OnPropertyChanged("msdyn_AmountDue");
+			}
+		}
+		
+		/// <summary>
+		/// Value of the Amount Due in base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_amountdue_base")]
+		public Microsoft.Xrm.Sdk.Money msdyn_amountdue_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("msdyn_amountdue_base");
+			}
+		}
+		
+		/// <summary>
+		/// Indicates if this invoice contains corrections to previous invoices.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_hascorrections")]
+		public System.Nullable<bool> msdyn_HasCorrections
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_hascorrections");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_HasCorrections");
+				this.SetAttributeValue("msdyn_hascorrections", value);
+				this.OnPropertyChanged("msdyn_HasCorrections");
+			}
+		}
+		
+		/// <summary>
+		/// Document date of the Invoice for use in calculation of payment due date
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_invoicedate")]
+		public System.Nullable<System.DateTime> msdyn_InvoiceDate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("msdyn_invoicedate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_InvoiceDate");
+				this.SetAttributeValue("msdyn_invoicedate", value);
+				this.OnPropertyChanged("msdyn_InvoiceDate");
+			}
+		}
+		
+		/// <summary>
+		/// Whether the Invoice is for an Item-based or a service maintainence-based sale
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_ordertype")]
+		public Microsoft.Xrm.Sdk.OptionSetValue msdyn_OrderType
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("msdyn_ordertype");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_OrderType");
+				this.SetAttributeValue("msdyn_ordertype", value);
+				this.OnPropertyChanged("msdyn_OrderType");
+			}
+		}
+		
+		/// <summary>
+		/// Project specific status
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_projectinvoicestatus")]
+		public Microsoft.Xrm.Sdk.OptionSetValue msdyn_projectinvoicestatus
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("msdyn_projectinvoicestatus");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_projectinvoicestatus");
+				this.SetAttributeValue("msdyn_projectinvoicestatus", value);
+				this.OnPropertyChanged("msdyn_projectinvoicestatus");
+			}
+		}
+		
+		/// <summary>
+		/// Type a descriptive name for the invoice.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the duration in minutes for which the invoice was on hold.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("onholdtime")]
+		public System.Nullable<int> OnHoldTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("onholdtime");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the opportunity that the invoice is related to for reporting and analytics.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("opportunityid")]
+		public Microsoft.Xrm.Sdk.EntityReference OpportunityId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("opportunityid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OpportunityId");
+				this.SetAttributeValue("opportunityid", value);
+				this.OnPropertyChanged("OpportunityId");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// Owner Id
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
+		public Microsoft.Xrm.Sdk.EntityReference OwnerId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OwnerId");
+				this.SetAttributeValue("ownerid", value);
+				this.OnPropertyChanged("OwnerId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the business unit that owns the record
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the team that owns the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningTeam
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the user that owns the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningUser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
+			}
+		}
+		
+		/// <summary>
+		/// Select the payment terms to indicate when the customer needs to pay the total amount.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("paymenttermscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue PaymentTermsCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("paymenttermscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PaymentTermsCode");
+				this.SetAttributeValue("paymenttermscode", value);
+				this.OnPropertyChanged("PaymentTermsCode");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the price list associated with this record to make sure the products associated with the campaign are offered at the correct prices.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pricelevelid")]
+		public Microsoft.Xrm.Sdk.EntityReference PriceLevelId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("pricelevelid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PriceLevelId");
+				this.SetAttributeValue("pricelevelid", value);
+				this.OnPropertyChanged("PriceLevelId");
+			}
+		}
+		
+		/// <summary>
+		/// Type of pricing error for the invoice.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pricingerrorcode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue PricingErrorCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("pricingerrorcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PricingErrorCode");
+				this.SetAttributeValue("pricingerrorcode", value);
+				this.OnPropertyChanged("PricingErrorCode");
+			}
+		}
+		
+		/// <summary>
+		/// Select the priority so that preferred customers or critical issues are handled quickly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("prioritycode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue PriorityCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("prioritycode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PriorityCode");
+				this.SetAttributeValue("prioritycode", value);
+				this.OnPropertyChanged("PriorityCode");
+			}
+		}
+		
+		/// <summary>
+		/// Contains the id of the process associated with the entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processid")]
+		public System.Nullable<System.Guid> ProcessId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("processid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ProcessId");
+				this.SetAttributeValue("processid", value);
+				this.OnPropertyChanged("ProcessId");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the order related to the invoice to make sure the order is fulfilled and invoiced correctly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salesorderid")]
+		public Microsoft.Xrm.Sdk.EntityReference SalesOrderId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("salesorderid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SalesOrderId");
+				this.SetAttributeValue("salesorderid", value);
+				this.OnPropertyChanged("SalesOrderId");
+			}
+		}
+		
+		/// <summary>
+		/// Select a shipping method for deliveries sent to this address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shippingmethodcode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ShippingMethodCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("shippingmethodcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShippingMethodCode");
+				this.SetAttributeValue("shippingmethodcode", value);
+				this.OnPropertyChanged("ShippingMethodCode");
+			}
+		}
+		
+		/// <summary>
+		/// Type the city for the customer's shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_city")]
+		public string ShipTo_City
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_city");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_City");
+				this.SetAttributeValue("shipto_city", value);
+				this.OnPropertyChanged("ShipTo_City");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the complete Ship To address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_composite")]
+		public string ShipTo_Composite
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_composite");
+			}
+		}
+		
+		/// <summary>
+		/// Type the country or region for the customer's shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_country")]
+		public string ShipTo_Country
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_country");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_Country");
+				this.SetAttributeValue("shipto_country", value);
+				this.OnPropertyChanged("ShipTo_Country");
+			}
+		}
+		
+		/// <summary>
+		/// Type the fax number for the customer's shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_fax")]
+		public string ShipTo_Fax
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_fax");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_Fax");
+				this.SetAttributeValue("shipto_fax", value);
+				this.OnPropertyChanged("ShipTo_Fax");
+			}
+		}
+		
+		/// <summary>
+		/// Select the freight terms to make sure shipping orders are processed correctly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_freighttermscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ShipTo_FreightTermsCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("shipto_freighttermscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_FreightTermsCode");
+				this.SetAttributeValue("shipto_freighttermscode", value);
+				this.OnPropertyChanged("ShipTo_FreightTermsCode");
+			}
+		}
+		
+		/// <summary>
+		/// Type the first line of the customer's shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_line1")]
+		public string ShipTo_Line1
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_line1");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_Line1");
+				this.SetAttributeValue("shipto_line1", value);
+				this.OnPropertyChanged("ShipTo_Line1");
+			}
+		}
+		
+		/// <summary>
+		/// Type the second line of the customer's shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_line2")]
+		public string ShipTo_Line2
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_line2");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_Line2");
+				this.SetAttributeValue("shipto_line2", value);
+				this.OnPropertyChanged("ShipTo_Line2");
+			}
+		}
+		
+		/// <summary>
+		/// Type the third line of the shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_line3")]
+		public string ShipTo_Line3
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_line3");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_Line3");
+				this.SetAttributeValue("shipto_line3", value);
+				this.OnPropertyChanged("ShipTo_Line3");
+			}
+		}
+		
+		/// <summary>
+		/// Type a name for the customer's shipping address, such as "Headquarters" or "Field office",  to identify the address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_name")]
+		public string ShipTo_Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_Name");
+				this.SetAttributeValue("shipto_name", value);
+				this.OnPropertyChanged("ShipTo_Name");
+			}
+		}
+		
+		/// <summary>
+		/// Type the ZIP Code or postal code for the shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_postalcode")]
+		public string ShipTo_PostalCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_postalcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_PostalCode");
+				this.SetAttributeValue("shipto_postalcode", value);
+				this.OnPropertyChanged("ShipTo_PostalCode");
+			}
+		}
+		
+		/// <summary>
+		/// Type the state or province for the shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_stateorprovince")]
+		public string ShipTo_StateOrProvince
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_stateorprovince");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_StateOrProvince");
+				this.SetAttributeValue("shipto_stateorprovince", value);
+				this.OnPropertyChanged("ShipTo_StateOrProvince");
+			}
+		}
+		
+		/// <summary>
+		/// Type the phone number for the customer's shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_telephone")]
+		public string ShipTo_Telephone
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_telephone");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_Telephone");
+				this.SetAttributeValue("shipto_telephone", value);
+				this.OnPropertyChanged("ShipTo_Telephone");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the service level agreement (SLA) that you want to apply to the invoice record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slaid")]
+		public Microsoft.Xrm.Sdk.EntityReference SLAId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("slaid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SLAId");
+				this.SetAttributeValue("slaid", value);
+				this.OnPropertyChanged("SLAId");
+			}
+		}
+		
+		/// <summary>
+		/// Last SLA that was applied to this invoice. This field is for internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slainvokedid")]
+		public Microsoft.Xrm.Sdk.EntityReference SLAInvokedId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("slainvokedid");
+			}
+		}
+		
+		/// <summary>
+		/// Contains the id of the stage where the entity is located.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
+		public System.Nullable<System.Guid> StageId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("stageid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StageId");
+				this.SetAttributeValue("stageid", value);
+				this.OnPropertyChanged("StageId");
+			}
+		}
+		
+		/// <summary>
+		/// Shows whether the invoice is active, paid, or canceled. Paid and canceled invoices are read-only and can't be edited unless they are reactivated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public System.Nullable<CrmEarlyBound.InvoiceState> StateCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+				if ((optionSet != null))
+				{
+					return ((CrmEarlyBound.InvoiceState)(System.Enum.ToObject(typeof(CrmEarlyBound.InvoiceState), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StateCode");
+				if ((value == null))
+				{
+					this.SetAttributeValue("statecode", null);
+				}
+				else
+				{
+					this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
+				}
+				this.OnPropertyChanged("StateCode");
+			}
+		}
+		
+		/// <summary>
+		/// Select the invoice's status.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TimeZoneRuleVersionNumber");
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+				this.OnPropertyChanged("TimeZoneRuleVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the total amount due, calculated as the sum of the products, discount, freight, and taxes for the invoice.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totalamount")]
+		public Microsoft.Xrm.Sdk.Money TotalAmount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totalamount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TotalAmount");
+				this.SetAttributeValue("totalamount", value);
+				this.OnPropertyChanged("TotalAmount");
+			}
+		}
+		
+		/// <summary>
+		/// Value of the Total Amount in base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totalamount_base")]
+		public Microsoft.Xrm.Sdk.Money TotalAmount_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totalamount_base");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the total product amount due, minus any discounts. This value is added to freight and tax amounts in the calculation for the total amount due for the invoice.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totalamountlessfreight")]
+		public Microsoft.Xrm.Sdk.Money TotalAmountLessFreight
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totalamountlessfreight");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TotalAmountLessFreight");
+				this.SetAttributeValue("totalamountlessfreight", value);
+				this.OnPropertyChanged("TotalAmountLessFreight");
+			}
+		}
+		
+		/// <summary>
+		/// Value of the Total Pre-Freight Amount in base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totalamountlessfreight_base")]
+		public Microsoft.Xrm.Sdk.Money TotalAmountLessFreight_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totalamountlessfreight_base");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the total discount amount, based on the discount price and rate entered on the invoice.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totaldiscountamount")]
+		public Microsoft.Xrm.Sdk.Money TotalDiscountAmount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totaldiscountamount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TotalDiscountAmount");
+				this.SetAttributeValue("totaldiscountamount", value);
+				this.OnPropertyChanged("TotalDiscountAmount");
+			}
+		}
+		
+		/// <summary>
+		/// Value of the Total Discount Amount in base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totaldiscountamount_base")]
+		public Microsoft.Xrm.Sdk.Money TotalDiscountAmount_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totaldiscountamount_base");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the sum of all existing and write-in products included on the invoice, based on the specified price list and quantities.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totallineitemamount")]
+		public Microsoft.Xrm.Sdk.Money TotalLineItemAmount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totallineitemamount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TotalLineItemAmount");
+				this.SetAttributeValue("totallineitemamount", value);
+				this.OnPropertyChanged("TotalLineItemAmount");
+			}
+		}
+		
+		/// <summary>
+		/// Value of the Total Detail Amount in base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totallineitemamount_base")]
+		public Microsoft.Xrm.Sdk.Money TotalLineItemAmount_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totallineitemamount_base");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the Manual Discount amounts specified on all products included in the invoice. This value is reflected in the Detail Amount field on the invoice and is added to any discount amount or rate specified on the invoice.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totallineitemdiscountamount")]
+		public Microsoft.Xrm.Sdk.Money TotalLineItemDiscountAmount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totallineitemdiscountamount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TotalLineItemDiscountAmount");
+				this.SetAttributeValue("totallineitemdiscountamount", value);
+				this.OnPropertyChanged("TotalLineItemDiscountAmount");
+			}
+		}
+		
+		/// <summary>
+		/// Value of the Total Line Item Discount Amount in base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totallineitemdiscountamount_base")]
+		public Microsoft.Xrm.Sdk.Money TotalLineItemDiscountAmount_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totallineitemdiscountamount_base");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the total of the Tax amounts specified on all products included in the invoice, included in the Total Amount due calculation for the invoice.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totaltax")]
+		public Microsoft.Xrm.Sdk.Money TotalTax
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totaltax");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TotalTax");
+				this.SetAttributeValue("totaltax", value);
+				this.OnPropertyChanged("TotalTax");
+			}
+		}
+		
+		/// <summary>
+		/// Value of the Total Tax in base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totaltax_base")]
+		public Microsoft.Xrm.Sdk.Money TotalTax_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totaltax_base");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the local currency for the record to make sure budgets are reported in the correct currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
+		public Microsoft.Xrm.Sdk.EntityReference TransactionCurrencyId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("transactioncurrencyid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TransactionCurrencyId");
+				this.SetAttributeValue("transactioncurrencyid", value);
+				this.OnPropertyChanged("TransactionCurrencyId");
+			}
+		}
+		
+		/// <summary>
+		/// A comma separated list of string values representing the unique identifiers of stages in a Business Process Flow Instance in the order that they occur.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("traversedpath")]
+		public string TraversedPath
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("traversedpath");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TraversedPath");
+				this.SetAttributeValue("traversedpath", value);
+				this.OnPropertyChanged("TraversedPath");
+			}
+		}
+		
+		/// <summary>
+		/// Time zone code that was in use when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UTCConversionTimeZoneCode");
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+				this.OnPropertyChanged("UTCConversionTimeZoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// Version Number
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// Select whether the products included in the invoice should be shipped to the specified address or held until the customer calls with further pick up or delivery instructions.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("willcall")]
+		public System.Nullable<bool> WillCall
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("willcall");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("WillCall");
+				this.SetAttributeValue("willcall", value);
+				this.OnPropertyChanged("WillCall");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N invoice_activity_parties
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoice_activity_parties")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> invoice_activity_parties
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.ActivityParty>("invoice_activity_parties", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("invoice_activity_parties");
+				this.SetRelatedEntities<CrmEarlyBound.ActivityParty>("invoice_activity_parties", null, value);
+				this.OnPropertyChanged("invoice_activity_parties");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N invoice_msdyn_approvals
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoice_msdyn_approvals")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_approval> invoice_msdyn_approvals
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_approval>("invoice_msdyn_approvals", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("invoice_msdyn_approvals");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_approval>("invoice_msdyn_approvals", null, value);
+				this.OnPropertyChanged("invoice_msdyn_approvals");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_invoice_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_invoice_createdonbehalfby")]
+		public CrmEarlyBound.SystemUser lk_invoice_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_invoice_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_invoice_createdonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("lk_invoice_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_invoice_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_invoice_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_invoice_modifiedonbehalfby")]
+		public CrmEarlyBound.SystemUser lk_invoice_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_invoice_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_invoice_modifiedonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("lk_invoice_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_invoice_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_invoicebase_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_invoicebase_createdby")]
+		public CrmEarlyBound.SystemUser lk_invoicebase_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_invoicebase_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_invoicebase_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_invoicebase_modifiedby")]
+		public CrmEarlyBound.SystemUser lk_invoicebase_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_invoicebase_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 system_user_invoices
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_invoices")]
+		public CrmEarlyBound.SystemUser system_user_invoices
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("system_user_invoices", null);
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public Invoice(object anonymousType) : 
+				this()
+		{
             foreach (var p in anonymousType.GetType().GetProperties())
             {
                 var value = p.GetValue(anonymousType, null);
                 var name = p.Name.ToLower();
-
+            
                 if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
                 {
-                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int)value);
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
                     name = name.Remove(name.Length - "enum".Length);
                 }
-
+            
                 switch (name)
                 {
                     case "id":
@@ -4518,8 +4707,8 @@ namespace CrmEarlyBound
                         Attributes["invoiceid"] = base.Id;
                         break;
                     case "invoiceid":
-                        var id = (System.Nullable<System.Guid>)value;
-                        if (id == null) { continue; }
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
                         base.Id = id.Value;
                         Attributes[name] = base.Id;
                         break;
@@ -4532,1427 +4721,1616 @@ namespace CrmEarlyBound
                         break;
                 }
             }
-        }
-
-    }
-
-    [System.Runtime.Serialization.DataContractAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
-    public enum KnowledgeArticleState
-    {
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Draft = 0,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Approved = 1,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Scheduled = 2,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Published = 3,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Expired = 4,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Archived = 5,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Discarded = 6,
-    }
-
-    /// <summary>
-    /// Organizational knowledge for internal and external use.
-    /// </summary>
-    [System.Runtime.Serialization.DataContractAttribute()]
-    [Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("knowledgearticle")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
-    public partial class KnowledgeArticle : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
-    {
-
-        /// <summary>
-        /// Default Constructor.
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public KnowledgeArticle() :
-                base(EntityLogicalName)
-        {
-        }
-
-        public const string EntityLogicalName = "knowledgearticle";
-
-        public const string PrimaryIdAttribute = "knowledgearticleid";
-
-        public const string PrimaryNameAttribute = "title";
-
-        public const int EntityTypeCode = 9953;
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        private void OnPropertyChanged(string propertyName)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        private void OnPropertyChanging(string propertyName)
-        {
-            if ((this.PropertyChanging != null))
-            {
-                this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
-            }
-        }
-
-        /// <summary>
-        /// Shows the automatically generated ID exposed to customers, partners, and other external users to reference and look up articles.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("articlepublicnumber")]
-        public string ArticlePublicNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("articlepublicnumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ArticlePublicNumber");
-                this.SetAttributeValue("articlepublicnumber", value);
-                this.OnPropertyChanged("ArticlePublicNumber");
-            }
-        }
-
-
-        /// <summary>
-        /// Shows the body of the article stored in HTML format.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("content")]
-        public string Content
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("content");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Content");
-                this.SetAttributeValue("content", value);
-                this.OnPropertyChanged("Content");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the user who created the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
-        public Microsoft.Xrm.Sdk.EntityReference CreatedBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
-            }
-        }
-
-        /// <summary>
-        /// Date and time when the record was created.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
-        public System.Nullable<System.DateTime> CreatedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the delegate user who created the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
-        public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("CreatedOnBehalfBy");
-                this.SetAttributeValue("createdonbehalfby", value);
-                this.OnPropertyChanged("CreatedOnBehalfBy");
-            }
-        }
-
-        /// <summary>
-        /// A short overview of the article, primarily used in search results and for search engine optimization.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
-        public string Description
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("description");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Description");
-                this.SetAttributeValue("description", value);
-                this.OnPropertyChanged("Description");
-            }
-        }
-
-        /// <summary>
-        /// Exchange rate for the currency associated with the KnowledgeArticle with respect to the base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangerate")]
-        public System.Nullable<decimal> ExchangeRate
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
-            }
-        }
-
-        /// <summary>
-        /// Enter an expiration date for the article. Leave this field blank for no expiration date.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("expirationdate")]
-        public System.Nullable<System.DateTime> ExpirationDate
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("expirationdate");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ExpirationDate");
-                this.SetAttributeValue("expirationdate", value);
-                this.OnPropertyChanged("ExpirationDate");
-            }
-        }
-
-        /// <summary>
-        /// Contains the id of the expiration state of the entity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("expirationstateid")]
-        public System.Nullable<int> ExpirationStateId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("expirationstateid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ExpirationStateId");
-                this.SetAttributeValue("expirationstateid", value);
-                this.OnPropertyChanged("ExpirationStateId");
-            }
-        }
-
-        /// <summary>
-        /// Contains the id of the expiration status of the entity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("expirationstatusid")]
-        public System.Nullable<int> ExpirationStatusId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("expirationstatusid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ExpirationStatusId");
-                this.SetAttributeValue("expirationstatusid", value);
-                this.OnPropertyChanged("ExpirationStatusId");
-            }
-        }
-
-        /// <summary>
-        /// Expired Review Options
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("expiredreviewoptions")]
-        public Microsoft.Xrm.Sdk.OptionSetValue ExpiredReviewOptions
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("expiredreviewoptions");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ExpiredReviewOptions");
-                this.SetAttributeValue("expiredreviewoptions", value);
-                this.OnPropertyChanged("ExpiredReviewOptions");
-            }
-        }
-
-        /// <summary>
-        /// Sequence number of the import that created this record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
-        public System.Nullable<int> ImportSequenceNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ImportSequenceNumber");
-                this.SetAttributeValue("importsequencenumber", value);
-                this.OnPropertyChanged("ImportSequenceNumber");
-            }
-        }
-
-        /// <summary>
-        /// Shows whether this article is only visible internally.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isinternal")]
-        public System.Nullable<bool> IsInternal
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("isinternal");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("IsInternal");
-                this.SetAttributeValue("isinternal", value);
-                this.OnPropertyChanged("IsInternal");
-            }
-        }
-
-        /// <summary>
-        /// Shows which version of the knowledge article is the latest version.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("islatestversion")]
-        public System.Nullable<bool> IsLatestVersion
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("islatestversion");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("IsLatestVersion");
-                this.SetAttributeValue("islatestversion", value);
-                this.OnPropertyChanged("IsLatestVersion");
-            }
-        }
-
-        /// <summary>
-        /// Select whether the article is the primary article.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isprimary")]
-        public System.Nullable<bool> IsPrimary
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("isprimary");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("IsPrimary");
-                this.SetAttributeValue("isprimary", value);
-                this.OnPropertyChanged("IsPrimary");
-            }
-        }
-
-        /// <summary>
-        /// Select whether the article is the root article.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isrootarticle")]
-        public System.Nullable<bool> IsRootArticle
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("isrootarticle");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("IsRootArticle");
-                this.SetAttributeValue("isrootarticle", value);
-                this.OnPropertyChanged("IsRootArticle");
-            }
-        }
-
-        /// <summary>
-        /// Type keywords to be used for searches in knowledge base articles. Separate keywords by using commas.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("keywords")]
-        public string Keywords
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("keywords");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Keywords");
-                this.SetAttributeValue("keywords", value);
-                this.OnPropertyChanged("Keywords");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for entity instances
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("knowledgearticleid")]
-        public System.Nullable<System.Guid> knowledgearticleId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("knowledgearticleid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("knowledgearticleId");
-                this.SetAttributeValue("knowledgearticleid", value);
-                if (value.HasValue)
-                {
-                    base.Id = value.Value;
-                }
-                else
-                {
-                    base.Id = System.Guid.Empty;
-                }
-                this.OnPropertyChanged("knowledgearticleId");
-            }
-        }
-
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("knowledgearticleid")]
-        public override System.Guid Id
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return base.Id;
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.knowledgearticleId = value;
-            }
-        }
-
-        /// <summary>
-        /// Shows the total number of article views.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("knowledgearticleviews")]
-        public System.Nullable<int> KnowledgeArticleViews
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("knowledgearticleviews");
-            }
-        }
-
-        /// <summary>
-        /// The date time for Knowledge Article View.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("knowledgearticleviews_date")]
-        public System.Nullable<System.DateTime> KnowledgeArticleViews_Date
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("knowledgearticleviews_date");
-            }
-        }
-
-        /// <summary>
-        /// State of Knowledge Article View.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("knowledgearticleviews_state")]
-        public System.Nullable<int> KnowledgeArticleViews_State
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("knowledgearticleviews_state");
-            }
-        }
-
-        /// <summary>
-        /// Select the language that the article's content is in.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("languagelocaleid")]
-        public Microsoft.Xrm.Sdk.EntityReference LanguageLocaleId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("languagelocaleid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("LanguageLocaleId");
-                this.SetAttributeValue("languagelocaleid", value);
-                this.OnPropertyChanged("LanguageLocaleId");
-            }
-        }
-
-        /// <summary>
-        /// Shows the major version number of this article's content.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("majorversionnumber")]
-        public System.Nullable<int> MajorVersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("majorversionnumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("MajorVersionNumber");
-                this.SetAttributeValue("majorversionnumber", value);
-                this.OnPropertyChanged("MajorVersionNumber");
-            }
-        }
-
-        /// <summary>
-        /// Shows the minor version number of this article's content.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("minorversionnumber")]
-        public System.Nullable<int> MinorVersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("minorversionnumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("MinorVersionNumber");
-                this.SetAttributeValue("minorversionnumber", value);
-                this.OnPropertyChanged("MinorVersionNumber");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the user who modified the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
-        public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
-            }
-        }
-
-        /// <summary>
-        /// Date and time when the record was modified.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
-        public System.Nullable<System.DateTime> ModifiedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the delegate user who modified the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
-        public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ModifiedOnBehalfBy");
-                this.SetAttributeValue("modifiedonbehalfby", value);
-                this.OnPropertyChanged("ModifiedOnBehalfBy");
-            }
-        }
-
-        /// <summary>
-        /// Date and time that the record was migrated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
-        public System.Nullable<System.DateTime> OverriddenCreatedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("OverriddenCreatedOn");
-                this.SetAttributeValue("overriddencreatedon", value);
-                this.OnPropertyChanged("OverriddenCreatedOn");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the user or team who owns the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
-        public Microsoft.Xrm.Sdk.EntityReference OwnerId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("OwnerId");
-                this.SetAttributeValue("ownerid", value);
-                this.OnPropertyChanged("OwnerId");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for the business unit that owns the record
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for the team that owns the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningTeam
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for the user that owns the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningUser
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
-            }
-        }
-
-        /// <summary>
-        /// Contains the id of the parent article content associated with the entity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentarticlecontentid")]
-        public Microsoft.Xrm.Sdk.EntityReference ParentArticleContentId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("parentarticlecontentid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ParentArticleContentId");
-                this.SetAttributeValue("parentarticlecontentid", value);
-                this.OnPropertyChanged("ParentArticleContentId");
-            }
-        }
-
-        /// <summary>
-        /// Shows the version that the current article was restored from.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("previousarticlecontentid")]
-        public Microsoft.Xrm.Sdk.EntityReference PreviousArticleContentId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("previousarticlecontentid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("PreviousArticleContentId");
-                this.SetAttributeValue("previousarticlecontentid", value);
-                this.OnPropertyChanged("PreviousArticleContentId");
-            }
-        }
-
-        /// <summary>
-        /// User who created the first version of any article (i.e. version 1.0).
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("primaryauthorid")]
-        public Microsoft.Xrm.Sdk.EntityReference primaryauthorid
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("primaryauthorid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("primaryauthorid");
-                this.SetAttributeValue("primaryauthorid", value);
-                this.OnPropertyChanged("primaryauthorid");
-            }
-        }
-
-        /// <summary>
-        /// Contains the id of the process associated with the entity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processid")]
-        public System.Nullable<System.Guid> processid
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("processid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("processid");
-                this.SetAttributeValue("processid", value);
-                this.OnPropertyChanged("processid");
-            }
-        }
-
-        /// <summary>
-        /// Date and time when the record was published.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("publishon")]
-        public System.Nullable<System.DateTime> PublishOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("publishon");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("PublishOn");
-                this.SetAttributeValue("publishon", value);
-                this.OnPropertyChanged("PublishOn");
-            }
-        }
-
-        /// <summary>
-        /// Publish Status of the Article.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("publishstatusid")]
-        public System.Nullable<int> PublishStatusId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("publishstatusid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("PublishStatusId");
-                this.SetAttributeValue("publishstatusid", value);
-                this.OnPropertyChanged("PublishStatusId");
-            }
-        }
-
-        /// <summary>
-        /// Information which specifies how helpful the related record was.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rating")]
-        public System.Nullable<decimal> Rating
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<decimal>>("rating");
-            }
-        }
-
-        /// <summary>
-        /// Rating Count
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rating_count")]
-        public System.Nullable<int> Rating_Count
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("rating_count");
-            }
-        }
-
-        /// <summary>
-        /// The date time for Rating.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rating_date")]
-        public System.Nullable<System.DateTime> Rating_Date
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("rating_date");
-            }
-        }
-
-        /// <summary>
-        /// State of Rating
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rating_state")]
-        public System.Nullable<int> Rating_State
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("rating_state");
-            }
-        }
-
-        /// <summary>
-        /// Total sum of Rating
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rating_sum")]
-        public System.Nullable<decimal> Rating_Sum
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<decimal>>("rating_sum");
-            }
-        }
-
-        /// <summary>
-        /// Ready For Review
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("readyforreview")]
-        public System.Nullable<bool> ReadyForReview
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("readyforreview");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ReadyForReview");
-                this.SetAttributeValue("readyforreview", value);
-                this.OnPropertyChanged("ReadyForReview");
-            }
-        }
-
-        /// <summary>
-        /// Review
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("review")]
-        public Microsoft.Xrm.Sdk.OptionSetValue Review
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("review");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Review");
-                this.SetAttributeValue("review", value);
-                this.OnPropertyChanged("Review");
-            }
-        }
-
-        /// <summary>
-        /// Contains the id of the root article.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rootarticleid")]
-        public Microsoft.Xrm.Sdk.EntityReference RootArticleId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("rootarticleid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("RootArticleId");
-                this.SetAttributeValue("rootarticleid", value);
-                this.OnPropertyChanged("RootArticleId");
-            }
-        }
-
-        /// <summary>
-        /// Contains the id of the scheduled status of the entity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scheduledstatusid")]
-        public System.Nullable<int> ScheduledStatusId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("scheduledstatusid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ScheduledStatusId");
-                this.SetAttributeValue("scheduledstatusid", value);
-                this.OnPropertyChanged("ScheduledStatusId");
-            }
-        }
-
-        /// <summary>
-        /// Shows whether category associations have been set
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("setcategoryassociations")]
-        public System.Nullable<bool> SetCategoryAssociations
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("setcategoryassociations");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("SetCategoryAssociations");
-                this.SetAttributeValue("setcategoryassociations", value);
-                this.OnPropertyChanged("SetCategoryAssociations");
-            }
-        }
-
-        /// <summary>
-        /// Set Product Associations
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("setproductassociations")]
-        public System.Nullable<bool> SetProductAssociations
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("setproductassociations");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("SetProductAssociations");
-                this.SetAttributeValue("setproductassociations", value);
-                this.OnPropertyChanged("SetProductAssociations");
-            }
-        }
-
-        /// <summary>
-        /// Contains the id of the stage where the entity is located.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
-        public System.Nullable<System.Guid> stageid
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("stageid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("stageid");
-                this.SetAttributeValue("stageid", value);
-                this.OnPropertyChanged("stageid");
-            }
-        }
-
-        /// <summary>
-        /// Shows whether the article is a draft or is published, archived, or discarded. Draft articles aren't available externally and can be edited. Published articles are available externally, based on applicable permissions, but can't be edited. All metadata changes are reflected in the published version. Archived and discarded articles aren't available externally and can't be edited.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-        public System.Nullable<CrmEarlyBound.KnowledgeArticleState> StateCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
-                if ((optionSet != null))
-                {
-                    return ((CrmEarlyBound.KnowledgeArticleState)(System.Enum.ToObject(typeof(CrmEarlyBound.KnowledgeArticleState), optionSet.Value)));
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("StateCode");
-                if ((value == null))
-                {
-                    this.SetAttributeValue("statecode", null);
-                }
-                else
-                {
-                    this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
-                }
-                this.OnPropertyChanged("StateCode");
-            }
-        }
-
-        /// <summary>
-        /// Select the article's status.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("StatusCode");
-                this.SetAttributeValue("statuscode", value);
-                this.OnPropertyChanged("StatusCode");
-            }
-        }
-
-        /// <summary>
-        /// Choose the subject of the article to assist with article searches. You can configure subjects under Business Management in the Settings area.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("subjectid")]
-        public Microsoft.Xrm.Sdk.EntityReference SubjectId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("subjectid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("SubjectId");
-                this.SetAttributeValue("subjectid", value);
-                this.OnPropertyChanged("SubjectId");
-            }
-        }
-
-        /// <summary>
-        /// For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
-        public System.Nullable<int> TimeZoneRuleVersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TimeZoneRuleVersionNumber");
-                this.SetAttributeValue("timezoneruleversionnumber", value);
-                this.OnPropertyChanged("TimeZoneRuleVersionNumber");
-            }
-        }
-
-        /// <summary>
-        /// Type a title for the article.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("title")]
-        public string Title
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("title");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Title");
-                this.SetAttributeValue("title", value);
-                this.OnPropertyChanged("Title");
-            }
-        }
-
-        /// <summary>
-        /// Exchange rate for the currency associated with the KnowledgeArticle with respect to the base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
-        public Microsoft.Xrm.Sdk.EntityReference TransactionCurrencyId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("transactioncurrencyid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TransactionCurrencyId");
-                this.SetAttributeValue("transactioncurrencyid", value);
-                this.OnPropertyChanged("TransactionCurrencyId");
-            }
-        }
-
-        /// <summary>
-        /// A comma separated list of string values representing the unique identifiers of stages in a Business Process Flow Instance in the order that they occur.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("traversedpath")]
-        public string traversedpath
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("traversedpath");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("traversedpath");
-                this.SetAttributeValue("traversedpath", value);
-                this.OnPropertyChanged("traversedpath");
-            }
-        }
-
-        /// <summary>
-        /// Update Content
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("updatecontent")]
-        public System.Nullable<bool> UpdateContent
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("updatecontent");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("UpdateContent");
-                this.SetAttributeValue("updatecontent", value);
-                this.OnPropertyChanged("UpdateContent");
-            }
-        }
-
-        /// <summary>
-        /// Time zone code that was in use when the record was created.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
-        public System.Nullable<int> UTCConversionTimeZoneCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("UTCConversionTimeZoneCode");
-                this.SetAttributeValue("utcconversiontimezonecode", value);
-                this.OnPropertyChanged("UTCConversionTimeZoneCode");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
-        public System.Nullable<long> VersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
-            }
-        }
-
-        /// <summary>
-        /// 1:N knowledgearticle_activity_parties
-        /// </summary>
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_activity_parties")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> knowledgearticle_activity_parties
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntities<CrmEarlyBound.ActivityParty>("knowledgearticle_activity_parties", null);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("knowledgearticle_activity_parties");
-                this.SetRelatedEntities<CrmEarlyBound.ActivityParty>("knowledgearticle_activity_parties", null, value);
-                this.OnPropertyChanged("knowledgearticle_activity_parties");
-            }
-        }
-
-        /// <summary>
-        /// 1:N knowledgearticle_msdyn_approvals
-        /// </summary>
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_msdyn_approvals")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_approval> knowledgearticle_msdyn_approvals
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntities<CrmEarlyBound.msdyn_approval>("knowledgearticle_msdyn_approvals", null);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("knowledgearticle_msdyn_approvals");
-                this.SetRelatedEntities<CrmEarlyBound.msdyn_approval>("knowledgearticle_msdyn_approvals", null, value);
-                this.OnPropertyChanged("knowledgearticle_msdyn_approvals");
-            }
-        }
-
-        /// <summary>
-        /// 1:N knowledgearticle_parentarticle_contentid
-        /// </summary>
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_parentarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> Referencedknowledgearticle_parentarticle_contentid
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_parentarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referenced);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Referencedknowledgearticle_parentarticle_contentid");
-                this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_parentarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
-                this.OnPropertyChanged("Referencedknowledgearticle_parentarticle_contentid");
-            }
-        }
-
-        /// <summary>
-        /// 1:N knowledgearticle_previousarticle_contentid
-        /// </summary>
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_previousarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> Referencedknowledgearticle_previousarticle_contentid
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_previousarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referenced);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Referencedknowledgearticle_previousarticle_contentid");
-                this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_previousarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
-                this.OnPropertyChanged("Referencedknowledgearticle_previousarticle_contentid");
-            }
-        }
-
-        /// <summary>
-        /// 1:N knowledgearticle_rootarticle_id
-        /// </summary>
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_rootarticle_id", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> Referencedknowledgearticle_rootarticle_id
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_rootarticle_id", Microsoft.Xrm.Sdk.EntityRole.Referenced);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Referencedknowledgearticle_rootarticle_id");
-                this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_rootarticle_id", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
-                this.OnPropertyChanged("Referencedknowledgearticle_rootarticle_id");
-            }
-        }
-
-        /// <summary>
-        /// N:N msdyn_knowledgearticle_knowledgearticle
-        /// </summary>
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_knowledgearticle_knowledgearticle", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> Referencingmsdyn_knowledgearticle_knowledgearticle
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("msdyn_knowledgearticle_knowledgearticle", Microsoft.Xrm.Sdk.EntityRole.Referencing);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Referencingmsdyn_knowledgearticle_knowledgearticle");
-                this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("msdyn_knowledgearticle_knowledgearticle", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
-                this.OnPropertyChanged("Referencingmsdyn_knowledgearticle_knowledgearticle");
-            }
-        }
-
-        /// <summary>
-        /// N:N msdyn_knowledgearticle_knowledgearticle
-        /// </summary>
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_knowledgearticle_knowledgearticle", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> Referencedmsdyn_knowledgearticle_knowledgearticle
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("msdyn_knowledgearticle_knowledgearticle", Microsoft.Xrm.Sdk.EntityRole.Referenced);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Referencedmsdyn_knowledgearticle_knowledgearticle");
-                this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("msdyn_knowledgearticle_knowledgearticle", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
-                this.OnPropertyChanged("Referencedmsdyn_knowledgearticle_knowledgearticle");
-            }
-        }
-
-        /// <summary>
-        /// N:1 knowledgearticle_parentarticle_contentid
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentarticlecontentid")]
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_parentarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-        public CrmEarlyBound.KnowledgeArticle Referencingknowledgearticle_parentarticle_contentid
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_parentarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referencing);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Referencingknowledgearticle_parentarticle_contentid");
-                this.SetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_parentarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
-                this.OnPropertyChanged("Referencingknowledgearticle_parentarticle_contentid");
-            }
-        }
-
-        /// <summary>
-        /// N:1 knowledgearticle_previousarticle_contentid
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("previousarticlecontentid")]
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_previousarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-        public CrmEarlyBound.KnowledgeArticle Referencingknowledgearticle_previousarticle_contentid
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_previousarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referencing);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Referencingknowledgearticle_previousarticle_contentid");
-                this.SetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_previousarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
-                this.OnPropertyChanged("Referencingknowledgearticle_previousarticle_contentid");
-            }
-        }
-
-        /// <summary>
-        /// N:1 knowledgearticle_rootarticle_id
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rootarticleid")]
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_rootarticle_id", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-        public CrmEarlyBound.KnowledgeArticle Referencingknowledgearticle_rootarticle_id
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_rootarticle_id", Microsoft.Xrm.Sdk.EntityRole.Referencing);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Referencingknowledgearticle_rootarticle_id");
-                this.SetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_rootarticle_id", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
-                this.OnPropertyChanged("Referencingknowledgearticle_rootarticle_id");
-            }
-        }
-
-        /// <summary>
-        /// Constructor for populating via LINQ queries given a LINQ anonymous type
-        /// <param name="anonymousType">LINQ anonymous type.</param>
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public KnowledgeArticle(object anonymousType) :
-                this()
-        {
+		}
+		
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public enum KnowledgeArticleState
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Draft = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Approved = 1,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Scheduled = 2,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Published = 3,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Expired = 4,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Archived = 5,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Discarded = 6,
+	}
+	
+	/// <summary>
+	/// Organizational knowledge for internal and external use.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("knowledgearticle")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public partial class KnowledgeArticle : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public KnowledgeArticle() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "knowledgearticle";
+		
+		public const string PrimaryIdAttribute = "knowledgearticleid";
+		
+		public const string PrimaryNameAttribute = "title";
+		
+		public const int EntityTypeCode = 9953;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Shows the automatically generated ID exposed to customers, partners, and other external users to reference and look up articles.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("articlepublicnumber")]
+		public string ArticlePublicNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("articlepublicnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ArticlePublicNumber");
+				this.SetAttributeValue("articlepublicnumber", value);
+				this.OnPropertyChanged("ArticlePublicNumber");
+			}
+		}
+		
+		
+		/// <summary>
+		/// Shows the body of the article stored in HTML format.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("content")]
+		public string Content
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("content");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Content");
+				this.SetAttributeValue("content", value);
+				this.OnPropertyChanged("Content");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// A short overview of the article, primarily used in search results and for search engine optimization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("description");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Description");
+				this.SetAttributeValue("description", value);
+				this.OnPropertyChanged("Description");
+			}
+		}
+		
+		/// <summary>
+		/// Exchange rate for the currency associated with the KnowledgeArticle with respect to the base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangerate")]
+		public System.Nullable<decimal> ExchangeRate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
+			}
+		}
+		
+		/// <summary>
+		/// Enter an expiration date for the article. Leave this field blank for no expiration date.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("expirationdate")]
+		public System.Nullable<System.DateTime> ExpirationDate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("expirationdate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ExpirationDate");
+				this.SetAttributeValue("expirationdate", value);
+				this.OnPropertyChanged("ExpirationDate");
+			}
+		}
+		
+		/// <summary>
+		/// Contains the id of the expiration state of the entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("expirationstateid")]
+		public System.Nullable<int> ExpirationStateId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("expirationstateid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ExpirationStateId");
+				this.SetAttributeValue("expirationstateid", value);
+				this.OnPropertyChanged("ExpirationStateId");
+			}
+		}
+		
+		/// <summary>
+		/// Contains the id of the expiration status of the entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("expirationstatusid")]
+		public System.Nullable<int> ExpirationStatusId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("expirationstatusid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ExpirationStatusId");
+				this.SetAttributeValue("expirationstatusid", value);
+				this.OnPropertyChanged("ExpirationStatusId");
+			}
+		}
+		
+		/// <summary>
+		/// Expired Review Options
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("expiredreviewoptions")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ExpiredReviewOptions
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("expiredreviewoptions");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ExpiredReviewOptions");
+				this.SetAttributeValue("expiredreviewoptions", value);
+				this.OnPropertyChanged("ExpiredReviewOptions");
+			}
+		}
+		
+		/// <summary>
+		/// Sequence number of the import that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ImportSequenceNumber");
+				this.SetAttributeValue("importsequencenumber", value);
+				this.OnPropertyChanged("ImportSequenceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Shows whether this article is only visible internally.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isinternal")]
+		public System.Nullable<bool> IsInternal
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isinternal");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsInternal");
+				this.SetAttributeValue("isinternal", value);
+				this.OnPropertyChanged("IsInternal");
+			}
+		}
+		
+		/// <summary>
+		/// Shows which version of the knowledge article is the latest version.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("islatestversion")]
+		public System.Nullable<bool> IsLatestVersion
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("islatestversion");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsLatestVersion");
+				this.SetAttributeValue("islatestversion", value);
+				this.OnPropertyChanged("IsLatestVersion");
+			}
+		}
+		
+		/// <summary>
+		/// Select whether the article is the primary article.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isprimary")]
+		public System.Nullable<bool> IsPrimary
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isprimary");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsPrimary");
+				this.SetAttributeValue("isprimary", value);
+				this.OnPropertyChanged("IsPrimary");
+			}
+		}
+		
+		/// <summary>
+		/// Select whether the article is the root article.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isrootarticle")]
+		public System.Nullable<bool> IsRootArticle
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isrootarticle");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsRootArticle");
+				this.SetAttributeValue("isrootarticle", value);
+				this.OnPropertyChanged("IsRootArticle");
+			}
+		}
+		
+		/// <summary>
+		/// Type keywords to be used for searches in knowledge base articles. Separate keywords by using commas.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("keywords")]
+		public string Keywords
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("keywords");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Keywords");
+				this.SetAttributeValue("keywords", value);
+				this.OnPropertyChanged("Keywords");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for entity instances
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("knowledgearticleid")]
+		public System.Nullable<System.Guid> knowledgearticleId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("knowledgearticleid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("knowledgearticleId");
+				this.SetAttributeValue("knowledgearticleid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("knowledgearticleId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("knowledgearticleid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.knowledgearticleId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Shows the total number of article views.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("knowledgearticleviews")]
+		public System.Nullable<int> KnowledgeArticleViews
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("knowledgearticleviews");
+			}
+		}
+		
+		/// <summary>
+		/// The date time for Knowledge Article View.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("knowledgearticleviews_date")]
+		public System.Nullable<System.DateTime> KnowledgeArticleViews_Date
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("knowledgearticleviews_date");
+			}
+		}
+		
+		/// <summary>
+		/// State of Knowledge Article View.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("knowledgearticleviews_state")]
+		public System.Nullable<int> KnowledgeArticleViews_State
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("knowledgearticleviews_state");
+			}
+		}
+		
+		/// <summary>
+		/// Select the language that the article's content is in.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("languagelocaleid")]
+		public Microsoft.Xrm.Sdk.EntityReference LanguageLocaleId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("languagelocaleid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("LanguageLocaleId");
+				this.SetAttributeValue("languagelocaleid", value);
+				this.OnPropertyChanged("LanguageLocaleId");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the major version number of this article's content.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("majorversionnumber")]
+		public System.Nullable<int> MajorVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("majorversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("MajorVersionNumber");
+				this.SetAttributeValue("majorversionnumber", value);
+				this.OnPropertyChanged("MajorVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the minor version number of this article's content.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("minorversionnumber")]
+		public System.Nullable<int> MinorVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("minorversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("MinorVersionNumber");
+				this.SetAttributeValue("minorversionnumber", value);
+				this.OnPropertyChanged("MinorVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user or team who owns the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
+		public Microsoft.Xrm.Sdk.EntityReference OwnerId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OwnerId");
+				this.SetAttributeValue("ownerid", value);
+				this.OnPropertyChanged("OwnerId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the business unit that owns the record
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the team that owns the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningTeam
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the user that owns the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningUser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
+			}
+		}
+		
+		/// <summary>
+		/// Contains the id of the parent article content associated with the entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentarticlecontentid")]
+		public Microsoft.Xrm.Sdk.EntityReference ParentArticleContentId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("parentarticlecontentid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ParentArticleContentId");
+				this.SetAttributeValue("parentarticlecontentid", value);
+				this.OnPropertyChanged("ParentArticleContentId");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the version that the current article was restored from.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("previousarticlecontentid")]
+		public Microsoft.Xrm.Sdk.EntityReference PreviousArticleContentId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("previousarticlecontentid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PreviousArticleContentId");
+				this.SetAttributeValue("previousarticlecontentid", value);
+				this.OnPropertyChanged("PreviousArticleContentId");
+			}
+		}
+		
+		/// <summary>
+		/// User who created the first version of any article (i.e. version 1.0).
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("primaryauthorid")]
+		public Microsoft.Xrm.Sdk.EntityReference primaryauthorid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("primaryauthorid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("primaryauthorid");
+				this.SetAttributeValue("primaryauthorid", value);
+				this.OnPropertyChanged("primaryauthorid");
+			}
+		}
+		
+		/// <summary>
+		/// Contains the id of the process associated with the entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processid")]
+		public System.Nullable<System.Guid> processid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("processid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("processid");
+				this.SetAttributeValue("processid", value);
+				this.OnPropertyChanged("processid");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was published.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("publishon")]
+		public System.Nullable<System.DateTime> PublishOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("publishon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PublishOn");
+				this.SetAttributeValue("publishon", value);
+				this.OnPropertyChanged("PublishOn");
+			}
+		}
+		
+		/// <summary>
+		/// Publish Status of the Article.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("publishstatusid")]
+		public System.Nullable<int> PublishStatusId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("publishstatusid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PublishStatusId");
+				this.SetAttributeValue("publishstatusid", value);
+				this.OnPropertyChanged("PublishStatusId");
+			}
+		}
+		
+		/// <summary>
+		/// Information which specifies how helpful the related record was.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rating")]
+		public System.Nullable<decimal> Rating
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<decimal>>("rating");
+			}
+		}
+		
+		/// <summary>
+		/// Rating Count
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rating_count")]
+		public System.Nullable<int> Rating_Count
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("rating_count");
+			}
+		}
+		
+		/// <summary>
+		/// The date time for Rating.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rating_date")]
+		public System.Nullable<System.DateTime> Rating_Date
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("rating_date");
+			}
+		}
+		
+		/// <summary>
+		/// State of Rating
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rating_state")]
+		public System.Nullable<int> Rating_State
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("rating_state");
+			}
+		}
+		
+		/// <summary>
+		/// Total sum of Rating
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rating_sum")]
+		public System.Nullable<decimal> Rating_Sum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<decimal>>("rating_sum");
+			}
+		}
+		
+		/// <summary>
+		/// Ready For Review
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("readyforreview")]
+		public System.Nullable<bool> ReadyForReview
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("readyforreview");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ReadyForReview");
+				this.SetAttributeValue("readyforreview", value);
+				this.OnPropertyChanged("ReadyForReview");
+			}
+		}
+		
+		/// <summary>
+		/// Review
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("review")]
+		public Microsoft.Xrm.Sdk.OptionSetValue Review
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("review");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Review");
+				this.SetAttributeValue("review", value);
+				this.OnPropertyChanged("Review");
+			}
+		}
+		
+		/// <summary>
+		/// Contains the id of the root article.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rootarticleid")]
+		public Microsoft.Xrm.Sdk.EntityReference RootArticleId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("rootarticleid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("RootArticleId");
+				this.SetAttributeValue("rootarticleid", value);
+				this.OnPropertyChanged("RootArticleId");
+			}
+		}
+		
+		/// <summary>
+		/// Contains the id of the scheduled status of the entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scheduledstatusid")]
+		public System.Nullable<int> ScheduledStatusId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("scheduledstatusid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ScheduledStatusId");
+				this.SetAttributeValue("scheduledstatusid", value);
+				this.OnPropertyChanged("ScheduledStatusId");
+			}
+		}
+		
+		/// <summary>
+		/// Shows whether category associations have been set
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("setcategoryassociations")]
+		public System.Nullable<bool> SetCategoryAssociations
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("setcategoryassociations");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SetCategoryAssociations");
+				this.SetAttributeValue("setcategoryassociations", value);
+				this.OnPropertyChanged("SetCategoryAssociations");
+			}
+		}
+		
+		/// <summary>
+		/// Set Product Associations
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("setproductassociations")]
+		public System.Nullable<bool> SetProductAssociations
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("setproductassociations");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SetProductAssociations");
+				this.SetAttributeValue("setproductassociations", value);
+				this.OnPropertyChanged("SetProductAssociations");
+			}
+		}
+		
+		/// <summary>
+		/// Contains the id of the stage where the entity is located.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
+		public System.Nullable<System.Guid> stageid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("stageid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("stageid");
+				this.SetAttributeValue("stageid", value);
+				this.OnPropertyChanged("stageid");
+			}
+		}
+		
+		/// <summary>
+		/// Shows whether the article is a draft or is published, archived, or discarded. Draft articles aren't available externally and can be edited. Published articles are available externally, based on applicable permissions, but can't be edited. All metadata changes are reflected in the published version. Archived and discarded articles aren't available externally and can't be edited.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public System.Nullable<CrmEarlyBound.KnowledgeArticleState> StateCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+				if ((optionSet != null))
+				{
+					return ((CrmEarlyBound.KnowledgeArticleState)(System.Enum.ToObject(typeof(CrmEarlyBound.KnowledgeArticleState), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StateCode");
+				if ((value == null))
+				{
+					this.SetAttributeValue("statecode", null);
+				}
+				else
+				{
+					this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
+				}
+				this.OnPropertyChanged("StateCode");
+			}
+		}
+		
+		/// <summary>
+		/// Select the article's status.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the subject of the article to assist with article searches. You can configure subjects under Business Management in the Settings area.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("subjectid")]
+		public Microsoft.Xrm.Sdk.EntityReference SubjectId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("subjectid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SubjectId");
+				this.SetAttributeValue("subjectid", value);
+				this.OnPropertyChanged("SubjectId");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TimeZoneRuleVersionNumber");
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+				this.OnPropertyChanged("TimeZoneRuleVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Type a title for the article.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("title")]
+		public string Title
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("title");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Title");
+				this.SetAttributeValue("title", value);
+				this.OnPropertyChanged("Title");
+			}
+		}
+		
+		/// <summary>
+		/// Exchange rate for the currency associated with the KnowledgeArticle with respect to the base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
+		public Microsoft.Xrm.Sdk.EntityReference TransactionCurrencyId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("transactioncurrencyid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TransactionCurrencyId");
+				this.SetAttributeValue("transactioncurrencyid", value);
+				this.OnPropertyChanged("TransactionCurrencyId");
+			}
+		}
+		
+		/// <summary>
+		/// A comma separated list of string values representing the unique identifiers of stages in a Business Process Flow Instance in the order that they occur.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("traversedpath")]
+		public string traversedpath
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("traversedpath");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("traversedpath");
+				this.SetAttributeValue("traversedpath", value);
+				this.OnPropertyChanged("traversedpath");
+			}
+		}
+		
+		/// <summary>
+		/// Update Content
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("updatecontent")]
+		public System.Nullable<bool> UpdateContent
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("updatecontent");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UpdateContent");
+				this.SetAttributeValue("updatecontent", value);
+				this.OnPropertyChanged("UpdateContent");
+			}
+		}
+		
+		/// <summary>
+		/// Time zone code that was in use when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UTCConversionTimeZoneCode");
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+				this.OnPropertyChanged("UTCConversionTimeZoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N knowledgearticle_activity_parties
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_activity_parties")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> knowledgearticle_activity_parties
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.ActivityParty>("knowledgearticle_activity_parties", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("knowledgearticle_activity_parties");
+				this.SetRelatedEntities<CrmEarlyBound.ActivityParty>("knowledgearticle_activity_parties", null, value);
+				this.OnPropertyChanged("knowledgearticle_activity_parties");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N knowledgearticle_msdyn_approvals
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_msdyn_approvals")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_approval> knowledgearticle_msdyn_approvals
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_approval>("knowledgearticle_msdyn_approvals", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("knowledgearticle_msdyn_approvals");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_approval>("knowledgearticle_msdyn_approvals", null, value);
+				this.OnPropertyChanged("knowledgearticle_msdyn_approvals");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N knowledgearticle_parentarticle_contentid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_parentarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> Referencedknowledgearticle_parentarticle_contentid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_parentarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencedknowledgearticle_parentarticle_contentid");
+				this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_parentarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.OnPropertyChanged("Referencedknowledgearticle_parentarticle_contentid");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N knowledgearticle_previousarticle_contentid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_previousarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> Referencedknowledgearticle_previousarticle_contentid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_previousarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencedknowledgearticle_previousarticle_contentid");
+				this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_previousarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.OnPropertyChanged("Referencedknowledgearticle_previousarticle_contentid");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N knowledgearticle_rootarticle_id
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_rootarticle_id", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> Referencedknowledgearticle_rootarticle_id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_rootarticle_id", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencedknowledgearticle_rootarticle_id");
+				this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_rootarticle_id", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.OnPropertyChanged("Referencedknowledgearticle_rootarticle_id");
+			}
+		}
+		
+		/// <summary>
+		/// N:N msdyn_knowledgearticle_knowledgearticle
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_knowledgearticle_knowledgearticle", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> Referencingmsdyn_knowledgearticle_knowledgearticle
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("msdyn_knowledgearticle_knowledgearticle", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencingmsdyn_knowledgearticle_knowledgearticle");
+				this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("msdyn_knowledgearticle_knowledgearticle", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.OnPropertyChanged("Referencingmsdyn_knowledgearticle_knowledgearticle");
+			}
+		}
+		
+		/// <summary>
+		/// N:N msdyn_knowledgearticle_knowledgearticle
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_knowledgearticle_knowledgearticle", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> Referencedmsdyn_knowledgearticle_knowledgearticle
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("msdyn_knowledgearticle_knowledgearticle", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencedmsdyn_knowledgearticle_knowledgearticle");
+				this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("msdyn_knowledgearticle_knowledgearticle", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.OnPropertyChanged("Referencedmsdyn_knowledgearticle_knowledgearticle");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 bby_systemuser_knowledgearticle_approver
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bby_approver")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bby_systemuser_knowledgearticle_approver")]
+		public CrmEarlyBound.SystemUser bby_systemuser_knowledgearticle_approver
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("bby_systemuser_knowledgearticle_approver", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("bby_systemuser_knowledgearticle_approver");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("bby_systemuser_knowledgearticle_approver", null, value);
+				this.OnPropertyChanged("bby_systemuser_knowledgearticle_approver");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 bby_systemuser_knowledgearticle_contentowner
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bby_contentowner")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bby_systemuser_knowledgearticle_contentowner")]
+		public CrmEarlyBound.SystemUser bby_systemuser_knowledgearticle_contentowner
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("bby_systemuser_knowledgearticle_contentowner", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("bby_systemuser_knowledgearticle_contentowner");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("bby_systemuser_knowledgearticle_contentowner", null, value);
+				this.OnPropertyChanged("bby_systemuser_knowledgearticle_contentowner");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 bby_systemuser_knowledgearticle_publishedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bby_publishedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bby_systemuser_knowledgearticle_publishedby")]
+		public CrmEarlyBound.SystemUser bby_systemuser_knowledgearticle_publishedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("bby_systemuser_knowledgearticle_publishedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("bby_systemuser_knowledgearticle_publishedby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("bby_systemuser_knowledgearticle_publishedby", null, value);
+				this.OnPropertyChanged("bby_systemuser_knowledgearticle_publishedby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 bby_systemuser_knowledgearticle_VersionCreatedBy
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bby_versioncreatedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bby_systemuser_knowledgearticle_VersionCreatedBy")]
+		public CrmEarlyBound.SystemUser bby_systemuser_knowledgearticle_VersionCreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("bby_systemuser_knowledgearticle_VersionCreatedBy", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("bby_systemuser_knowledgearticle_VersionCreatedBy");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("bby_systemuser_knowledgearticle_VersionCreatedBy", null, value);
+				this.OnPropertyChanged("bby_systemuser_knowledgearticle_VersionCreatedBy");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 knowledgearticle_parentarticle_contentid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentarticlecontentid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_parentarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public CrmEarlyBound.KnowledgeArticle Referencingknowledgearticle_parentarticle_contentid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_parentarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencingknowledgearticle_parentarticle_contentid");
+				this.SetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_parentarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.OnPropertyChanged("Referencingknowledgearticle_parentarticle_contentid");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 knowledgearticle_previousarticle_contentid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("previousarticlecontentid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_previousarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public CrmEarlyBound.KnowledgeArticle Referencingknowledgearticle_previousarticle_contentid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_previousarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencingknowledgearticle_previousarticle_contentid");
+				this.SetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_previousarticle_contentid", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.OnPropertyChanged("Referencingknowledgearticle_previousarticle_contentid");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 knowledgearticle_primaryauthorid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("primaryauthorid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_primaryauthorid")]
+		public CrmEarlyBound.SystemUser knowledgearticle_primaryauthorid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("knowledgearticle_primaryauthorid", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("knowledgearticle_primaryauthorid");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("knowledgearticle_primaryauthorid", null, value);
+				this.OnPropertyChanged("knowledgearticle_primaryauthorid");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 knowledgearticle_rootarticle_id
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rootarticleid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_rootarticle_id", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public CrmEarlyBound.KnowledgeArticle Referencingknowledgearticle_rootarticle_id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_rootarticle_id", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencingknowledgearticle_rootarticle_id");
+				this.SetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_rootarticle_id", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.OnPropertyChanged("Referencingknowledgearticle_rootarticle_id");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_knowledgearticle_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgearticle_createdby")]
+		public CrmEarlyBound.SystemUser lk_knowledgearticle_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_knowledgearticle_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_knowledgearticle_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgearticle_createdonbehalfby")]
+		public CrmEarlyBound.SystemUser lk_knowledgearticle_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_knowledgearticle_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_knowledgearticle_createdonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("lk_knowledgearticle_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_knowledgearticle_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_knowledgearticle_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgearticle_modifiedby")]
+		public CrmEarlyBound.SystemUser lk_knowledgearticle_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_knowledgearticle_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_knowledgearticle_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgearticle_modifiedonbehalfby")]
+		public CrmEarlyBound.SystemUser lk_knowledgearticle_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_knowledgearticle_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_knowledgearticle_modifiedonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("lk_knowledgearticle_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_knowledgearticle_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 user_knowledgearticle
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_knowledgearticle")]
+		public CrmEarlyBound.SystemUser user_knowledgearticle
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("user_knowledgearticle", null);
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public KnowledgeArticle(object anonymousType) : 
+				this()
+		{
             foreach (var p in anonymousType.GetType().GetProperties())
             {
                 var value = p.GetValue(anonymousType, null);
                 var name = p.Name.ToLower();
-
+            
                 if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
                 {
-                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int)value);
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
                     name = name.Remove(name.Length - "enum".Length);
                 }
-
+            
                 switch (name)
                 {
                     case "id":
@@ -5960,8 +6338,8 @@ namespace CrmEarlyBound
                         Attributes["knowledgearticleid"] = base.Id;
                         break;
                     case "knowledgearticleid":
-                        var id = (System.Nullable<System.Guid>)value;
-                        if (id == null) { continue; }
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
                         base.Id = id.Value;
                         Attributes[name] = base.Id;
                         break;
@@ -5974,1624 +6352,1708 @@ namespace CrmEarlyBound
                         break;
                 }
             }
-        }
-
-    }
-
-    [System.Runtime.Serialization.DataContractAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
-    public enum msdyn_approvalState
-    {
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Open = 0,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Completed = 1,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Canceled = 2,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Scheduled = 3,
-    }
-
-    /// <summary>
-    /// Container for approvals.
-    /// </summary>
-    [System.Runtime.Serialization.DataContractAttribute()]
-    [Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("msdyn_approval")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
-    public partial class msdyn_approval : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
-    {
-
-        /// <summary>
-        /// Default Constructor.
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public msdyn_approval() :
-                base(EntityLogicalName)
-        {
-        }
-
-        public const string EntityLogicalName = "msdyn_approval";
-
-        public const string PrimaryIdAttribute = "activityid";
-
-        public const string PrimaryNameAttribute = "subject";
-
-        public const int EntityTypeCode = 10032;
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        private void OnPropertyChanged(string propertyName)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        private void OnPropertyChanging(string propertyName)
-        {
-            if ((this.PropertyChanging != null))
-            {
-                this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
-            }
-        }
-
-        /// <summary>
-        /// Additional information provided by the external application as JSON. For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityadditionalparams")]
-        public string ActivityAdditionalParams
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("activityadditionalparams");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ActivityAdditionalParams");
-                this.SetAttributeValue("activityadditionalparams", value);
-                this.OnPropertyChanged("ActivityAdditionalParams");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
-        public System.Nullable<System.Guid> ActivityId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("activityid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ActivityId");
-                this.SetAttributeValue("activityid", value);
-                if (value.HasValue)
-                {
-                    base.Id = value.Value;
-                }
-                else
-                {
-                    base.Id = System.Guid.Empty;
-                }
-                this.OnPropertyChanged("ActivityId");
-            }
-        }
-
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
-        public override System.Guid Id
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return base.Id;
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.ActivityId = value;
-            }
-        }
-
-        /// <summary>
-        /// Type of activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activitytypecode")]
-        public string ActivityTypeCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("activitytypecode");
-            }
-        }
-
-        /// <summary>
-        /// Actual duration of the activity in minutes.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actualdurationminutes")]
-        public System.Nullable<int> ActualDurationMinutes
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("actualdurationminutes");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ActualDurationMinutes");
-                this.SetAttributeValue("actualdurationminutes", value);
-                this.OnPropertyChanged("ActualDurationMinutes");
-            }
-        }
-
-        /// <summary>
-        /// Actual end time of the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actualend")]
-        public System.Nullable<System.DateTime> ActualEnd
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("actualend");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ActualEnd");
-                this.SetAttributeValue("actualend", value);
-                this.OnPropertyChanged("ActualEnd");
-            }
-        }
-
-        /// <summary>
-        /// Actual start time of the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actualstart")]
-        public System.Nullable<System.DateTime> ActualStart
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("actualstart");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ActualStart");
-                this.SetAttributeValue("actualstart", value);
-                this.OnPropertyChanged("ActualStart");
-            }
-        }
-
-        /// <summary>
-        /// Blind Carbon-copy (bcc) recipients of the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bcc")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> Bcc
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("bcc");
-                if (((collection != null)
-                            && (collection.Entities != null)))
-                {
-                    return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Bcc");
-                if ((value == null))
-                {
-                    this.SetAttributeValue("bcc", value);
-                }
-                else
-                {
-                    this.SetAttributeValue("bcc", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
-                }
-                this.OnPropertyChanged("Bcc");
-            }
-        }
-
-        /// <summary>
-        /// Carbon-copy (cc) recipients of the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("cc")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> Cc
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("cc");
-                if (((collection != null)
-                            && (collection.Entities != null)))
-                {
-                    return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Cc");
-                if ((value == null))
-                {
-                    this.SetAttributeValue("cc", value);
-                }
-                else
-                {
-                    this.SetAttributeValue("cc", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
-                }
-                this.OnPropertyChanged("Cc");
-            }
-        }
-
-        /// <summary>
-        /// Shows how contact about the social activity originated, such as from Twitter or Facebook. This field is read-only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("community")]
-        public Microsoft.Xrm.Sdk.OptionSetValue Community
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("community");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Community");
-                this.SetAttributeValue("community", value);
-                this.OnPropertyChanged("Community");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the user who created the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
-        public Microsoft.Xrm.Sdk.EntityReference CreatedBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
-            }
-        }
-
-        /// <summary>
-        /// Date and time when the activity was created.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
-        public System.Nullable<System.DateTime> CreatedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
-            }
-        }
-
-        /// <summary>
-        /// Shows the delegate user who created the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
-        public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("CreatedOnBehalfBy");
-                this.SetAttributeValue("createdonbehalfby", value);
-                this.OnPropertyChanged("CreatedOnBehalfBy");
-            }
-        }
-
-        /// <summary>
-        /// Customer with which the activity is associated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customers")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> Customers
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("customers");
-                if (((collection != null)
-                            && (collection.Entities != null)))
-                {
-                    return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Customers");
-                if ((value == null))
-                {
-                    this.SetAttributeValue("customers", value);
-                }
-                else
-                {
-                    this.SetAttributeValue("customers", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
-                }
-                this.OnPropertyChanged("Customers");
-            }
-        }
-
-        /// <summary>
-        /// Date and time when the delivery of the activity was last attempted.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("deliverylastattemptedon")]
-        public System.Nullable<System.DateTime> DeliveryLastAttemptedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("deliverylastattemptedon");
-            }
-        }
-
-        /// <summary>
-        /// Priority of delivery of the activity to the email server.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("deliveryprioritycode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue DeliveryPriorityCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("deliveryprioritycode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("DeliveryPriorityCode");
-                this.SetAttributeValue("deliveryprioritycode", value);
-                this.OnPropertyChanged("DeliveryPriorityCode");
-            }
-        }
-
-        /// <summary>
-        /// Description of the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
-        public string Description
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("description");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Description");
-                this.SetAttributeValue("description", value);
-                this.OnPropertyChanged("Description");
-            }
-        }
-
-        /// <summary>
-        /// The message id of activity which is returned from Exchange Server.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangeitemid")]
-        public string ExchangeItemId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("exchangeitemid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ExchangeItemId");
-                this.SetAttributeValue("exchangeitemid", value);
-                this.OnPropertyChanged("ExchangeItemId");
-            }
-        }
-
-        /// <summary>
-        /// Exchange rate for the currency associated with the activitypointer with respect to the base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangerate")]
-        public System.Nullable<decimal> ExchangeRate
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
-            }
-        }
-
-        /// <summary>
-        /// Shows the web link of Activity of type email.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangeweblink")]
-        public string ExchangeWebLink
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("exchangeweblink");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ExchangeWebLink");
-                this.SetAttributeValue("exchangeweblink", value);
-                this.OnPropertyChanged("ExchangeWebLink");
-            }
-        }
-
-        /// <summary>
-        /// Person who the activity is from.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("from")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> From
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("from");
-                if (((collection != null)
-                            && (collection.Entities != null)))
-                {
-                    return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("From");
-                if ((value == null))
-                {
-                    this.SetAttributeValue("from", value);
-                }
-                else
-                {
-                    this.SetAttributeValue("from", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
-                }
-                this.OnPropertyChanged("From");
-            }
-        }
-
-        /// <summary>
-        /// Sequence number of the import that created this record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
-        public System.Nullable<int> ImportSequenceNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ImportSequenceNumber");
-                this.SetAttributeValue("importsequencenumber", value);
-                this.OnPropertyChanged("ImportSequenceNumber");
-            }
-        }
-
-        /// <summary>
-        /// Type of instance of a recurring series.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("instancetypecode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue InstanceTypeCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("instancetypecode");
-            }
-        }
-
-        /// <summary>
-        /// Information regarding whether the activity was billed as part of resolving a case.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isbilled")]
-        public System.Nullable<bool> IsBilled
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("isbilled");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("IsBilled");
-                this.SetAttributeValue("isbilled", value);
-                this.OnPropertyChanged("IsBilled");
-            }
-        }
-
-        /// <summary>
-        /// For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismapiprivate")]
-        public System.Nullable<bool> IsMapiPrivate
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("ismapiprivate");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("IsMapiPrivate");
-                this.SetAttributeValue("ismapiprivate", value);
-                this.OnPropertyChanged("IsMapiPrivate");
-            }
-        }
-
-        /// <summary>
-        /// Information regarding whether the activity is a regular activity type or event type.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isregularactivity")]
-        public System.Nullable<bool> IsRegularActivity
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("isregularactivity");
-            }
-        }
-
-        /// <summary>
-        /// Information regarding whether the activity was created from a workflow rule.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isworkflowcreated")]
-        public System.Nullable<bool> IsWorkflowCreated
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("isworkflowcreated");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("IsWorkflowCreated");
-                this.SetAttributeValue("isworkflowcreated", value);
-                this.OnPropertyChanged("IsWorkflowCreated");
-            }
-        }
-
-        /// <summary>
-        /// Contains the date and time stamp of the last on hold time.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastonholdtime")]
-        public System.Nullable<System.DateTime> LastOnHoldTime
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("lastonholdtime");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("LastOnHoldTime");
-                this.SetAttributeValue("lastonholdtime", value);
-                this.OnPropertyChanged("LastOnHoldTime");
-            }
-        }
-
-        /// <summary>
-        /// Left the voice mail
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("leftvoicemail")]
-        public System.Nullable<bool> LeftVoiceMail
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("leftvoicemail");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("LeftVoiceMail");
-                this.SetAttributeValue("leftvoicemail", value);
-                this.OnPropertyChanged("LeftVoiceMail");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of user who last modified the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
-        public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
-            }
-        }
-
-        /// <summary>
-        /// Date and time when activity was last modified.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
-        public System.Nullable<System.DateTime> ModifiedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
-            }
-        }
-
-        /// <summary>
-        /// Shows the delegate user who last modified the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
-        public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ModifiedOnBehalfBy");
-                this.SetAttributeValue("modifiedonbehalfby", value);
-                this.OnPropertyChanged("ModifiedOnBehalfBy");
-            }
-        }
-
-        /// <summary>
-        /// Shows the status of the approval.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_approvalstatus")]
-        public Microsoft.Xrm.Sdk.OptionSetValue msdyn_approvalstatus
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("msdyn_approvalstatus");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_approvalstatus");
-                this.SetAttributeValue("msdyn_approvalstatus", value);
-                this.OnPropertyChanged("msdyn_approvalstatus");
-            }
-        }
-
-        /// <summary>
-        /// Skill for approval
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_characteristic")]
-        public Microsoft.Xrm.Sdk.EntityReference msdyn_Characteristic
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_characteristic");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_Characteristic");
-                this.SetAttributeValue("msdyn_characteristic", value);
-                this.OnPropertyChanged("msdyn_Characteristic");
-            }
-        }
-
-        /// <summary>
-        /// Shows how long, in minutes, that the record was on hold.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("onholdtime")]
-        public System.Nullable<int> OnHoldTime
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("onholdtime");
-            }
-        }
-
-        /// <summary>
-        /// List of optional attendees for the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("optionalattendees")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> OptionalAttendees
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("optionalattendees");
-                if (((collection != null)
-                            && (collection.Entities != null)))
-                {
-                    return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("OptionalAttendees");
-                if ((value == null))
-                {
-                    this.SetAttributeValue("optionalattendees", value);
-                }
-                else
-                {
-                    this.SetAttributeValue("optionalattendees", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
-                }
-                this.OnPropertyChanged("OptionalAttendees");
-            }
-        }
-
-        /// <summary>
-        /// Person who organized the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizer")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> Organizer
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("organizer");
-                if (((collection != null)
-                            && (collection.Entities != null)))
-                {
-                    return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Organizer");
-                if ((value == null))
-                {
-                    this.SetAttributeValue("organizer", value);
-                }
-                else
-                {
-                    this.SetAttributeValue("organizer", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
-                }
-                this.OnPropertyChanged("Organizer");
-            }
-        }
-
-        /// <summary>
-        /// Date and time that the record was migrated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
-        public System.Nullable<System.DateTime> OverriddenCreatedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("OverriddenCreatedOn");
-                this.SetAttributeValue("overriddencreatedon", value);
-                this.OnPropertyChanged("OverriddenCreatedOn");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the user or team who owns the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
-        public Microsoft.Xrm.Sdk.EntityReference OwnerId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("OwnerId");
-                this.SetAttributeValue("ownerid", value);
-                this.OnPropertyChanged("OwnerId");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the business unit that owns the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the team that owns the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningTeam
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the user that owns the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningUser
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
-            }
-        }
-
-        /// <summary>
-        /// Outsource vendor with which activity is associated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partners")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> Partners
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("partners");
-                if (((collection != null)
-                            && (collection.Entities != null)))
-                {
-                    return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Partners");
-                if ((value == null))
-                {
-                    this.SetAttributeValue("partners", value);
-                }
-                else
-                {
-                    this.SetAttributeValue("partners", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
-                }
-                this.OnPropertyChanged("Partners");
-            }
-        }
-
-        /// <summary>
-        /// For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("postponeactivityprocessinguntil")]
-        public System.Nullable<System.DateTime> PostponeActivityProcessingUntil
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("postponeactivityprocessinguntil");
-            }
-        }
-
-        /// <summary>
-        /// Priority of the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("prioritycode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue PriorityCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("prioritycode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("PriorityCode");
-                this.SetAttributeValue("prioritycode", value);
-                this.OnPropertyChanged("PriorityCode");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the Process.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processid")]
-        public System.Nullable<System.Guid> ProcessId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("processid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ProcessId");
-                this.SetAttributeValue("processid", value);
-                this.OnPropertyChanged("ProcessId");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the object with which the activity is associated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
-        public Microsoft.Xrm.Sdk.EntityReference RegardingObjectId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("regardingobjectid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("RegardingObjectId");
-                this.SetAttributeValue("regardingobjectid", value);
-                this.OnPropertyChanged("RegardingObjectId");
-            }
-        }
-
-        /// <summary>
-        /// List of required attendees for the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("requiredattendees")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> RequiredAttendees
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("requiredattendees");
-                if (((collection != null)
-                            && (collection.Entities != null)))
-                {
-                    return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("RequiredAttendees");
-                if ((value == null))
-                {
-                    this.SetAttributeValue("requiredattendees", value);
-                }
-                else
-                {
-                    this.SetAttributeValue("requiredattendees", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
-                }
-                this.OnPropertyChanged("RequiredAttendees");
-            }
-        }
-
-        /// <summary>
-        /// Users or facility/equipment that are required for the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resources")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> Resources
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("resources");
-                if (((collection != null)
-                            && (collection.Entities != null)))
-                {
-                    return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Resources");
-                if ((value == null))
-                {
-                    this.SetAttributeValue("resources", value);
-                }
-                else
-                {
-                    this.SetAttributeValue("resources", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
-                }
-                this.OnPropertyChanged("Resources");
-            }
-        }
-
-        /// <summary>
-        /// Scheduled duration of the activity, specified in minutes.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scheduleddurationminutes")]
-        public System.Nullable<int> ScheduledDurationMinutes
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("scheduleddurationminutes");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ScheduledDurationMinutes");
-                this.SetAttributeValue("scheduleddurationminutes", value);
-                this.OnPropertyChanged("ScheduledDurationMinutes");
-            }
-        }
-
-        /// <summary>
-        /// Scheduled end time of the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scheduledend")]
-        public System.Nullable<System.DateTime> ScheduledEnd
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("scheduledend");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ScheduledEnd");
-                this.SetAttributeValue("scheduledend", value);
-                this.OnPropertyChanged("ScheduledEnd");
-            }
-        }
-
-        /// <summary>
-        /// Scheduled start time of the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scheduledstart")]
-        public System.Nullable<System.DateTime> ScheduledStart
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("scheduledstart");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ScheduledStart");
-                this.SetAttributeValue("scheduledstart", value);
-                this.OnPropertyChanged("ScheduledStart");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the mailbox associated with the sender of the email message.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendermailboxid")]
-        public Microsoft.Xrm.Sdk.EntityReference SenderMailboxId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("sendermailboxid");
-            }
-        }
-
-        /// <summary>
-        /// Date and time when the activity was sent.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("senton")]
-        public System.Nullable<System.DateTime> SentOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("senton");
-            }
-        }
-
-        /// <summary>
-        /// Shows the ID of the recurring series of an instance.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("seriesid")]
-        public System.Nullable<System.Guid> SeriesId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("seriesid");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of an associated service.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("serviceid")]
-        public Microsoft.Xrm.Sdk.EntityReference ServiceId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("serviceid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ServiceId");
-                this.SetAttributeValue("serviceid", value);
-                this.OnPropertyChanged("ServiceId");
-            }
-        }
-
-        /// <summary>
-        /// Choose the service level agreement (SLA) that you want to apply to the case record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slaid")]
-        public Microsoft.Xrm.Sdk.EntityReference SLAId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("slaid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("SLAId");
-                this.SetAttributeValue("slaid", value);
-                this.OnPropertyChanged("SLAId");
-            }
-        }
-
-        /// <summary>
-        /// Last SLA that was applied to this case. This field is for internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slainvokedid")]
-        public Microsoft.Xrm.Sdk.EntityReference SLAInvokedId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("slainvokedid");
-            }
-        }
-
-        /// <summary>
-        /// Shows the date and time by which the activities are sorted.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sortdate")]
-        public System.Nullable<System.DateTime> SortDate
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("sortdate");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("SortDate");
-                this.SetAttributeValue("sortdate", value);
-                this.OnPropertyChanged("SortDate");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the Stage.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
-        public System.Nullable<System.Guid> StageId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("stageid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("StageId");
-                this.SetAttributeValue("stageid", value);
-                this.OnPropertyChanged("StageId");
-            }
-        }
-
-        /// <summary>
-        /// Status of the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-        public System.Nullable<CrmEarlyBound.msdyn_approvalState> StateCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
-                if ((optionSet != null))
-                {
-                    return ((CrmEarlyBound.msdyn_approvalState)(System.Enum.ToObject(typeof(CrmEarlyBound.msdyn_approvalState), optionSet.Value)));
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("StateCode");
-                if ((value == null))
-                {
-                    this.SetAttributeValue("statecode", null);
-                }
-                else
-                {
-                    this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
-                }
-                this.OnPropertyChanged("StateCode");
-            }
-        }
-
-        /// <summary>
-        /// Reason for the status of the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("StatusCode");
-                this.SetAttributeValue("statuscode", value);
-                this.OnPropertyChanged("StatusCode");
-            }
-        }
-
-        /// <summary>
-        /// Subject associated with the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("subject")]
-        public string Subject
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("subject");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Subject");
-                this.SetAttributeValue("subject", value);
-                this.OnPropertyChanged("Subject");
-            }
-        }
-
-        /// <summary>
-        /// For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
-        public System.Nullable<int> TimeZoneRuleVersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TimeZoneRuleVersionNumber");
-                this.SetAttributeValue("timezoneruleversionnumber", value);
-                this.OnPropertyChanged("TimeZoneRuleVersionNumber");
-            }
-        }
-
-        /// <summary>
-        /// Person who is the receiver of the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("to")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> To
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("to");
-                if (((collection != null)
-                            && (collection.Entities != null)))
-                {
-                    return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("To");
-                if ((value == null))
-                {
-                    this.SetAttributeValue("to", value);
-                }
-                else
-                {
-                    this.SetAttributeValue("to", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
-                }
-                this.OnPropertyChanged("To");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the currency associated with the activitypointer.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
-        public Microsoft.Xrm.Sdk.EntityReference TransactionCurrencyId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("transactioncurrencyid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TransactionCurrencyId");
-                this.SetAttributeValue("transactioncurrencyid", value);
-                this.OnPropertyChanged("TransactionCurrencyId");
-            }
-        }
-
-        /// <summary>
-        /// For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("traversedpath")]
-        public string TraversedPath
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("traversedpath");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TraversedPath");
-                this.SetAttributeValue("traversedpath", value);
-                this.OnPropertyChanged("TraversedPath");
-            }
-        }
-
-        /// <summary>
-        /// Time zone code that was in use when the record was created.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
-        public System.Nullable<int> UTCConversionTimeZoneCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("UTCConversionTimeZoneCode");
-                this.SetAttributeValue("utcconversiontimezonecode", value);
-                this.OnPropertyChanged("UTCConversionTimeZoneCode");
-            }
-        }
-
-        /// <summary>
-        /// Version number of the activity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
-        public System.Nullable<long> VersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
-            }
-        }
-
-        /// <summary>
-        /// 1:N msdyn_approval_activity_parties
-        /// </summary>
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_approval_activity_parties")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> msdyn_approval_activity_parties
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntities<CrmEarlyBound.ActivityParty>("msdyn_approval_activity_parties", null);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_approval_activity_parties");
-                this.SetRelatedEntities<CrmEarlyBound.ActivityParty>("msdyn_approval_activity_parties", null, value);
-                this.OnPropertyChanged("msdyn_approval_activity_parties");
-            }
-        }
-
-        /// <summary>
-        /// N:1 incident_msdyn_approvals
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_msdyn_approvals")]
-        public CrmEarlyBound.Incident incident_msdyn_approvals
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntity<CrmEarlyBound.Incident>("incident_msdyn_approvals", null);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("incident_msdyn_approvals");
-                this.SetRelatedEntity<CrmEarlyBound.Incident>("incident_msdyn_approvals", null, value);
-                this.OnPropertyChanged("incident_msdyn_approvals");
-            }
-        }
-
-        /// <summary>
-        /// N:1 invoice_msdyn_approvals
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoice_msdyn_approvals")]
-        public CrmEarlyBound.Invoice invoice_msdyn_approvals
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntity<CrmEarlyBound.Invoice>("invoice_msdyn_approvals", null);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("invoice_msdyn_approvals");
-                this.SetRelatedEntity<CrmEarlyBound.Invoice>("invoice_msdyn_approvals", null, value);
-                this.OnPropertyChanged("invoice_msdyn_approvals");
-            }
-        }
-
-        /// <summary>
-        /// N:1 knowledgearticle_msdyn_approvals
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_msdyn_approvals")]
-        public CrmEarlyBound.KnowledgeArticle knowledgearticle_msdyn_approvals
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_msdyn_approvals", null);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("knowledgearticle_msdyn_approvals");
-                this.SetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_msdyn_approvals", null, value);
-                this.OnPropertyChanged("knowledgearticle_msdyn_approvals");
-            }
-        }
-
-        /// <summary>
-        /// N:1 msdyn_purchaseorderproduct_msdyn_approvals
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_purchaseorderproduct_msdyn_approvals")]
-        public CrmEarlyBound.msdyn_purchaseorderproduct msdyn_purchaseorderproduct_msdyn_approvals
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntity<CrmEarlyBound.msdyn_purchaseorderproduct>("msdyn_purchaseorderproduct_msdyn_approvals", null);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_purchaseorderproduct_msdyn_approvals");
-                this.SetRelatedEntity<CrmEarlyBound.msdyn_purchaseorderproduct>("msdyn_purchaseorderproduct_msdyn_approvals", null, value);
-                this.OnPropertyChanged("msdyn_purchaseorderproduct_msdyn_approvals");
-            }
-        }
-
-        /// <summary>
-        /// Constructor for populating via LINQ queries given a LINQ anonymous type
-        /// <param name="anonymousType">LINQ anonymous type.</param>
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public msdyn_approval(object anonymousType) :
-                this()
-        {
+		}
+		
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public enum msdyn_approvalState
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Open = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Completed = 1,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Canceled = 2,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Scheduled = 3,
+	}
+	
+	/// <summary>
+	/// Container for approvals.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("msdyn_approval")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public partial class msdyn_approval : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public msdyn_approval() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "msdyn_approval";
+		
+		public const string PrimaryIdAttribute = "activityid";
+		
+		public const string PrimaryNameAttribute = "subject";
+		
+		public const int EntityTypeCode = 10032;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Additional information provided by the external application as JSON. For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityadditionalparams")]
+		public string ActivityAdditionalParams
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("activityadditionalparams");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ActivityAdditionalParams");
+				this.SetAttributeValue("activityadditionalparams", value);
+				this.OnPropertyChanged("ActivityAdditionalParams");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
+		public System.Nullable<System.Guid> ActivityId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("activityid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ActivityId");
+				this.SetAttributeValue("activityid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("ActivityId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.ActivityId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Type of activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activitytypecode")]
+		public string ActivityTypeCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("activitytypecode");
+			}
+		}
+		
+		/// <summary>
+		/// Actual duration of the activity in minutes.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actualdurationminutes")]
+		public System.Nullable<int> ActualDurationMinutes
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("actualdurationminutes");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ActualDurationMinutes");
+				this.SetAttributeValue("actualdurationminutes", value);
+				this.OnPropertyChanged("ActualDurationMinutes");
+			}
+		}
+		
+		/// <summary>
+		/// Actual end time of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actualend")]
+		public System.Nullable<System.DateTime> ActualEnd
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("actualend");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ActualEnd");
+				this.SetAttributeValue("actualend", value);
+				this.OnPropertyChanged("ActualEnd");
+			}
+		}
+		
+		/// <summary>
+		/// Actual start time of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actualstart")]
+		public System.Nullable<System.DateTime> ActualStart
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("actualstart");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ActualStart");
+				this.SetAttributeValue("actualstart", value);
+				this.OnPropertyChanged("ActualStart");
+			}
+		}
+		
+		/// <summary>
+		/// Blind Carbon-copy (bcc) recipients of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bcc")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> Bcc
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("bcc");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Bcc");
+				if ((value == null))
+				{
+					this.SetAttributeValue("bcc", value);
+				}
+				else
+				{
+					this.SetAttributeValue("bcc", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+				this.OnPropertyChanged("Bcc");
+			}
+		}
+		
+		/// <summary>
+		/// Carbon-copy (cc) recipients of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("cc")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> Cc
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("cc");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Cc");
+				if ((value == null))
+				{
+					this.SetAttributeValue("cc", value);
+				}
+				else
+				{
+					this.SetAttributeValue("cc", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+				this.OnPropertyChanged("Cc");
+			}
+		}
+		
+		/// <summary>
+		/// Shows how contact about the social activity originated, such as from Twitter or Facebook. This field is read-only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("community")]
+		public Microsoft.Xrm.Sdk.OptionSetValue Community
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("community");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Community");
+				this.SetAttributeValue("community", value);
+				this.OnPropertyChanged("Community");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the activity was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the delegate user who created the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Customer with which the activity is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customers")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> Customers
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("customers");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Customers");
+				if ((value == null))
+				{
+					this.SetAttributeValue("customers", value);
+				}
+				else
+				{
+					this.SetAttributeValue("customers", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+				this.OnPropertyChanged("Customers");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the delivery of the activity was last attempted.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("deliverylastattemptedon")]
+		public System.Nullable<System.DateTime> DeliveryLastAttemptedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("deliverylastattemptedon");
+			}
+		}
+		
+		/// <summary>
+		/// Priority of delivery of the activity to the email server.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("deliveryprioritycode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue DeliveryPriorityCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("deliveryprioritycode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("DeliveryPriorityCode");
+				this.SetAttributeValue("deliveryprioritycode", value);
+				this.OnPropertyChanged("DeliveryPriorityCode");
+			}
+		}
+		
+		/// <summary>
+		/// Description of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("description");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Description");
+				this.SetAttributeValue("description", value);
+				this.OnPropertyChanged("Description");
+			}
+		}
+		
+		/// <summary>
+		/// The message id of activity which is returned from Exchange Server.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangeitemid")]
+		public string ExchangeItemId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("exchangeitemid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ExchangeItemId");
+				this.SetAttributeValue("exchangeitemid", value);
+				this.OnPropertyChanged("ExchangeItemId");
+			}
+		}
+		
+		/// <summary>
+		/// Exchange rate for the currency associated with the activitypointer with respect to the base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangerate")]
+		public System.Nullable<decimal> ExchangeRate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the web link of Activity of type email.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangeweblink")]
+		public string ExchangeWebLink
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("exchangeweblink");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ExchangeWebLink");
+				this.SetAttributeValue("exchangeweblink", value);
+				this.OnPropertyChanged("ExchangeWebLink");
+			}
+		}
+		
+		/// <summary>
+		/// Person who the activity is from.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("from")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> From
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("from");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("From");
+				if ((value == null))
+				{
+					this.SetAttributeValue("from", value);
+				}
+				else
+				{
+					this.SetAttributeValue("from", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+				this.OnPropertyChanged("From");
+			}
+		}
+		
+		/// <summary>
+		/// Sequence number of the import that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ImportSequenceNumber");
+				this.SetAttributeValue("importsequencenumber", value);
+				this.OnPropertyChanged("ImportSequenceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Type of instance of a recurring series.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("instancetypecode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue InstanceTypeCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("instancetypecode");
+			}
+		}
+		
+		/// <summary>
+		/// Information regarding whether the activity was billed as part of resolving a case.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isbilled")]
+		public System.Nullable<bool> IsBilled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isbilled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsBilled");
+				this.SetAttributeValue("isbilled", value);
+				this.OnPropertyChanged("IsBilled");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismapiprivate")]
+		public System.Nullable<bool> IsMapiPrivate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismapiprivate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsMapiPrivate");
+				this.SetAttributeValue("ismapiprivate", value);
+				this.OnPropertyChanged("IsMapiPrivate");
+			}
+		}
+		
+		/// <summary>
+		/// Information regarding whether the activity is a regular activity type or event type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isregularactivity")]
+		public System.Nullable<bool> IsRegularActivity
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isregularactivity");
+			}
+		}
+		
+		/// <summary>
+		/// Information regarding whether the activity was created from a workflow rule.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isworkflowcreated")]
+		public System.Nullable<bool> IsWorkflowCreated
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isworkflowcreated");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsWorkflowCreated");
+				this.SetAttributeValue("isworkflowcreated", value);
+				this.OnPropertyChanged("IsWorkflowCreated");
+			}
+		}
+		
+		/// <summary>
+		/// Contains the date and time stamp of the last on hold time.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastonholdtime")]
+		public System.Nullable<System.DateTime> LastOnHoldTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("lastonholdtime");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("LastOnHoldTime");
+				this.SetAttributeValue("lastonholdtime", value);
+				this.OnPropertyChanged("LastOnHoldTime");
+			}
+		}
+		
+		/// <summary>
+		/// Left the voice mail
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("leftvoicemail")]
+		public System.Nullable<bool> LeftVoiceMail
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("leftvoicemail");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("LeftVoiceMail");
+				this.SetAttributeValue("leftvoicemail", value);
+				this.OnPropertyChanged("LeftVoiceMail");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of user who last modified the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when activity was last modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the delegate user who last modified the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the status of the approval.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_approvalstatus")]
+		public Microsoft.Xrm.Sdk.OptionSetValue msdyn_approvalstatus
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("msdyn_approvalstatus");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_approvalstatus");
+				this.SetAttributeValue("msdyn_approvalstatus", value);
+				this.OnPropertyChanged("msdyn_approvalstatus");
+			}
+		}
+		
+		/// <summary>
+		/// Skill for approval
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_characteristic")]
+		public Microsoft.Xrm.Sdk.EntityReference msdyn_Characteristic
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_characteristic");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_Characteristic");
+				this.SetAttributeValue("msdyn_characteristic", value);
+				this.OnPropertyChanged("msdyn_Characteristic");
+			}
+		}
+		
+		/// <summary>
+		/// Shows how long, in minutes, that the record was on hold.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("onholdtime")]
+		public System.Nullable<int> OnHoldTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("onholdtime");
+			}
+		}
+		
+		/// <summary>
+		/// List of optional attendees for the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("optionalattendees")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> OptionalAttendees
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("optionalattendees");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OptionalAttendees");
+				if ((value == null))
+				{
+					this.SetAttributeValue("optionalattendees", value);
+				}
+				else
+				{
+					this.SetAttributeValue("optionalattendees", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+				this.OnPropertyChanged("OptionalAttendees");
+			}
+		}
+		
+		/// <summary>
+		/// Person who organized the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizer")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> Organizer
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("organizer");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Organizer");
+				if ((value == null))
+				{
+					this.SetAttributeValue("organizer", value);
+				}
+				else
+				{
+					this.SetAttributeValue("organizer", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+				this.OnPropertyChanged("Organizer");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user or team who owns the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
+		public Microsoft.Xrm.Sdk.EntityReference OwnerId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OwnerId");
+				this.SetAttributeValue("ownerid", value);
+				this.OnPropertyChanged("OwnerId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the business unit that owns the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the team that owns the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningTeam
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user that owns the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningUser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
+			}
+		}
+		
+		/// <summary>
+		/// Outsource vendor with which activity is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partners")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> Partners
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("partners");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Partners");
+				if ((value == null))
+				{
+					this.SetAttributeValue("partners", value);
+				}
+				else
+				{
+					this.SetAttributeValue("partners", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+				this.OnPropertyChanged("Partners");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("postponeactivityprocessinguntil")]
+		public System.Nullable<System.DateTime> PostponeActivityProcessingUntil
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("postponeactivityprocessinguntil");
+			}
+		}
+		
+		/// <summary>
+		/// Priority of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("prioritycode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue PriorityCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("prioritycode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PriorityCode");
+				this.SetAttributeValue("prioritycode", value);
+				this.OnPropertyChanged("PriorityCode");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the Process.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processid")]
+		public System.Nullable<System.Guid> ProcessId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("processid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ProcessId");
+				this.SetAttributeValue("processid", value);
+				this.OnPropertyChanged("ProcessId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the object with which the activity is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		public Microsoft.Xrm.Sdk.EntityReference RegardingObjectId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("regardingobjectid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("RegardingObjectId");
+				this.SetAttributeValue("regardingobjectid", value);
+				this.OnPropertyChanged("RegardingObjectId");
+			}
+		}
+		
+		/// <summary>
+		/// List of required attendees for the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("requiredattendees")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> RequiredAttendees
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("requiredattendees");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("RequiredAttendees");
+				if ((value == null))
+				{
+					this.SetAttributeValue("requiredattendees", value);
+				}
+				else
+				{
+					this.SetAttributeValue("requiredattendees", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+				this.OnPropertyChanged("RequiredAttendees");
+			}
+		}
+		
+		/// <summary>
+		/// Users or facility/equipment that are required for the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resources")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> Resources
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("resources");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Resources");
+				if ((value == null))
+				{
+					this.SetAttributeValue("resources", value);
+				}
+				else
+				{
+					this.SetAttributeValue("resources", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+				this.OnPropertyChanged("Resources");
+			}
+		}
+		
+		/// <summary>
+		/// Scheduled duration of the activity, specified in minutes.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scheduleddurationminutes")]
+		public System.Nullable<int> ScheduledDurationMinutes
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("scheduleddurationminutes");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ScheduledDurationMinutes");
+				this.SetAttributeValue("scheduleddurationminutes", value);
+				this.OnPropertyChanged("ScheduledDurationMinutes");
+			}
+		}
+		
+		/// <summary>
+		/// Scheduled end time of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scheduledend")]
+		public System.Nullable<System.DateTime> ScheduledEnd
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("scheduledend");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ScheduledEnd");
+				this.SetAttributeValue("scheduledend", value);
+				this.OnPropertyChanged("ScheduledEnd");
+			}
+		}
+		
+		/// <summary>
+		/// Scheduled start time of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scheduledstart")]
+		public System.Nullable<System.DateTime> ScheduledStart
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("scheduledstart");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ScheduledStart");
+				this.SetAttributeValue("scheduledstart", value);
+				this.OnPropertyChanged("ScheduledStart");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the mailbox associated with the sender of the email message.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendermailboxid")]
+		public Microsoft.Xrm.Sdk.EntityReference SenderMailboxId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("sendermailboxid");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the activity was sent.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("senton")]
+		public System.Nullable<System.DateTime> SentOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("senton");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the ID of the recurring series of an instance.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("seriesid")]
+		public System.Nullable<System.Guid> SeriesId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("seriesid");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of an associated service.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("serviceid")]
+		public Microsoft.Xrm.Sdk.EntityReference ServiceId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("serviceid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ServiceId");
+				this.SetAttributeValue("serviceid", value);
+				this.OnPropertyChanged("ServiceId");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the service level agreement (SLA) that you want to apply to the case record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slaid")]
+		public Microsoft.Xrm.Sdk.EntityReference SLAId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("slaid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SLAId");
+				this.SetAttributeValue("slaid", value);
+				this.OnPropertyChanged("SLAId");
+			}
+		}
+		
+		/// <summary>
+		/// Last SLA that was applied to this case. This field is for internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slainvokedid")]
+		public Microsoft.Xrm.Sdk.EntityReference SLAInvokedId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("slainvokedid");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time by which the activities are sorted.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sortdate")]
+		public System.Nullable<System.DateTime> SortDate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("sortdate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SortDate");
+				this.SetAttributeValue("sortdate", value);
+				this.OnPropertyChanged("SortDate");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the Stage.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
+		public System.Nullable<System.Guid> StageId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("stageid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StageId");
+				this.SetAttributeValue("stageid", value);
+				this.OnPropertyChanged("StageId");
+			}
+		}
+		
+		/// <summary>
+		/// Status of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public System.Nullable<CrmEarlyBound.msdyn_approvalState> StateCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+				if ((optionSet != null))
+				{
+					return ((CrmEarlyBound.msdyn_approvalState)(System.Enum.ToObject(typeof(CrmEarlyBound.msdyn_approvalState), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StateCode");
+				if ((value == null))
+				{
+					this.SetAttributeValue("statecode", null);
+				}
+				else
+				{
+					this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
+				}
+				this.OnPropertyChanged("StateCode");
+			}
+		}
+		
+		/// <summary>
+		/// Reason for the status of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// Subject associated with the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("subject")]
+		public string Subject
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("subject");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Subject");
+				this.SetAttributeValue("subject", value);
+				this.OnPropertyChanged("Subject");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TimeZoneRuleVersionNumber");
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+				this.OnPropertyChanged("TimeZoneRuleVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Person who is the receiver of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("to")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> To
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("to");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Cast<CrmEarlyBound.ActivityParty>(collection.Entities);
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("To");
+				if ((value == null))
+				{
+					this.SetAttributeValue("to", value);
+				}
+				else
+				{
+					this.SetAttributeValue("to", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+				this.OnPropertyChanged("To");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the currency associated with the activitypointer.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
+		public Microsoft.Xrm.Sdk.EntityReference TransactionCurrencyId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("transactioncurrencyid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TransactionCurrencyId");
+				this.SetAttributeValue("transactioncurrencyid", value);
+				this.OnPropertyChanged("TransactionCurrencyId");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("traversedpath")]
+		public string TraversedPath
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("traversedpath");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TraversedPath");
+				this.SetAttributeValue("traversedpath", value);
+				this.OnPropertyChanged("TraversedPath");
+			}
+		}
+		
+		/// <summary>
+		/// Time zone code that was in use when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UTCConversionTimeZoneCode");
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+				this.OnPropertyChanged("UTCConversionTimeZoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// Version number of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N msdyn_approval_activity_parties
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_approval_activity_parties")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> msdyn_approval_activity_parties
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.ActivityParty>("msdyn_approval_activity_parties", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_approval_activity_parties");
+				this.SetRelatedEntities<CrmEarlyBound.ActivityParty>("msdyn_approval_activity_parties", null, value);
+				this.OnPropertyChanged("msdyn_approval_activity_parties");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 incident_msdyn_approvals
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("incident_msdyn_approvals")]
+		public CrmEarlyBound.Incident incident_msdyn_approvals
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.Incident>("incident_msdyn_approvals", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("incident_msdyn_approvals");
+				this.SetRelatedEntity<CrmEarlyBound.Incident>("incident_msdyn_approvals", null, value);
+				this.OnPropertyChanged("incident_msdyn_approvals");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 invoice_msdyn_approvals
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("invoice_msdyn_approvals")]
+		public CrmEarlyBound.Invoice invoice_msdyn_approvals
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.Invoice>("invoice_msdyn_approvals", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("invoice_msdyn_approvals");
+				this.SetRelatedEntity<CrmEarlyBound.Invoice>("invoice_msdyn_approvals", null, value);
+				this.OnPropertyChanged("invoice_msdyn_approvals");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 knowledgearticle_msdyn_approvals
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_msdyn_approvals")]
+		public CrmEarlyBound.KnowledgeArticle knowledgearticle_msdyn_approvals
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_msdyn_approvals", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("knowledgearticle_msdyn_approvals");
+				this.SetRelatedEntity<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_msdyn_approvals", null, value);
+				this.OnPropertyChanged("knowledgearticle_msdyn_approvals");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 msdyn_approval_systemuser_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_approval_systemuser_createdby")]
+		public CrmEarlyBound.SystemUser msdyn_approval_systemuser_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("msdyn_approval_systemuser_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 msdyn_approval_systemuser_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_approval_systemuser_createdonbehalfby")]
+		public CrmEarlyBound.SystemUser msdyn_approval_systemuser_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("msdyn_approval_systemuser_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_approval_systemuser_createdonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("msdyn_approval_systemuser_createdonbehalfby", null, value);
+				this.OnPropertyChanged("msdyn_approval_systemuser_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 msdyn_approval_systemuser_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_approval_systemuser_modifiedby")]
+		public CrmEarlyBound.SystemUser msdyn_approval_systemuser_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("msdyn_approval_systemuser_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 msdyn_approval_systemuser_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_approval_systemuser_modifiedonbehalfby")]
+		public CrmEarlyBound.SystemUser msdyn_approval_systemuser_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("msdyn_approval_systemuser_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_approval_systemuser_modifiedonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("msdyn_approval_systemuser_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("msdyn_approval_systemuser_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 msdyn_approval_systemuser_owninguser
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_approval_systemuser_owninguser")]
+		public CrmEarlyBound.SystemUser msdyn_approval_systemuser_owninguser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("msdyn_approval_systemuser_owninguser", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 msdyn_purchaseorderproduct_msdyn_approvals
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_purchaseorderproduct_msdyn_approvals")]
+		public CrmEarlyBound.msdyn_purchaseorderproduct msdyn_purchaseorderproduct_msdyn_approvals
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.msdyn_purchaseorderproduct>("msdyn_purchaseorderproduct_msdyn_approvals", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_purchaseorderproduct_msdyn_approvals");
+				this.SetRelatedEntity<CrmEarlyBound.msdyn_purchaseorderproduct>("msdyn_purchaseorderproduct_msdyn_approvals", null, value);
+				this.OnPropertyChanged("msdyn_purchaseorderproduct_msdyn_approvals");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public msdyn_approval(object anonymousType) : 
+				this()
+		{
             foreach (var p in anonymousType.GetType().GetProperties())
             {
                 var value = p.GetValue(anonymousType, null);
                 var name = p.Name.ToLower();
-
+            
                 if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
                 {
-                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int)value);
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
                     name = name.Remove(name.Length - "enum".Length);
                 }
-
+            
                 switch (name)
                 {
                     case "id":
@@ -7599,8 +8061,8 @@ namespace CrmEarlyBound
                         Attributes["activityid"] = base.Id;
                         break;
                     case "activityid":
-                        var id = (System.Nullable<System.Guid>)value;
-                        if (id == null) { continue; }
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
                         base.Id = id.Value;
                         Attributes[name] = base.Id;
                         break;
@@ -7613,870 +8075,954 @@ namespace CrmEarlyBound
                         break;
                 }
             }
-        }
-
-    }
-
-    [System.Runtime.Serialization.DataContractAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
-    public enum msdyn_purchaseorderproductState
-    {
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Active = 0,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Inactive = 1,
-    }
-
-    /// <summary>
-    /// Record products to be ordered on purchase order
-    /// </summary>
-    [System.Runtime.Serialization.DataContractAttribute()]
-    [Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("msdyn_purchaseorderproduct")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
-    public partial class msdyn_purchaseorderproduct : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
-    {
-
-        /// <summary>
-        /// Default Constructor.
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public msdyn_purchaseorderproduct() :
-                base(EntityLogicalName)
-        {
-        }
-
-        public const string EntityLogicalName = "msdyn_purchaseorderproduct";
-
-        public const string PrimaryIdAttribute = "msdyn_purchaseorderproductid";
-
-        public const string PrimaryNameAttribute = "msdyn_name";
-
-        public const int EntityTypeCode = 10149;
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        private void OnPropertyChanged(string propertyName)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        private void OnPropertyChanging(string propertyName)
-        {
-            if ((this.PropertyChanging != null))
-            {
-                this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the user who created the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
-        public Microsoft.Xrm.Sdk.EntityReference CreatedBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
-            }
-        }
-
-        /// <summary>
-        /// Shows the date and time when the record was created. The date and time are displayed in the time zone selected in Microsoft Dynamics 365 options.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
-        public System.Nullable<System.DateTime> CreatedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
-            }
-        }
-
-        /// <summary>
-        /// Shows who created the record on behalf of another user.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
-        public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("CreatedOnBehalfBy");
-                this.SetAttributeValue("createdonbehalfby", value);
-                this.OnPropertyChanged("CreatedOnBehalfBy");
-            }
-        }
-
-        /// <summary>
-        /// Shows the exchange rate for the currency associated with the entity with respect to the base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangerate")]
-        public System.Nullable<decimal> ExchangeRate
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
-            }
-        }
-
-        /// <summary>
-        /// Shows the sequence number of the import that created this record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
-        public System.Nullable<int> ImportSequenceNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ImportSequenceNumber");
-                this.SetAttributeValue("importsequencenumber", value);
-                this.OnPropertyChanged("ImportSequenceNumber");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the user who modified the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
-        public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
-            }
-        }
-
-        /// <summary>
-        /// Shows the date and time when the record was last updated. The date and time are displayed in the time zone selected in Microsoft Dynamics 365 options.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
-        public System.Nullable<System.DateTime> ModifiedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
-            }
-        }
-
-        /// <summary>
-        /// Shows who last updated the record on behalf of another user.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
-        public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ModifiedOnBehalfBy");
-                this.SetAttributeValue("modifiedonbehalfby", value);
-                this.OnPropertyChanged("ModifiedOnBehalfBy");
-            }
-        }
-
-        /// <summary>
-        /// Link this product to Booking. If specified and warehouse is not set then product will be added to Resource Booking
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_associatetobooking")]
-        public Microsoft.Xrm.Sdk.EntityReference msdyn_AssociateToBooking
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_associatetobooking");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_AssociateToBooking");
-                this.SetAttributeValue("msdyn_associatetobooking", value);
-                this.OnPropertyChanged("msdyn_AssociateToBooking");
-            }
-        }
-
-        /// <summary>
-        /// Warehouse to which this product should be received to
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_associatetowarehouse")]
-        public Microsoft.Xrm.Sdk.EntityReference msdyn_AssociateToWarehouse
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_associatetowarehouse");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_AssociateToWarehouse");
-                this.SetAttributeValue("msdyn_associatetowarehouse", value);
-                this.OnPropertyChanged("msdyn_AssociateToWarehouse");
-            }
-        }
-
-        /// <summary>
-        /// Link this product to Work Order. If specified and warehouse is not set then product will be added to work order
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_associatetoworkorder")]
-        public Microsoft.Xrm.Sdk.EntityReference msdyn_AssociateToWorkOrder
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_associatetoworkorder");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_AssociateToWorkOrder");
-                this.SetAttributeValue("msdyn_associatetoworkorder", value);
-                this.OnPropertyChanged("msdyn_AssociateToWorkOrder");
-            }
-        }
-
-        /// <summary>
-        /// Enter the date you expect this product to arrive to the shipping address. This value defaults to the date set on the PO.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_dateexpected")]
-        public System.Nullable<System.DateTime> msdyn_DateExpected
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("msdyn_dateexpected");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_DateExpected");
-                this.SetAttributeValue("msdyn_dateexpected", value);
-                this.OnPropertyChanged("msdyn_DateExpected");
-            }
-        }
-
-        /// <summary>
-        /// Enter the product description to display for the vendor.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_description")]
-        public string msdyn_Description
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("msdyn_description");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_Description");
-                this.SetAttributeValue("msdyn_description", value);
-                this.OnPropertyChanged("msdyn_Description");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_internalflags")]
-        public string msdyn_InternalFlags
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("msdyn_internalflags");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_InternalFlags");
-                this.SetAttributeValue("msdyn_internalflags", value);
-                this.OnPropertyChanged("msdyn_InternalFlags");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_isordered")]
-        public System.Nullable<bool> msdyn_IsOrdered
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("msdyn_isordered");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_IsOrdered");
-                this.SetAttributeValue("msdyn_isordered", value);
-                this.OnPropertyChanged("msdyn_IsOrdered");
-            }
-        }
-
-        /// <summary>
-        /// Enter the current status of this product.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_itemstatus")]
-        public Microsoft.Xrm.Sdk.OptionSetValue msdyn_ItemStatus
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("msdyn_itemstatus");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_ItemStatus");
-                this.SetAttributeValue("msdyn_itemstatus", value);
-                this.OnPropertyChanged("msdyn_ItemStatus");
-            }
-        }
-
-        /// <summary>
-        /// Shows the order of this product within the purchase order.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_lineorder")]
-        public System.Nullable<int> msdyn_LineOrder
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("msdyn_lineorder");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_LineOrder");
-                this.SetAttributeValue("msdyn_lineorder", value);
-                this.OnPropertyChanged("msdyn_LineOrder");
-            }
-        }
-
-        /// <summary>
-        /// Enter the name of the custom entity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_name")]
-        public string msdyn_name
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("msdyn_name");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_name");
-                this.SetAttributeValue("msdyn_name", value);
-                this.OnPropertyChanged("msdyn_name");
-            }
-        }
-
-        /// <summary>
-        /// Product to order
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_product")]
-        public Microsoft.Xrm.Sdk.EntityReference msdyn_Product
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_product");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_Product");
-                this.SetAttributeValue("msdyn_product", value);
-                this.OnPropertyChanged("msdyn_Product");
-            }
-        }
-
-        /// <summary>
-        /// Purchase order this line item relates to
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_purchaseorder")]
-        public Microsoft.Xrm.Sdk.EntityReference msdyn_PurchaseOrder
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_purchaseorder");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_PurchaseOrder");
-                this.SetAttributeValue("msdyn_purchaseorder", value);
-                this.OnPropertyChanged("msdyn_PurchaseOrder");
-            }
-        }
-
-        /// <summary>
-        /// Shows the entity instances.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_purchaseorderproductid")]
-        public System.Nullable<System.Guid> msdyn_purchaseorderproductId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("msdyn_purchaseorderproductid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_purchaseorderproductId");
-                this.SetAttributeValue("msdyn_purchaseorderproductid", value);
-                if (value.HasValue)
-                {
-                    base.Id = value.Value;
-                }
-                else
-                {
-                    base.Id = System.Guid.Empty;
-                }
-                this.OnPropertyChanged("msdyn_purchaseorderproductId");
-            }
-        }
-
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_purchaseorderproductid")]
-        public override System.Guid Id
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return base.Id;
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.msdyn_purchaseorderproductId = value;
-            }
-        }
-
-        /// <summary>
-        /// Enter the quantity currently billed.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_qtybilled")]
-        public System.Nullable<double> msdyn_QtyBilled
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<double>>("msdyn_qtybilled");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_QtyBilled");
-                this.SetAttributeValue("msdyn_qtybilled", value);
-                this.OnPropertyChanged("msdyn_QtyBilled");
-            }
-        }
-
-        /// <summary>
-        /// Enter the quantity currently received.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_qtyreceived")]
-        public System.Nullable<double> msdyn_QtyReceived
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<double>>("msdyn_qtyreceived");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_QtyReceived");
-                this.SetAttributeValue("msdyn_qtyreceived", value);
-                this.OnPropertyChanged("msdyn_QtyReceived");
-            }
-        }
-
-        /// <summary>
-        /// Enter the quantity ordered.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_quantity")]
-        public System.Nullable<double> msdyn_Quantity
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<double>>("msdyn_quantity");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_Quantity");
-                this.SetAttributeValue("msdyn_quantity", value);
-                this.OnPropertyChanged("msdyn_Quantity");
-            }
-        }
-
-        /// <summary>
-        /// Shows the total cost of this product. This is calculated by (Unit Cost * Units) + Additional Cost + Commission Costs
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_totalcost")]
-        public Microsoft.Xrm.Sdk.Money msdyn_TotalCost
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("msdyn_totalcost");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_TotalCost");
-                this.SetAttributeValue("msdyn_totalcost", value);
-                this.OnPropertyChanged("msdyn_TotalCost");
-            }
-        }
-
-        /// <summary>
-        /// Shows the value of the total cost in the base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_totalcost_base")]
-        public Microsoft.Xrm.Sdk.Money msdyn_totalcost_Base
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("msdyn_totalcost_base");
-            }
-        }
-
-        /// <summary>
-        /// Unit for this product
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_unit")]
-        public Microsoft.Xrm.Sdk.EntityReference msdyn_Unit
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_unit");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_Unit");
-                this.SetAttributeValue("msdyn_unit", value);
-                this.OnPropertyChanged("msdyn_Unit");
-            }
-        }
-
-        /// <summary>
-        /// Enter the cost of this product per unit.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_unitcost")]
-        public Microsoft.Xrm.Sdk.Money msdyn_UnitCost
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("msdyn_unitcost");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_UnitCost");
-                this.SetAttributeValue("msdyn_unitcost", value);
-                this.OnPropertyChanged("msdyn_UnitCost");
-            }
-        }
-
-        /// <summary>
-        /// Shows the value of the unit cost in the base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_unitcost_base")]
-        public Microsoft.Xrm.Sdk.Money msdyn_unitcost_Base
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("msdyn_unitcost_base");
-            }
-        }
-
-        /// <summary>
-        /// Shows the date and time that the record was migrated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
-        public System.Nullable<System.DateTime> OverriddenCreatedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("OverriddenCreatedOn");
-                this.SetAttributeValue("overriddencreatedon", value);
-                this.OnPropertyChanged("OverriddenCreatedOn");
-            }
-        }
-
-        /// <summary>
-        /// Owner Id
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
-        public Microsoft.Xrm.Sdk.EntityReference OwnerId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("OwnerId");
-                this.SetAttributeValue("ownerid", value);
-                this.OnPropertyChanged("OwnerId");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for the business unit that owns the record
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for the team that owns the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningTeam
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for the user that owns the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningUser
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
-            }
-        }
-
-        /// <summary>
-        /// Status of the Purchase Order Product
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-        public System.Nullable<CrmEarlyBound.msdyn_purchaseorderproductState> StateCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
-                if ((optionSet != null))
-                {
-                    return ((CrmEarlyBound.msdyn_purchaseorderproductState)(System.Enum.ToObject(typeof(CrmEarlyBound.msdyn_purchaseorderproductState), optionSet.Value)));
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("StateCode");
-                if ((value == null))
-                {
-                    this.SetAttributeValue("statecode", null);
-                }
-                else
-                {
-                    this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
-                }
-                this.OnPropertyChanged("StateCode");
-            }
-        }
-
-        /// <summary>
-        /// Reason for the status of the Purchase Order Product
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("StatusCode");
-                this.SetAttributeValue("statuscode", value);
-                this.OnPropertyChanged("StatusCode");
-            }
-        }
-
-        /// <summary>
-        /// For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
-        public System.Nullable<int> TimeZoneRuleVersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TimeZoneRuleVersionNumber");
-                this.SetAttributeValue("timezoneruleversionnumber", value);
-                this.OnPropertyChanged("TimeZoneRuleVersionNumber");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the currency associated with the entity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
-        public Microsoft.Xrm.Sdk.EntityReference TransactionCurrencyId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("transactioncurrencyid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TransactionCurrencyId");
-                this.SetAttributeValue("transactioncurrencyid", value);
-                this.OnPropertyChanged("TransactionCurrencyId");
-            }
-        }
-
-        /// <summary>
-        /// Shows the time zone code that was in use when the record was created.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
-        public System.Nullable<int> UTCConversionTimeZoneCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("UTCConversionTimeZoneCode");
-                this.SetAttributeValue("utcconversiontimezonecode", value);
-                this.OnPropertyChanged("UTCConversionTimeZoneCode");
-            }
-        }
-
-        /// <summary>
-        /// Version Number
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
-        public System.Nullable<long> VersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
-            }
-        }
-
-        /// <summary>
-        /// 1:N msdyn_purchaseorderproduct_msdyn_approvals
-        /// </summary>
-        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_purchaseorderproduct_msdyn_approvals")]
-        public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_approval> msdyn_purchaseorderproduct_msdyn_approvals
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetRelatedEntities<CrmEarlyBound.msdyn_approval>("msdyn_purchaseorderproduct_msdyn_approvals", null);
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_purchaseorderproduct_msdyn_approvals");
-                this.SetRelatedEntities<CrmEarlyBound.msdyn_approval>("msdyn_purchaseorderproduct_msdyn_approvals", null, value);
-                this.OnPropertyChanged("msdyn_purchaseorderproduct_msdyn_approvals");
-            }
-        }
-
-        /// <summary>
-        /// Constructor for populating via LINQ queries given a LINQ anonymous type
-        /// <param name="anonymousType">LINQ anonymous type.</param>
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public msdyn_purchaseorderproduct(object anonymousType) :
-                this()
-        {
+		}
+		
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public enum msdyn_purchaseorderproductState
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Inactive = 1,
+	}
+	
+	/// <summary>
+	/// Record products to be ordered on purchase order
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("msdyn_purchaseorderproduct")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public partial class msdyn_purchaseorderproduct : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public msdyn_purchaseorderproduct() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "msdyn_purchaseorderproduct";
+		
+		public const string PrimaryIdAttribute = "msdyn_purchaseorderproductid";
+		
+		public const string PrimaryNameAttribute = "msdyn_name";
+		
+		public const int EntityTypeCode = 10149;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time when the record was created. The date and time are displayed in the time zone selected in Microsoft Dynamics 365 options.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who created the record on behalf of another user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the exchange rate for the currency associated with the entity with respect to the base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangerate")]
+		public System.Nullable<decimal> ExchangeRate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the sequence number of the import that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ImportSequenceNumber");
+				this.SetAttributeValue("importsequencenumber", value);
+				this.OnPropertyChanged("ImportSequenceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time when the record was last updated. The date and time are displayed in the time zone selected in Microsoft Dynamics 365 options.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who last updated the record on behalf of another user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Link this product to Booking. If specified and warehouse is not set then product will be added to Resource Booking
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_associatetobooking")]
+		public Microsoft.Xrm.Sdk.EntityReference msdyn_AssociateToBooking
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_associatetobooking");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_AssociateToBooking");
+				this.SetAttributeValue("msdyn_associatetobooking", value);
+				this.OnPropertyChanged("msdyn_AssociateToBooking");
+			}
+		}
+		
+		/// <summary>
+		/// Warehouse to which this product should be received to
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_associatetowarehouse")]
+		public Microsoft.Xrm.Sdk.EntityReference msdyn_AssociateToWarehouse
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_associatetowarehouse");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_AssociateToWarehouse");
+				this.SetAttributeValue("msdyn_associatetowarehouse", value);
+				this.OnPropertyChanged("msdyn_AssociateToWarehouse");
+			}
+		}
+		
+		/// <summary>
+		/// Link this product to Work Order. If specified and warehouse is not set then product will be added to work order
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_associatetoworkorder")]
+		public Microsoft.Xrm.Sdk.EntityReference msdyn_AssociateToWorkOrder
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_associatetoworkorder");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_AssociateToWorkOrder");
+				this.SetAttributeValue("msdyn_associatetoworkorder", value);
+				this.OnPropertyChanged("msdyn_AssociateToWorkOrder");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the date you expect this product to arrive to the shipping address. This value defaults to the date set on the PO.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_dateexpected")]
+		public System.Nullable<System.DateTime> msdyn_DateExpected
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("msdyn_dateexpected");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_DateExpected");
+				this.SetAttributeValue("msdyn_dateexpected", value);
+				this.OnPropertyChanged("msdyn_DateExpected");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the product description to display for the vendor.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_description")]
+		public string msdyn_Description
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_description");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_Description");
+				this.SetAttributeValue("msdyn_description", value);
+				this.OnPropertyChanged("msdyn_Description");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_internalflags")]
+		public string msdyn_InternalFlags
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_internalflags");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_InternalFlags");
+				this.SetAttributeValue("msdyn_internalflags", value);
+				this.OnPropertyChanged("msdyn_InternalFlags");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_isordered")]
+		public System.Nullable<bool> msdyn_IsOrdered
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_isordered");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_IsOrdered");
+				this.SetAttributeValue("msdyn_isordered", value);
+				this.OnPropertyChanged("msdyn_IsOrdered");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the current status of this product.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_itemstatus")]
+		public Microsoft.Xrm.Sdk.OptionSetValue msdyn_ItemStatus
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("msdyn_itemstatus");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_ItemStatus");
+				this.SetAttributeValue("msdyn_itemstatus", value);
+				this.OnPropertyChanged("msdyn_ItemStatus");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the order of this product within the purchase order.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_lineorder")]
+		public System.Nullable<int> msdyn_LineOrder
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("msdyn_lineorder");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_LineOrder");
+				this.SetAttributeValue("msdyn_lineorder", value);
+				this.OnPropertyChanged("msdyn_LineOrder");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the name of the custom entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_name")]
+		public string msdyn_name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_name");
+				this.SetAttributeValue("msdyn_name", value);
+				this.OnPropertyChanged("msdyn_name");
+			}
+		}
+		
+		/// <summary>
+		/// Product to order
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_product")]
+		public Microsoft.Xrm.Sdk.EntityReference msdyn_Product
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_product");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_Product");
+				this.SetAttributeValue("msdyn_product", value);
+				this.OnPropertyChanged("msdyn_Product");
+			}
+		}
+		
+		/// <summary>
+		/// Purchase order this line item relates to
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_purchaseorder")]
+		public Microsoft.Xrm.Sdk.EntityReference msdyn_PurchaseOrder
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_purchaseorder");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_PurchaseOrder");
+				this.SetAttributeValue("msdyn_purchaseorder", value);
+				this.OnPropertyChanged("msdyn_PurchaseOrder");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the entity instances.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_purchaseorderproductid")]
+		public System.Nullable<System.Guid> msdyn_purchaseorderproductId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("msdyn_purchaseorderproductid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_purchaseorderproductId");
+				this.SetAttributeValue("msdyn_purchaseorderproductid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("msdyn_purchaseorderproductId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_purchaseorderproductid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.msdyn_purchaseorderproductId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Enter the quantity currently billed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_qtybilled")]
+		public System.Nullable<double> msdyn_QtyBilled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<double>>("msdyn_qtybilled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_QtyBilled");
+				this.SetAttributeValue("msdyn_qtybilled", value);
+				this.OnPropertyChanged("msdyn_QtyBilled");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the quantity currently received.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_qtyreceived")]
+		public System.Nullable<double> msdyn_QtyReceived
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<double>>("msdyn_qtyreceived");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_QtyReceived");
+				this.SetAttributeValue("msdyn_qtyreceived", value);
+				this.OnPropertyChanged("msdyn_QtyReceived");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the quantity ordered.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_quantity")]
+		public System.Nullable<double> msdyn_Quantity
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<double>>("msdyn_quantity");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_Quantity");
+				this.SetAttributeValue("msdyn_quantity", value);
+				this.OnPropertyChanged("msdyn_Quantity");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the total cost of this product. This is calculated by (Unit Cost * Units) + Additional Cost + Commission Costs
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_totalcost")]
+		public Microsoft.Xrm.Sdk.Money msdyn_TotalCost
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("msdyn_totalcost");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_TotalCost");
+				this.SetAttributeValue("msdyn_totalcost", value);
+				this.OnPropertyChanged("msdyn_TotalCost");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the value of the total cost in the base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_totalcost_base")]
+		public Microsoft.Xrm.Sdk.Money msdyn_totalcost_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("msdyn_totalcost_base");
+			}
+		}
+		
+		/// <summary>
+		/// Unit for this product
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_unit")]
+		public Microsoft.Xrm.Sdk.EntityReference msdyn_Unit
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_unit");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_Unit");
+				this.SetAttributeValue("msdyn_unit", value);
+				this.OnPropertyChanged("msdyn_Unit");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the cost of this product per unit.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_unitcost")]
+		public Microsoft.Xrm.Sdk.Money msdyn_UnitCost
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("msdyn_unitcost");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_UnitCost");
+				this.SetAttributeValue("msdyn_unitcost", value);
+				this.OnPropertyChanged("msdyn_UnitCost");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the value of the unit cost in the base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_unitcost_base")]
+		public Microsoft.Xrm.Sdk.Money msdyn_unitcost_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("msdyn_unitcost_base");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// Owner Id
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
+		public Microsoft.Xrm.Sdk.EntityReference OwnerId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OwnerId");
+				this.SetAttributeValue("ownerid", value);
+				this.OnPropertyChanged("OwnerId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the business unit that owns the record
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the team that owns the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningTeam
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the user that owns the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningUser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
+			}
+		}
+		
+		/// <summary>
+		/// Status of the Purchase Order Product
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public System.Nullable<CrmEarlyBound.msdyn_purchaseorderproductState> StateCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+				if ((optionSet != null))
+				{
+					return ((CrmEarlyBound.msdyn_purchaseorderproductState)(System.Enum.ToObject(typeof(CrmEarlyBound.msdyn_purchaseorderproductState), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StateCode");
+				if ((value == null))
+				{
+					this.SetAttributeValue("statecode", null);
+				}
+				else
+				{
+					this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
+				}
+				this.OnPropertyChanged("StateCode");
+			}
+		}
+		
+		/// <summary>
+		/// Reason for the status of the Purchase Order Product
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TimeZoneRuleVersionNumber");
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+				this.OnPropertyChanged("TimeZoneRuleVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the currency associated with the entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
+		public Microsoft.Xrm.Sdk.EntityReference TransactionCurrencyId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("transactioncurrencyid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TransactionCurrencyId");
+				this.SetAttributeValue("transactioncurrencyid", value);
+				this.OnPropertyChanged("TransactionCurrencyId");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the time zone code that was in use when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UTCConversionTimeZoneCode");
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+				this.OnPropertyChanged("UTCConversionTimeZoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// Version Number
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N msdyn_purchaseorderproduct_msdyn_approvals
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_purchaseorderproduct_msdyn_approvals")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_approval> msdyn_purchaseorderproduct_msdyn_approvals
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_approval>("msdyn_purchaseorderproduct_msdyn_approvals", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_purchaseorderproduct_msdyn_approvals");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_approval>("msdyn_purchaseorderproduct_msdyn_approvals", null, value);
+				this.OnPropertyChanged("msdyn_purchaseorderproduct_msdyn_approvals");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_msdyn_purchaseorderproduct_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_purchaseorderproduct_createdby")]
+		public CrmEarlyBound.SystemUser lk_msdyn_purchaseorderproduct_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_msdyn_purchaseorderproduct_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_msdyn_purchaseorderproduct_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_purchaseorderproduct_createdonbehalfby")]
+		public CrmEarlyBound.SystemUser lk_msdyn_purchaseorderproduct_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_msdyn_purchaseorderproduct_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_msdyn_purchaseorderproduct_createdonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("lk_msdyn_purchaseorderproduct_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_msdyn_purchaseorderproduct_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_msdyn_purchaseorderproduct_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_purchaseorderproduct_modifiedby")]
+		public CrmEarlyBound.SystemUser lk_msdyn_purchaseorderproduct_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_msdyn_purchaseorderproduct_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_msdyn_purchaseorderproduct_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_purchaseorderproduct_modifiedonbehalfby")]
+		public CrmEarlyBound.SystemUser lk_msdyn_purchaseorderproduct_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_msdyn_purchaseorderproduct_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_msdyn_purchaseorderproduct_modifiedonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("lk_msdyn_purchaseorderproduct_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_msdyn_purchaseorderproduct_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 user_msdyn_purchaseorderproduct
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_msdyn_purchaseorderproduct")]
+		public CrmEarlyBound.SystemUser user_msdyn_purchaseorderproduct
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("user_msdyn_purchaseorderproduct", null);
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public msdyn_purchaseorderproduct(object anonymousType) : 
+				this()
+		{
             foreach (var p in anonymousType.GetType().GetProperties())
             {
                 var value = p.GetValue(anonymousType, null);
                 var name = p.Name.ToLower();
-
+            
                 if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
                 {
-                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int)value);
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
                     name = name.Remove(name.Length - "enum".Length);
                 }
-
+            
                 switch (name)
                 {
                     case "id":
@@ -8484,8 +9030,8 @@ namespace CrmEarlyBound
                         Attributes["msdyn_purchaseorderproductid"] = base.Id;
                         break;
                     case "msdyn_purchaseorderproductid":
-                        var id = (System.Nullable<System.Guid>)value;
-                        if (id == null) { continue; }
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
                         base.Id = id.Value;
                         Attributes[name] = base.Id;
                         break;
@@ -8498,551 +9044,635 @@ namespace CrmEarlyBound
                         break;
                 }
             }
-        }
-
-    }
-
-    [System.Runtime.Serialization.DataContractAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
-    public enum msdyn_resourcerequirementdetailState
-    {
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Active = 0,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Inactive = 1,
-    }
-
-    /// <summary>
-    /// Entity used to track the detailed information about resource requirements.
-    /// </summary>
-    [System.Runtime.Serialization.DataContractAttribute()]
-    [Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("msdyn_resourcerequirementdetail")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
-    public partial class msdyn_resourcerequirementdetail : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
-    {
-
-        /// <summary>
-        /// Default Constructor.
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public msdyn_resourcerequirementdetail() :
-                base(EntityLogicalName)
-        {
-        }
-
-        public const string EntityLogicalName = "msdyn_resourcerequirementdetail";
-
-        public const string PrimaryIdAttribute = "msdyn_resourcerequirementdetailid";
-
-        public const string PrimaryNameAttribute = "msdyn_name";
-
-        public const int EntityTypeCode = 10022;
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        private void OnPropertyChanged(string propertyName)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        private void OnPropertyChanging(string propertyName)
-        {
-            if ((this.PropertyChanging != null))
-            {
-                this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the user who created the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
-        public Microsoft.Xrm.Sdk.EntityReference CreatedBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
-            }
-        }
-
-        /// <summary>
-        /// Date and time when the record was created.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
-        public System.Nullable<System.DateTime> CreatedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the delegate user who created the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
-        public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("CreatedOnBehalfBy");
-                this.SetAttributeValue("createdonbehalfby", value);
-                this.OnPropertyChanged("CreatedOnBehalfBy");
-            }
-        }
-
-        /// <summary>
-        /// Sequence number of the import that created this record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
-        public System.Nullable<int> ImportSequenceNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ImportSequenceNumber");
-                this.SetAttributeValue("importsequencenumber", value);
-                this.OnPropertyChanged("ImportSequenceNumber");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the user who modified the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
-        public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
-            }
-        }
-
-        /// <summary>
-        /// Date and time when the record was modified.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
-        public System.Nullable<System.DateTime> ModifiedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the delegate user who modified the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
-        public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ModifiedOnBehalfBy");
-                this.SetAttributeValue("modifiedonbehalfby", value);
-                this.OnPropertyChanged("ModifiedOnBehalfBy");
-            }
-        }
-
-        /// <summary>
-        /// Shows the time duration for which the resource is required to persist in minutes.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_duration")]
-        public System.Nullable<int> msdyn_duration
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("msdyn_duration");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_duration");
-                this.SetAttributeValue("msdyn_duration", value);
-                this.OnPropertyChanged("msdyn_duration");
-            }
-        }
-
-        /// <summary>
-        /// Enter the date and time from which a contiguous piece of time duration is required
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_from")]
-        public System.Nullable<System.DateTime> msdyn_from
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("msdyn_from");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_from");
-                this.SetAttributeValue("msdyn_from", value);
-                this.OnPropertyChanged("msdyn_from");
-            }
-        }
-
-        /// <summary>
-        /// Enter the number of hours for which a resource is required.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_hours")]
-        public System.Nullable<decimal> msdyn_hours
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<decimal>>("msdyn_hours");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_hours");
-                this.SetAttributeValue("msdyn_hours", value);
-                this.OnPropertyChanged("msdyn_hours");
-            }
-        }
-
-        /// <summary>
-        /// The name of the custom entity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_name")]
-        public string msdyn_name
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("msdyn_name");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_name");
-                this.SetAttributeValue("msdyn_name", value);
-                this.OnPropertyChanged("msdyn_name");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for entity instances
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_resourcerequirementdetailid")]
-        public System.Nullable<System.Guid> msdyn_resourcerequirementdetailId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("msdyn_resourcerequirementdetailid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_resourcerequirementdetailId");
-                this.SetAttributeValue("msdyn_resourcerequirementdetailid", value);
-                if (value.HasValue)
-                {
-                    base.Id = value.Value;
-                }
-                else
-                {
-                    base.Id = System.Guid.Empty;
-                }
-                this.OnPropertyChanged("msdyn_resourcerequirementdetailId");
-            }
-        }
-
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_resourcerequirementdetailid")]
-        public override System.Guid Id
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return base.Id;
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.msdyn_resourcerequirementdetailId = value;
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the resource requirement for the resource requirement detail.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_resourcerequirementid")]
-        public Microsoft.Xrm.Sdk.EntityReference msdyn_resourcerequirementid
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_resourcerequirementid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_resourcerequirementid");
-                this.SetAttributeValue("msdyn_resourcerequirementid", value);
-                this.OnPropertyChanged("msdyn_resourcerequirementid");
-            }
-        }
-
-        /// <summary>
-        /// The end of requirement detail
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_to")]
-        public System.Nullable<System.DateTime> msdyn_to
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("msdyn_to");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("msdyn_to");
-                this.SetAttributeValue("msdyn_to", value);
-                this.OnPropertyChanged("msdyn_to");
-            }
-        }
-
-        /// <summary>
-        /// Date and time that the record was migrated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
-        public System.Nullable<System.DateTime> OverriddenCreatedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("OverriddenCreatedOn");
-                this.SetAttributeValue("overriddencreatedon", value);
-                this.OnPropertyChanged("OverriddenCreatedOn");
-            }
-        }
-
-        /// <summary>
-        /// Owner Id
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
-        public Microsoft.Xrm.Sdk.EntityReference OwnerId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("OwnerId");
-                this.SetAttributeValue("ownerid", value);
-                this.OnPropertyChanged("OwnerId");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for the business unit that owns the record
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for the team that owns the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningTeam
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for the user that owns the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
-        public Microsoft.Xrm.Sdk.EntityReference OwningUser
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
-            }
-        }
-
-        /// <summary>
-        /// Status of the Resource Requirement Detail
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-        public System.Nullable<CrmEarlyBound.msdyn_resourcerequirementdetailState> StateCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
-                if ((optionSet != null))
-                {
-                    return ((CrmEarlyBound.msdyn_resourcerequirementdetailState)(System.Enum.ToObject(typeof(CrmEarlyBound.msdyn_resourcerequirementdetailState), optionSet.Value)));
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("StateCode");
-                if ((value == null))
-                {
-                    this.SetAttributeValue("statecode", null);
-                }
-                else
-                {
-                    this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
-                }
-                this.OnPropertyChanged("StateCode");
-            }
-        }
-
-        /// <summary>
-        /// Reason for the status of the Resource Requirement Detail
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("StatusCode");
-                this.SetAttributeValue("statuscode", value);
-                this.OnPropertyChanged("StatusCode");
-            }
-        }
-
-        /// <summary>
-        /// For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
-        public System.Nullable<int> TimeZoneRuleVersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TimeZoneRuleVersionNumber");
-                this.SetAttributeValue("timezoneruleversionnumber", value);
-                this.OnPropertyChanged("TimeZoneRuleVersionNumber");
-            }
-        }
-
-        /// <summary>
-        /// Time zone code that was in use when the record was created.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
-        public System.Nullable<int> UTCConversionTimeZoneCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("UTCConversionTimeZoneCode");
-                this.SetAttributeValue("utcconversiontimezonecode", value);
-                this.OnPropertyChanged("UTCConversionTimeZoneCode");
-            }
-        }
-
-        /// <summary>
-        /// Version Number
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
-        public System.Nullable<long> VersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
-            }
-        }
-
-        /// <summary>
-        /// Constructor for populating via LINQ queries given a LINQ anonymous type
-        /// <param name="anonymousType">LINQ anonymous type.</param>
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public msdyn_resourcerequirementdetail(object anonymousType) :
-                this()
-        {
+		}
+		
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public enum msdyn_resourcerequirementdetailState
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Inactive = 1,
+	}
+	
+	/// <summary>
+	/// Entity used to track the detailed information about resource requirements.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("msdyn_resourcerequirementdetail")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public partial class msdyn_resourcerequirementdetail : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public msdyn_resourcerequirementdetail() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "msdyn_resourcerequirementdetail";
+		
+		public const string PrimaryIdAttribute = "msdyn_resourcerequirementdetailid";
+		
+		public const string PrimaryNameAttribute = "msdyn_name";
+		
+		public const int EntityTypeCode = 10022;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Sequence number of the import that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ImportSequenceNumber");
+				this.SetAttributeValue("importsequencenumber", value);
+				this.OnPropertyChanged("ImportSequenceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the time duration for which the resource is required to persist in minutes.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_duration")]
+		public System.Nullable<int> msdyn_duration
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("msdyn_duration");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_duration");
+				this.SetAttributeValue("msdyn_duration", value);
+				this.OnPropertyChanged("msdyn_duration");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the date and time from which a contiguous piece of time duration is required
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_from")]
+		public System.Nullable<System.DateTime> msdyn_from
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("msdyn_from");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_from");
+				this.SetAttributeValue("msdyn_from", value);
+				this.OnPropertyChanged("msdyn_from");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the number of hours for which a resource is required.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_hours")]
+		public System.Nullable<decimal> msdyn_hours
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<decimal>>("msdyn_hours");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_hours");
+				this.SetAttributeValue("msdyn_hours", value);
+				this.OnPropertyChanged("msdyn_hours");
+			}
+		}
+		
+		/// <summary>
+		/// The name of the custom entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_name")]
+		public string msdyn_name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_name");
+				this.SetAttributeValue("msdyn_name", value);
+				this.OnPropertyChanged("msdyn_name");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for entity instances
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_resourcerequirementdetailid")]
+		public System.Nullable<System.Guid> msdyn_resourcerequirementdetailId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("msdyn_resourcerequirementdetailid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_resourcerequirementdetailId");
+				this.SetAttributeValue("msdyn_resourcerequirementdetailid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("msdyn_resourcerequirementdetailId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_resourcerequirementdetailid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.msdyn_resourcerequirementdetailId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the resource requirement for the resource requirement detail.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_resourcerequirementid")]
+		public Microsoft.Xrm.Sdk.EntityReference msdyn_resourcerequirementid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("msdyn_resourcerequirementid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_resourcerequirementid");
+				this.SetAttributeValue("msdyn_resourcerequirementid", value);
+				this.OnPropertyChanged("msdyn_resourcerequirementid");
+			}
+		}
+		
+		/// <summary>
+		/// The end of requirement detail
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_to")]
+		public System.Nullable<System.DateTime> msdyn_to
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("msdyn_to");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_to");
+				this.SetAttributeValue("msdyn_to", value);
+				this.OnPropertyChanged("msdyn_to");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// Owner Id
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
+		public Microsoft.Xrm.Sdk.EntityReference OwnerId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OwnerId");
+				this.SetAttributeValue("ownerid", value);
+				this.OnPropertyChanged("OwnerId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the business unit that owns the record
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the team that owns the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningTeam
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the user that owns the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningUser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
+			}
+		}
+		
+		/// <summary>
+		/// Status of the Resource Requirement Detail
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public System.Nullable<CrmEarlyBound.msdyn_resourcerequirementdetailState> StateCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+				if ((optionSet != null))
+				{
+					return ((CrmEarlyBound.msdyn_resourcerequirementdetailState)(System.Enum.ToObject(typeof(CrmEarlyBound.msdyn_resourcerequirementdetailState), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StateCode");
+				if ((value == null))
+				{
+					this.SetAttributeValue("statecode", null);
+				}
+				else
+				{
+					this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
+				}
+				this.OnPropertyChanged("StateCode");
+			}
+		}
+		
+		/// <summary>
+		/// Reason for the status of the Resource Requirement Detail
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TimeZoneRuleVersionNumber");
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+				this.OnPropertyChanged("TimeZoneRuleVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Time zone code that was in use when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UTCConversionTimeZoneCode");
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+				this.OnPropertyChanged("UTCConversionTimeZoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// Version Number
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_msdyn_resourcerequirementdetail_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_resourcerequirementdetail_createdby")]
+		public CrmEarlyBound.SystemUser lk_msdyn_resourcerequirementdetail_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_msdyn_resourcerequirementdetail_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_msdyn_resourcerequirementdetail_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_resourcerequirementdetail_createdonbehalfby")]
+		public CrmEarlyBound.SystemUser lk_msdyn_resourcerequirementdetail_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_msdyn_resourcerequirementdetail_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_msdyn_resourcerequirementdetail_createdonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("lk_msdyn_resourcerequirementdetail_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_msdyn_resourcerequirementdetail_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_msdyn_resourcerequirementdetail_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_resourcerequirementdetail_modifiedby")]
+		public CrmEarlyBound.SystemUser lk_msdyn_resourcerequirementdetail_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_msdyn_resourcerequirementdetail_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_msdyn_resourcerequirementdetail_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_resourcerequirementdetail_modifiedonbehalfby")]
+		public CrmEarlyBound.SystemUser lk_msdyn_resourcerequirementdetail_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_msdyn_resourcerequirementdetail_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_msdyn_resourcerequirementdetail_modifiedonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("lk_msdyn_resourcerequirementdetail_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_msdyn_resourcerequirementdetail_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 user_msdyn_resourcerequirementdetail
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_msdyn_resourcerequirementdetail")]
+		public CrmEarlyBound.SystemUser user_msdyn_resourcerequirementdetail
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("user_msdyn_resourcerequirementdetail", null);
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public msdyn_resourcerequirementdetail(object anonymousType) : 
+				this()
+		{
             foreach (var p in anonymousType.GetType().GetProperties())
             {
                 var value = p.GetValue(anonymousType, null);
                 var name = p.Name.ToLower();
-
+            
                 if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
                 {
-                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int)value);
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
                     name = name.Remove(name.Length - "enum".Length);
                 }
-
+            
                 switch (name)
                 {
                     case "id":
@@ -9050,8 +9680,8 @@ namespace CrmEarlyBound
                         Attributes["msdyn_resourcerequirementdetailid"] = base.Id;
                         break;
                     case "msdyn_resourcerequirementdetailid":
-                        var id = (System.Nullable<System.Guid>)value;
-                        if (id == null) { continue; }
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
                         base.Id = id.Value;
                         Attributes[name] = base.Id;
                         break;
@@ -9064,824 +9694,5194 @@ namespace CrmEarlyBound
                         break;
                 }
             }
-        }
-
-    }
-
-    [System.Runtime.Serialization.DataContractAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
-    public enum ThemeState
-    {
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Active = 0,
-
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Inactive = 1,
-    }
-
-    /// <summary>
-    /// Information that's used to set custom visual theme options for client applications.
-    /// </summary>
-    [System.Runtime.Serialization.DataContractAttribute()]
-    [Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("theme")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
-    public partial class Theme : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
-    {
-
-        /// <summary>
-        /// Default Constructor.
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public Theme() :
-                base(EntityLogicalName)
-        {
-        }
-
-        public const string EntityLogicalName = "theme";
-
-        public const string PrimaryIdAttribute = "themeid";
-
-        public const string PrimaryNameAttribute = "name";
-
-        public const int EntityTypeCode = 2015;
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        private void OnPropertyChanged(string propertyName)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        private void OnPropertyChanging(string propertyName)
-        {
-            if ((this.PropertyChanging != null))
-            {
-                this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
-            }
-        }
-
-        /// <summary>
-        /// Choose the Unified Interface secondary theme color to be used on the process control
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accentcolor")]
-        public string AccentColor
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("accentcolor");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("AccentColor");
-                this.SetAttributeValue("accentcolor", value);
-                this.OnPropertyChanged("AccentColor");
-            }
-        }
-
-        /// <summary>
-        /// For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("backgroundcolor")]
-        public string BackgroundColor
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("backgroundcolor");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("BackgroundColor");
-                this.SetAttributeValue("backgroundcolor", value);
-                this.OnPropertyChanged("BackgroundColor");
-            }
-        }
-
-        /// <summary>
-        /// Choose the color that controls will use for borders
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("controlborder")]
-        public string ControlBorder
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("controlborder");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ControlBorder");
-                this.SetAttributeValue("controlborder", value);
-                this.OnPropertyChanged("ControlBorder");
-            }
-        }
-
-        /// <summary>
-        /// Choose the background color for controls to use to indicate when you hover over items
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("controlshade")]
-        public string ControlShade
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("controlshade");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ControlShade");
-                this.SetAttributeValue("controlshade", value);
-                this.OnPropertyChanged("ControlShade");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the user who created the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
-        public Microsoft.Xrm.Sdk.EntityReference CreatedBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
-            }
-        }
-
-        /// <summary>
-        /// Date and time when the record was created.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
-        public System.Nullable<System.DateTime> CreatedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the delegate user who created the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
-        public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("CreatedOnBehalfBy");
-                this.SetAttributeValue("createdonbehalfby", value);
-                this.OnPropertyChanged("CreatedOnBehalfBy");
-            }
-        }
-
-        /// <summary>
-        /// Choose the default custom entity color if no color is assigned
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultcustomentitycolor")]
-        public string DefaultCustomEntityColor
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("defaultcustomentitycolor");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("DefaultCustomEntityColor");
-                this.SetAttributeValue("defaultcustomentitycolor", value);
-                this.OnPropertyChanged("DefaultCustomEntityColor");
-            }
-        }
-
-        /// <summary>
-        /// Choose the default color for system entities if no color is assigned
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultentitycolor")]
-        public string DefaultEntityColor
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("defaultentitycolor");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("DefaultEntityColor");
-                this.SetAttributeValue("defaultentitycolor", value);
-                this.OnPropertyChanged("DefaultEntityColor");
-            }
-        }
-
-        /// <summary>
-        /// Exchange rate for the currency associated with the Theme with respect to the base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangerate")]
-        public System.Nullable<decimal> ExchangeRate
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
-            }
-        }
-
-        /// <summary>
-        /// Choose the color for all links, such as e-mail address and lookup links, and for all buttons that are in focus
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("globallinkcolor")]
-        public string GlobalLinkColor
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("globallinkcolor");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("GlobalLinkColor");
-                this.SetAttributeValue("globallinkcolor", value);
-                this.OnPropertyChanged("GlobalLinkColor");
-            }
-        }
-
-        /// <summary>
-        /// Choose the color for title text, such as form tab labels
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("headercolor")]
-        public string HeaderColor
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("headercolor");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("HeaderColor");
-                this.SetAttributeValue("headercolor", value);
-                this.OnPropertyChanged("HeaderColor");
-            }
-        }
-
-        /// <summary>
-        /// Choose the color that commands or lists will use to indicate hovered over items
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("hoverlinkeffect")]
-        public string HoverLinkEffect
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("hoverlinkeffect");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("HoverLinkEffect");
-                this.SetAttributeValue("hoverlinkeffect", value);
-                this.OnPropertyChanged("HoverLinkEffect");
-            }
-        }
-
-        /// <summary>
-        /// Sequence number of the import that created this record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
-        public System.Nullable<int> ImportSequenceNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ImportSequenceNumber");
-                this.SetAttributeValue("importsequencenumber", value);
-                this.OnPropertyChanged("ImportSequenceNumber");
-            }
-        }
-
-        /// <summary>
-        /// Default status of theme.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdefaulttheme")]
-        public System.Nullable<bool> IsDefaultTheme
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("isdefaulttheme");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("IsDefaultTheme");
-                this.SetAttributeValue("isdefaulttheme", value);
-                this.OnPropertyChanged("IsDefaultTheme");
-            }
-        }
-
-        /// <summary>
-        /// Upload a web resource to use as a logo. Recommended dimensions are a height of 50 pixels and a maximum width of 400 pixels.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("logoid")]
-        public Microsoft.Xrm.Sdk.EntityReference LogoId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("logoid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("LogoId");
-                this.SetAttributeValue("logoid", value);
-                this.OnPropertyChanged("LogoId");
-            }
-        }
-
-        /// <summary>
-        /// Enter text that will be used as the tooltip and alt text for the logo.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("logotooltip")]
-        public string LogoToolTip
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("logotooltip");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("LogoToolTip");
-                this.SetAttributeValue("logotooltip", value);
-                this.OnPropertyChanged("LogoToolTip");
-            }
-        }
-
-        /// <summary>
-        /// Choose the Unified Interface primary theme color to be used on main command bar, buttons and tabs
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maincolor")]
-        public string MainColor
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("maincolor");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("MainColor");
-                this.SetAttributeValue("maincolor", value);
-                this.OnPropertyChanged("MainColor");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the user who modified the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
-        public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
-            }
-        }
-
-        /// <summary>
-        /// Date and time when the record was modified.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
-        public System.Nullable<System.DateTime> ModifiedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier of the delegate user who modified the record.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
-        public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ModifiedOnBehalfBy");
-                this.SetAttributeValue("modifiedonbehalfby", value);
-                this.OnPropertyChanged("ModifiedOnBehalfBy");
-            }
-        }
-
-        /// <summary>
-        /// The name of the Theme Entity.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
-        public string Name
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("name");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Name");
-                this.SetAttributeValue("name", value);
-                this.OnPropertyChanged("Name");
-            }
-        }
-
-        /// <summary>
-        /// Choose the primary Navigation Bar background color
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("navbarbackgroundcolor")]
-        public string NavBarBackgroundColor
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("navbarbackgroundcolor");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("NavBarBackgroundColor");
-                this.SetAttributeValue("navbarbackgroundcolor", value);
-                this.OnPropertyChanged("NavBarBackgroundColor");
-            }
-        }
-
-        /// <summary>
-        /// Choose the secondary Navigation Bar background color
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("navbarshelfcolor")]
-        public string NavBarShelfColor
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("navbarshelfcolor");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("NavBarShelfColor");
-                this.SetAttributeValue("navbarshelfcolor", value);
-                this.OnPropertyChanged("NavBarShelfColor");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for the organization
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
-        public Microsoft.Xrm.Sdk.EntityReference OrganizationId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
-            }
-        }
-
-        /// <summary>
-        /// Date and time that the record was migrated.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
-        public System.Nullable<System.DateTime> OverriddenCreatedOn
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("OverriddenCreatedOn");
-                this.SetAttributeValue("overriddencreatedon", value);
-                this.OnPropertyChanged("OverriddenCreatedOn");
-            }
-        }
-
-        /// <summary>
-        /// Choose the page header background color
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pageheaderbackgroundcolor")]
-        public string PageHeaderBackgroundColor
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("pageheaderbackgroundcolor");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("PageHeaderBackgroundColor");
-                this.SetAttributeValue("pageheaderbackgroundcolor", value);
-                this.OnPropertyChanged("PageHeaderBackgroundColor");
-            }
-        }
-
-        /// <summary>
-        /// Choose the panel header background color
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("panelheaderbackgroundcolor")]
-        public string PanelHeaderBackgroundColor
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("panelheaderbackgroundcolor");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("PanelHeaderBackgroundColor");
-                this.SetAttributeValue("panelheaderbackgroundcolor", value);
-                this.OnPropertyChanged("PanelHeaderBackgroundColor");
-            }
-        }
-
-        /// <summary>
-        /// Choose the primary background color for process controls
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processcontrolcolor")]
-        public string ProcessControlColor
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("processcontrolcolor");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ProcessControlColor");
-                this.SetAttributeValue("processcontrolcolor", value);
-                this.OnPropertyChanged("ProcessControlColor");
-            }
-        }
-
-        /// <summary>
-        /// Choose the color that commands or lists will use to indicate selected items
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("selectedlinkeffect")]
-        public string SelectedLinkEffect
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<string>("selectedlinkeffect");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("SelectedLinkEffect");
-                this.SetAttributeValue("selectedlinkeffect", value);
-                this.OnPropertyChanged("SelectedLinkEffect");
-            }
-        }
-
-        /// <summary>
-        /// Status of the Theme
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-        public System.Nullable<CrmEarlyBound.ThemeState> StateCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
-                if ((optionSet != null))
-                {
-                    return ((CrmEarlyBound.ThemeState)(System.Enum.ToObject(typeof(CrmEarlyBound.ThemeState), optionSet.Value)));
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Reason for the status of the Theme
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
-        public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("StatusCode");
-                this.SetAttributeValue("statuscode", value);
-                this.OnPropertyChanged("StatusCode");
-            }
-        }
-
-        /// <summary>
-        /// Unique identifier for entity instances
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("themeid")]
-        public System.Nullable<System.Guid> ThemeId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<System.Guid>>("themeid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("ThemeId");
-                this.SetAttributeValue("themeid", value);
-                if (value.HasValue)
-                {
-                    base.Id = value.Value;
-                }
-                else
-                {
-                    base.Id = System.Guid.Empty;
-                }
-                this.OnPropertyChanged("ThemeId");
-            }
-        }
-
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("themeid")]
-        public override System.Guid Id
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return base.Id;
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.ThemeId = value;
-            }
-        }
-
-        /// <summary>
-        /// For internal use only.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
-        public System.Nullable<int> TimeZoneRuleVersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TimeZoneRuleVersionNumber");
-                this.SetAttributeValue("timezoneruleversionnumber", value);
-                this.OnPropertyChanged("TimeZoneRuleVersionNumber");
-            }
-        }
-
-        /// <summary>
-        /// Exchange rate for the currency associated with the Theme with respect to the base currency.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
-        public Microsoft.Xrm.Sdk.EntityReference TransactionCurrencyId
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("transactioncurrencyid");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("TransactionCurrencyId");
-                this.SetAttributeValue("transactioncurrencyid", value);
-                this.OnPropertyChanged("TransactionCurrencyId");
-            }
-        }
-
-        /// <summary>
-        /// Define type of theme.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("type")]
-        public System.Nullable<bool> Type
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<bool>>("type");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("Type");
-                this.SetAttributeValue("type", value);
-                this.OnPropertyChanged("Type");
-            }
-        }
-
-        /// <summary>
-        /// Time zone code that was in use when the record was created.
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
-        public System.Nullable<int> UTCConversionTimeZoneCode
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
-            }
-            [System.Diagnostics.DebuggerNonUserCode()]
-            set
-            {
-                this.OnPropertyChanging("UTCConversionTimeZoneCode");
-                this.SetAttributeValue("utcconversiontimezonecode", value);
-                this.OnPropertyChanged("UTCConversionTimeZoneCode");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
-        public System.Nullable<long> VersionNumber
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
-            }
-        }
-
-        /// <summary>
-        /// Constructor for populating via LINQ queries given a LINQ anonymous type
-        /// <param name="anonymousType">LINQ anonymous type.</param>
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public Theme(object anonymousType) :
-                this()
-        {
+		}
+		
+	}
+	
+	/// <summary>
+	/// Grouping of security privileges. Users are assigned roles that authorize their access to the Microsoft CRM system.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("role")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public partial class Role : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public Role() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "role";
+		
+		public const string PrimaryIdAttribute = "roleid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const int EntityTypeCode = 1036;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the business unit with which the role is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("businessunitid")]
+		public Microsoft.Xrm.Sdk.EntityReference BusinessUnitId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("businessunitid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BusinessUnitId");
+				this.SetAttributeValue("businessunitid", value);
+				this.OnPropertyChanged("BusinessUnitId");
+			}
+		}
+		
+		/// <summary>
+		/// Tells whether the role can be deleted.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("canbedeleted")]
+		public Microsoft.Xrm.Sdk.BooleanManagedProperty CanBeDeleted
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.BooleanManagedProperty>("canbedeleted");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CanBeDeleted");
+				this.SetAttributeValue("canbedeleted", value);
+				this.OnPropertyChanged("CanBeDeleted");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ComponentState
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the role.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the role was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the role.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the data import or data migration that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ImportSequenceNumber");
+				this.SetAttributeValue("importsequencenumber", value);
+				this.OnPropertyChanged("ImportSequenceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether this component can be customized.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscustomizable")]
+		public Microsoft.Xrm.Sdk.BooleanManagedProperty IsCustomizable
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.BooleanManagedProperty>("iscustomizable");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsCustomizable");
+				this.SetAttributeValue("iscustomizable", value);
+				this.OnPropertyChanged("IsCustomizable");
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether the solution component is part of a managed solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismanaged")]
+		public System.Nullable<bool> IsManaged
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismanaged");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who last modified the role.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the role was last modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who last modified the role.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Name of the role.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the organization associated with the role.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public System.Nullable<System.Guid> OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overwritetime")]
+		public System.Nullable<System.DateTime> OverwriteTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overwritetime");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the parent role.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentroleid")]
+		public Microsoft.Xrm.Sdk.EntityReference ParentRoleId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("parentroleid");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the parent root role.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentrootroleid")]
+		public Microsoft.Xrm.Sdk.EntityReference ParentRootRoleId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("parentrootroleid");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the role.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("roleid")]
+		public System.Nullable<System.Guid> RoleId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("roleid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("RoleId");
+				this.SetAttributeValue("roleid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("RoleId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("roleid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.RoleId = value;
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("roleidunique")]
+		public System.Nullable<System.Guid> RoleIdUnique
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("roleidunique");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the role template that is associated with the role.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("roletemplateid")]
+		public Microsoft.Xrm.Sdk.EntityReference RoleTemplateId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("roletemplateid");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the associated solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
+		public System.Nullable<System.Guid> SolutionId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("solutionid");
+			}
+		}
+		
+		/// <summary>
+		/// Version number of the role.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N role_parent_role
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("role_parent_role", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Role> Referencedrole_parent_role
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Role>("role_parent_role", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencedrole_parent_role");
+				this.SetRelatedEntities<CrmEarlyBound.Role>("role_parent_role", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.OnPropertyChanged("Referencedrole_parent_role");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N role_parent_root_role
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("role_parent_root_role", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Role> Referencedrole_parent_root_role
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Role>("role_parent_root_role", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencedrole_parent_root_role");
+				this.SetRelatedEntities<CrmEarlyBound.Role>("role_parent_root_role", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.OnPropertyChanged("Referencedrole_parent_root_role");
+			}
+		}
+		
+		/// <summary>
+		/// N:N systemuserroles_association
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("systemuserroles_association")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.SystemUser> systemuserroles_association
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.SystemUser>("systemuserroles_association", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("systemuserroles_association");
+				this.SetRelatedEntities<CrmEarlyBound.SystemUser>("systemuserroles_association", null, value);
+				this.OnPropertyChanged("systemuserroles_association");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_role_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_role_createdonbehalfby")]
+		public CrmEarlyBound.SystemUser lk_role_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_role_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_role_createdonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("lk_role_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_role_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_role_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_role_modifiedonbehalfby")]
+		public CrmEarlyBound.SystemUser lk_role_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_role_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_role_modifiedonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("lk_role_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_role_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_rolebase_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_rolebase_createdby")]
+		public CrmEarlyBound.SystemUser lk_rolebase_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_rolebase_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_rolebase_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_rolebase_modifiedby")]
+		public CrmEarlyBound.SystemUser lk_rolebase_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_rolebase_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 role_parent_role
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentroleid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("role_parent_role", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public CrmEarlyBound.Role Referencingrole_parent_role
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.Role>("role_parent_role", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 role_parent_root_role
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentrootroleid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("role_parent_root_role", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public CrmEarlyBound.Role Referencingrole_parent_root_role
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.Role>("role_parent_root_role", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public Role(object anonymousType) : 
+				this()
+		{
             foreach (var p in anonymousType.GetType().GetProperties())
             {
                 var value = p.GetValue(anonymousType, null);
                 var name = p.Name.ToLower();
-
+            
                 if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
                 {
-                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int)value);
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
                     name = name.Remove(name.Length - "enum".Length);
                 }
-
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["roleid"] = base.Id;
+                        break;
+                    case "roleid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+		
+	}
+	
+	/// <summary>
+	/// Person with access to the Microsoft CRM system and who owns objects in the Microsoft CRM database.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("systemuser")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public partial class SystemUser : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public SystemUser() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "systemuser";
+		
+		public const string PrimaryIdAttribute = "systemuserid";
+		
+		public const string PrimaryNameAttribute = "fullname";
+		
+		public const int EntityTypeCode = 8;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Type of user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accessmode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue AccessMode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("accessmode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("AccessMode");
+				this.SetAttributeValue("accessmode", value);
+				this.OnPropertyChanged("AccessMode");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_addressid")]
+		public System.Nullable<System.Guid> Address1_AddressId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("address1_addressid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_AddressId");
+				this.SetAttributeValue("address1_addressid", value);
+				this.OnPropertyChanged("Address1_AddressId");
+			}
+		}
+		
+		/// <summary>
+		/// Type of address for address 1, such as billing, shipping, or primary address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_addresstypecode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue Address1_AddressTypeCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("address1_addresstypecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_AddressTypeCode");
+				this.SetAttributeValue("address1_addresstypecode", value);
+				this.OnPropertyChanged("Address1_AddressTypeCode");
+			}
+		}
+		
+		/// <summary>
+		/// City name for address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_city")]
+		public string Address1_City
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address1_city");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_City");
+				this.SetAttributeValue("address1_city", value);
+				this.OnPropertyChanged("Address1_City");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the complete primary address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_composite")]
+		public string Address1_Composite
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address1_composite");
+			}
+		}
+		
+		/// <summary>
+		/// Country/region name in address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_country")]
+		public string Address1_Country
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address1_country");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_Country");
+				this.SetAttributeValue("address1_country", value);
+				this.OnPropertyChanged("Address1_Country");
+			}
+		}
+		
+		/// <summary>
+		/// County name for address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_county")]
+		public string Address1_County
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address1_county");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_County");
+				this.SetAttributeValue("address1_county", value);
+				this.OnPropertyChanged("Address1_County");
+			}
+		}
+		
+		/// <summary>
+		/// Fax number for address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_fax")]
+		public string Address1_Fax
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address1_fax");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_Fax");
+				this.SetAttributeValue("address1_fax", value);
+				this.OnPropertyChanged("Address1_Fax");
+			}
+		}
+		
+		/// <summary>
+		/// Latitude for address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_latitude")]
+		public System.Nullable<double> Address1_Latitude
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<double>>("address1_latitude");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_Latitude");
+				this.SetAttributeValue("address1_latitude", value);
+				this.OnPropertyChanged("Address1_Latitude");
+			}
+		}
+		
+		/// <summary>
+		/// First line for entering address 1 information.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_line1")]
+		public string Address1_Line1
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address1_line1");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_Line1");
+				this.SetAttributeValue("address1_line1", value);
+				this.OnPropertyChanged("Address1_Line1");
+			}
+		}
+		
+		/// <summary>
+		/// Second line for entering address 1 information.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_line2")]
+		public string Address1_Line2
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address1_line2");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_Line2");
+				this.SetAttributeValue("address1_line2", value);
+				this.OnPropertyChanged("Address1_Line2");
+			}
+		}
+		
+		/// <summary>
+		/// Third line for entering address 1 information.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_line3")]
+		public string Address1_Line3
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address1_line3");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_Line3");
+				this.SetAttributeValue("address1_line3", value);
+				this.OnPropertyChanged("Address1_Line3");
+			}
+		}
+		
+		/// <summary>
+		/// Longitude for address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_longitude")]
+		public System.Nullable<double> Address1_Longitude
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<double>>("address1_longitude");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_Longitude");
+				this.SetAttributeValue("address1_longitude", value);
+				this.OnPropertyChanged("Address1_Longitude");
+			}
+		}
+		
+		/// <summary>
+		/// Name to enter for address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_name")]
+		public string Address1_Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address1_name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_Name");
+				this.SetAttributeValue("address1_name", value);
+				this.OnPropertyChanged("Address1_Name");
+			}
+		}
+		
+		/// <summary>
+		/// ZIP Code or postal code for address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_postalcode")]
+		public string Address1_PostalCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address1_postalcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_PostalCode");
+				this.SetAttributeValue("address1_postalcode", value);
+				this.OnPropertyChanged("Address1_PostalCode");
+			}
+		}
+		
+		/// <summary>
+		/// Post office box number for address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_postofficebox")]
+		public string Address1_PostOfficeBox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address1_postofficebox");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_PostOfficeBox");
+				this.SetAttributeValue("address1_postofficebox", value);
+				this.OnPropertyChanged("Address1_PostOfficeBox");
+			}
+		}
+		
+		/// <summary>
+		/// Method of shipment for address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_shippingmethodcode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue Address1_ShippingMethodCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("address1_shippingmethodcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_ShippingMethodCode");
+				this.SetAttributeValue("address1_shippingmethodcode", value);
+				this.OnPropertyChanged("Address1_ShippingMethodCode");
+			}
+		}
+		
+		/// <summary>
+		/// State or province for address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_stateorprovince")]
+		public string Address1_StateOrProvince
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address1_stateorprovince");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_StateOrProvince");
+				this.SetAttributeValue("address1_stateorprovince", value);
+				this.OnPropertyChanged("Address1_StateOrProvince");
+			}
+		}
+		
+		/// <summary>
+		/// First telephone number associated with address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_telephone1")]
+		public string Address1_Telephone1
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address1_telephone1");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_Telephone1");
+				this.SetAttributeValue("address1_telephone1", value);
+				this.OnPropertyChanged("Address1_Telephone1");
+			}
+		}
+		
+		/// <summary>
+		/// Second telephone number associated with address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_telephone2")]
+		public string Address1_Telephone2
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address1_telephone2");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_Telephone2");
+				this.SetAttributeValue("address1_telephone2", value);
+				this.OnPropertyChanged("Address1_Telephone2");
+			}
+		}
+		
+		/// <summary>
+		/// Third telephone number associated with address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_telephone3")]
+		public string Address1_Telephone3
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address1_telephone3");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_Telephone3");
+				this.SetAttributeValue("address1_telephone3", value);
+				this.OnPropertyChanged("Address1_Telephone3");
+			}
+		}
+		
+		/// <summary>
+		/// United Parcel Service (UPS) zone for address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_upszone")]
+		public string Address1_UPSZone
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address1_upszone");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_UPSZone");
+				this.SetAttributeValue("address1_upszone", value);
+				this.OnPropertyChanged("Address1_UPSZone");
+			}
+		}
+		
+		/// <summary>
+		/// UTC offset for address 1. This is the difference between local time and standard Coordinated Universal Time.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_utcoffset")]
+		public System.Nullable<int> Address1_UTCOffset
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("address1_utcoffset");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address1_UTCOffset");
+				this.SetAttributeValue("address1_utcoffset", value);
+				this.OnPropertyChanged("Address1_UTCOffset");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_addressid")]
+		public System.Nullable<System.Guid> Address2_AddressId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("address2_addressid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_AddressId");
+				this.SetAttributeValue("address2_addressid", value);
+				this.OnPropertyChanged("Address2_AddressId");
+			}
+		}
+		
+		/// <summary>
+		/// Type of address for address 2, such as billing, shipping, or primary address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_addresstypecode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue Address2_AddressTypeCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("address2_addresstypecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_AddressTypeCode");
+				this.SetAttributeValue("address2_addresstypecode", value);
+				this.OnPropertyChanged("Address2_AddressTypeCode");
+			}
+		}
+		
+		/// <summary>
+		/// City name for address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_city")]
+		public string Address2_City
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address2_city");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_City");
+				this.SetAttributeValue("address2_city", value);
+				this.OnPropertyChanged("Address2_City");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the complete secondary address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_composite")]
+		public string Address2_Composite
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address2_composite");
+			}
+		}
+		
+		/// <summary>
+		/// Country/region name in address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_country")]
+		public string Address2_Country
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address2_country");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_Country");
+				this.SetAttributeValue("address2_country", value);
+				this.OnPropertyChanged("Address2_Country");
+			}
+		}
+		
+		/// <summary>
+		/// County name for address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_county")]
+		public string Address2_County
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address2_county");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_County");
+				this.SetAttributeValue("address2_county", value);
+				this.OnPropertyChanged("Address2_County");
+			}
+		}
+		
+		/// <summary>
+		/// Fax number for address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_fax")]
+		public string Address2_Fax
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address2_fax");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_Fax");
+				this.SetAttributeValue("address2_fax", value);
+				this.OnPropertyChanged("Address2_Fax");
+			}
+		}
+		
+		/// <summary>
+		/// Latitude for address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_latitude")]
+		public System.Nullable<double> Address2_Latitude
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<double>>("address2_latitude");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_Latitude");
+				this.SetAttributeValue("address2_latitude", value);
+				this.OnPropertyChanged("Address2_Latitude");
+			}
+		}
+		
+		/// <summary>
+		/// First line for entering address 2 information.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_line1")]
+		public string Address2_Line1
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address2_line1");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_Line1");
+				this.SetAttributeValue("address2_line1", value);
+				this.OnPropertyChanged("Address2_Line1");
+			}
+		}
+		
+		/// <summary>
+		/// Second line for entering address 2 information.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_line2")]
+		public string Address2_Line2
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address2_line2");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_Line2");
+				this.SetAttributeValue("address2_line2", value);
+				this.OnPropertyChanged("Address2_Line2");
+			}
+		}
+		
+		/// <summary>
+		/// Third line for entering address 2 information.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_line3")]
+		public string Address2_Line3
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address2_line3");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_Line3");
+				this.SetAttributeValue("address2_line3", value);
+				this.OnPropertyChanged("Address2_Line3");
+			}
+		}
+		
+		/// <summary>
+		/// Longitude for address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_longitude")]
+		public System.Nullable<double> Address2_Longitude
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<double>>("address2_longitude");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_Longitude");
+				this.SetAttributeValue("address2_longitude", value);
+				this.OnPropertyChanged("Address2_Longitude");
+			}
+		}
+		
+		/// <summary>
+		/// Name to enter for address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_name")]
+		public string Address2_Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address2_name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_Name");
+				this.SetAttributeValue("address2_name", value);
+				this.OnPropertyChanged("Address2_Name");
+			}
+		}
+		
+		/// <summary>
+		/// ZIP Code or postal code for address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_postalcode")]
+		public string Address2_PostalCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address2_postalcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_PostalCode");
+				this.SetAttributeValue("address2_postalcode", value);
+				this.OnPropertyChanged("Address2_PostalCode");
+			}
+		}
+		
+		/// <summary>
+		/// Post office box number for address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_postofficebox")]
+		public string Address2_PostOfficeBox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address2_postofficebox");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_PostOfficeBox");
+				this.SetAttributeValue("address2_postofficebox", value);
+				this.OnPropertyChanged("Address2_PostOfficeBox");
+			}
+		}
+		
+		/// <summary>
+		/// Method of shipment for address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_shippingmethodcode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue Address2_ShippingMethodCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("address2_shippingmethodcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_ShippingMethodCode");
+				this.SetAttributeValue("address2_shippingmethodcode", value);
+				this.OnPropertyChanged("Address2_ShippingMethodCode");
+			}
+		}
+		
+		/// <summary>
+		/// State or province for address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_stateorprovince")]
+		public string Address2_StateOrProvince
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address2_stateorprovince");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_StateOrProvince");
+				this.SetAttributeValue("address2_stateorprovince", value);
+				this.OnPropertyChanged("Address2_StateOrProvince");
+			}
+		}
+		
+		/// <summary>
+		/// First telephone number associated with address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_telephone1")]
+		public string Address2_Telephone1
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address2_telephone1");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_Telephone1");
+				this.SetAttributeValue("address2_telephone1", value);
+				this.OnPropertyChanged("Address2_Telephone1");
+			}
+		}
+		
+		/// <summary>
+		/// Second telephone number associated with address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_telephone2")]
+		public string Address2_Telephone2
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address2_telephone2");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_Telephone2");
+				this.SetAttributeValue("address2_telephone2", value);
+				this.OnPropertyChanged("Address2_Telephone2");
+			}
+		}
+		
+		/// <summary>
+		/// Third telephone number associated with address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_telephone3")]
+		public string Address2_Telephone3
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address2_telephone3");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_Telephone3");
+				this.SetAttributeValue("address2_telephone3", value);
+				this.OnPropertyChanged("Address2_Telephone3");
+			}
+		}
+		
+		/// <summary>
+		/// United Parcel Service (UPS) zone for address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_upszone")]
+		public string Address2_UPSZone
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("address2_upszone");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_UPSZone");
+				this.SetAttributeValue("address2_upszone", value);
+				this.OnPropertyChanged("Address2_UPSZone");
+			}
+		}
+		
+		/// <summary>
+		/// UTC offset for address 2. This is the difference between local time and standard Coordinated Universal Time.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_utcoffset")]
+		public System.Nullable<int> Address2_UTCOffset
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("address2_utcoffset");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Address2_UTCOffset");
+				this.SetAttributeValue("address2_utcoffset", value);
+				this.OnPropertyChanged("Address2_UTCOffset");
+			}
+		}
+		
+		/// <summary>
+		/// The identifier for the application. This is used to access data in another application.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("applicationid")]
+		public System.Nullable<System.Guid> ApplicationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("applicationid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ApplicationId");
+				this.SetAttributeValue("applicationid", value);
+				this.OnPropertyChanged("ApplicationId");
+			}
+		}
+		
+		/// <summary>
+		/// The URI used as a unique logical identifier for the external app. This can be used to validate the application.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("applicationiduri")]
+		public string ApplicationIdUri
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("applicationiduri");
+			}
+		}
+		
+		/// <summary>
+		/// This is the application directory object Id.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("azureactivedirectoryobjectid")]
+		public System.Nullable<System.Guid> AzureActiveDirectoryObjectId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("azureactivedirectoryobjectid");
+			}
+		}
+		
+		/// <summary>
+		/// This field is populated via User Provisioning for Portal Users.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bby_jobcode")]
+		public string bby_jobcode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("bby_jobcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("bby_jobcode");
+				this.SetAttributeValue("bby_jobcode", value);
+				this.OnPropertyChanged("bby_jobcode");
+			}
+		}
+		
+		/// <summary>
+		/// Field used to trigger user records to allow an external user to access the EDI KM Portal.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bby_km_allowportallogin")]
+		public System.Nullable<bool> bby_km_allowportallogin
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("bby_km_allowportallogin");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("bby_km_allowportallogin");
+				this.SetAttributeValue("bby_km_allowportallogin", value);
+				this.OnPropertyChanged("bby_km_allowportallogin");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the business unit with which the user is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("businessunitid")]
+		public Microsoft.Xrm.Sdk.EntityReference BusinessUnitId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("businessunitid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BusinessUnitId");
+				this.SetAttributeValue("businessunitid", value);
+				this.OnPropertyChanged("BusinessUnitId");
+			}
+		}
+		
+		/// <summary>
+		/// Fiscal calendar associated with the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("calendarid")]
+		public Microsoft.Xrm.Sdk.EntityReference CalendarId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("calendarid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CalendarId");
+				this.SetAttributeValue("calendarid", value);
+				this.OnPropertyChanged("CalendarId");
+			}
+		}
+		
+		/// <summary>
+		/// License type of user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("caltype")]
+		public Microsoft.Xrm.Sdk.OptionSetValue CALType
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("caltype");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CALType");
+				this.SetAttributeValue("caltype", value);
+				this.OnPropertyChanged("CALType");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the user was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the systemuser.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Indicates if default outlook filters have been populated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultfilterspopulated")]
+		public System.Nullable<bool> DefaultFiltersPopulated
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("defaultfilterspopulated");
+			}
+		}
+		
+		/// <summary>
+		/// Select the mailbox associated with this user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultmailbox")]
+		public Microsoft.Xrm.Sdk.EntityReference DefaultMailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("defaultmailbox");
+			}
+		}
+		
+		/// <summary>
+		/// Type a default folder name for the user's OneDrive For Business location.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultodbfoldername")]
+		public string DefaultOdbFolderName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("defaultodbfoldername");
+			}
+		}
+		
+		/// <summary>
+		/// Reason for disabling the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("disabledreason")]
+		public string DisabledReason
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("disabledreason");
+			}
+		}
+		
+		/// <summary>
+		/// Whether to display the user in service views.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("displayinserviceviews")]
+		public System.Nullable<bool> DisplayInServiceViews
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("displayinserviceviews");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("DisplayInServiceViews");
+				this.SetAttributeValue("displayinserviceviews", value);
+				this.OnPropertyChanged("DisplayInServiceViews");
+			}
+		}
+		
+		/// <summary>
+		/// Active Directory domain of which the user is a member.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("domainname")]
+		public string DomainName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("domainname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("DomainName");
+				this.SetAttributeValue("domainname", value);
+				this.OnPropertyChanged("DomainName");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the status of the primary email address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailrouteraccessapproval")]
+		public Microsoft.Xrm.Sdk.OptionSetValue EmailRouterAccessApproval
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("emailrouteraccessapproval");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EmailRouterAccessApproval");
+				this.SetAttributeValue("emailrouteraccessapproval", value);
+				this.OnPropertyChanged("EmailRouterAccessApproval");
+			}
+		}
+		
+		/// <summary>
+		/// Employee identifier for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("employeeid")]
+		public string EmployeeId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("employeeid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EmployeeId");
+				this.SetAttributeValue("employeeid", value);
+				this.OnPropertyChanged("EmployeeId");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the default image for the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage")]
+		public byte[] EntityImage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<byte[]>("entityimage");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EntityImage");
+				this.SetAttributeValue("entityimage", value);
+				this.OnPropertyChanged("EntityImage");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage_timestamp")]
+		public System.Nullable<long> EntityImage_Timestamp
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("entityimage_timestamp");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage_url")]
+		public string EntityImage_URL
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("entityimage_url");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimageid")]
+		public System.Nullable<System.Guid> EntityImageId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("entityimageid");
+			}
+		}
+		
+		/// <summary>
+		/// Exchange rate for the currency associated with the systemuser with respect to the base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangerate")]
+		public System.Nullable<decimal> ExchangeRate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
+			}
+		}
+		
+		/// <summary>
+		/// First name of the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("firstname")]
+		public string FirstName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("firstname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("FirstName");
+				this.SetAttributeValue("firstname", value);
+				this.OnPropertyChanged("FirstName");
+			}
+		}
+		
+		/// <summary>
+		/// Full name of the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fullname")]
+		public string FullName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("fullname");
+			}
+		}
+		
+		/// <summary>
+		/// Government identifier for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("governmentid")]
+		public string GovernmentId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("governmentid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("GovernmentId");
+				this.SetAttributeValue("governmentid", value);
+				this.OnPropertyChanged("GovernmentId");
+			}
+		}
+		
+		/// <summary>
+		/// Home phone number for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("homephone")]
+		public string HomePhone
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("homephone");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("HomePhone");
+				this.SetAttributeValue("homephone", value);
+				this.OnPropertyChanged("HomePhone");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("identityid")]
+		public System.Nullable<int> IdentityId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("identityid");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the data import or data migration that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ImportSequenceNumber");
+				this.SetAttributeValue("importsequencenumber", value);
+				this.OnPropertyChanged("ImportSequenceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Incoming email delivery method for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incomingemaildeliverymethod")]
+		public Microsoft.Xrm.Sdk.OptionSetValue IncomingEmailDeliveryMethod
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("incomingemaildeliverymethod");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IncomingEmailDeliveryMethod");
+				this.SetAttributeValue("incomingemaildeliverymethod", value);
+				this.OnPropertyChanged("IncomingEmailDeliveryMethod");
+			}
+		}
+		
+		/// <summary>
+		/// Internal email address for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("internalemailaddress")]
+		public string InternalEMailAddress
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("internalemailaddress");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("InternalEMailAddress");
+				this.SetAttributeValue("internalemailaddress", value);
+				this.OnPropertyChanged("InternalEMailAddress");
+			}
+		}
+		
+		/// <summary>
+		/// User invitation status.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("invitestatuscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue InviteStatusCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("invitestatuscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("InviteStatusCode");
+				this.SetAttributeValue("invitestatuscode", value);
+				this.OnPropertyChanged("InviteStatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// Information about whether the user is enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdisabled")]
+		public System.Nullable<bool> IsDisabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdisabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsDisabled");
+				this.SetAttributeValue("isdisabled", value);
+				this.OnPropertyChanged("IsDisabled");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the status of approval of the email address by O365 Admin.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isemailaddressapprovedbyo365admin")]
+		public System.Nullable<bool> IsEmailAddressApprovedByO365Admin
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isemailaddressapprovedbyo365admin");
+			}
+		}
+		
+		/// <summary>
+		/// Check if user is an integration user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isintegrationuser")]
+		public System.Nullable<bool> IsIntegrationUser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isintegrationuser");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsIntegrationUser");
+				this.SetAttributeValue("isintegrationuser", value);
+				this.OnPropertyChanged("IsIntegrationUser");
+			}
+		}
+		
+		/// <summary>
+		/// Information about whether the user is licensed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("islicensed")]
+		public System.Nullable<bool> IsLicensed
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("islicensed");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsLicensed");
+				this.SetAttributeValue("islicensed", value);
+				this.OnPropertyChanged("IsLicensed");
+			}
+		}
+		
+		/// <summary>
+		/// Information about whether the user is synced with the directory.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("issyncwithdirectory")]
+		public System.Nullable<bool> IsSyncWithDirectory
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("issyncwithdirectory");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsSyncWithDirectory");
+				this.SetAttributeValue("issyncwithdirectory", value);
+				this.OnPropertyChanged("IsSyncWithDirectory");
+			}
+		}
+		
+		/// <summary>
+		/// Job title of the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("jobtitle")]
+		public string JobTitle
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("jobtitle");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("JobTitle");
+				this.SetAttributeValue("jobtitle", value);
+				this.OnPropertyChanged("JobTitle");
+			}
+		}
+		
+		/// <summary>
+		/// Last name of the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastname")]
+		public string LastName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("lastname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("LastName");
+				this.SetAttributeValue("lastname", value);
+				this.OnPropertyChanged("LastName");
+			}
+		}
+		
+		/// <summary>
+		/// Middle name of the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("middlename")]
+		public string MiddleName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("middlename");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("MiddleName");
+				this.SetAttributeValue("middlename", value);
+				this.OnPropertyChanged("MiddleName");
+			}
+		}
+		
+		/// <summary>
+		/// Mobile alert email address for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mobilealertemail")]
+		public string MobileAlertEMail
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("mobilealertemail");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("MobileAlertEMail");
+				this.SetAttributeValue("mobilealertemail", value);
+				this.OnPropertyChanged("MobileAlertEMail");
+			}
+		}
+		
+		/// <summary>
+		/// Items contained with a particular SystemUser.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mobileofflineprofileid")]
+		public Microsoft.Xrm.Sdk.EntityReference MobileOfflineProfileId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("mobileofflineprofileid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("MobileOfflineProfileId");
+				this.SetAttributeValue("mobileofflineprofileid", value);
+				this.OnPropertyChanged("MobileOfflineProfileId");
+			}
+		}
+		
+		/// <summary>
+		/// Mobile phone number for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mobilephone")]
+		public string MobilePhone
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("mobilephone");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("MobilePhone");
+				this.SetAttributeValue("mobilephone", value);
+				this.OnPropertyChanged("MobilePhone");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who last modified the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the user was last modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who last modified the systemuser.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Describes whether user is opted out or not
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_gdproptout")]
+		public System.Nullable<bool> msdyn_gdproptout
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_gdproptout");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_gdproptout");
+				this.SetAttributeValue("msdyn_gdproptout", value);
+				this.OnPropertyChanged("msdyn_gdproptout");
+			}
+		}
+		
+		/// <summary>
+		/// Nickname of the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("nickname")]
+		public string NickName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("nickname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("NickName");
+				this.SetAttributeValue("nickname", value);
+				this.OnPropertyChanged("NickName");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the organization associated with the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public System.Nullable<System.Guid> OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// Outgoing email delivery method for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("outgoingemaildeliverymethod")]
+		public Microsoft.Xrm.Sdk.OptionSetValue OutgoingEmailDeliveryMethod
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("outgoingemaildeliverymethod");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OutgoingEmailDeliveryMethod");
+				this.SetAttributeValue("outgoingemaildeliverymethod", value);
+				this.OnPropertyChanged("OutgoingEmailDeliveryMethod");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the manager of the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentsystemuserid")]
+		public Microsoft.Xrm.Sdk.EntityReference ParentSystemUserId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("parentsystemuserid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ParentSystemUserId");
+				this.SetAttributeValue("parentsystemuserid", value);
+				this.OnPropertyChanged("ParentSystemUserId");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("passporthi")]
+		public System.Nullable<int> PassportHi
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("passporthi");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PassportHi");
+				this.SetAttributeValue("passporthi", value);
+				this.OnPropertyChanged("PassportHi");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("passportlo")]
+		public System.Nullable<int> PassportLo
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("passportlo");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PassportLo");
+				this.SetAttributeValue("passportlo", value);
+				this.OnPropertyChanged("PassportLo");
+			}
+		}
+		
+		/// <summary>
+		/// Personal email address of the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("personalemailaddress")]
+		public string PersonalEMailAddress
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("personalemailaddress");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PersonalEMailAddress");
+				this.SetAttributeValue("personalemailaddress", value);
+				this.OnPropertyChanged("PersonalEMailAddress");
+			}
+		}
+		
+		/// <summary>
+		/// URL for the Website on which a photo of the user is located.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("photourl")]
+		public string PhotoUrl
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("photourl");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PhotoUrl");
+				this.SetAttributeValue("photourl", value);
+				this.OnPropertyChanged("PhotoUrl");
+			}
+		}
+		
+		/// <summary>
+		/// User's position in hierarchical security model.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("positionid")]
+		public Microsoft.Xrm.Sdk.EntityReference PositionId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("positionid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PositionId");
+				this.SetAttributeValue("positionid", value);
+				this.OnPropertyChanged("PositionId");
+			}
+		}
+		
+		/// <summary>
+		/// Preferred address for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("preferredaddresscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue PreferredAddressCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("preferredaddresscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PreferredAddressCode");
+				this.SetAttributeValue("preferredaddresscode", value);
+				this.OnPropertyChanged("PreferredAddressCode");
+			}
+		}
+		
+		/// <summary>
+		/// Preferred email address for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("preferredemailcode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue PreferredEmailCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("preferredemailcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PreferredEmailCode");
+				this.SetAttributeValue("preferredemailcode", value);
+				this.OnPropertyChanged("PreferredEmailCode");
+			}
+		}
+		
+		/// <summary>
+		/// Preferred phone number for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("preferredphonecode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue PreferredPhoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("preferredphonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PreferredPhoneCode");
+				this.SetAttributeValue("preferredphonecode", value);
+				this.OnPropertyChanged("PreferredPhoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the ID of the process.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processid")]
+		public System.Nullable<System.Guid> ProcessId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("processid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ProcessId");
+				this.SetAttributeValue("processid", value);
+				this.OnPropertyChanged("ProcessId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the default queue for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("queueid")]
+		public Microsoft.Xrm.Sdk.EntityReference QueueId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("queueid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("QueueId");
+				this.SetAttributeValue("queueid", value);
+				this.OnPropertyChanged("QueueId");
+			}
+		}
+		
+		/// <summary>
+		/// Salutation for correspondence with the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salutation")]
+		public string Salutation
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("salutation");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Salutation");
+				this.SetAttributeValue("salutation", value);
+				this.OnPropertyChanged("Salutation");
+			}
+		}
+		
+		/// <summary>
+		/// Check if user is a setup user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("setupuser")]
+		public System.Nullable<bool> SetupUser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("setupuser");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SetupUser");
+				this.SetAttributeValue("setupuser", value);
+				this.OnPropertyChanged("SetupUser");
+			}
+		}
+		
+		/// <summary>
+		/// SharePoint Work Email Address
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sharepointemailaddress")]
+		public string SharePointEmailAddress
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("sharepointemailaddress");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SharePointEmailAddress");
+				this.SetAttributeValue("sharepointemailaddress", value);
+				this.OnPropertyChanged("SharePointEmailAddress");
+			}
+		}
+		
+		/// <summary>
+		/// Site at which the user is located.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("siteid")]
+		public Microsoft.Xrm.Sdk.EntityReference SiteId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("siteid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SiteId");
+				this.SetAttributeValue("siteid", value);
+				this.OnPropertyChanged("SiteId");
+			}
+		}
+		
+		/// <summary>
+		/// Skill set of the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("skills")]
+		public string Skills
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("skills");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Skills");
+				this.SetAttributeValue("skills", value);
+				this.OnPropertyChanged("Skills");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the ID of the stage.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
+		public System.Nullable<System.Guid> StageId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("stageid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StageId");
+				this.SetAttributeValue("stageid", value);
+				this.OnPropertyChanged("StageId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("systemuserid")]
+		public System.Nullable<System.Guid> SystemUserId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("systemuserid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SystemUserId");
+				this.SetAttributeValue("systemuserid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("SystemUserId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("systemuserid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SystemUserId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the territory to which the user is assigned.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("territoryid")]
+		public Microsoft.Xrm.Sdk.EntityReference TerritoryId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("territoryid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TerritoryId");
+				this.SetAttributeValue("territoryid", value);
+				this.OnPropertyChanged("TerritoryId");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TimeZoneRuleVersionNumber");
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+				this.OnPropertyChanged("TimeZoneRuleVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Title of the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("title")]
+		public string Title
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("title");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Title");
+				this.SetAttributeValue("title", value);
+				this.OnPropertyChanged("Title");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the currency associated with the systemuser.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
+		public Microsoft.Xrm.Sdk.EntityReference TransactionCurrencyId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("transactioncurrencyid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TransactionCurrencyId");
+				this.SetAttributeValue("transactioncurrencyid", value);
+				this.OnPropertyChanged("TransactionCurrencyId");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("traversedpath")]
+		public string TraversedPath
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("traversedpath");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TraversedPath");
+				this.SetAttributeValue("traversedpath", value);
+				this.OnPropertyChanged("TraversedPath");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the type of user license.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("userlicensetype")]
+		public System.Nullable<int> UserLicenseType
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("userlicensetype");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UserLicenseType");
+				this.SetAttributeValue("userlicensetype", value);
+				this.OnPropertyChanged("UserLicenseType");
+			}
+		}
+		
+		/// <summary>
+		///  User PUID User Identifiable Information
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("userpuid")]
+		public string UserPuid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("userpuid");
+			}
+		}
+		
+		/// <summary>
+		/// Time zone code that was in use when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UTCConversionTimeZoneCode");
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+				this.OnPropertyChanged("UTCConversionTimeZoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// Version number of the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// Windows Live ID
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("windowsliveid")]
+		public string WindowsLiveID
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("windowsliveid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("WindowsLiveID");
+				this.SetAttributeValue("windowsliveid", value);
+				this.OnPropertyChanged("WindowsLiveID");
+			}
+		}
+		
+		/// <summary>
+		/// User's Yammer login email address
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yammeremailaddress")]
+		public string YammerEmailAddress
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("yammeremailaddress");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("YammerEmailAddress");
+				this.SetAttributeValue("yammeremailaddress", value);
+				this.OnPropertyChanged("YammerEmailAddress");
+			}
+		}
+		
+		/// <summary>
+		/// User's Yammer ID
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yammeruserid")]
+		public string YammerUserId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("yammeruserid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("YammerUserId");
+				this.SetAttributeValue("yammeruserid", value);
+				this.OnPropertyChanged("YammerUserId");
+			}
+		}
+		
+		/// <summary>
+		/// Pronunciation of the first name of the user, written in phonetic hiragana or katakana characters.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yomifirstname")]
+		public string YomiFirstName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("yomifirstname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("YomiFirstName");
+				this.SetAttributeValue("yomifirstname", value);
+				this.OnPropertyChanged("YomiFirstName");
+			}
+		}
+		
+		/// <summary>
+		/// Pronunciation of the full name of the user, written in phonetic hiragana or katakana characters.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yomifullname")]
+		public string YomiFullName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("yomifullname");
+			}
+		}
+		
+		/// <summary>
+		/// Pronunciation of the last name of the user, written in phonetic hiragana or katakana characters.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yomilastname")]
+		public string YomiLastName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("yomilastname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("YomiLastName");
+				this.SetAttributeValue("yomilastname", value);
+				this.OnPropertyChanged("YomiLastName");
+			}
+		}
+		
+		/// <summary>
+		/// Pronunciation of the middle name of the user, written in phonetic hiragana or katakana characters.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yomimiddlename")]
+		public string YomiMiddleName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("yomimiddlename");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("YomiMiddleName");
+				this.SetAttributeValue("yomimiddlename", value);
+				this.OnPropertyChanged("YomiMiddleName");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N bby_systemuser_knowledgearticle_approver
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bby_systemuser_knowledgearticle_approver")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> bby_systemuser_knowledgearticle_approver
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("bby_systemuser_knowledgearticle_approver", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("bby_systemuser_knowledgearticle_approver");
+				this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("bby_systemuser_knowledgearticle_approver", null, value);
+				this.OnPropertyChanged("bby_systemuser_knowledgearticle_approver");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N bby_systemuser_knowledgearticle_contentowner
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bby_systemuser_knowledgearticle_contentowner")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> bby_systemuser_knowledgearticle_contentowner
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("bby_systemuser_knowledgearticle_contentowner", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("bby_systemuser_knowledgearticle_contentowner");
+				this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("bby_systemuser_knowledgearticle_contentowner", null, value);
+				this.OnPropertyChanged("bby_systemuser_knowledgearticle_contentowner");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N bby_systemuser_knowledgearticle_publishedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bby_systemuser_knowledgearticle_publishedby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> bby_systemuser_knowledgearticle_publishedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("bby_systemuser_knowledgearticle_publishedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("bby_systemuser_knowledgearticle_publishedby");
+				this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("bby_systemuser_knowledgearticle_publishedby", null, value);
+				this.OnPropertyChanged("bby_systemuser_knowledgearticle_publishedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N bby_systemuser_knowledgearticle_VersionCreatedBy
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bby_systemuser_knowledgearticle_VersionCreatedBy")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> bby_systemuser_knowledgearticle_VersionCreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("bby_systemuser_knowledgearticle_VersionCreatedBy", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("bby_systemuser_knowledgearticle_VersionCreatedBy");
+				this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("bby_systemuser_knowledgearticle_VersionCreatedBy", null, value);
+				this.OnPropertyChanged("bby_systemuser_knowledgearticle_VersionCreatedBy");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N knowledgearticle_primaryauthorid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("knowledgearticle_primaryauthorid")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> knowledgearticle_primaryauthorid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_primaryauthorid", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("knowledgearticle_primaryauthorid");
+				this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("knowledgearticle_primaryauthorid", null, value);
+				this.OnPropertyChanged("knowledgearticle_primaryauthorid");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_incidentbase_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_incidentbase_createdby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Incident> lk_incidentbase_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Incident>("lk_incidentbase_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_incidentbase_createdby");
+				this.SetRelatedEntities<CrmEarlyBound.Incident>("lk_incidentbase_createdby", null, value);
+				this.OnPropertyChanged("lk_incidentbase_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_incidentbase_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_incidentbase_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Incident> lk_incidentbase_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Incident>("lk_incidentbase_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_incidentbase_createdonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.Incident>("lk_incidentbase_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_incidentbase_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_incidentbase_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_incidentbase_modifiedby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Incident> lk_incidentbase_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Incident>("lk_incidentbase_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_incidentbase_modifiedby");
+				this.SetRelatedEntities<CrmEarlyBound.Incident>("lk_incidentbase_modifiedby", null, value);
+				this.OnPropertyChanged("lk_incidentbase_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_incidentbase_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_incidentbase_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Incident> lk_incidentbase_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Incident>("lk_incidentbase_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_incidentbase_modifiedonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.Incident>("lk_incidentbase_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_incidentbase_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_invoice_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_invoice_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Invoice> lk_invoice_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Invoice>("lk_invoice_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_invoice_createdonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.Invoice>("lk_invoice_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_invoice_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_invoice_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_invoice_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Invoice> lk_invoice_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Invoice>("lk_invoice_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_invoice_modifiedonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.Invoice>("lk_invoice_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_invoice_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_invoicebase_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_invoicebase_createdby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Invoice> lk_invoicebase_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Invoice>("lk_invoicebase_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_invoicebase_createdby");
+				this.SetRelatedEntities<CrmEarlyBound.Invoice>("lk_invoicebase_createdby", null, value);
+				this.OnPropertyChanged("lk_invoicebase_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_invoicebase_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_invoicebase_modifiedby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Invoice> lk_invoicebase_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Invoice>("lk_invoicebase_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_invoicebase_modifiedby");
+				this.SetRelatedEntities<CrmEarlyBound.Invoice>("lk_invoicebase_modifiedby", null, value);
+				this.OnPropertyChanged("lk_invoicebase_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_knowledgearticle_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgearticle_createdby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> lk_knowledgearticle_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("lk_knowledgearticle_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_knowledgearticle_createdby");
+				this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("lk_knowledgearticle_createdby", null, value);
+				this.OnPropertyChanged("lk_knowledgearticle_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_knowledgearticle_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgearticle_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> lk_knowledgearticle_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("lk_knowledgearticle_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_knowledgearticle_createdonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("lk_knowledgearticle_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_knowledgearticle_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_knowledgearticle_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgearticle_modifiedby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> lk_knowledgearticle_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("lk_knowledgearticle_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_knowledgearticle_modifiedby");
+				this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("lk_knowledgearticle_modifiedby", null, value);
+				this.OnPropertyChanged("lk_knowledgearticle_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_knowledgearticle_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_knowledgearticle_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> lk_knowledgearticle_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("lk_knowledgearticle_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_knowledgearticle_modifiedonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("lk_knowledgearticle_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_knowledgearticle_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_msdyn_purchaseorderproduct_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_purchaseorderproduct_createdby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_purchaseorderproduct> lk_msdyn_purchaseorderproduct_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_purchaseorderproduct>("lk_msdyn_purchaseorderproduct_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_msdyn_purchaseorderproduct_createdby");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_purchaseorderproduct>("lk_msdyn_purchaseorderproduct_createdby", null, value);
+				this.OnPropertyChanged("lk_msdyn_purchaseorderproduct_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_msdyn_purchaseorderproduct_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_purchaseorderproduct_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_purchaseorderproduct> lk_msdyn_purchaseorderproduct_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_purchaseorderproduct>("lk_msdyn_purchaseorderproduct_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_msdyn_purchaseorderproduct_createdonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_purchaseorderproduct>("lk_msdyn_purchaseorderproduct_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_msdyn_purchaseorderproduct_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_msdyn_purchaseorderproduct_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_purchaseorderproduct_modifiedby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_purchaseorderproduct> lk_msdyn_purchaseorderproduct_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_purchaseorderproduct>("lk_msdyn_purchaseorderproduct_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_msdyn_purchaseorderproduct_modifiedby");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_purchaseorderproduct>("lk_msdyn_purchaseorderproduct_modifiedby", null, value);
+				this.OnPropertyChanged("lk_msdyn_purchaseorderproduct_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_msdyn_purchaseorderproduct_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_purchaseorderproduct_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_purchaseorderproduct> lk_msdyn_purchaseorderproduct_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_purchaseorderproduct>("lk_msdyn_purchaseorderproduct_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_msdyn_purchaseorderproduct_modifiedonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_purchaseorderproduct>("lk_msdyn_purchaseorderproduct_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_msdyn_purchaseorderproduct_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_msdyn_resourcerequirementdetail_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_resourcerequirementdetail_createdby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_resourcerequirementdetail> lk_msdyn_resourcerequirementdetail_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_resourcerequirementdetail>("lk_msdyn_resourcerequirementdetail_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_msdyn_resourcerequirementdetail_createdby");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_resourcerequirementdetail>("lk_msdyn_resourcerequirementdetail_createdby", null, value);
+				this.OnPropertyChanged("lk_msdyn_resourcerequirementdetail_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_msdyn_resourcerequirementdetail_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_resourcerequirementdetail_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_resourcerequirementdetail> lk_msdyn_resourcerequirementdetail_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_resourcerequirementdetail>("lk_msdyn_resourcerequirementdetail_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_msdyn_resourcerequirementdetail_createdonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_resourcerequirementdetail>("lk_msdyn_resourcerequirementdetail_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_msdyn_resourcerequirementdetail_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_msdyn_resourcerequirementdetail_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_resourcerequirementdetail_modifiedby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_resourcerequirementdetail> lk_msdyn_resourcerequirementdetail_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_resourcerequirementdetail>("lk_msdyn_resourcerequirementdetail_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_msdyn_resourcerequirementdetail_modifiedby");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_resourcerequirementdetail>("lk_msdyn_resourcerequirementdetail_modifiedby", null, value);
+				this.OnPropertyChanged("lk_msdyn_resourcerequirementdetail_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_msdyn_resourcerequirementdetail_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_msdyn_resourcerequirementdetail_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_resourcerequirementdetail> lk_msdyn_resourcerequirementdetail_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_resourcerequirementdetail>("lk_msdyn_resourcerequirementdetail_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_msdyn_resourcerequirementdetail_modifiedonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_resourcerequirementdetail>("lk_msdyn_resourcerequirementdetail_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_msdyn_resourcerequirementdetail_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_role_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_role_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Role> lk_role_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Role>("lk_role_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_role_createdonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.Role>("lk_role_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_role_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_role_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_role_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Role> lk_role_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Role>("lk_role_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_role_modifiedonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.Role>("lk_role_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_role_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_rolebase_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_rolebase_createdby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Role> lk_rolebase_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Role>("lk_rolebase_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_rolebase_createdby");
+				this.SetRelatedEntities<CrmEarlyBound.Role>("lk_rolebase_createdby", null, value);
+				this.OnPropertyChanged("lk_rolebase_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_rolebase_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_rolebase_modifiedby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Role> lk_rolebase_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Role>("lk_rolebase_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_rolebase_modifiedby");
+				this.SetRelatedEntities<CrmEarlyBound.Role>("lk_rolebase_modifiedby", null, value);
+				this.OnPropertyChanged("lk_rolebase_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_systemuser_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.SystemUser> Referencedlk_systemuser_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.SystemUser>("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencedlk_systemuser_createdonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.SystemUser>("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.OnPropertyChanged("Referencedlk_systemuser_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_systemuser_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuser_modifiedonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.SystemUser> Referencedlk_systemuser_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.SystemUser>("lk_systemuser_modifiedonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencedlk_systemuser_modifiedonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.SystemUser>("lk_systemuser_modifiedonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.OnPropertyChanged("Referencedlk_systemuser_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_systemuserbase_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuserbase_createdby", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.SystemUser> Referencedlk_systemuserbase_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.SystemUser>("lk_systemuserbase_createdby", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencedlk_systemuserbase_createdby");
+				this.SetRelatedEntities<CrmEarlyBound.SystemUser>("lk_systemuserbase_createdby", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.OnPropertyChanged("Referencedlk_systemuserbase_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_systemuserbase_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuserbase_modifiedby", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.SystemUser> Referencedlk_systemuserbase_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.SystemUser>("lk_systemuserbase_modifiedby", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencedlk_systemuserbase_modifiedby");
+				this.SetRelatedEntities<CrmEarlyBound.SystemUser>("lk_systemuserbase_modifiedby", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.OnPropertyChanged("Referencedlk_systemuserbase_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_theme_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_theme_createdby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Theme> lk_theme_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Theme>("lk_theme_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_theme_createdby");
+				this.SetRelatedEntities<CrmEarlyBound.Theme>("lk_theme_createdby", null, value);
+				this.OnPropertyChanged("lk_theme_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_theme_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_theme_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Theme> lk_theme_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Theme>("lk_theme_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_theme_createdonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.Theme>("lk_theme_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_theme_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_theme_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_theme_modifiedby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Theme> lk_theme_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Theme>("lk_theme_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_theme_modifiedby");
+				this.SetRelatedEntities<CrmEarlyBound.Theme>("lk_theme_modifiedby", null, value);
+				this.OnPropertyChanged("lk_theme_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_theme_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_theme_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Theme> lk_theme_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Theme>("lk_theme_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_theme_modifiedonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.Theme>("lk_theme_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_theme_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N msdyn_approval_systemuser_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_approval_systemuser_createdby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_approval> msdyn_approval_systemuser_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_approval>("msdyn_approval_systemuser_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_approval_systemuser_createdby");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_approval>("msdyn_approval_systemuser_createdby", null, value);
+				this.OnPropertyChanged("msdyn_approval_systemuser_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N msdyn_approval_systemuser_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_approval_systemuser_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_approval> msdyn_approval_systemuser_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_approval>("msdyn_approval_systemuser_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_approval_systemuser_createdonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_approval>("msdyn_approval_systemuser_createdonbehalfby", null, value);
+				this.OnPropertyChanged("msdyn_approval_systemuser_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N msdyn_approval_systemuser_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_approval_systemuser_modifiedby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_approval> msdyn_approval_systemuser_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_approval>("msdyn_approval_systemuser_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_approval_systemuser_modifiedby");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_approval>("msdyn_approval_systemuser_modifiedby", null, value);
+				this.OnPropertyChanged("msdyn_approval_systemuser_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N msdyn_approval_systemuser_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_approval_systemuser_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_approval> msdyn_approval_systemuser_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_approval>("msdyn_approval_systemuser_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_approval_systemuser_modifiedonbehalfby");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_approval>("msdyn_approval_systemuser_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("msdyn_approval_systemuser_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N msdyn_approval_systemuser_owninguser
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("msdyn_approval_systemuser_owninguser")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_approval> msdyn_approval_systemuser_owninguser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_approval>("msdyn_approval_systemuser_owninguser", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_approval_systemuser_owninguser");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_approval>("msdyn_approval_systemuser_owninguser", null, value);
+				this.OnPropertyChanged("msdyn_approval_systemuser_owninguser");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N system_user_activity_parties
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_activity_parties")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.ActivityParty> system_user_activity_parties
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.ActivityParty>("system_user_activity_parties", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("system_user_activity_parties");
+				this.SetRelatedEntities<CrmEarlyBound.ActivityParty>("system_user_activity_parties", null, value);
+				this.OnPropertyChanged("system_user_activity_parties");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N system_user_incidents
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_incidents")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Incident> system_user_incidents
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Incident>("system_user_incidents", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("system_user_incidents");
+				this.SetRelatedEntities<CrmEarlyBound.Incident>("system_user_incidents", null, value);
+				this.OnPropertyChanged("system_user_incidents");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N system_user_invoices
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_invoices")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Invoice> system_user_invoices
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Invoice>("system_user_invoices", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("system_user_invoices");
+				this.SetRelatedEntities<CrmEarlyBound.Invoice>("system_user_invoices", null, value);
+				this.OnPropertyChanged("system_user_invoices");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N user_knowledgearticle
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_knowledgearticle")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.KnowledgeArticle> user_knowledgearticle
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("user_knowledgearticle", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("user_knowledgearticle");
+				this.SetRelatedEntities<CrmEarlyBound.KnowledgeArticle>("user_knowledgearticle", null, value);
+				this.OnPropertyChanged("user_knowledgearticle");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N user_msdyn_purchaseorderproduct
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_msdyn_purchaseorderproduct")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_purchaseorderproduct> user_msdyn_purchaseorderproduct
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_purchaseorderproduct>("user_msdyn_purchaseorderproduct", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("user_msdyn_purchaseorderproduct");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_purchaseorderproduct>("user_msdyn_purchaseorderproduct", null, value);
+				this.OnPropertyChanged("user_msdyn_purchaseorderproduct");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N user_msdyn_resourcerequirementdetail
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_msdyn_resourcerequirementdetail")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.msdyn_resourcerequirementdetail> user_msdyn_resourcerequirementdetail
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.msdyn_resourcerequirementdetail>("user_msdyn_resourcerequirementdetail", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("user_msdyn_resourcerequirementdetail");
+				this.SetRelatedEntities<CrmEarlyBound.msdyn_resourcerequirementdetail>("user_msdyn_resourcerequirementdetail", null, value);
+				this.OnPropertyChanged("user_msdyn_resourcerequirementdetail");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N user_parent_user
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.SystemUser> Referenceduser_parent_user
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.SystemUser>("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referenceduser_parent_user");
+				this.SetRelatedEntities<CrmEarlyBound.SystemUser>("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.OnPropertyChanged("Referenceduser_parent_user");
+			}
+		}
+		
+		/// <summary>
+		/// N:N systemuserroles_association
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("systemuserroles_association")]
+		public System.Collections.Generic.IEnumerable<CrmEarlyBound.Role> systemuserroles_association
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<CrmEarlyBound.Role>("systemuserroles_association", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("systemuserroles_association");
+				this.SetRelatedEntities<CrmEarlyBound.Role>("systemuserroles_association", null, value);
+				this.OnPropertyChanged("systemuserroles_association");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_systemuser_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public CrmEarlyBound.SystemUser Referencinglk_systemuser_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencinglk_systemuser_createdonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.OnPropertyChanged("Referencinglk_systemuser_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_systemuser_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuser_modifiedonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public CrmEarlyBound.SystemUser Referencinglk_systemuser_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_systemuser_modifiedonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencinglk_systemuser_modifiedonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("lk_systemuser_modifiedonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.OnPropertyChanged("Referencinglk_systemuser_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_systemuserbase_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuserbase_createdby", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public CrmEarlyBound.SystemUser Referencinglk_systemuserbase_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_systemuserbase_createdby", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_systemuserbase_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuserbase_modifiedby", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public CrmEarlyBound.SystemUser Referencinglk_systemuserbase_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_systemuserbase_modifiedby", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 user_parent_user
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentsystemuserid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+		public CrmEarlyBound.SystemUser Referencinguser_parent_user
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Referencinguser_parent_user");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.OnPropertyChanged("Referencinguser_parent_user");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public SystemUser(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["systemuserid"] = base.Id;
+                        break;
+                    case "systemuserid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+		
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public enum ThemeState
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Inactive = 1,
+	}
+	
+	/// <summary>
+	/// Information that's used to set custom visual theme options for client applications.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("theme")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public partial class Theme : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public Theme() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "theme";
+		
+		public const string PrimaryIdAttribute = "themeid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const int EntityTypeCode = 2015;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Choose the Unified Interface secondary theme color to be used on the process control
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accentcolor")]
+		public string AccentColor
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("accentcolor");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("AccentColor");
+				this.SetAttributeValue("accentcolor", value);
+				this.OnPropertyChanged("AccentColor");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("backgroundcolor")]
+		public string BackgroundColor
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("backgroundcolor");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BackgroundColor");
+				this.SetAttributeValue("backgroundcolor", value);
+				this.OnPropertyChanged("BackgroundColor");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the color that controls will use for borders
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("controlborder")]
+		public string ControlBorder
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("controlborder");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ControlBorder");
+				this.SetAttributeValue("controlborder", value);
+				this.OnPropertyChanged("ControlBorder");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the background color for controls to use to indicate when you hover over items
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("controlshade")]
+		public string ControlShade
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("controlshade");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ControlShade");
+				this.SetAttributeValue("controlshade", value);
+				this.OnPropertyChanged("ControlShade");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the default custom entity color if no color is assigned
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultcustomentitycolor")]
+		public string DefaultCustomEntityColor
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("defaultcustomentitycolor");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("DefaultCustomEntityColor");
+				this.SetAttributeValue("defaultcustomentitycolor", value);
+				this.OnPropertyChanged("DefaultCustomEntityColor");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the default color for system entities if no color is assigned
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultentitycolor")]
+		public string DefaultEntityColor
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("defaultentitycolor");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("DefaultEntityColor");
+				this.SetAttributeValue("defaultentitycolor", value);
+				this.OnPropertyChanged("DefaultEntityColor");
+			}
+		}
+		
+		/// <summary>
+		/// Exchange rate for the currency associated with the Theme with respect to the base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangerate")]
+		public System.Nullable<decimal> ExchangeRate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the color for all links, such as e-mail address and lookup links, and for all buttons that are in focus
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("globallinkcolor")]
+		public string GlobalLinkColor
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("globallinkcolor");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("GlobalLinkColor");
+				this.SetAttributeValue("globallinkcolor", value);
+				this.OnPropertyChanged("GlobalLinkColor");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the color for title text, such as form tab labels
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("headercolor")]
+		public string HeaderColor
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("headercolor");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("HeaderColor");
+				this.SetAttributeValue("headercolor", value);
+				this.OnPropertyChanged("HeaderColor");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the color that commands or lists will use to indicate hovered over items
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("hoverlinkeffect")]
+		public string HoverLinkEffect
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("hoverlinkeffect");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("HoverLinkEffect");
+				this.SetAttributeValue("hoverlinkeffect", value);
+				this.OnPropertyChanged("HoverLinkEffect");
+			}
+		}
+		
+		/// <summary>
+		/// Sequence number of the import that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ImportSequenceNumber");
+				this.SetAttributeValue("importsequencenumber", value);
+				this.OnPropertyChanged("ImportSequenceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Default status of theme.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdefaulttheme")]
+		public System.Nullable<bool> IsDefaultTheme
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdefaulttheme");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsDefaultTheme");
+				this.SetAttributeValue("isdefaulttheme", value);
+				this.OnPropertyChanged("IsDefaultTheme");
+			}
+		}
+		
+		/// <summary>
+		/// Upload a web resource to use as a logo. Recommended dimensions are a height of 50 pixels and a maximum width of 400 pixels.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("logoid")]
+		public Microsoft.Xrm.Sdk.EntityReference LogoId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("logoid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("LogoId");
+				this.SetAttributeValue("logoid", value);
+				this.OnPropertyChanged("LogoId");
+			}
+		}
+		
+		/// <summary>
+		/// Enter text that will be used as the tooltip and alt text for the logo.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("logotooltip")]
+		public string LogoToolTip
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("logotooltip");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("LogoToolTip");
+				this.SetAttributeValue("logotooltip", value);
+				this.OnPropertyChanged("LogoToolTip");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the Unified Interface primary theme color to be used on main command bar, buttons and tabs
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maincolor")]
+		public string MainColor
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("maincolor");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("MainColor");
+				this.SetAttributeValue("maincolor", value);
+				this.OnPropertyChanged("MainColor");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// The name of the Theme Entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the primary Navigation Bar background color
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("navbarbackgroundcolor")]
+		public string NavBarBackgroundColor
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("navbarbackgroundcolor");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("NavBarBackgroundColor");
+				this.SetAttributeValue("navbarbackgroundcolor", value);
+				this.OnPropertyChanged("NavBarBackgroundColor");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the secondary Navigation Bar background color
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("navbarshelfcolor")]
+		public string NavBarShelfColor
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("navbarshelfcolor");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("NavBarShelfColor");
+				this.SetAttributeValue("navbarshelfcolor", value);
+				this.OnPropertyChanged("NavBarShelfColor");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the organization
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the page header background color
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pageheaderbackgroundcolor")]
+		public string PageHeaderBackgroundColor
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("pageheaderbackgroundcolor");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PageHeaderBackgroundColor");
+				this.SetAttributeValue("pageheaderbackgroundcolor", value);
+				this.OnPropertyChanged("PageHeaderBackgroundColor");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the panel header background color
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("panelheaderbackgroundcolor")]
+		public string PanelHeaderBackgroundColor
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("panelheaderbackgroundcolor");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PanelHeaderBackgroundColor");
+				this.SetAttributeValue("panelheaderbackgroundcolor", value);
+				this.OnPropertyChanged("PanelHeaderBackgroundColor");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the primary background color for process controls
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processcontrolcolor")]
+		public string ProcessControlColor
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("processcontrolcolor");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ProcessControlColor");
+				this.SetAttributeValue("processcontrolcolor", value);
+				this.OnPropertyChanged("ProcessControlColor");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the color that commands or lists will use to indicate selected items
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("selectedlinkeffect")]
+		public string SelectedLinkEffect
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("selectedlinkeffect");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SelectedLinkEffect");
+				this.SetAttributeValue("selectedlinkeffect", value);
+				this.OnPropertyChanged("SelectedLinkEffect");
+			}
+		}
+		
+		/// <summary>
+		/// Status of the Theme
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public System.Nullable<CrmEarlyBound.ThemeState> StateCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+				if ((optionSet != null))
+				{
+					return ((CrmEarlyBound.ThemeState)(System.Enum.ToObject(typeof(CrmEarlyBound.ThemeState), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Reason for the status of the Theme
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for entity instances
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("themeid")]
+		public System.Nullable<System.Guid> ThemeId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("themeid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ThemeId");
+				this.SetAttributeValue("themeid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("ThemeId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("themeid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.ThemeId = value;
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TimeZoneRuleVersionNumber");
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+				this.OnPropertyChanged("TimeZoneRuleVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Exchange rate for the currency associated with the Theme with respect to the base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
+		public Microsoft.Xrm.Sdk.EntityReference TransactionCurrencyId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("transactioncurrencyid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TransactionCurrencyId");
+				this.SetAttributeValue("transactioncurrencyid", value);
+				this.OnPropertyChanged("TransactionCurrencyId");
+			}
+		}
+		
+		/// <summary>
+		/// Define type of theme.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("type")]
+		public System.Nullable<bool> Type
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("type");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Type");
+				this.SetAttributeValue("type", value);
+				this.OnPropertyChanged("Type");
+			}
+		}
+		
+		/// <summary>
+		/// Time zone code that was in use when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UTCConversionTimeZoneCode");
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+				this.OnPropertyChanged("UTCConversionTimeZoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_theme_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_theme_createdby")]
+		public CrmEarlyBound.SystemUser lk_theme_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_theme_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_theme_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_theme_createdonbehalfby")]
+		public CrmEarlyBound.SystemUser lk_theme_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_theme_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_theme_createdonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("lk_theme_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_theme_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_theme_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_theme_modifiedby")]
+		public CrmEarlyBound.SystemUser lk_theme_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_theme_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_theme_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_theme_modifiedonbehalfby")]
+		public CrmEarlyBound.SystemUser lk_theme_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<CrmEarlyBound.SystemUser>("lk_theme_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_theme_modifiedonbehalfby");
+				this.SetRelatedEntity<CrmEarlyBound.SystemUser>("lk_theme_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_theme_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public Theme(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
                 switch (name)
                 {
                     case "id":
@@ -9889,8 +14889,8 @@ namespace CrmEarlyBound
                         Attributes["themeid"] = base.Id;
                         break;
                     case "themeid":
-                        var id = (System.Nullable<System.Guid>)value;
-                        if (id == null) { continue; }
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
                         base.Id = id.Value;
                         Attributes[name] = base.Id;
                         break;
@@ -9903,138 +14903,162 @@ namespace CrmEarlyBound
                         break;
                 }
             }
-        }
-
-    }
-
-    /// <summary>
-    /// Represents a source of entities bound to a CRM service. It tracks and manages changes made to the retrieved entities.
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
-    public partial class CrmServiceContext : Microsoft.Xrm.Sdk.Client.OrganizationServiceContext
-    {
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public CrmServiceContext(Microsoft.Xrm.Sdk.IOrganizationService service) :
-                base(service)
-        {
-        }
-
-        /// <summary>
-        /// Gets a binding to the set of all <see cref="CrmEarlyBound.ActivityParty"/> entities.
-        /// </summary>
-        public System.Linq.IQueryable<CrmEarlyBound.ActivityParty> ActivityPartySet
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.CreateQuery<CrmEarlyBound.ActivityParty>();
-            }
-        }
-
-        /// <summary>
-        /// Gets a binding to the set of all <see cref="CrmEarlyBound.Incident"/> entities.
-        /// </summary>
-        public System.Linq.IQueryable<CrmEarlyBound.Incident> IncidentSet
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.CreateQuery<CrmEarlyBound.Incident>();
-            }
-        }
-
-        /// <summary>
-        /// Gets a binding to the set of all <see cref="CrmEarlyBound.Invoice"/> entities.
-        /// </summary>
-        public System.Linq.IQueryable<CrmEarlyBound.Invoice> InvoiceSet
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.CreateQuery<CrmEarlyBound.Invoice>();
-            }
-        }
-
-        /// <summary>
-        /// Gets a binding to the set of all <see cref="CrmEarlyBound.KnowledgeArticle"/> entities.
-        /// </summary>
-        public System.Linq.IQueryable<CrmEarlyBound.KnowledgeArticle> KnowledgeArticleSet
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.CreateQuery<CrmEarlyBound.KnowledgeArticle>();
-            }
-        }
-
-        /// <summary>
-        /// Gets a binding to the set of all <see cref="CrmEarlyBound.msdyn_approval"/> entities.
-        /// </summary>
-        public System.Linq.IQueryable<CrmEarlyBound.msdyn_approval> msdyn_approvalSet
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.CreateQuery<CrmEarlyBound.msdyn_approval>();
-            }
-        }
-
-        /// <summary>
-        /// Gets a binding to the set of all <see cref="CrmEarlyBound.msdyn_purchaseorderproduct"/> entities.
-        /// </summary>
-        public System.Linq.IQueryable<CrmEarlyBound.msdyn_purchaseorderproduct> msdyn_purchaseorderproductSet
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.CreateQuery<CrmEarlyBound.msdyn_purchaseorderproduct>();
-            }
-        }
-
-        /// <summary>
-        /// Gets a binding to the set of all <see cref="CrmEarlyBound.msdyn_resourcerequirementdetail"/> entities.
-        /// </summary>
-        public System.Linq.IQueryable<CrmEarlyBound.msdyn_resourcerequirementdetail> msdyn_resourcerequirementdetailSet
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.CreateQuery<CrmEarlyBound.msdyn_resourcerequirementdetail>();
-            }
-        }
-
-        /// <summary>
-        /// Gets a binding to the set of all <see cref="CrmEarlyBound.Theme"/> entities.
-        /// </summary>
-        public System.Linq.IQueryable<CrmEarlyBound.Theme> ThemeSet
-        {
-            [System.Diagnostics.DebuggerNonUserCode()]
-            get
-            {
-                return this.CreateQuery<CrmEarlyBound.Theme>();
-            }
-        }
-    }
-
-    internal sealed class EntityOptionSetEnum
-    {
-
-        [System.Diagnostics.DebuggerNonUserCode()]
-        public static System.Nullable<int> GetEnum(Microsoft.Xrm.Sdk.Entity entity, string attributeLogicalName)
-        {
-            if (entity.Attributes.ContainsKey(attributeLogicalName))
-            {
-                Microsoft.Xrm.Sdk.OptionSetValue value = entity.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>(attributeLogicalName);
-                if (value != null)
-                {
-                    return value.Value;
-                }
-            }
-            return null;
-        }
-    }
+		}
+		
+	}
+	
+	/// <summary>
+	/// Represents a source of entities bound to a CRM service. It tracks and manages changes made to the retrieved entities.
+	/// </summary>
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public partial class CrmServiceContext : Microsoft.Xrm.Sdk.Client.OrganizationServiceContext
+	{
+		
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public CrmServiceContext(Microsoft.Xrm.Sdk.IOrganizationService service) : 
+				base(service)
+		{
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="CrmEarlyBound.ActivityParty"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<CrmEarlyBound.ActivityParty> ActivityPartySet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<CrmEarlyBound.ActivityParty>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="CrmEarlyBound.Incident"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<CrmEarlyBound.Incident> IncidentSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<CrmEarlyBound.Incident>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="CrmEarlyBound.Invoice"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<CrmEarlyBound.Invoice> InvoiceSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<CrmEarlyBound.Invoice>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="CrmEarlyBound.KnowledgeArticle"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<CrmEarlyBound.KnowledgeArticle> KnowledgeArticleSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<CrmEarlyBound.KnowledgeArticle>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="CrmEarlyBound.msdyn_approval"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<CrmEarlyBound.msdyn_approval> msdyn_approvalSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<CrmEarlyBound.msdyn_approval>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="CrmEarlyBound.msdyn_purchaseorderproduct"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<CrmEarlyBound.msdyn_purchaseorderproduct> msdyn_purchaseorderproductSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<CrmEarlyBound.msdyn_purchaseorderproduct>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="CrmEarlyBound.msdyn_resourcerequirementdetail"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<CrmEarlyBound.msdyn_resourcerequirementdetail> msdyn_resourcerequirementdetailSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<CrmEarlyBound.msdyn_resourcerequirementdetail>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="CrmEarlyBound.Role"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<CrmEarlyBound.Role> RoleSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<CrmEarlyBound.Role>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="CrmEarlyBound.SystemUser"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<CrmEarlyBound.SystemUser> SystemUserSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<CrmEarlyBound.SystemUser>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="CrmEarlyBound.Theme"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<CrmEarlyBound.Theme> ThemeSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<CrmEarlyBound.Theme>();
+			}
+		}
+	}
+	
+	internal sealed class EntityOptionSetEnum
+	{
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public static System.Nullable<int> GetEnum(Microsoft.Xrm.Sdk.Entity entity, string attributeLogicalName)
+		{
+			if (entity.Attributes.ContainsKey(attributeLogicalName))
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue value = entity.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>(attributeLogicalName);
+				if (value != null)
+				{
+					return value.Value;
+				}
+			}
+			return null;
+		}
+	}
 }

@@ -8,7 +8,7 @@ using System.Reflection;
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
     [TestClass]
-    public class Primitives
+    public class DataPrimitives
     {
         [TestMethod]
         public void BooleanType()
@@ -308,13 +308,6 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             Assert.AreEqual(
                 DataBuilder.BuildDataXML().InnerXml, 
                 SupportMethods.GetUniqueIdentifierTypeExpectedData());
-        }
-
-        [TestMethod]
-        public void m2mRelationshipType()
-        {
-            // UniqueidentifierType stageid                            knowledgearticle
-            throw new NotImplementedException();
         }
     }
 }

@@ -126,8 +126,9 @@
     <Compile Include="lib\PrimitiveTypes\StringTypeEntity.cs" />
     <Compile Include="lib\PrimitiveTypes\UniqueIdentifierTypeEntity.cs" />
     <Compile Include="UnitTests_Configurations.cs" />
+    <Compile Include="UnitTests_Schema_Primitives.cs" />
     <Compile Include="UnitTests_Exceptions.cs" />
-    <Compile Include="UnitTests_Primitives.cs" />
+    <Compile Include="UnitTests_Data_Primitives.cs" />
     <Compile Include="UnitTests_SpecialLogic.cs" />
     <Compile Include="lib\SupportMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
