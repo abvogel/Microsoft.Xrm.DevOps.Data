@@ -8,6 +8,8 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 {
     public partial class SupportMethods
     {
+        public const String ActivityPartyLogicalName = "activityparty";
+        public const String ActivityPartyDisplayName = "Activity Party";
         public const String ThemeLogicalName = "theme";
         public const String ThemeDisplayName = "Theme";
         public const String IncidentLogicalName = "incident";
@@ -18,18 +20,17 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public const String KnowledgeArticleDisplayName = "Knowledge Article";
         public const String ResourceRequirementDetailLogicalName = "msdyn_resourcerequirementdetail";
         public const String ResourceRequirementDetailDisplayName = "Resource Requirement Detail";
-        public const String PurchaseOrderProductLogicalName = "msdyn_purchasorderproduct";
+        public const String PurchaseOrderProductLogicalName = "msdyn_purchaseorderproduct";
         public const String PurchaseOrderProductDisplayName = "Purchase Order Product";
         public const String ContractLogicalName = "contract";
         public const String ContractDisplayName = "Contract";
         public const String ApprovalLogicalName = "msdyn_approval";
         public const String ApprovalDisplayName = "Approval";
 
-        public static IOrganizationService SetupPrimitiveFakedService(string LogicalName, string DisplayName, Entity Entity)
+        public static XrmFakedContext SetupPrimitiveFakedService(string LogicalName, string DisplayName, Entity Entity)
         {
             var fakedContext = new XrmFakedContext();
             fakedContext.InitializeMetadata(typeof(CrmEarlyBound.CrmServiceContext).Assembly);
-            var fakedService = fakedContext.GetOrganizationService();
             fakedContext.Initialize(Entity);
             fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
             {
@@ -44,7 +45,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 };
                 return response;
             });
-            return fakedService;
+            return fakedContext;
         }
 
         public static String LoadXmlFile(string Path) {

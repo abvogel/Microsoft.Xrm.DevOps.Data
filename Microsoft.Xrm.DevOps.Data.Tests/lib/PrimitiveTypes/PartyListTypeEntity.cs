@@ -259,6 +259,7 @@
 
 using Microsoft.Xrm.Sdk;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
@@ -269,54 +270,59 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             EntityCollection emptyEC = new EntityCollection();
             emptyEC.EntityName = "activityparty";
 
-            System.Collections.ObjectModel.Collection<Entity> Parties = new System.Collections.ObjectModel.Collection<Entity>();
+            var Parties = new List<Entity>();
                 Entity Party1 = new Entity("activityparty", Guid.Parse("3d12ac27-7d4d-e911-a96a-000d3a1d23d3"));
-                    Party1["ispartydeleted"] = Boolean.Parse("False");
-                    Party1.FormattedValues.Add("ispartydeleted","No");
+                    EntityReference Party1PartyId = new EntityReference("contact", Guid.Parse("9a913e9f-cbb8-e711-a968-000d3a192387"));
+                    Party1PartyId.Name = "Andrew Vogel";
+                    Party1["partyid"] = Party1PartyId;
+                    Party1.FormattedValues.Add("partyid", "Andrew Vogel");
                     Party1["activityid"] = new EntityReference("activitypointer", Guid.Parse("3ff9afe1-7c4d-e911-a96a-000d3a1d23d3"));
+                    Party1["ownerid"] = new EntityReference("systemuser", Guid.Parse("be9135c6-f5a9-e711-a95c-000d3a192e9a"));
                     Party1["participationtypemask"] = new OptionSetValue(11);
                     Party1.FormattedValues.Add("participationtypemask", "Customer");
+                    Party1["instancetypecode"] = new OptionSetValue(0);
+                    Party1.FormattedValues.Add("instancetypecode", "Not Recurring");
                     Party1["donotemail"] = Boolean.Parse("False");
                     Party1.FormattedValues.Add("donotemail", "Allow");
                     Party1["donotfax"] = Boolean.Parse("False");
                     Party1.FormattedValues.Add("donotfax", "Allow");
                     Party1["donotpostalmail"] = Boolean.Parse("False");
                     Party1.FormattedValues.Add("donotpostalmail", "Allow");
-                    Party1["ownerid"] = new EntityReference("systemuser", Guid.Parse("be9135c6-f5a9-e711-a95c-000d3a192e9a"));
-                    EntityReference Party1PartyId = new EntityReference("contact", Guid.Parse("9a913e9f-cbb8-e711-a968-000d3a192387"));
-                    Party1PartyId.Name = "Andrew Vogel";
-                    Party1["partyid"] = Party1PartyId;
-                    Party1.FormattedValues.Add("partyid", "Andrew Vogel");
-                    Party1["activitypartyid"] = Guid.Parse("3d12ac27-7d4d-e911-a96a-000d3a1d23d3");
-                    Party1["instancetypecode"] = new OptionSetValue(0);
-                    Party1.FormattedValues.Add("instancetypecode", "Not Recurring");
                     Party1["donotphone"] = Boolean.Parse("False");
                     Party1.FormattedValues.Add("donotphone", "Allow");
+                    Party1["ispartydeleted"] = Boolean.Parse("False");
+                    Party1.FormattedValues.Add("ispartydeleted","No");
+                    Party1["activitypartyid"] = Guid.Parse("3d12ac27-7d4d-e911-a96a-000d3a1d23d3");
 
                 Entity Party2 = new Entity("activityparty", Guid.Parse("3e12ac27-7d4d-e911-a96a-000d3a1d23d3"));
-                    Party2["ispartydeleted"] = Boolean.Parse("False");
-                    Party1.FormattedValues.Add("ispartydeleted","No");
-                    Party2["activityid"] = new EntityReference("activitypointer", Guid.Parse("3ff9afe1-7c4d-e911-a96a-000d3a1d23d3"));
-                    Party2["participationtypemask"] = new OptionSetValue(11);
-                    Party1.FormattedValues.Add("participationtypemask", "Customer");
-                    Party2["donotemail"] = Boolean.Parse("False");
-                    Party1.FormattedValues.Add("donotemail", "Allow");
-                    Party2["donotfax"] = Boolean.Parse("False");
-                    Party1.FormattedValues.Add("donotfax", "Allow");
-                    Party2["donotpostalmail"] = Boolean.Parse("False");
-                    Party1.FormattedValues.Add("donotpostalmail", "Allow");
-                    Party2["ownerid"] = new EntityReference("systemuser", Guid.Parse("be9135c6-f5a9-e711-a95c-000d3a192e9a"));
                     EntityReference Party2PartyId = new EntityReference("account", Guid.Parse("669537c3-a4bd-e711-a950-000d3a1087a0"));
                     Party2PartyId.Name = "test";
                     Party2["partyid"] = Party2PartyId;
-                    Party1.FormattedValues.Add("partyid", "test");
-                    Party2["activitypartyid"] = Guid.Parse("3e12ac27-7d4d-e911-a96a-000d3a1d23d3");
+                    Party2.FormattedValues.Add("partyid", "test");
+                    Party2["activityid"] = new EntityReference("activitypointer", Guid.Parse("3ff9afe1-7c4d-e911-a96a-000d3a1d23d3"));
+                    Party2["ownerid"] = new EntityReference("systemuser", Guid.Parse("be9135c6-f5a9-e711-a95c-000d3a192e9a"));
+                    Party2["participationtypemask"] = new OptionSetValue(11);
+                    Party2.FormattedValues.Add("participationtypemask", "Customer");
                     Party2["instancetypecode"] = new OptionSetValue(0);
-                    Party1.FormattedValues.Add("instancetypecode", "Not Recurring");
+                    Party2.FormattedValues.Add("instancetypecode", "Not Recurring");
+                    Party2["donotemail"] = Boolean.Parse("False");
+                    Party2.FormattedValues.Add("donotemail", "Allow");
+                    Party2["donotfax"] = Boolean.Parse("False");
+                    Party2.FormattedValues.Add("donotfax", "Allow");
+                    Party2["donotpostalmail"] = Boolean.Parse("False");
+                    Party2.FormattedValues.Add("donotpostalmail", "Allow");
                     Party2["donotphone"] = Boolean.Parse("False");
-                    Party1.FormattedValues.Add("donotphone", "Allow");
+                    Party2.FormattedValues.Add("donotphone", "Allow");
+                    Party2["ispartydeleted"] = Boolean.Parse("False");
+                    Party2.FormattedValues.Add("ispartydeleted","No");
+                    Party2["activitypartyid"] = Guid.Parse("3e12ac27-7d4d-e911-a96a-000d3a1d23d3");
 
-                Parties.Add(Party1);
+            Parties.Add(Party1);
+            Parties.Add(Party2);
+
+            EntityCollection PartiesEC = new EntityCollection(Parties);
+
+            Parties.Add(Party1);
                 Parties.Add(Party2);
 
             Entity result = new Entity("msdyn_approval");
@@ -324,7 +330,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 result["activityid"] = result.Id;
                 result["from"] = emptyEC;
                 result["resources"] = emptyEC;
-                result["customers"] = (DataCollection<Entity>)Parties;
+                result["customers"] = PartiesEC;
                 result["partners"] = emptyEC;
                 result["cc"] = emptyEC;
                 result["bcc"] = emptyEC;

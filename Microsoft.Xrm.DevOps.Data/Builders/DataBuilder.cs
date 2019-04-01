@@ -50,6 +50,19 @@ namespace Microsoft.Xrm.DevOps.Data
                 } else { 
                     throw new Exception(String.Format("Metadata does not exist for entity {0}", logicalName));
                 }
+
+                var PartyTypeAttribute = Array.Find(_Entities[logicalName].Metadata.Attributes, s => s.AttributeType.Equals(AttributeTypeCode.PartyList));
+                if (PartyTypeAttribute != null)
+                {
+                    retrieveEntityRequest.LogicalName = "activityparty";
+                    retrieveEntityRequest.EntityFilters = EntityFilters.Attributes;
+                    RetrieveEntityResponse = (RetrieveEntityResponse)Service.Execute(retrieveEntityRequest);
+
+                    if (RetrieveEntityResponse != null)
+                    {
+                        _Entities[logicalName].PartyMetadata = RetrieveEntityResponse.EntityMetadata;
+                    }
+                }
             }
         }
 

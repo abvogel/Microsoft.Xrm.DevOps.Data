@@ -13,10 +13,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         [TestMethod]
         public void BooleanType()
         {
-            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService(
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.ThemeLogicalName, 
                 SupportMethods.ThemeDisplayName, 
                 SupportMethods.GetBooleanTypeEntity());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetBooleanTypeFetch());
@@ -29,10 +30,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void CustomerType()
         {
             // CustomerType         customerid                         incident                                  
-            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService(
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.IncidentLogicalName, 
                 SupportMethods.IncidentDisplayName, 
                 SupportMethods.GetCustomerTypeEntity());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetCustomerTypeFetch());
@@ -45,10 +47,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void DateTimeType()
         {
             // DateTimeType         publishon                          knowledgearticle
-            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService(
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.KnowledgeArticleLogicalName, 
                 SupportMethods.KnowledgeArticleDisplayName, 
                 SupportMethods.GetDateTimeTypeEntity());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetDateTimeTypeFetch());
@@ -61,10 +64,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void DecimalType()
         {
             // DecimalType          msdyn_hours                        msdyn_resourcerequirementdetail           
-            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService(
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.ResourceRequirementDetailLogicalName, 
                 SupportMethods.ResourceRequirementDetailDisplayName, 
                 SupportMethods.GetDecimalTypeEntity());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetDecimalTypeFetch());
@@ -77,10 +81,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void DoubleType()
         {
             // DoubleType           msdyn_quantity                     msdyn_purchaseorderproduct                
-            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService(
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.PurchaseOrderProductLogicalName, 
                 SupportMethods.PurchaseOrderProductDisplayName, 
                 SupportMethods.GetDoubleTypeEntity());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetDoubleTypeFetch());
@@ -93,10 +98,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void IntegerType()
         {
             // IntegerType          expirationstateid                  knowledgearticle
-            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService(
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.KnowledgeArticleLogicalName, 
                 SupportMethods.KnowledgeArticleDisplayName, 
                 SupportMethods.GetIntegerTypeEntity());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetIntegerTypeFetch());
@@ -109,10 +115,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void LookupType()
         {
             // LookupType           previousarticlecontentid           knowledgearticle
-            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService(
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.KnowledgeArticleLogicalName, 
                 SupportMethods.KnowledgeArticleDisplayName, 
                 SupportMethods.GetLookupTypeEntity());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetLookupTypeFetch());
@@ -125,10 +132,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void MemoType()
         {
             // MemoType             keywords                           knowledgearticle
-            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService(
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.KnowledgeArticleLogicalName, 
                 SupportMethods.KnowledgeArticleDisplayName, 
                 SupportMethods.GetMemoTypeEntity());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetMemoTypeFetch());
@@ -141,10 +149,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void MoneyType()
         {
             // MoneyType            totaltax                           invoice                                   
-            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService(
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.InvoiceLogicalName,
                 SupportMethods.InvoiceDisplayName, 
                 SupportMethods.GetMoneyTypeEntity());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetMoneyTypeFetch());
@@ -157,10 +166,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void OwnerType()
         {
             // OwnerType            ownerid                            knowledgearticle                           
-            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService(
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.KnowledgeArticleLogicalName, 
                 SupportMethods.KnowledgeArticleDisplayName, 
                 SupportMethods.GetOwnerTypeEntity());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetOwnerTypeFetch());
@@ -173,10 +183,40 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void PartyListType()
         {
             // PartyListType        customers                          msdyn_approval
-            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService(
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.ApprovalLogicalName, 
                 SupportMethods.ApprovalDisplayName, 
                 SupportMethods.GetPartyListTypeEntity());
+
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var logicalName = ((RetrieveEntityRequest)req).LogicalName;
+                var displayName = String.Empty;
+                switch (logicalName)
+                {
+                    case SupportMethods.ApprovalLogicalName:
+                        displayName = SupportMethods.ApprovalDisplayName;
+                        break;
+                    case SupportMethods.ActivityPartyLogicalName:
+                        displayName = SupportMethods.ActivityPartyDisplayName;
+                        break;
+                    default:
+                        throw new NotImplementedException();
+                }
+                var entityMetadata = fakedContext.GetEntityMetadataByName(logicalName);
+
+                entityMetadata.DisplayName = new Label(displayName, 1033);
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetPartyListTypeFetch());
@@ -189,10 +229,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void PicklistType()
         {
             // PicklistType         expiredreviewoptions               knowledgearticle
-            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService(
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.KnowledgeArticleLogicalName, 
                 SupportMethods.KnowledgeArticleDisplayName, 
                 SupportMethods.GetPicklistTypeEntity());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetPicklistTypeFetch());
@@ -205,10 +246,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void StateType()
         {
             // StateType            statecode                          knowledgearticle  
-            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService(
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.KnowledgeArticleLogicalName, 
                 SupportMethods.KnowledgeArticleDisplayName, 
                 SupportMethods.GetStateTypeEntity());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetStateTypeFetch());
@@ -221,10 +263,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void StatusType()
         {
             // StatusType           statuscode                         knowledgearticle
-            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService(
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.KnowledgeArticleLogicalName, 
                 SupportMethods.KnowledgeArticleDisplayName, 
                 SupportMethods.GetStatusTypeEntity());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetStatusTypeFetch());
@@ -237,10 +280,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void StringType()
         {
             // StringType           description                        knowledgearticle
-            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService(
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.KnowledgeArticleLogicalName, 
                 SupportMethods.KnowledgeArticleDisplayName, 
                 SupportMethods.GetStringTypeEntity());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetStringTypeFetch());
@@ -253,10 +297,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void UniqueidentifierType()
         {
             // UniqueidentifierType stageid                            knowledgearticle
-            IOrganizationService fakedService = SupportMethods.SetupPrimitiveFakedService(
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.KnowledgeArticleLogicalName, 
                 SupportMethods.KnowledgeArticleDisplayName, 
                 SupportMethods.GetUniqueIdentifierTypeEntity());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetUniqueIdentifierTypeFetch());

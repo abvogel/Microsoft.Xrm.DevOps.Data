@@ -9,6 +9,7 @@ namespace Microsoft.Xrm.DevOps.Data
     public class BuilderEntityMetadata
     {
         public EntityMetadata Metadata { get; set; }
+        public EntityMetadata PartyMetadata { get; set; }
         public List<String> Attributes { get; private set; }
         public List<String> Identifiers = new List<String>();
         public Boolean PluginsDisabled = false;

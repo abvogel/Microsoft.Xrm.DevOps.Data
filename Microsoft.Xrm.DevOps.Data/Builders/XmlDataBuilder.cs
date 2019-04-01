@@ -6,6 +6,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Microsoft.Xrm.DevOps.Data.DataXml;
 using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Metadata;
 
 namespace Microsoft.Xrm.DevOps.Data
 {
@@ -54,14 +55,10 @@ namespace Microsoft.Xrm.DevOps.Data
 
         private static DataXml.Entity GenerateEntityNode(String logicalName, BuilderEntityMetadata builderEntityMetadata)
         {
-            //var m2mRelationshipsNode = new DataXml.M2mrelationships();
-            //m2mRelationshipsNode.M2mrelationship = new List<DataXml.M2mrelationship>();
-
             var EntityNode = new DataXml.Entity
             {
                 Name = logicalName,
                 Displayname = builderEntityMetadata.Metadata.DisplayName.LocalizedLabels[0].Label
-                //M2mrelationships = m2mRelationshipsNode
             };
 
             var RecordsNode = new DataXml.Records
@@ -70,7 +67,7 @@ namespace Microsoft.Xrm.DevOps.Data
             };
 
             foreach (var entity in builderEntityMetadata.Entities) {
-                RecordsNode.Record.Add(GenerateRecordNode(entity, builderEntityMetadata.Metadata));
+                RecordsNode.Record.Add(GenerateRecordNode(entity, builderEntityMetadata));
             }
 
             EntityNode.Records = RecordsNode;
@@ -78,7 +75,7 @@ namespace Microsoft.Xrm.DevOps.Data
             return EntityNode;
         }
 
-        private static DataXml.Record GenerateRecordNode(Sdk.Entity entity, Sdk.Metadata.EntityMetadata metadata)
+        private static DataXml.Record GenerateRecordNode(Sdk.Entity entity, BuilderEntityMetadata builderEntityMetadata)
         {
             var RecordNode = new DataXml.Record
             {
@@ -87,20 +84,20 @@ namespace Microsoft.Xrm.DevOps.Data
             };
 
             foreach (var attribute in entity.Attributes) {
-                RecordNode.Field.Add(GenerateFieldNode(attribute, metadata.Attributes.Where(a => a.LogicalName.Equals(attribute.Key)).First()));
+                RecordNode.Field.Add(GenerateFieldNode(attribute, builderEntityMetadata.Metadata.Attributes.Where(a => a.LogicalName.Equals(attribute.Key)).First(), builderEntityMetadata));
             }
 
             return RecordNode;
         }
 
-        private static DataXml.Field GenerateFieldNode(KeyValuePair<string, object> attribute, Sdk.Metadata.AttributeMetadata metadata)
+        private static DataXml.Field GenerateFieldNode(KeyValuePair<string, object> attribute, Sdk.Metadata.AttributeMetadata attributeMetadata, BuilderEntityMetadata builderEntityMetadata)
         {
             var FieldNode = new DataXml.Field
             {
                 Name = attribute.Key
             };
 
-            switch (metadata.AttributeType)
+            switch (attributeMetadata.AttributeType)
             {
                 case Sdk.Metadata.AttributeTypeCode.Boolean:
                 case Sdk.Metadata.AttributeTypeCode.DateTime:       // If need to convert to UTC may need to be isolated
@@ -108,29 +105,44 @@ namespace Microsoft.Xrm.DevOps.Data
                 case Sdk.Metadata.AttributeTypeCode.Double:
                 case Sdk.Metadata.AttributeTypeCode.Integer:
                 case Sdk.Metadata.AttributeTypeCode.Memo:
-                case Sdk.Metadata.AttributeTypeCode.Money:
                 case Sdk.Metadata.AttributeTypeCode.String:
                 case Sdk.Metadata.AttributeTypeCode.Uniqueidentifier:
                     FieldNode.Value = attribute.Value.ToString();
                     break;
+                case Sdk.Metadata.AttributeTypeCode.Money:
+                    FieldNode.Value = ((Microsoft.Xrm.Sdk.Money)attribute.Value).Value.ToString();
+                    break;
                 case Sdk.Metadata.AttributeTypeCode.Customer:
                 case Sdk.Metadata.AttributeTypeCode.Lookup:
                 case Sdk.Metadata.AttributeTypeCode.Owner:
-                    var EntityReference = (EntityReference)attribute.Value;
-                    FieldNode.Value = EntityReference.Id.ToString();
-                    FieldNode.Lookupentity = EntityReference.LogicalName;
-                    FieldNode.Lookupentityname = EntityReference.Name;
+                    if (attribute.Value is Guid)                    // Compensates for bug in FakeXrmEasy
+                    {
+                        FieldNode.Value = attribute.Value.ToString();
+                    } else
+                    {
+                        var EntityReference = (EntityReference)attribute.Value;
+                        FieldNode.Value = EntityReference.Id.ToString();
+                        FieldNode.Lookupentity = EntityReference.LogicalName;
+                        FieldNode.Lookupentityname = EntityReference.Name;
+                    }
                     break;
                 case Sdk.Metadata.AttributeTypeCode.Picklist:
                 case Sdk.Metadata.AttributeTypeCode.State:
                 case Sdk.Metadata.AttributeTypeCode.Status:
                     FieldNode.Value = ((OptionSetValue)attribute.Value).Value.ToString();
                     break;
-                case Sdk.Metadata.AttributeTypeCode.PartyList:       // TBD
+                case Sdk.Metadata.AttributeTypeCode.PartyList:
                     FieldNode.Value = String.Empty;
                     FieldNode.Lookupentity = String.Empty;
                     FieldNode.Lookupentityname = String.Empty;
-                    throw new NotImplementedException();
+                    var values = (EntityCollection)attribute.Value;
+                    FieldNode.Activitypointerrecords = new List<DataXml.Activitypointerrecords>();
+                    
+                    foreach (var entity in values.Entities)
+                    {
+                        FieldNode.Activitypointerrecords.Add(GenerateActivitypointerNode(entity, builderEntityMetadata));
+                    }
+                    break;
                 case Sdk.Metadata.AttributeTypeCode.CalendarRules:
                 case Sdk.Metadata.AttributeTypeCode.Virtual:
                 case Sdk.Metadata.AttributeTypeCode.BigInt:
@@ -142,6 +154,22 @@ namespace Microsoft.Xrm.DevOps.Data
             }
 
             return FieldNode;
+        }
+
+        private static Activitypointerrecords GenerateActivitypointerNode(Sdk.Entity entity, BuilderEntityMetadata builderEntityMetadata)
+        {
+            var ActivitypointerNode = new DataXml.Activitypointerrecords
+            {
+                Id = entity.Id.ToString(),
+                Field = new List<DataXml.Field>()
+            };
+
+            foreach (var attribute in entity.Attributes)
+            {
+                ActivitypointerNode.Field.Add(GenerateFieldNode(attribute, builderEntityMetadata.PartyMetadata.Attributes.Where(a => a.LogicalName.Equals(attribute.Key)).First(), builderEntityMetadata));
+            }
+
+            return ActivitypointerNode;
         }
     }
 }
