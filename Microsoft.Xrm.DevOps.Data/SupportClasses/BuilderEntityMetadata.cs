@@ -18,6 +18,7 @@ namespace Microsoft.Xrm.DevOps.Data
         public BuilderEntityMetadata()
         {
             Entities = new Queue<Entity>();
+            Attributes = new List<string>();
         }
 
         public void AppendEntity(Entity entity)

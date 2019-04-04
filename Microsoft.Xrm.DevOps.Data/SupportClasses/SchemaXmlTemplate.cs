@@ -13,20 +13,20 @@ namespace Microsoft.Xrm.DevOps.Data.SchemaXml
     [XmlRoot(ElementName = "entity")]
     public class Entity
     {
-        [XmlAttribute(AttributeName = "disableplugins")]
-        public string Disableplugins { get; set; }
+        [XmlAttribute(AttributeName = "name")]
+        public string Name { get; set; }
         [XmlAttribute(AttributeName = "displayname")]
         public string Displayname { get; set; }
         [XmlAttribute(AttributeName = "etc")]
         public string Etc { get; set; }
-        [XmlElement(ElementName = "fields")]
-        public Fields Fields { get; set; }
-        [XmlAttribute(AttributeName = "name")]
-        public string Name { get; set; }
         [XmlAttribute(AttributeName = "primaryidfield")]
         public string Primaryidfield { get; set; }
         [XmlAttribute(AttributeName = "primarynamefield")]
         public string Primarynamefield { get; set; }
+        [XmlAttribute(AttributeName = "disableplugins")]
+        public string Disableplugins { get; set; }
+        [XmlElement(ElementName = "fields")]
+        public Fields Fields { get; set; }
         [XmlElement(ElementName = "relationships")]
         public Relationships Relationships { get; set; }
     }
@@ -34,20 +34,20 @@ namespace Microsoft.Xrm.DevOps.Data.SchemaXml
     [XmlRoot(ElementName = "field")]
     public class Field
     {
+        [XmlAttribute(AttributeName = "displayname")]
+        public string Displayname { get; set; }
+        [XmlAttribute(AttributeName = "name")]
+        public string Name { get; set; }
+        [XmlAttribute(AttributeName = "type")]
+        public string Type { get; set; }
         [XmlAttribute(AttributeName = "customfield")]
         public string Customfield { get; set; }
         [XmlAttribute(AttributeName = "dateMode")]
         public string DateMode { get; set; }
-        [XmlAttribute(AttributeName = "displayname")]
-        public string Displayname { get; set; }
         [XmlAttribute(AttributeName = "lookupType")]
         public string LookupType { get; set; }
-        [XmlAttribute(AttributeName = "name")]
-        public string Name { get; set; }
         [XmlAttribute(AttributeName = "primaryKey")]
         public string PrimaryKey { get; set; }
-        [XmlAttribute(AttributeName = "type")]
-        public string Type { get; set; }
         [XmlAttribute(AttributeName = "updateCompare")]
         public string UpdateCompare { get; set; }
     }

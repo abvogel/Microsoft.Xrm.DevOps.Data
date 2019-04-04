@@ -48,6 +48,14 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             return fakedContext;
         }
 
+        public static XrmFakedContext SetupPrimitiveSchemaFakedService(string LogicalName, string DisplayName, Entity Entity, System.Collections.Generic.IEnumerable<Sdk.Metadata.EntityMetadata> Metadata)
+        {
+            var fakedContext = new XrmFakedContext();
+            fakedContext.InitializeMetadata(Metadata);
+            fakedContext.Initialize(Entity);
+            return fakedContext;
+        }
+
         public static String LoadXmlFile(string Path) {
             XmlDocument doc = new XmlDocument();
             doc.Load(Path);

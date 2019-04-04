@@ -15,14 +15,31 @@ namespace Microsoft.Xrm.DevOps.Data
     {
         internal static XmlDocument ToXmlDocument(Dictionary<string, BuilderEntityMetadata> entities, Boolean pluginsdisabled)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(String.Empty.GetType());
-            using (StringWriter textWriter = new StringWriter())
+            XmlDocument xd = null;
+            var xns = new XmlSerializerNamespaces();
+            xns.Add(string.Empty, string.Empty);
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(SchemaXml.Entities));
+            using (MemoryStream memStm = new MemoryStream())
             {
-                xmlSerializer.Serialize(textWriter, GenerateSchemaXml(entities));
-                //results["data_schema.xml"] = textWriter.ToString();
+                using (XmlWriter writer = XmlWriter.Create(memStm, new XmlWriterSettings { OmitXmlDeclaration = true }))
+                {
+                    xmlSerializer.Serialize(writer, GenerateSchemaXml(entities), xns);
+
+                    memStm.Position = 0;
+                    var settings = new XmlReaderSettings
+                    {
+                        IgnoreWhitespace = true
+                    };
+
+                    using (var xtr = XmlReader.Create(memStm, settings))
+                    {
+                        xd = new XmlDocument();
+                        xd.Load(xtr);
+                    }
+                }
             }
 
-            return new XmlDocument();
+            return xd;
         }
 
         private static SchemaXml.Entities GenerateSchemaXml(Dictionary<string, BuilderEntityMetadata> entities)
@@ -58,9 +75,10 @@ namespace Microsoft.Xrm.DevOps.Data
                 Fields = fieldsNode
             };
 
-            foreach (var attribute in builderEntityMetadata.Metadata.Attributes)
+            foreach (var attribute in builderEntityMetadata.Attributes)
             {
-                fieldsNode.Field.Add(GenerateFieldNode(attribute));
+                var AttributeMetadata = builderEntityMetadata.Metadata.Attributes.Where(a => a.LogicalName == attribute).First();
+                fieldsNode.Field.Add(GenerateFieldNode(AttributeMetadata));
             }
 
             return entityNode;

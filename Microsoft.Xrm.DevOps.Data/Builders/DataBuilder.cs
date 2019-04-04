@@ -77,7 +77,7 @@ namespace Microsoft.Xrm.DevOps.Data
         public void AppendData(Entity entity)
         {
             VerifyEntityExists(entity.LogicalName);
-            _Entities[entity.LogicalName].Entities.Enqueue(entity);
+            _Entities[entity.LogicalName].AppendEntity(entity);
         }
 
         public void AppendData(EntityCollection entityCollection)

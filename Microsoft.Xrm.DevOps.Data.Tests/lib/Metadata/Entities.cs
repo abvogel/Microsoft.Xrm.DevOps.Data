@@ -14321,12 +14321,12 @@ namespace CrmEarlyBound
 		/// Default status of theme.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdefaulttheme")]
-		public System.Nullable<bool> IsDefaultTheme
+		public System.Nullable<System.Boolean> IsDefaultTheme
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<System.Nullable<bool>>("isdefaulttheme");
+				return this.GetAttributeValue<System.Nullable<System.Boolean>>("isdefaulttheme");
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
