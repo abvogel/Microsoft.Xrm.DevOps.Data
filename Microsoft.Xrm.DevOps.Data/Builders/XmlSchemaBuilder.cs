@@ -89,9 +89,65 @@ namespace Microsoft.Xrm.DevOps.Data
             SchemaXml.Field fieldNode = new SchemaXml.Field()
             {
                 Displayname = attribute.DisplayName.LocalizedLabels[0].Label,
-                Name = attribute.LogicalName,
-                Type = attribute.AttributeType.ToString()
+                Name = attribute.LogicalName
             };
+
+            switch (attribute.AttributeType)
+            {
+                case AttributeTypeCode.Boolean:
+                    fieldNode.Type = "bool";
+                    break;
+                case AttributeTypeCode.Customer:
+                case AttributeTypeCode.Lookup:
+                    fieldNode.Type = "entityreference";
+                    fieldNode.LookupType = String.Join("|", ((LookupAttributeMetadata)attribute).Targets.ToList<String>());
+                    break;
+                case AttributeTypeCode.DateTime:
+                    fieldNode.Type = "datetime";
+                    break;
+                case AttributeTypeCode.Decimal:
+                    fieldNode.Type = "decimal";
+                    fieldNode.Customfield = "true";
+                    break;
+                case AttributeTypeCode.Double:
+                    fieldNode.Type = "float";
+                    fieldNode.Customfield = "true";
+                    break;
+                case AttributeTypeCode.Integer:
+                    fieldNode.Type = "number";
+                    break;
+                case AttributeTypeCode.Memo:
+                    fieldNode.Type = "string";
+                    break;
+                case AttributeTypeCode.Money:
+                    break;
+                case AttributeTypeCode.Owner:
+                    break;
+                case AttributeTypeCode.PartyList:
+                    break;
+                case AttributeTypeCode.Picklist:
+                    break;
+                case AttributeTypeCode.State:
+                    break;
+                case AttributeTypeCode.Status:
+                    break;
+                case AttributeTypeCode.String:
+                    break;
+                case AttributeTypeCode.Uniqueidentifier:
+                    break;
+                case AttributeTypeCode.CalendarRules:
+                    break;
+                case AttributeTypeCode.Virtual:
+                    break;
+                case AttributeTypeCode.BigInt:
+                    break;
+                case AttributeTypeCode.ManagedProperty:
+                    break;
+                case AttributeTypeCode.EntityName:
+                    break;
+                default:
+                    break;
+            }
 
             return fieldNode;
         }
