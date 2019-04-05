@@ -132,13 +132,16 @@ namespace Microsoft.Xrm.DevOps.Data
                     fieldNode.Type = "optionsetvalue";
                     break;
                 case AttributeTypeCode.State:
+                    fieldNode.Type = "state";
                     break;
                 case AttributeTypeCode.Status:
-                    fieldNode.Type = "Status Reason";
+                    fieldNode.Type = "status";
                     break;
                 case AttributeTypeCode.String:
+                    fieldNode.Type = "string";
                     break;
                 case AttributeTypeCode.Uniqueidentifier:
+                    fieldNode.Type = "guid";
                     break;
                 case AttributeTypeCode.CalendarRules:
                     break;

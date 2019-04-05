@@ -473,7 +473,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 entityMetadata.DisplayName = new Label(SupportMethods.KnowledgeArticleDisplayName, 1033);
                 entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "title");
 
-                entityMetadata.Attributes.First(a => a.LogicalName == "statecode").SetSealedPropertyValue("DisplayName", new Label("Expired Review Options", 1033)); //Fix the label
+                entityMetadata.Attributes.First(a => a.LogicalName == "statecode").SetSealedPropertyValue("DisplayName", new Label("Status", 1033));
 
                 var response = new RetrieveEntityResponse()
                 {
@@ -502,6 +502,25 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 SupportMethods.KnowledgeArticleLogicalName, 
                 SupportMethods.KnowledgeArticleDisplayName, 
                 SupportMethods.GetStatusTypeEntity());
+
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var entityMetadata = fakedContext.GetEntityMetadataByName(SupportMethods.KnowledgeArticleLogicalName);
+                entityMetadata.DisplayName = new Label(SupportMethods.KnowledgeArticleDisplayName, 1033);
+                entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "title");
+
+                entityMetadata.Attributes.First(a => a.LogicalName == "statuscode").SetSealedPropertyValue("DisplayName", new Label("Status Reason", 1033));
+
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+
             IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
@@ -519,6 +538,25 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 SupportMethods.KnowledgeArticleLogicalName, 
                 SupportMethods.KnowledgeArticleDisplayName, 
                 SupportMethods.GetStringTypeEntity());
+
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var entityMetadata = fakedContext.GetEntityMetadataByName(SupportMethods.KnowledgeArticleLogicalName);
+                entityMetadata.DisplayName = new Label(SupportMethods.KnowledgeArticleDisplayName, 1033);
+                entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "title");
+
+                entityMetadata.Attributes.First(a => a.LogicalName == "description").SetSealedPropertyValue("DisplayName", new Label("Short Description", 1033));
+
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+
             IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
@@ -536,6 +574,26 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 SupportMethods.KnowledgeArticleLogicalName, 
                 SupportMethods.KnowledgeArticleDisplayName, 
                 SupportMethods.GetUniqueIdentifierTypeEntity());
+
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var entityMetadata = fakedContext.GetEntityMetadataByName(SupportMethods.KnowledgeArticleLogicalName);
+                entityMetadata.DisplayName = new Label(SupportMethods.KnowledgeArticleDisplayName, 1033);
+                entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "title");
+
+                entityMetadata.Attributes.First(a => a.LogicalName == "stageid").SetSealedPropertyValue("DisplayName", new Label("Stage Id", 1033));
+                entityMetadata.Attributes.First(a => a.LogicalName == "stageid").SetSealedPropertyValue("AttributeType", Sdk.Metadata.AttributeTypeCode.Uniqueidentifier);
+
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+
             IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
