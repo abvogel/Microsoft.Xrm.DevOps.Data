@@ -120,16 +120,21 @@ namespace Microsoft.Xrm.DevOps.Data
                     fieldNode.Type = "string";
                     break;
                 case AttributeTypeCode.Money:
+                    fieldNode.Type = "money";
                     break;
                 case AttributeTypeCode.Owner:
+                    fieldNode.Type = "owner";
                     break;
                 case AttributeTypeCode.PartyList:
+                    fieldNode.Type = "partylist";
                     break;
                 case AttributeTypeCode.Picklist:
+                    fieldNode.Type = "optionsetvalue";
                     break;
                 case AttributeTypeCode.State:
                     break;
                 case AttributeTypeCode.Status:
+                    fieldNode.Type = "Status Reason";
                     break;
                 case AttributeTypeCode.String:
                     break;

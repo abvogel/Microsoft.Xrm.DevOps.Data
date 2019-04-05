@@ -315,6 +315,25 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 SupportMethods.InvoiceLogicalName,
                 SupportMethods.InvoiceDisplayName, 
                 SupportMethods.GetMoneyTypeEntity());
+
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var entityMetadata = fakedContext.GetEntityMetadataByName(SupportMethods.InvoiceLogicalName);
+                entityMetadata.DisplayName = new Label(SupportMethods.InvoiceDisplayName, 1033);
+                entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "name");
+
+                entityMetadata.Attributes.First(a => a.LogicalName == "totaltax").SetSealedPropertyValue("DisplayName", new Label("Total Tax", 1033));
+
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+
             IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
@@ -332,6 +351,26 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 SupportMethods.KnowledgeArticleLogicalName, 
                 SupportMethods.KnowledgeArticleDisplayName, 
                 SupportMethods.GetOwnerTypeEntity());
+
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var entityMetadata = fakedContext.GetEntityMetadataByName(SupportMethods.KnowledgeArticleLogicalName);
+                entityMetadata.DisplayName = new Label(SupportMethods.KnowledgeArticleDisplayName, 1033);
+                entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "title");
+
+                entityMetadata.Attributes.First(a => a.LogicalName == "ownerid").SetSealedPropertyValue("DisplayName", new Label("Owner", 1033));
+                entityMetadata.Attributes.First(a => a.LogicalName == "ownerid").SetSealedPropertyValue("AttributeType", Sdk.Metadata.AttributeTypeCode.Owner);
+
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+
             IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
@@ -353,21 +392,17 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
             {
                 var logicalName = ((RetrieveEntityRequest)req).LogicalName;
-                var displayName = String.Empty;
-                switch (logicalName)
-                {
-                    case SupportMethods.ApprovalLogicalName:
-                        displayName = SupportMethods.ApprovalDisplayName;
-                        break;
-                    case SupportMethods.ActivityPartyLogicalName:
-                        displayName = SupportMethods.ActivityPartyDisplayName;
-                        break;
-                    default:
-                        throw new NotImplementedException();
-                }
                 var entityMetadata = fakedContext.GetEntityMetadataByName(logicalName);
 
-                entityMetadata.DisplayName = new Label(displayName, 1033);
+                entityMetadata.DisplayName = new Label("Approval", 1033);
+                entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "subject");
+
+                if (entityMetadata.LogicalName == SupportMethods.ApprovalLogicalName)
+                {
+                    entityMetadata.Attributes.First(a => a.LogicalName == "customers").SetSealedPropertyValue("DisplayName", new Label("Customers", 1033));
+                    entityMetadata.Attributes.First(a => a.LogicalName == "customers").SetSealedPropertyValue("AttributeType", Sdk.Metadata.AttributeTypeCode.PartyList);
+                }
+
                 var response = new RetrieveEntityResponse()
                 {
                     Results = new ParameterCollection
@@ -395,6 +430,25 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 SupportMethods.KnowledgeArticleLogicalName, 
                 SupportMethods.KnowledgeArticleDisplayName, 
                 SupportMethods.GetPicklistTypeEntity());
+
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var entityMetadata = fakedContext.GetEntityMetadataByName(SupportMethods.KnowledgeArticleLogicalName);
+                entityMetadata.DisplayName = new Label(SupportMethods.KnowledgeArticleDisplayName, 1033);
+                entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "title");
+
+                entityMetadata.Attributes.First(a => a.LogicalName == "expiredreviewoptions").SetSealedPropertyValue("DisplayName", new Label("Expired Review Options", 1033));
+
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+
             IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
@@ -412,6 +466,25 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 SupportMethods.KnowledgeArticleLogicalName, 
                 SupportMethods.KnowledgeArticleDisplayName, 
                 SupportMethods.GetStateTypeEntity());
+
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var entityMetadata = fakedContext.GetEntityMetadataByName(SupportMethods.KnowledgeArticleLogicalName);
+                entityMetadata.DisplayName = new Label(SupportMethods.KnowledgeArticleDisplayName, 1033);
+                entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "title");
+
+                entityMetadata.Attributes.First(a => a.LogicalName == "statecode").SetSealedPropertyValue("DisplayName", new Label("Expired Review Options", 1033)); //Fix the label
+
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+
             IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
