@@ -12,7 +12,7 @@ namespace Microsoft.Xrm.DevOps.Data
 {
     public class XmlDataBuilder
     {
-        internal static XmlDocument ToXmlDocument(Dictionary<string, BuilderEntityMetadata> entities, Boolean pluginsdisabled)
+        internal static XmlDocument ToXmlDocument(Dictionary<string, BuilderEntityMetadata> entities)
         {
             XmlDocument xd = null;
             XmlSerializer xmlSerializer = new XmlSerializer(typeof (DataXml.Entities));
@@ -86,6 +86,8 @@ namespace Microsoft.Xrm.DevOps.Data
             foreach (var attribute in entity.Attributes) {
                 RecordNode.Field.Add(GenerateFieldNode(attribute, builderEntityMetadata.Metadata.Attributes.Where(a => a.LogicalName.Equals(attribute.Key)).First(), builderEntityMetadata));
             }
+
+            RecordNode.Field.Sort((x, y) => string.Compare(x.Name, y.Name));
 
             return RecordNode;
         }

@@ -4,6 +4,7 @@
     <records>
       <record id="616f5b50-774d-e911-a96a-000d3a1d23d3">
         <field name="customerid" value="9a913e9f-cbb8-e711-a968-000d3a192387" lookupentity="contact" lookupentityname="Andrew Vogel" />
+        <field name="incidentid" value="616f5b50-774d-e911-a96a-000d3a1d23d3" />
       </record>
     </records>
     <m2mrelationships />

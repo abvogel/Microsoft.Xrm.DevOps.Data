@@ -34,6 +34,8 @@ namespace Microsoft.Xrm.DevOps.Data.SchemaXml
     [XmlRoot(ElementName = "field")]
     public class Field
     {
+        [XmlAttribute(AttributeName = "updateCompare")]
+        public string UpdateCompare { get; set; } 
         [XmlAttribute(AttributeName = "displayname")]
         public string Displayname { get; set; }
         [XmlAttribute(AttributeName = "name")]
@@ -48,8 +50,6 @@ namespace Microsoft.Xrm.DevOps.Data.SchemaXml
         public string LookupType { get; set; }
         [XmlAttribute(AttributeName = "primaryKey")]
         public string PrimaryKey { get; set; }
-        [XmlAttribute(AttributeName = "updateCompare")]
-        public string UpdateCompare { get; set; }
     }
 
     [XmlRoot(ElementName = "fields")]

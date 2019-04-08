@@ -1,0 +1,11 @@
+<entities >
+  <entity name="contact" displayname="Contact" etc="2" primaryidfield="contactid" primarynamefield="fullname" disableplugins="false">
+    <fields>
+      <field displayname="Contact" name="contactid" type="guid" primaryKey="true" />
+      <field updateCompare="true" displayname="Email" name="emailaddress1" type="string" />
+      <field displayname="First Name" name="firstname" type="string" />
+      <field displayname="Full Name" name="fullname" type="string" />
+      <field displayname="Last Name" name="lastname" type="string" />
+    </fields>
+  </entity>
+</entities>

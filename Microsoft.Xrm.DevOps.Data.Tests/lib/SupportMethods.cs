@@ -8,8 +8,12 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 {
     public partial class SupportMethods
     {
+        public const String AccountLogicalName = "account";
+        public const String AccountDisplayName = "Account";
         public const String ActivityPartyLogicalName = "activityparty";
         public const String ActivityPartyDisplayName = "Activity Party";
+        public const String ContactLogicalName = "contact";
+        public const String ContactDisplayName = "Contact";
         public const String ThemeLogicalName = "theme";
         public const String ThemeDisplayName = "Theme";
         public const String IncidentLogicalName = "incident";
@@ -26,6 +30,8 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public const String ContractDisplayName = "Contract";
         public const String ApprovalLogicalName = "msdyn_approval";
         public const String ApprovalDisplayName = "Approval";
+        public const String UserLogicalName = "systemuser";
+        public const String UserDisplayName = "User";
 
         public static XrmFakedContext SetupPrimitiveFakedService(string LogicalName, string DisplayName, Entity Entity)
         {

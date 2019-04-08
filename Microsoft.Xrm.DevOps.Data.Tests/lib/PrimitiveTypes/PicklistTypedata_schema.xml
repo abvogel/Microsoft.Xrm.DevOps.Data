@@ -2,6 +2,7 @@
   <entity name="knowledgearticle" displayname="Knowledge Article" etc="9953" primaryidfield="knowledgearticleid" primarynamefield="title" disableplugins="false">
     <fields>
       <field displayname="Expired Review Options" name="expiredreviewoptions" type="optionsetvalue" />
+      <field updateCompare="true" displayname="Knowledge Article" name="knowledgearticleid" type="guid" primaryKey="true" />
     </fields>
   </entity>
 </entities>

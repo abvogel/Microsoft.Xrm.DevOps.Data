@@ -3,6 +3,7 @@
   <entity name="msdyn_approval" displayname="Approval">
     <records>
       <record id="3ff9afe1-7c4d-e911-a96a-000d3a1d23d3">
+        <field name="activityid" value="3ff9afe1-7c4d-e911-a96a-000d3a1d23d3" />
         <field name="customers" value="" lookupentity="" lookupentityname="">
           <activitypointerrecords id="3d12ac27-7d4d-e911-a96a-000d3a1d23d3">
             <field name="partyid" value="9a913e9f-cbb8-e711-a968-000d3a192387" lookupentity="contact" lookupentityname="Andrew Vogel" />

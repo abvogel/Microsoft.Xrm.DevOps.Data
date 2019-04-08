@@ -4,6 +4,7 @@
     <records>
       <record id="581ba8b5-f3cf-422e-8030-e2a645b39971">
         <field name="isdefaulttheme" value="False" />
+        <field name="themeid" value="581ba8b5-f3cf-422e-8030-e2a645b39971" />
       </record>
     </records>
     <m2mrelationships />

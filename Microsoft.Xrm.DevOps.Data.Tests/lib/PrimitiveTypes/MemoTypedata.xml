@@ -4,6 +4,7 @@
     <records>
       <record id="4bfd843b-e99e-e711-9401-0003ff66fbff">
         <field name="keywords" value="keywords here" />
+        <field name="knowledgearticleid" value="4bfd843b-e99e-e711-9401-0003ff66fbff" />
       </record>
     </records>
     <m2mrelationships />

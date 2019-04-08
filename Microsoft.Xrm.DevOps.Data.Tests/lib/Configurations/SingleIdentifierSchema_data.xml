@@ -1,0 +1,21 @@
+
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" timestamp="4/5/2019 11:09:11 PM">
+  <entity name="contact" displayname="Contact">
+    <records>
+      <record id="00b9c27b-ebdf-e711-a954-000d3a109495">
+        <field name="contactid" value="00b9c27b-ebdf-e711-a954-000d3a109495" />
+        <field name="firstname" value="SomeFirst" />
+        <field name="fullname" value="SomeFirst AndLast" />
+        <field name="lastname" value="AndLast" />
+      </record>
+      <record id="9a913e9f-cbb8-e711-a968-000d3a192387">
+        <field name="contactid" value="9a913e9f-cbb8-e711-a968-000d3a192387" />
+        <field name="firstname" value="Andrew" />
+        <field name="fullname" value="Andrew Vogel" />
+        <field name="lastname" value="Vogel" />
+        <field name="emailaddress1" value="andrew.vogel@fakeemail.com" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+</entities>

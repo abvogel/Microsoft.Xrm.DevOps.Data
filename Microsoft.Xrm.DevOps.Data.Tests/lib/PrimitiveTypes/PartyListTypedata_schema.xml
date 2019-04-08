@@ -1,6 +1,7 @@
 <entities >
   <entity name="msdyn_approval" displayname="Approval" etc="10032" primaryidfield="activityid" primarynamefield="subject" disableplugins="false">
     <fields>
+      <field updateCompare="true" displayname="Approval" name="activityid" type="guid" primaryKey="true" />
       <field displayname="Customers" name="customers" type="partylist" />
     </fields>
   </entity>

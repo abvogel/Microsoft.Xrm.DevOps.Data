@@ -4,6 +4,7 @@
     <records>
       <record id="f835a513-ed9e-e711-9401-0003ff66fbff">
         <field name="expirationstateid" value="3" />
+        <field name="knowledgearticleid" value="f835a513-ed9e-e711-9401-0003ff66fbff" />
       </record>
     </records>
     <m2mrelationships />

@@ -2,6 +2,7 @@
   <entity name="theme" displayname="Theme" etc="2015" primaryidfield="themeid" primarynamefield="name" disableplugins="false">
     <fields>
       <field displayname="Default Theme" name="isdefaulttheme" type="bool" />
+      <field updateCompare="true" displayname="Theme" name="themeid" type="guid" primaryKey="true" />
     </fields>
   </entity>
 </entities>

@@ -1,6 +1,7 @@
 <entities >
   <entity name="knowledgearticle" displayname="Knowledge Article" etc="9953" primaryidfield="knowledgearticleid" primarynamefield="title" disableplugins="false">
     <fields>
+      <field updateCompare="true" displayname="Knowledge Article" name="knowledgearticleid" type="guid" primaryKey="true" />
       <field displayname="Owner" name="ownerid" type="owner" />
     </fields>
   </entity>

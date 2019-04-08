@@ -13,7 +13,7 @@ namespace Microsoft.Xrm.DevOps.Data
 {
     public class XmlSchemaBuilder
     {
-        internal static XmlDocument ToXmlDocument(Dictionary<string, BuilderEntityMetadata> entities, Boolean pluginsdisabled)
+        internal static XmlDocument ToXmlDocument(Dictionary<string, BuilderEntityMetadata> entities)
         {
             XmlDocument xd = null;
             var xns = new XmlSerializerNamespaces();
@@ -59,11 +59,6 @@ namespace Microsoft.Xrm.DevOps.Data
 
         private static Entity GenerateEntityNode(string logicalName, BuilderEntityMetadata builderEntityMetadata)
         {
-            SchemaXml.Fields fieldsNode = new SchemaXml.Fields()
-            {
-                Field = new List<SchemaXml.Field>()
-            };
-
             SchemaXml.Entity entityNode = new SchemaXml.Entity()
             {
                 Name = logicalName,
@@ -71,93 +66,90 @@ namespace Microsoft.Xrm.DevOps.Data
                 Etc = builderEntityMetadata.Metadata.ObjectTypeCode.ToString(),
                 Primaryidfield = builderEntityMetadata.Metadata.PrimaryIdAttribute,
                 Primarynamefield = builderEntityMetadata.Metadata.PrimaryNameAttribute,
-                Disableplugins = "false",
-                Fields = fieldsNode
-            };
+                Disableplugins = (builderEntityMetadata.PluginsDisabled ? "true" : "false"),
+                Fields = new SchemaXml.Fields()
+                    {
+                        Field = new List<SchemaXml.Field>()
+                    }
+        };
 
             foreach (var attribute in builderEntityMetadata.Attributes)
             {
                 var AttributeMetadata = builderEntityMetadata.Metadata.Attributes.Where(a => a.LogicalName == attribute).First();
-                fieldsNode.Field.Add(GenerateFieldNode(AttributeMetadata));
+                SchemaXml.Field field = new SchemaXml.Field()
+                {
+                    Displayname = AttributeMetadata.DisplayName.LocalizedLabels[0].Label,
+                    Name = AttributeMetadata.LogicalName,
+                    Type = GetFieldNodeType(AttributeMetadata),
+                    LookupType = GetFieldNodeLookupType(AttributeMetadata),
+                    UpdateCompare = (builderEntityMetadata.Identifiers.Contains(AttributeMetadata.LogicalName) ? "true" : null),
+                    PrimaryKey = (entityNode.Primaryidfield == AttributeMetadata.LogicalName ? "true" : null),
+                    Customfield = (AttributeMetadata.IsCustomAttribute == true ? "true" : null)
+                };
+
+                entityNode.Fields.Field.Add(field);
             }
+
+            entityNode.Fields.Field.Sort((x, y) => string.Compare(x.Name, y.Name));
 
             return entityNode;
         }
 
-        private static Field GenerateFieldNode(AttributeMetadata attribute)
+        private static String GetFieldNodeType(AttributeMetadata attribute)
         {
-            SchemaXml.Field fieldNode = new SchemaXml.Field()
-            {
-                Displayname = attribute.DisplayName.LocalizedLabels[0].Label,
-                Name = attribute.LogicalName
-            };
-
             switch (attribute.AttributeType)
             {
                 case AttributeTypeCode.Boolean:
-                    fieldNode.Type = "bool";
-                    break;
+                    return "bool";
                 case AttributeTypeCode.Customer:
                 case AttributeTypeCode.Lookup:
-                    fieldNode.Type = "entityreference";
-                    fieldNode.LookupType = String.Join("|", ((LookupAttributeMetadata)attribute).Targets.ToList<String>());
-                    break;
+                    return "entityreference";
                 case AttributeTypeCode.DateTime:
-                    fieldNode.Type = "datetime";
-                    break;
+                    return "datetime";
                 case AttributeTypeCode.Decimal:
-                    fieldNode.Type = "decimal";
-                    fieldNode.Customfield = "true";
-                    break;
+                    return "decimal";
                 case AttributeTypeCode.Double:
-                    fieldNode.Type = "float";
-                    fieldNode.Customfield = "true";
-                    break;
+                    return "float";
                 case AttributeTypeCode.Integer:
-                    fieldNode.Type = "number";
-                    break;
+                    return "number";
                 case AttributeTypeCode.Memo:
-                    fieldNode.Type = "string";
-                    break;
+                    return "string";
                 case AttributeTypeCode.Money:
-                    fieldNode.Type = "money";
-                    break;
+                    return "money";
                 case AttributeTypeCode.Owner:
-                    fieldNode.Type = "owner";
-                    break;
+                    return "owner";
                 case AttributeTypeCode.PartyList:
-                    fieldNode.Type = "partylist";
-                    break;
+                    return "partylist";
                 case AttributeTypeCode.Picklist:
-                    fieldNode.Type = "optionsetvalue";
-                    break;
+                    return "optionsetvalue";
                 case AttributeTypeCode.State:
-                    fieldNode.Type = "state";
-                    break;
+                    return "state";
                 case AttributeTypeCode.Status:
-                    fieldNode.Type = "status";
-                    break;
+                    return "status";
                 case AttributeTypeCode.String:
-                    fieldNode.Type = "string";
-                    break;
+                    return "string";
                 case AttributeTypeCode.Uniqueidentifier:
-                    fieldNode.Type = "guid";
-                    break;
-                case AttributeTypeCode.CalendarRules:
-                    break;
-                case AttributeTypeCode.Virtual:
-                    break;
-                case AttributeTypeCode.BigInt:
-                    break;
-                case AttributeTypeCode.ManagedProperty:
-                    break;
-                case AttributeTypeCode.EntityName:
-                    break;
+                    return "guid";
                 default:
                     break;
             }
 
-            return fieldNode;
+            throw new Exception("Unknown Field Node Type.");
+        }
+
+
+        private static String GetFieldNodeLookupType(AttributeMetadata attribute)
+        {
+            switch (attribute.AttributeType)
+            {
+                case AttributeTypeCode.Customer:
+                case AttributeTypeCode.Lookup:
+                    return String.Join("|", ((LookupAttributeMetadata)attribute).Targets.ToList<String>());
+                default:
+                    break;
+            }
+
+            return null;
         }
     }
 }

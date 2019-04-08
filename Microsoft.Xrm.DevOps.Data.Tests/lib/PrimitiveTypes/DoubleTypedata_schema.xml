@@ -1,6 +1,7 @@
 <entities >
   <entity name="msdyn_purchaseorderproduct" displayname="Purchase Order Product" etc="10149" primaryidfield="msdyn_purchaseorderproductid" primarynamefield="msdyn_name" disableplugins="false">
     <fields>
+      <field updateCompare="true" displayname="Purchase Order Product" name="msdyn_purchaseorderproductid" type="guid" primaryKey="true" />
       <field displayname="Quantity" name="msdyn_quantity" type="float" customfield="true" />
     </fields>
   </entity>

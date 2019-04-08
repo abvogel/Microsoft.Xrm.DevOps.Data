@@ -3,7 +3,11 @@
   <entity name="knowledgearticle" displayname="Knowledge Article">
     <records>
       <record id="165ef3a6-ef9e-e711-80fd-3863bb2eb058">
+        <field name="knowledgearticleid" value="165ef3a6-ef9e-e711-80fd-3863bb2eb058" />
         <field name="previousarticlecontentid" value="f835a513-ed9e-e711-9401-0003ff66fbff" lookupentity="knowledgearticle" lookupentityname="demo Article for QA " />
+      </record>
+      <record id="f835a513-ed9e-e711-9401-0003ff66fbff">
+        <field name="knowledgearticleid" value="f835a513-ed9e-e711-9401-0003ff66fbff" />
       </record>
     </records>
     <m2mrelationships />

@@ -4,6 +4,7 @@
     <records>
       <record id="73d453d8-774d-e911-a96a-000d3a1d23d3">
         <field name="msdyn_hours" value="5.0000000000" />
+        <field name="msdyn_resourcerequirementdetailid" value="73d453d8-774d-e911-a96a-000d3a1d23d3" />
       </record>
     </records>
     <m2mrelationships />

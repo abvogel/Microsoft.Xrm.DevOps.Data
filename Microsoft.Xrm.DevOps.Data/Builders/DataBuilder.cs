@@ -7,13 +7,14 @@ using Microsoft.Xrm.Sdk.Metadata;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Tooling.Connector;
 using Microsoft.Xrm.Sdk.Query;
+using System.Linq;
 
 namespace Microsoft.Xrm.DevOps.Data
 {
     public class DataBuilder
     {
         private Dictionary<String, BuilderEntityMetadata> _Entities = new Dictionary<String, BuilderEntityMetadata>();
-        private Boolean _PluginsDisabled = true;
+        private Boolean? _PluginsDisabled = null;
         private IOrganizationService _service;
         public IOrganizationService Service {
             get { 
@@ -77,7 +78,22 @@ namespace Microsoft.Xrm.DevOps.Data
         public void AppendData(Entity entity)
         {
             VerifyEntityExists(entity.LogicalName);
+
+            // Always include the guid as a field if it is set for the entity.
+            if (entity.Id != Guid.Empty)
+            {
+                entity[_Entities[entity.LogicalName].Metadata.PrimaryIdAttribute] = entity.Id;
+            }
+
             _Entities[entity.LogicalName].AppendEntity(entity);
+        }
+
+        public void AppendData(List<Entity> entities)
+        {
+            foreach (var entity in entities)
+            {
+                AppendData(entity);
+            }
         }
 
         public void AppendData(EntityCollection entityCollection)
@@ -131,10 +147,10 @@ namespace Microsoft.Xrm.DevOps.Data
             }
         }
         
-        public void SetIdentifier(String logicalName, List<String> identifiers)
+        public void SetIdentifier(String logicalName, String[] identifiers)
         {
             VerifyEntityExists(logicalName);
-            _Entities[logicalName].Identifiers = identifiers;
+            _Entities[logicalName].Identifiers = new List<String>(identifiers);
         }
 
         public void SetIdentifier(String logicalName, String identifier)
@@ -154,11 +170,74 @@ namespace Microsoft.Xrm.DevOps.Data
         }
 
         public XmlDocument BuildSchemaXML() {
-            return XmlSchemaBuilder.ToXmlDocument(_Entities, _PluginsDisabled);
+            foreach (var logicalName in _Entities.Keys)
+            {
+                // Commit global plugin disable state if it was set
+                if (_PluginsDisabled != null)
+                    _Entities[logicalName].PluginsDisabled = (bool)_PluginsDisabled;
+
+                // Add record stub to support internal lookups where the record doesn't exist
+                List<AttributeMetadata> lookups = GetFieldsThatAreEntityReference(logicalName);
+                AppendStubRecordsForInternalLookups(logicalName, lookups);
+
+                // Commit identifier - merge duplicates based on chosen identifier
+                _Entities[logicalName].CommitIdentifier();
+            }
+
+            return XmlSchemaBuilder.ToXmlDocument(_Entities);
+        }
+
+        private void AppendStubRecordsForInternalLookups(string logicalName, List<AttributeMetadata> lookups)
+        {
+            var stubRecords = new List<Entity>();
+            foreach (Entity record in _Entities[logicalName].Entities)
+            {
+                foreach (AttributeMetadata fieldMetadata in lookups)
+                {
+                    if (!record.Contains(fieldMetadata.LogicalName))
+                        continue;
+
+                    var recordField = (EntityReference)record[fieldMetadata.LogicalName];
+
+                    if (_Entities.ContainsKey(recordField.LogicalName))
+                        stubRecords.Add(new Entity(recordField.LogicalName, recordField.Id));
+                }
+            }
+            this.AppendData(stubRecords);
+        }
+
+        private List<AttributeMetadata> GetFieldsThatAreEntityReference(string logicalName)
+        {
+            return _Entities[logicalName].Metadata.Attributes.Where(x =>
+            {
+                if (_Entities[logicalName].Attributes.Contains(x.LogicalName))
+                {
+                    switch (x.AttributeType)
+                    {
+                        case AttributeTypeCode.Lookup:
+                        case AttributeTypeCode.Customer:
+                        case AttributeTypeCode.Owner:
+                            return true;
+                        default:
+                            return false;
+                    }
+                }
+                return false;
+            }).ToList();
         }
 
         public XmlDocument BuildDataXML() {
-            return XmlDataBuilder.ToXmlDocument(_Entities, _PluginsDisabled);
+            foreach (var logicalName in _Entities.Keys)
+            {
+                // Add record stub to support internal lookups where the record doesn't exist
+                List<AttributeMetadata> lookups = GetFieldsThatAreEntityReference(logicalName);
+                AppendStubRecordsForInternalLookups(logicalName, lookups);
+
+                // Commit identifier - merge duplicates based on chosen identifier
+                _Entities[logicalName].CommitIdentifier();
+            }
+
+            return XmlDataBuilder.ToXmlDocument(_Entities);
         }
     }
 }

@@ -36,25 +36,25 @@ namespace Microsoft.Xrm.DevOps.Data
             entities.ForEach(entity => AppendEntity(entity));
         }
 
-        public void CommitIdentifiers()
+        public void CommitIdentifier()
         {
-            // Error checks
-            if (Metadata == null)
-            {
-                throw new Exception("Metadata has not been set.");
-            }
-
-            if (Identifiers.Count == 0
-                && String.IsNullOrEmpty(Metadata.PrimaryIdAttribute))
-            {
-                throw new Exception("Incomplete metadata available.");
-            }
-
+            // Default to the Guid as the identifier
             if (Identifiers.Count == 0)
             {
                 Identifiers.Add(Metadata.PrimaryIdAttribute);
             }
 
+            // Add attribute matching the primary ID if it wasn't provided
+            if (Identifiers.Contains(Metadata.PrimaryIdAttribute))
+            {
+                foreach (var record in this.Entities)
+                {
+                    if (!String.IsNullOrEmpty(record.Id.ToString()))
+                        record[Metadata.PrimaryIdAttribute] = record.Id;
+                }
+            }
+
+            // Calculate what records exist when the identifier is enforced
             Dictionary<String, Entity> DistinctEntities = new Dictionary<String, Entity>();
             
             while (Entities.Count > 0)
@@ -74,6 +74,7 @@ namespace Microsoft.Xrm.DevOps.Data
                 }
             }
 
+            // Rebuild list of entities based on an enforced identifier
             DistinctEntities.Keys.ToList<String>().ForEach(key => Entities.Enqueue(DistinctEntities[key]));
         }
 

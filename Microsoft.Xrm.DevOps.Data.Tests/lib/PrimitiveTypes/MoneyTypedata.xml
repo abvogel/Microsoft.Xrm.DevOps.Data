@@ -3,6 +3,7 @@
   <entity name="invoice" displayname="Invoice">
     <records>
       <record id="e45e1402-7c4d-e911-a96a-000d3a1d23d3">
+        <field name="invoiceid" value="e45e1402-7c4d-e911-a96a-000d3a1d23d3" />
         <field name="totaltax" value="0.0000" />
       </record>
     </records>

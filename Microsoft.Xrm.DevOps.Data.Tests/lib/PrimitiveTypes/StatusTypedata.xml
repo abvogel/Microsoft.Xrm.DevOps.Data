@@ -3,6 +3,7 @@
   <entity name="knowledgearticle" displayname="Knowledge Article">
     <records>
       <record id="4bfd843b-e99e-e711-9401-0003ff66fbff">
+        <field name="knowledgearticleid" value="4bfd843b-e99e-e711-9401-0003ff66fbff" />
         <field name="statuscode" value="7" />
       </record>
     </records>

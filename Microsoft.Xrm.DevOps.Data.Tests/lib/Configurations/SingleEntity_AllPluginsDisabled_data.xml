@@ -1,0 +1,12 @@
+
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" timestamp="4/5/2019 11:12:04 PM">
+  <entity name="account" displayname="Account">
+    <records>
+      <record id="669537c3-a4bd-e711-a950-000d3a1087a0">
+        <field name="name" value="test" />
+        <field name="accountid" value="669537c3-a4bd-e711-a950-000d3a1087a0" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+</entities>

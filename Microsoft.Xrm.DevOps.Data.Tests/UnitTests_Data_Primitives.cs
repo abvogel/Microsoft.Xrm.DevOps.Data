@@ -1,8 +1,10 @@
 ﻿using FakeXrmEasy;
+using FakeXrmEasy.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
 using System;
+using System.Linq;
 using System.Reflection;
 
 namespace Microsoft.Xrm.DevOps.Data.Tests
@@ -297,10 +299,25 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void UniqueidentifierType()
         {
             // UniqueidentifierType stageid                            knowledgearticle
-            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
-                SupportMethods.KnowledgeArticleLogicalName, 
-                SupportMethods.KnowledgeArticleDisplayName, 
-                SupportMethods.GetUniqueIdentifierTypeEntity());
+            var fakedContext = new XrmFakedContext();
+            fakedContext.InitializeMetadata(typeof(CrmEarlyBound.CrmServiceContext).Assembly);
+            fakedContext.Initialize(SupportMethods.GetUniqueIdentifierTypeEntity());
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var entityMetadata = fakedContext.GetEntityMetadataByName(SupportMethods.KnowledgeArticleLogicalName);
+                entityMetadata.DisplayName = new Label(SupportMethods.KnowledgeArticleDisplayName, 1033);
+                entityMetadata.Attributes.First(a => a.LogicalName == "stageid").SetSealedPropertyValue("AttributeType", Sdk.Metadata.AttributeTypeCode.Uniqueidentifier);
+
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+
             IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
