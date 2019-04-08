@@ -91,3 +91,144 @@ Function RF {
 RF -fetch "<fetch><entity name='incident'><attribute name='customerid'/><filter type='and'><condition attribute='customerid' operator='not-null'/></filter></entity></fetch>";
 
 test
+
+m2m
+<fetch>
+  <entity name='systemuser' >
+    <attribute name='systemuserid' />
+    <link-entity name='systemuserroles' from='systemuserid' to='systemuserid' intersect='true' >
+      <link-entity name='role' from='roleid' to='roleid' />
+      <attribute name='roleid' />
+    </link-entity>
+    <filter>
+      <condition attribute='systemuserid' operator='eq' value='00e7b0b9-1ace-e711-a970-000d3a192311' />
+    </filter>
+  </entity>
+</fetch>
+<resultset morerecords="0" paging-cookie="&lt;cookie page=&quot;1&quot;&gt;&lt;systemuserid last=&quot;{00E7B0B9-1ACE-E711-A970-000D3A192311}&quot; first=&quot;{00E7B0B9-1ACE-E711-A970-000D3A192311}&quot; /&gt;&lt;/cookie&gt;">
+  <result>
+    <systemuserid>{00E7B0B9-1ACE-E711-A970-000D3A192311}</systemuserid>
+    <systemuserid.roleid>{CAD52A75-568C-E611-80D4-00155D42A122}</systemuserid.roleid>
+  </result>
+
+  <resultset morerecords="0" paging-cookie="&lt;cookie page=&quot;1&quot;&gt;&lt;systemuserid last=&quot;{00E7B0B9-1ACE-E711-A970-000D3A192311}&quot; first=&quot;{00E7B0B9-1ACE-E711-A970-000D3A192311}&quot; /&gt;&lt;/cookie&gt;">
+  <result>
+    <systemuserid>{00E7B0B9-1ACE-E711-A970-000D3A192311}</systemuserid>
+    <roleid.roleid>{CAD52A75-568C-E611-80D4-00155D42A122}</roleid.roleid>
+  </result>
+
+
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" timestamp="3/23/2019 10:34:54 AM">
+  <entity name="systemuser" displayname="User">
+    <records>
+      <record id="00e7b0b9-1ace-e711-a970-000d3a192311" />
+    </records>
+    <m2mrelationships>
+      <m2mrelationship sourceid="00e7b0b9-1ace-e711-a970-000d3a192311" targetentityname="role" targetentitynameidfield="roleid" m2mrelationshipname="systemuserroles">
+        <targetids>
+          <targetid>cad52a75-568c-e611-80d4-00155d42a122</targetid>
+          <targetid>3dac4d9e-568c-e611-80d4-00155d42a122</targetid>
+          <targetid>85d865b5-fea1-e611-8116-00155da84013</targetid>
+          <targetid>e186d6f0-28d6-4bfc-bea5-71e44c3e13a4</targetid>
+          <targetid>52d9415f-86f4-e611-8128-e0071b6a4261</targetid>
+        </targetids>
+      </m2mrelationship>
+    </m2mrelationships>
+  </entity>
+</entities>
+
+<entities >
+  <entity name="systemuser" displayname="User" etc="8" primaryidfield="systemuserid" primarynamefield="fullname" disableplugins="false">
+    <relationships>
+      <relationship name="systemuserroles" manyToMany="true" isreflexive="false" relatedEntityName="systemuserroles" m2mTargetEntity="role" m2mTargetEntityPrimaryKey="roleid" />
+    </relationships>
+  </entity>
+</entities>
+
+$Meta | Where { $_.logicalname -eq "systemuser" } | Select -ExpandProperty ManyToManyRelationships | Where { $_.IntersectEntityName -eq "systemuserroles" }
+
+Entity1AssociatedMenuConfiguration : Microsoft.Xrm.Sdk.Metadata.AssociatedMenuConfiguration
+Entity2AssociatedMenuConfiguration : Microsoft.Xrm.Sdk.Metadata.AssociatedMenuConfiguration
+Entity1LogicalName                 : systemuser
+Entity2LogicalName                 : role
+IntersectEntityName                : systemuserroles
+Entity1IntersectAttribute          : systemuserid
+Entity2IntersectAttribute          : roleid
+Entity1NavigationPropertyName      : systemuserroles_association
+Entity2NavigationPropertyName      : systemuserroles_association
+IsCustomRelationship               : False
+IsCustomizable                     : Microsoft.Xrm.Sdk.BooleanManagedProperty
+IsValidForAdvancedFind             : True
+SchemaName                         : systemuserroles_association
+SecurityTypes                      : None
+IsManaged                          : True
+RelationshipType                   : ManyToManyRelationship
+IntroducedVersion                  : 5.0.0.0
+MetadataId                         : 8b366d6e-d389-11db-9246-00123f3a1b51
+HasChanged                         : 
+ExtensionData                      : System.Runtime.Serialization.ExtensionDataObject
+
+public void AppendData(String fetchXml)
+        {
+            RetrieveMultipleRequest req = new RetrieveMultipleRequest
+            {
+                Query = new FetchExpression(fetchXml)
+            };
+
+            RetrieveMultipleResponse retrieveMultipleResponse = (RetrieveMultipleResponse)this._service.Execute(req);
+
+            if (retrieveMultipleResponse != null)
+            {
+                if (HasManyToManyAttribute(fetchXml)) {
+                    AppendM2MData(retrieveMultipleResponse.EntityCollection);
+                } else {
+                    AppendData(retrieveMultipleResponse.EntityCollection);
+                }
+            }
+            else
+            {
+                throw new Exception("Failed to retrieve fetch results.");
+            }
+        }
+
+        private void AppendM2MData(EntityCollection queryResponse)
+        {
+            var SourceEntity = queryResponse.EntityName;
+            var SourceGuid = queryResponse.Entities[0].Id;
+            var SourcePrimaryField = (Guid)queryResponse.Entities[0].Attributes.Where(x => x.Value is Guid).First().Value;
+            var SourceOtherField = (AliasedValue)queryResponse.Entities[0].Attributes.Where(x => x.Value is AliasedValue).First().Value;
+            
+            //<fetch>
+            //  <entity name='systemuser' >
+            //    <attribute name='systemuserid' />
+            //    <link-entity name='systemuserroles' from='systemuserid' to='systemuserid' intersect='true' >
+            //      <link-entity name='role' from='roleid' to='roleid' />
+            //      <attribute name='roleid' />
+            //    </link-entity>
+            //    <filter>
+            //      <condition attribute='systemuserid' operator='eq' value='00e7b0b9-1ace-e711-a970-000d3a192311' />
+            //    </filter>
+            //  </entity>
+            //</fetch>
+
+            //FetchXmlToQueryExpressionRequest req = new FetchXmlToQueryExpressionRequest
+            //{
+            //    FetchXml = fetchXml
+            //};
+            //FetchXmlToQueryExpressionResponse FetchXmlToQueryExpressionResponse = (FetchXmlToQueryExpressionResponse)this._service.Execute(req);
+
+            throw new NotImplementedException();
+        }
+
+        private bool HasManyToManyAttribute(string fetchXml)
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(fetchXml);
+
+            if (xml.SelectSingleNode("fetch/entity/link-entity[@intersect='true']//attribute") != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
