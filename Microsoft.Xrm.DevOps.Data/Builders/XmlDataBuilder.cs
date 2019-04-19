@@ -72,6 +72,41 @@ namespace Microsoft.Xrm.DevOps.Data
 
             EntityNode.Records = RecordsNode;
 
+            EntityNode.M2mrelationships = new DataXml.M2mrelationships()
+            {
+                M2mrelationship = new List<M2mrelationship>()
+            };
+
+            if (builderEntityMetadata.RelatedEntities.Count == 0)
+                return EntityNode;
+
+            foreach (var relationshipName in builderEntityMetadata.RelatedEntities.Keys)
+            {
+                var relationshipMetadata = builderEntityMetadata.Metadata.ManyToManyRelationships.Where(x => x.IntersectEntityName == relationshipName).First();
+
+                foreach (KeyValuePair<Guid, List<Guid>> relationshipPair in builderEntityMetadata.RelatedEntities[relationshipName])
+                {
+                    var relationship = new M2mrelationship()
+                    {
+                        Sourceid = relationshipPair.Key.ToString(),
+                        Targetentityname = relationshipMetadata.Entity2LogicalName,
+                        Targetentitynameidfield = relationshipMetadata.Entity2IntersectAttribute,
+                        M2mrelationshipname = relationshipMetadata.IntersectEntityName,
+                        Targetids = new Targetids()
+                        {
+                            Targetid = new List<string>()
+                        }
+                    };
+
+                    foreach (var relatedId in relationshipPair.Value)
+                    {
+                        relationship.Targetids.Targetid.Add(relatedId.ToString());
+                    }
+
+                    EntityNode.M2mrelationships.M2mrelationship.Add(relationship);
+                }
+            }
+
             return EntityNode;
         }
 

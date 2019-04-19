@@ -68,10 +68,10 @@ namespace Microsoft.Xrm.DevOps.Data
                 Primarynamefield = builderEntityMetadata.Metadata.PrimaryNameAttribute,
                 Disableplugins = (builderEntityMetadata.PluginsDisabled ? "true" : "false"),
                 Fields = new SchemaXml.Fields()
-                    {
-                        Field = new List<SchemaXml.Field>()
-                    }
-        };
+                {
+                    Field = new List<SchemaXml.Field>()
+                }
+            };
 
             foreach (var attribute in builderEntityMetadata.Attributes)
             {
@@ -91,6 +91,29 @@ namespace Microsoft.Xrm.DevOps.Data
             }
 
             entityNode.Fields.Field.Sort((x, y) => string.Compare(x.Name, y.Name));
+
+            if (builderEntityMetadata.RelatedEntities.Count > 0)
+            {
+                entityNode.Relationships = new SchemaXml.Relationships()
+                {
+                    Relationship = new List<SchemaXml.Relationship>()
+                };
+
+                foreach (var relationshipname in builderEntityMetadata.RelatedEntities.Keys)
+                {
+                    var relationshipMetadata = builderEntityMetadata.Metadata.ManyToManyRelationships.Where(x => x.IntersectEntityName == relationshipname).First();
+                    
+                    entityNode.Relationships.Relationship.Add(new SchemaXml.Relationship()
+                    {
+                        Name = relationshipname,
+                        ManyToMany = "true",
+                        Isreflexive = (relationshipMetadata.Entity1LogicalName == relationshipMetadata.Entity2LogicalName).ToString(),
+                        RelatedEntityName = relationshipMetadata.IntersectEntityName,
+                        M2mTargetEntity = relationshipMetadata.Entity2LogicalName,
+                        M2mTargetEntityPrimaryKey = relationshipMetadata.Entity2IntersectAttribute
+                    });
+                }
+            }
 
             return entityNode;
         }

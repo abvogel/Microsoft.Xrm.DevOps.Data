@@ -13,7 +13,8 @@ namespace Microsoft.Xrm.DevOps.Data
         public List<String> Attributes { get; private set; }
         public List<String> Identifiers = new List<String>();
         public Boolean PluginsDisabled = false;
-        public Queue<Entity> Entities { get; }
+        public Queue<Entity> Entities { get; set; }
+        public Dictionary<String, Dictionary<Guid, List<Guid>>> RelatedEntities = new Dictionary<String, Dictionary<Guid, List<Guid>>>();
 
         public BuilderEntityMetadata()
         {
@@ -34,6 +35,22 @@ namespace Microsoft.Xrm.DevOps.Data
         public void AppendEntities(List<Entity> entities)
         {
             entities.ForEach(entity => AppendEntity(entity));
+        }
+
+        public void AppendM2MDataToEntity(String relationshipName, Dictionary<Guid, List<Guid>> relatedEntities)
+        {
+            if (!RelatedEntities.ContainsKey(relationshipName))
+                RelatedEntities[relationshipName] = new Dictionary<Guid, List<Guid>>();
+
+            foreach (var id in relatedEntities.Keys)
+            {
+                if (RelatedEntities[relationshipName].ContainsKey(id))
+                    RelatedEntities[relationshipName][id].AddRange(relatedEntities[id]);
+                else
+                    RelatedEntities[relationshipName][id] = relatedEntities[id];
+
+                RelatedEntities[relationshipName][id] = RelatedEntities[relationshipName][id].Distinct().ToList();
+            }
         }
 
         public void CommitIdentifier()

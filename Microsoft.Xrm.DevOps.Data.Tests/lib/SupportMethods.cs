@@ -70,3 +70,14 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         }
     }
 }
+
+namespace FakeXrmEasy.Extensions
+{
+    public static class EntityMetadataExtensions
+    {
+        public static void SetSealedPropertyValue(this Microsoft.Xrm.Sdk.Metadata.ManyToManyRelationshipMetadata manyToManyRelationshipMetadata, string sPropertyName, object value)
+        {
+            manyToManyRelationshipMetadata.GetType().GetProperty(sPropertyName).SetValue(manyToManyRelationshipMetadata, value, null);
+        }
+    }
+}

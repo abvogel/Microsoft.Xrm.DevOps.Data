@@ -33,16 +33,7 @@ namespace Microsoft.Xrm.DevOps.Data.DataXml
 		[XmlElement(ElementName="records")]
 		public Records Records { get; set; }
         [XmlElement(ElementName = "m2mrelationships", IsNullable = true)]
-        public M2mrelationships M2mrelationships
-        {
-            get
-            {
-                return new M2mrelationships();
-            }
-            set
-            {
-            }
-        }
+        public M2mrelationships M2mrelationships { get; set; }
 
         public bool ShouldSerializem2mrelationships()
         {

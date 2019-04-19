@@ -8,6 +8,7 @@ using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Tooling.Connector;
 using Microsoft.Xrm.Sdk.Query;
 using System.Linq;
+using Microsoft.Crm.Sdk.Messages;
 
 namespace Microsoft.Xrm.DevOps.Data
 {
@@ -140,13 +141,61 @@ namespace Microsoft.Xrm.DevOps.Data
 
             RetrieveMultipleResponse retrieveMultipleResponse = (RetrieveMultipleResponse)this._service.Execute(req);
 
-            if (retrieveMultipleResponse != null) {
-                AppendData(retrieveMultipleResponse.EntityCollection);
-            } else {
+            if (retrieveMultipleResponse != null)
+            {
+                if (HasManyToManyAttribute(fetchXml)) {
+                    AppendM2MData(retrieveMultipleResponse.EntityCollection);
+                } else {
+                    AppendData(retrieveMultipleResponse.EntityCollection);
+                }
+            }
+            else
+            {
                 throw new Exception("Failed to retrieve fetch results.");
             }
         }
-        
+
+        private void AppendM2MData(EntityCollection queryResponse)
+        {
+            var SourceEntity = queryResponse.EntityName;
+
+            if (queryResponse.Entities.Count == 0)
+            {
+                return;
+            }
+
+            Dictionary<Guid, List<Guid>> relationshipPairs = new Dictionary<Guid, List<Guid>>();
+            String relationshipName = queryResponse.Entities[0].Attributes.Where(x => x.Value is AliasedValue).Select(x => ((AliasedValue)x.Value).EntityLogicalName).First();
+
+            foreach (var record in queryResponse.Entities)
+            {
+                Guid relatedId = ((Guid)record.Attributes.Where(x => x.Value is AliasedValue).Select(x => ((AliasedValue)x.Value).Value).First());
+
+                if (!relationshipPairs.ContainsKey(record.Id))
+                {
+                    relationshipPairs[record.Id] = new List<Guid>();
+                }
+                
+                relationshipPairs[record.Id].Add(relatedId);
+            }
+
+            VerifyEntityExists(SourceEntity);
+            _Entities[SourceEntity].AppendM2MDataToEntity(relationshipName, relationshipPairs);
+        }
+
+        private bool HasManyToManyAttribute(string fetchXml)
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(fetchXml);
+
+            if (xml.SelectSingleNode("fetch/entity/link-entity[@intersect='true']//attribute") != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public void SetIdentifier(String logicalName, String[] identifiers)
         {
             VerifyEntityExists(logicalName);
@@ -185,6 +234,24 @@ namespace Microsoft.Xrm.DevOps.Data
             }
 
             return XmlSchemaBuilder.ToXmlDocument(_Entities);
+        }
+
+        public XmlDocument BuildDataXML() {
+            foreach (var logicalName in _Entities.Keys)
+            {
+                // Add record stub to support internal lookups where the record doesn't exist
+                List<AttributeMetadata> lookups = GetFieldsThatAreEntityReference(logicalName);
+                AppendStubRecordsForInternalLookups(logicalName, lookups);
+
+                // Add record stub to support m2m relationships
+                if (_Entities[logicalName].RelatedEntities.Count > 0)
+                    AppendStubRecordsForM2MRelationships(logicalName);
+
+                // Commit identifier - merge duplicates based on chosen identifier
+                    _Entities[logicalName].CommitIdentifier();
+            }
+
+            return XmlDataBuilder.ToXmlDocument(_Entities);
         }
 
         private void AppendStubRecordsForInternalLookups(string logicalName, List<AttributeMetadata> lookups)
@@ -226,18 +293,17 @@ namespace Microsoft.Xrm.DevOps.Data
             }).ToList();
         }
 
-        public XmlDocument BuildDataXML() {
-            foreach (var logicalName in _Entities.Keys)
+        private void AppendStubRecordsForM2MRelationships(string logicalName)
+        {
+            var stubRecords = new List<Entity>();
+            foreach (var Relationship in _Entities[logicalName].RelatedEntities)
             {
-                // Add record stub to support internal lookups where the record doesn't exist
-                List<AttributeMetadata> lookups = GetFieldsThatAreEntityReference(logicalName);
-                AppendStubRecordsForInternalLookups(logicalName, lookups);
-
-                // Commit identifier - merge duplicates based on chosen identifier
-                _Entities[logicalName].CommitIdentifier();
+                foreach (var RelatedEntityPair in Relationship.Value)
+                {
+                    stubRecords.Add(new Entity(logicalName, RelatedEntityPair.Key));
+                }
             }
-
-            return XmlDataBuilder.ToXmlDocument(_Entities);
+            this.AppendData(stubRecords);
         }
     }
 }
