@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Management.Automation;
-using Microsoft.Xrm.DevOps.Data;
 using Microsoft.Xrm.Sdk;
 using System.Xml;
 using Ionic.Zip;
