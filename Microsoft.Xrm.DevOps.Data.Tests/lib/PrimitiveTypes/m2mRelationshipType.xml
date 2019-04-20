@@ -1,7 +1,0 @@
-<entities >
-  <entity name="systemuser" displayname="User" etc="8" primaryidfield="systemuserid" primarynamefield="fullname" disableplugins="false">
-    <relationships>
-      <relationship name="systemuserroles" manyToMany="true" isreflexive="false" relatedEntityName="systemuserroles" m2mTargetEntity="role" m2mTargetEntityPrimaryKey="roleid" />
-    </relationships>
-  </entity>
-</entities>

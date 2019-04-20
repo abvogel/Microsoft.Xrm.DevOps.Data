@@ -205,7 +205,6 @@
     <Content Include="lib\PrimitiveTypes\LookupType.xml" />
     <Content Include="lib\PrimitiveTypes\LookupTypedata.xml" />
     <Content Include="lib\PrimitiveTypes\LookupTypedata_schema.xml" />
-    <Content Include="lib\PrimitiveTypes\m2mRelationshipType.xml" />
     <Content Include="lib\PrimitiveTypes\m2mRelationshipTypedata.xml" />
     <Content Include="lib\PrimitiveTypes\m2mRelationshipTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\MemoType.xml" />

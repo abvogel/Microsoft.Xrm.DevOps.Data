@@ -17,16 +17,16 @@ namespace Microsoft.Xrm.DevOps.Data.Console
             CrmServiceClient crmSvc = new CrmServiceClient(ConfigurationManager.ConnectionStrings["CRMConnection"].ConnectionString);
             System.Console.Write("Initializing DataBuilder class...");
 
-            DataBuilder db = new DataBuilder
-            {
-                Service = crmSvc
-            };
+            //DataBuilder db = new DataBuilder
+            //{
+            //    service = crmSvc
+            //};
 
-            db.AppendData("<fetch><entity name='contact'><attribute name='contactid' /></entity></fetch>");
+            //db.AppendData("<fetch><entity name='contact'><attribute name='contactid' /></entity></fetch>");
 
-            System.Xml.XmlDocument test = db.BuildDataXML();
+            //System.Xml.XmlDocument test = db.BuildDataXML();
 
-            System.Console.Write(test.InnerXml);
+            //System.Console.Write(test.InnerXml);
         }
     }
 }

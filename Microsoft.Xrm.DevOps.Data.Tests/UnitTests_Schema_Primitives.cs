@@ -620,5 +620,57 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 DataBuilder.BuildSchemaXML().InnerXml, 
                 SupportMethods.GetUniqueIdentifierTypeExpectedSchema());
         }
+
+        [TestMethod]
+        public void m2mRelationshipType()
+        {
+            var fakedContext = new XrmFakedContext();
+            fakedContext.InitializeMetadata(typeof(CrmEarlyBound.CrmServiceContext).Assembly);
+
+            fakedContext.Initialize(SupportMethods.Getm2mRelationshipTypeEntities());
+
+            fakedContext.AddRelationship("systemuserroles_association", new XrmFakedRelationship
+            {
+                IntersectEntity = "systemuserroles",
+                Entity1LogicalName = "systemuser",
+                Entity1Attribute = "systemuserid",
+                Entity2LogicalName = "role",
+                Entity2Attribute = "roleid"
+            });
+
+            var AssociateRequest = SupportMethods.Getm2mRelationshipTypeAssociateRequest();
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
+            fakedService.Execute(AssociateRequest);
+
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var entityMetadata = fakedContext.GetEntityMetadataByName(SupportMethods.UserLogicalName);
+
+                entityMetadata.DisplayName = new Label(SupportMethods.UserDisplayName, 1033);
+                entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute","fullname");
+                entityMetadata.Attributes.First(a => a.LogicalName == "systemuserid").SetSealedPropertyValue("DisplayName", new Label("User", 1033));
+                entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("IntersectEntityName", "systemuserroles");
+                entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("Entity2LogicalName", "role");
+                entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("Entity2IntersectAttribute", "roleid");
+
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+
+            DataBuilder DataBuilder = new DataBuilder(fakedService);
+            DataBuilder.AppendData("<fetch><entity name='systemuser'><attribute name='systemuserid'/><link-entity name='systemuserroles' from='systemuserid' to='systemuserid' intersect='true'><link-entity name='role' from='roleid' to='roleid'/><attribute name='roleid'/></link-entity><filter><condition attribute='systemuserid' operator='eq' value='00e7b0b9-1ace-e711-a970-000d3a192311'/></filter></entity></fetch>");
+
+            var schemaXml = DataBuilder.BuildSchemaXML();
+
+            Assert.AreEqual(
+                schemaXml.InnerXml,
+                SupportMethods.Getm2mRelationshipTypeExpectedSchema());
+        }
     }
 }

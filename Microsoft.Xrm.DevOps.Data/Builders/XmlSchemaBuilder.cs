@@ -107,7 +107,7 @@ namespace Microsoft.Xrm.DevOps.Data
                     {
                         Name = relationshipname,
                         ManyToMany = "true",
-                        Isreflexive = (relationshipMetadata.Entity1LogicalName == relationshipMetadata.Entity2LogicalName).ToString(),
+                        Isreflexive = (relationshipMetadata.Entity1LogicalName == relationshipMetadata.Entity2LogicalName).ToString().ToLower(),
                         RelatedEntityName = relationshipMetadata.IntersectEntityName,
                         M2mTargetEntity = relationshipMetadata.Entity2LogicalName,
                         M2mTargetEntityPrimaryKey = relationshipMetadata.Entity2IntersectAttribute

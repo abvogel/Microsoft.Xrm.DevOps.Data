@@ -62,18 +62,18 @@ namespace Microsoft.Xrm.DevOps.Data.SchemaXml
     [XmlRoot(ElementName = "relationship")]
     public class Relationship
     {
+        [XmlAttribute(AttributeName = "name")]
+        public string Name { get; set; }
+        [XmlAttribute(AttributeName = "manyToMany")]
+        public string ManyToMany { get; set; }
         [XmlAttribute(AttributeName = "isreflexive")]
         public string Isreflexive { get; set; }
+        [XmlAttribute(AttributeName = "relatedEntityName")]
+        public string RelatedEntityName { get; set; }
         [XmlAttribute(AttributeName = "m2mTargetEntity")]
         public string M2mTargetEntity { get; set; }
         [XmlAttribute(AttributeName = "m2mTargetEntityPrimaryKey")]
         public string M2mTargetEntityPrimaryKey { get; set; }
-        [XmlAttribute(AttributeName = "manyToMany")]
-        public string ManyToMany { get; set; }
-        [XmlAttribute(AttributeName = "name")]
-        public string Name { get; set; }
-        [XmlAttribute(AttributeName = "relatedEntityName")]
-        public string RelatedEntityName { get; set; }
     }
 
     [XmlRoot(ElementName = "relationships")]

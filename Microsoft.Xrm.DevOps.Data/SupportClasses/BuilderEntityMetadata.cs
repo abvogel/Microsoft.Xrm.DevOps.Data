@@ -32,11 +32,6 @@ namespace Microsoft.Xrm.DevOps.Data
             Entities.Enqueue(entity);
         }
 
-        public void AppendEntities(List<Entity> entities)
-        {
-            entities.ForEach(entity => AppendEntity(entity));
-        }
-
         public void AppendM2MDataToEntity(String relationshipName, Dictionary<Guid, List<Guid>> relatedEntities)
         {
             if (!RelatedEntities.ContainsKey(relationshipName))
@@ -44,11 +39,10 @@ namespace Microsoft.Xrm.DevOps.Data
 
             foreach (var id in relatedEntities.Keys)
             {
-                if (RelatedEntities[relationshipName].ContainsKey(id))
-                    RelatedEntities[relationshipName][id].AddRange(relatedEntities[id]);
-                else
-                    RelatedEntities[relationshipName][id] = relatedEntities[id];
+                if (!RelatedEntities[relationshipName].ContainsKey(id))
+                    RelatedEntities[relationshipName][id] = new List<Guid>();
 
+                RelatedEntities[relationshipName][id].AddRange(relatedEntities[id]);
                 RelatedEntities[relationshipName][id] = RelatedEntities[relationshipName][id].Distinct().ToList();
             }
         }

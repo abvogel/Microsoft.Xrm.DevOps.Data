@@ -14,6 +14,15 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
     public class Configurations
     {
         [TestMethod]
+        public void ObjectConstructor_Constructs()
+        {
+            XrmFakedContext context = new XrmFakedContext();
+            DataBuilder DataBuilder = new DataBuilder(context.GetOrganizationService());
+
+            Assert.IsInstanceOfType(DataBuilder, typeof(Microsoft.Xrm.DevOps.Data.DataBuilder));
+        }
+
+        [TestMethod]
         public void SingleIdentifierSchema()
         {
             var fakedContext = new XrmFakedContext();

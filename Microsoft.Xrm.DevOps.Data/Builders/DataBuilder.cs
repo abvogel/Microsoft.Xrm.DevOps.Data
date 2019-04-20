@@ -21,11 +21,8 @@ namespace Microsoft.Xrm.DevOps.Data
             get { 
                 return _service; 
             }
-            set {
+            private set {
                 this._service = value;
-                foreach (var kvp in _Entities.Keys) {
-                    VerifyMetadataExists(kvp);
-                }
             }
         }
 
@@ -46,12 +43,7 @@ namespace Microsoft.Xrm.DevOps.Data
                 retrieveEntityRequest.LogicalName = logicalName;
                 retrieveEntityRequest.EntityFilters = EntityFilters.Attributes;
                 RetrieveEntityResponse RetrieveEntityResponse = (RetrieveEntityResponse)Service.Execute(retrieveEntityRequest);
-                
-                if (RetrieveEntityResponse != null) {
-                    _Entities[logicalName].Metadata = RetrieveEntityResponse.EntityMetadata;
-                } else { 
-                    throw new Exception(String.Format("Metadata does not exist for entity {0}", logicalName));
-                }
+                _Entities[logicalName].Metadata = RetrieveEntityResponse.EntityMetadata;
 
                 var PartyTypeAttribute = Array.Find(_Entities[logicalName].Metadata.Attributes, s => s.AttributeType.Equals(AttributeTypeCode.PartyList));
                 if (PartyTypeAttribute != null)
@@ -66,9 +58,6 @@ namespace Microsoft.Xrm.DevOps.Data
                     }
                 }
             }
-        }
-
-        public DataBuilder() {
         }
 
         public DataBuilder(IOrganizationService service)
@@ -105,32 +94,34 @@ namespace Microsoft.Xrm.DevOps.Data
             }
         }
 
-        public void AppendData(String logicalName, Dictionary<String, Object> entity)
-        {
-            Entity newEntity = new Entity(logicalName);
-            foreach (var keyValuePair in entity)
-            {
-                // trimend to compensate for MS bug that adds extra whitespace
-                if (newEntity.Id == Guid.Empty && 
-                      ((keyValuePair.Key.ToLower().TrimEnd() == "returnproperty_id")
-                    || (keyValuePair.Key.ToLower() == logicalName.ToLower() + "id")))
-                {
-                    newEntity.Id = Guid.Parse(keyValuePair.Value.ToString());
-                }
+        // Disabling until unit test can be written.
 
-                newEntity[keyValuePair.Key] = keyValuePair.Value;
-            }
+        //public void AppendData(String logicalName, Dictionary<String, Object> entity)
+        //{
+        //    Entity newEntity = new Entity(logicalName);
+        //    foreach (var keyValuePair in entity)
+        //    {
+        //        // trimend to compensate for MS bug that adds extra whitespace
+        //        if (newEntity.Id == Guid.Empty && 
+        //              ((keyValuePair.Key.ToLower().TrimEnd() == "returnproperty_id")
+        //            || (keyValuePair.Key.ToLower() == logicalName.ToLower() + "id")))
+        //        {
+        //            newEntity.Id = Guid.Parse(keyValuePair.Value.ToString());
+        //        }
 
-            AppendData(newEntity);
-        }
+        //        newEntity[keyValuePair.Key] = keyValuePair.Value;
+        //    }
 
-        public void AppendData(String logicalName, Dictionary<String, Object>[] entities)
-        {
-            foreach (var entity in entities)
-            {
-                AppendData(logicalName, entity);
-            }
-        }
+        //    AppendData(newEntity);
+        //}
+
+        //public void AppendData(String logicalName, Dictionary<String, Object>[] entities)
+        //{
+        //    foreach (var entity in entities)
+        //    {
+        //        AppendData(logicalName, entity);
+        //    }
+        //}
 
         public void AppendData(String fetchXml)
         {
@@ -139,17 +130,20 @@ namespace Microsoft.Xrm.DevOps.Data
                 Query = new FetchExpression(fetchXml)
             };
 
-            RetrieveMultipleResponse retrieveMultipleResponse = (RetrieveMultipleResponse)this._service.Execute(req);
-
-            if (retrieveMultipleResponse != null)
+            try
             {
-                if (HasManyToManyAttribute(fetchXml)) {
+                RetrieveMultipleResponse retrieveMultipleResponse = (RetrieveMultipleResponse)this._service.Execute(req);
+
+                if (HasManyToManyAttribute(fetchXml))
+                {
                     AppendM2MData(retrieveMultipleResponse.EntityCollection);
-                } else {
+                }
+                else
+                {
                     AppendData(retrieveMultipleResponse.EntityCollection);
                 }
             }
-            else
+            catch (Exception)
             {
                 throw new Exception("Failed to retrieve fetch results.");
             }
@@ -225,12 +219,7 @@ namespace Microsoft.Xrm.DevOps.Data
                 if (_PluginsDisabled != null)
                     _Entities[logicalName].PluginsDisabled = (bool)_PluginsDisabled;
 
-                // Add record stub to support internal lookups where the record doesn't exist
-                List<AttributeMetadata> lookups = GetFieldsThatAreEntityReference(logicalName);
-                AppendStubRecordsForInternalLookups(logicalName, lookups);
-
-                // Commit identifier - merge duplicates based on chosen identifier
-                _Entities[logicalName].CommitIdentifier();
+                FinalizeEntity(logicalName);
             }
 
             return XmlSchemaBuilder.ToXmlDocument(_Entities);
@@ -243,15 +232,24 @@ namespace Microsoft.Xrm.DevOps.Data
                 List<AttributeMetadata> lookups = GetFieldsThatAreEntityReference(logicalName);
                 AppendStubRecordsForInternalLookups(logicalName, lookups);
 
-                // Add record stub to support m2m relationships
-                if (_Entities[logicalName].RelatedEntities.Count > 0)
-                    AppendStubRecordsForM2MRelationships(logicalName);
-
-                // Commit identifier - merge duplicates based on chosen identifier
-                    _Entities[logicalName].CommitIdentifier();
+                FinalizeEntity(logicalName);
             }
 
             return XmlDataBuilder.ToXmlDocument(_Entities);
+        }
+
+        private void FinalizeEntity(string logicalName)
+        {
+            // Add record stub to support internal lookups where the record doesn't exist
+            List<AttributeMetadata> lookups = GetFieldsThatAreEntityReference(logicalName);
+            AppendStubRecordsForInternalLookups(logicalName, lookups);
+
+            // Add record stub to support m2m relationships
+            if (_Entities[logicalName].RelatedEntities.Count > 0)
+                AppendStubRecordsForM2MRelationships(logicalName);
+
+            // Commit identifier - merge duplicates based on chosen identifier
+            _Entities[logicalName].CommitIdentifier();
         }
 
         private void AppendStubRecordsForInternalLookups(string logicalName, List<AttributeMetadata> lookups)

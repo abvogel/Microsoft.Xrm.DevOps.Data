@@ -152,16 +152,10 @@ namespace Microsoft.Xrm.DevOps.Data
                 case Sdk.Metadata.AttributeTypeCode.Customer:
                 case Sdk.Metadata.AttributeTypeCode.Lookup:
                 case Sdk.Metadata.AttributeTypeCode.Owner:
-                    if (attribute.Value is Guid)                    // Compensates for bug in FakeXrmEasy
-                    {
-                        FieldNode.Value = attribute.Value.ToString();
-                    } else
-                    {
                         var EntityReference = (EntityReference)attribute.Value;
                         FieldNode.Value = EntityReference.Id.ToString();
                         FieldNode.Lookupentity = EntityReference.LogicalName;
                         FieldNode.Lookupentityname = EntityReference.Name;
-                    }
                     break;
                 case Sdk.Metadata.AttributeTypeCode.Picklist:
                 case Sdk.Metadata.AttributeTypeCode.State:
@@ -185,9 +179,8 @@ namespace Microsoft.Xrm.DevOps.Data
                 case Sdk.Metadata.AttributeTypeCode.BigInt:
                 case Sdk.Metadata.AttributeTypeCode.ManagedProperty:
                 case Sdk.Metadata.AttributeTypeCode.EntityName:
-                    throw new NotImplementedException();
                 default:
-                    break;
+                    throw new Exception("Unknown Field Node Type.");
             }
 
             return FieldNode;

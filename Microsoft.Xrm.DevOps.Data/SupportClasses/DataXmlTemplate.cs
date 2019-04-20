@@ -34,11 +34,6 @@ namespace Microsoft.Xrm.DevOps.Data.DataXml
 		public Records Records { get; set; }
         [XmlElement(ElementName = "m2mrelationships", IsNullable = true)]
         public M2mrelationships M2mrelationships { get; set; }
-
-        public bool ShouldSerializem2mrelationships()
-        {
-            return true;
-        }
 	}
 
 	[XmlRoot(ElementName="field")]
@@ -57,15 +52,16 @@ namespace Microsoft.Xrm.DevOps.Data.DataXml
 	}
 
 	[XmlRoot(ElementName="m2mrelationship")]
-	public class M2mrelationship {
-		[XmlAttribute(AttributeName="m2mrelationshipname")]
+	public class M2mrelationship
+    {
+        [XmlAttribute(AttributeName = "sourceid")]
+        public string Sourceid { get; set; }
+        [XmlAttribute(AttributeName = "targetentityname")]
+        public string Targetentityname { get; set; }
+        [XmlAttribute(AttributeName = "targetentitynameidfield")]
+        public string Targetentitynameidfield { get; set; }
+        [XmlAttribute(AttributeName="m2mrelationshipname")]
 		public string M2mrelationshipname { get; set; }
-		[XmlAttribute(AttributeName="sourceid")]
-		public string Sourceid { get; set; }
-		[XmlAttribute(AttributeName="targetentityname")]
-		public string Targetentityname { get; set; }
-		[XmlAttribute(AttributeName="targetentitynameidfield")]
-		public string Targetentitynameidfield { get; set; }
 		[XmlElement(ElementName="targetids")]
 		public Targetids Targetids { get; set; }
 	}
