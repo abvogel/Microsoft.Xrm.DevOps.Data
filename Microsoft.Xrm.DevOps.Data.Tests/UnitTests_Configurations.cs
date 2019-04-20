@@ -23,6 +23,66 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         }
 
         [TestMethod]
+        public void AppendDataUsingDictionaryLikePowerShell_Works()
+        {
+            // StringType           description                        knowledgearticle
+            var fakedContext = new XrmFakedContext();
+            fakedContext.InitializeMetadata(typeof(CrmEarlyBound.CrmServiceContext).Assembly);
+            fakedContext.Initialize(SupportMethods.GetStringTypeEntity());
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var entityMetadata = fakedContext.GetEntityMetadataByName(SupportMethods.KnowledgeArticleLogicalName);
+                entityMetadata.DisplayName = new Label(SupportMethods.KnowledgeArticleDisplayName, 1033);
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
+
+            DataBuilder DataBuilder = new DataBuilder(fakedService);
+            DataBuilder.AppendData(SupportMethods.KnowledgeArticleLogicalName, SupportMethods.GetStringTypePowerShellObject());
+            Assert.AreEqual(
+                DataBuilder.BuildDataXML().InnerXml,
+                SupportMethods.GetStringTypeExpectedData());
+        }
+
+        [TestMethod]
+        public void AppendDataUsingDictionariesLikePowerShell_Works()
+        {
+            // StringType           description                        knowledgearticle
+            var fakedContext = new XrmFakedContext();
+            fakedContext.InitializeMetadata(typeof(CrmEarlyBound.CrmServiceContext).Assembly);
+            fakedContext.Initialize(SupportMethods.GetStringTypeEntity());
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var entityMetadata = fakedContext.GetEntityMetadataByName(SupportMethods.KnowledgeArticleLogicalName);
+                entityMetadata.DisplayName = new Label(SupportMethods.KnowledgeArticleDisplayName, 1033);
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
+
+            DataBuilder DataBuilder = new DataBuilder(fakedService);
+            DataBuilder.AppendData(SupportMethods.KnowledgeArticleLogicalName, SupportMethods.GetStringTypePowerShellObjects());
+            Assert.AreEqual(
+                DataBuilder.BuildDataXML().InnerXml,
+                SupportMethods.GetStringTypeExpectedData());
+        }
+
+        [TestMethod]
         public void SingleIdentifierSchema()
         {
             var fakedContext = new XrmFakedContext();

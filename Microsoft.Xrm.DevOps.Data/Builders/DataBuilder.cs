@@ -94,34 +94,38 @@ namespace Microsoft.Xrm.DevOps.Data
             }
         }
 
-        // Disabling until unit test can be written.
+        public void AppendData(String logicalName, Dictionary<String, Object> entity)
+        {
+            Entity newEntity = new Entity(logicalName);
+            foreach (var keyValuePair in entity)
+            {
+                // trimend to compensate for MS bug that adds extra whitespace
+                if (newEntity.Id == Guid.Empty &&
+                      ((keyValuePair.Key.ToLower().TrimEnd() == "ReturnProperty_Id")
+                    || (keyValuePair.Key.ToLower() == logicalName.ToLower() + "id")))
+                {
+                    newEntity.Id = Guid.Parse(keyValuePair.Value.ToString());
+                }
 
-        //public void AppendData(String logicalName, Dictionary<String, Object> entity)
-        //{
-        //    Entity newEntity = new Entity(logicalName);
-        //    foreach (var keyValuePair in entity)
-        //    {
-        //        // trimend to compensate for MS bug that adds extra whitespace
-        //        if (newEntity.Id == Guid.Empty && 
-        //              ((keyValuePair.Key.ToLower().TrimEnd() == "returnproperty_id")
-        //            || (keyValuePair.Key.ToLower() == logicalName.ToLower() + "id")))
-        //        {
-        //            newEntity.Id = Guid.Parse(keyValuePair.Value.ToString());
-        //        }
+                if (keyValuePair.Key.Contains("ReturnProperty_"))
+                    continue;
 
-        //        newEntity[keyValuePair.Key] = keyValuePair.Value;
-        //    }
+                if (keyValuePair.Value != null && keyValuePair.Value.GetType().Name == "KeyValuePair`2")
+                    continue;
 
-        //    AppendData(newEntity);
-        //}
+                newEntity[keyValuePair.Key] = keyValuePair.Value;
+            }
 
-        //public void AppendData(String logicalName, Dictionary<String, Object>[] entities)
-        //{
-        //    foreach (var entity in entities)
-        //    {
-        //        AppendData(logicalName, entity);
-        //    }
-        //}
+            AppendData(newEntity);
+        }
+
+        public void AppendData(String logicalName, Dictionary<String, Object>[] entities)
+        {
+            foreach (var entity in entities)
+            {
+                AppendData(logicalName, entity);
+            }
+        }
 
         public void AppendData(String fetchXml)
         {

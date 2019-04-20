@@ -27,6 +27,7 @@
 
 using Microsoft.Xrm.Sdk;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
@@ -40,6 +41,28 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             result["description"] = "Testing the new search fields";
 
             return result;
+        }
+
+        public static Dictionary<String, Object> GetStringTypePowerShellObject()
+        {
+            Dictionary<String, Object> entity = new Dictionary<String, Object>();
+
+            entity["description_Property"] = new KeyValuePair<String, String>("description", "Testing the new search fields");
+            entity["description"] = "Testing the new search fields";
+            entity["knowledgearticleid_Property"] = new KeyValuePair<String, Guid>("knowledgearticleid", Guid.Parse("4bfd843b-e99e-e711-9401-0003ff66fbff"));
+            entity["knowledgearticleid"] = Guid.Parse("4bfd843b-e99e-e711-9401-0003ff66fbff");
+            entity["ReturnProperty_EntityName"] = "knowledgearticle";
+            entity["ReturnProperty_Id"] = Guid.Parse("4bfd843b-e99e-e711-9401-0003ff66fbff");
+
+            return entity;
+        }
+
+        public static Dictionary<String, Object>[] GetStringTypePowerShellObjects()
+        {
+            var entity1 = SupportMethods.GetStringTypePowerShellObject();
+            var entity2 = SupportMethods.GetStringTypePowerShellObject();
+
+            return new Dictionary<String, Object>[] { entity1, entity2 };
         }
 
         public static String GetStringTypeFetch()

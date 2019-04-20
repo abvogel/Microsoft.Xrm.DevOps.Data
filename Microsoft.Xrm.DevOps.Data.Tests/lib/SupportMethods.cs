@@ -68,11 +68,6 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             doc.FirstChild.Attributes.RemoveNamedItem("timestamp");
             return doc.InnerXml;
         }
-
-        public enum AttributeTypeCode
-        {
-            InvalidCode = 21
-        }
     }
 }
 
@@ -86,11 +81,3 @@ namespace FakeXrmEasy.Extensions
         }
     }
 }
-
-//namespace Microsoft.Xrm.Sdk.Metadata
-//{
-//    public enum AttributeTypeCode
-//    {
-//        InvalidCode = 21
-//    }
-//}
