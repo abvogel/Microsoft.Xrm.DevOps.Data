@@ -1,10 +1,24 @@
+
+[![Build status](https://ci.appveyor.com/api/projects/status/xr9wvx7f38wgblnn?svg=true)](https://ci.appveyor.com/project/abvogel/microsoft-xrm-devops-data)
+
 # Microsoft.Xrm.DevOps.Data
-This module builds on Microsoft.Xrm.Data.PowerShell and Microsoft.CrmSdk.XrmTooling.PackageDeployment to provide common functions to replace the Configuration Data Migration Tool.
+This library provides an easy way to generate **filtered** data compatible with the Configuration Data Migration Tool. These zip files can be used to push specific records between environments using the Dynamics 365 Package Deployer.
 
 # Microsoft.Xrm.DevOps.PowerShell
-This module builds on the DevOps.Data DLL providing a full PowerShell wrapper for DevOps related Dynamics 365 tasks.
-https://github.com/abvogel/Microsoft.Xrm.DevOps.PowerShell/
+This wrapper uses the Microsoft.Xrm.DevOps.Data library providing a simple PowerShell interface.
 
-# Example Code
-  PowerShell: DataBuilder.AddData($fetchCRMResults.CrmRecords[0].logicalname, $fetchCRMResults.CrmRecords.original);
-  C#: DataBuilder.AddData(EntityCollectionRecords);
+## Example Code
+    $Conn = Get-CrmConnection -Interactive
+    $build = Get-CrmDataBuilder;
+    $build.FetchCollection = @("<fetch><entity name='category'><all-attributes /></entity></fetch>");
+    Export-CrmDataBuilder -Conn $Conn -Builder $build -ZipPath c:\data.zip
+## Other Features
+### Per entity custom identifiers
+    $build.Identifiers["category"] = @("categoryid"); # default
+    $build.Identifiers["contact"] = @("firstname", "lastname", "birthdate");
+### Per entity capability to disable plugins
+    $build.DisablePlugins["contact"] = $false; # default
+    $build.DisablePlugins["category"] = $true;
+### Global ability to disable plugins for all imported entities
+    $build.DisablePluginsGlobally = $false; # default
+    $build.DisablePluginsGlobally = $true;
