@@ -232,14 +232,18 @@ namespace Microsoft.Xrm.DevOps.Data
         public XmlDocument BuildDataXML() {
             foreach (var logicalName in _Entities.Keys)
             {
-                // Add record stub to support internal lookups where the record doesn't exist
-                List<AttributeMetadata> lookups = GetFieldsThatAreEntityReference(logicalName);
-                AppendStubRecordsForInternalLookups(logicalName, lookups);
-
                 FinalizeEntity(logicalName);
             }
 
             return XmlDataBuilder.ToXmlDocument(_Entities);
+        }
+
+        public XmlDocument BuildContentTypesXML()
+        {
+            String contentType = "<?xml version=\"1.0\" encoding=\"utf-8\"?><Types xmlns=\"http://schemas.openxmlformats.org/package/2006/content-types\"><Default Extension=\"xml\" ContentType=\"application/octet-stream\" /></Types>";
+            XmlDocument content = new XmlDocument();
+            content.LoadXml(contentType);
+            return content;
         }
 
         private void FinalizeEntity(string logicalName)

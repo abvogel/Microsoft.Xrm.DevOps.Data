@@ -65,7 +65,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public static String LoadXmlFile(string Path) {
             XmlDocument doc = new XmlDocument();
             doc.Load(Path);
-            doc.FirstChild.Attributes.RemoveNamedItem("timestamp");
+
+            XmlNode timestampNode = doc.SelectSingleNode("/*[@timestamp]");
+            if (timestampNode != null)
+                doc.FirstChild.Attributes.RemoveNamedItem("timestamp");
+
             return doc.InnerXml;
         }
     }

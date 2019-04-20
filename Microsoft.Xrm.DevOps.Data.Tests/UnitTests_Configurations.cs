@@ -23,6 +23,17 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         }
 
         [TestMethod]
+        public void ContentType_Builds()
+        {
+            XrmFakedContext context = new XrmFakedContext();
+            DataBuilder DataBuilder = new DataBuilder(context.GetOrganizationService());
+
+            Assert.AreEqual(
+                DataBuilder.BuildContentTypesXML().InnerXml,
+                SupportMethods.LoadXmlFile(@"../../lib/Configurations/[Content_Types].xml"));
+        }
+
+        [TestMethod]
         public void AppendDataUsingDictionaryLikePowerShell_Works()
         {
             // StringType           description                        knowledgearticle

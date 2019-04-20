@@ -1,0 +1,10 @@
+package-lock.json
+.vs/Microsoft.Xrm.DevOps.PowerShell/v15/.suo
+.vs/Microsoft.Xrm.DevOps.PowerShell/v15/Server/sqlite3/db.lock
+.vs/Microsoft.Xrm.DevOps.PowerShell/v15/Server/sqlite3/storage.ide
+.vs/Microsoft.Xrm.DevOps.PowerShell/v15/Server/sqlite3/storage.ide-shm
+.vs/Microsoft.Xrm.DevOps.PowerShell/v15/Server/sqlite3/storage.ide-wal
+.vs/config/applicationhost.config
+obj
+bin
+packages
