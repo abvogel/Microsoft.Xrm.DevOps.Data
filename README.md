@@ -9,7 +9,7 @@ This wrapper uses the Microsoft.Xrm.DevOps.Data library providing a simple Power
 
 ## Installing
 The PowerShell module has been posted to PowerShell Gallery. Install using their standard commands - 
-https://www.powershellgallery.com/packages/Microsoft.Xrm.DevOps.Data.PowerShell/1.0.1
+https://www.powershellgallery.com/packages/Microsoft.Xrm.DevOps.Data.PowerShell/
 
     Install-Module -Name Microsoft.Xrm.DevOps.Data.PowerShell
 
