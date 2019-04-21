@@ -8,8 +8,10 @@ This library provides an easy way to generate **filtered** data compatible with 
 This wrapper uses the Microsoft.Xrm.DevOps.Data library providing a simple PowerShell interface.
 
 ## Installing
-    Install-Module Microsoft.Xrm.DevOps.Data.PowerShell
-    https://www.powershellgallery.com/packages/Microsoft.Xrm.DevOps.Data.PowerShell/1.0.1
+The PowerShell module has been posted to PowerShell Gallery. Install using their standard commands - 
+https://www.powershellgallery.com/packages/Microsoft.Xrm.DevOps.Data.PowerShell/1.0.1
+
+    Install-Module -Name Microsoft.Xrm.DevOps.Data.PowerShell
 
 ## Example Code
     $Conn = Get-CrmConnection -Interactive
