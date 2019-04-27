@@ -199,10 +199,14 @@ namespace Microsoft.Xrm.DevOps.Data
             }
         }
 
-        public void SetIdentifier(String logicalName, String[] identifiers)
+        public void SetIdentifier(String LogicalName, String[] Identifier)
         {
-            this.VerifyEntityExists(logicalName);
-            this._Entities[logicalName].Identifiers = new List<String>(identifiers);
+            this.VerifyEntityExists(LogicalName);
+            this._Entities[LogicalName].Identifiers = new List<String>();
+            foreach (String partialIdentifier in Identifier)
+            {
+                this._Entities[LogicalName].Identifiers.Add(partialIdentifier);
+            };
         }
 
         public void SetIdentifier(String logicalName, String identifier)

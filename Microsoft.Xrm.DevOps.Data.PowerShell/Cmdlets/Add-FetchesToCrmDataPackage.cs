@@ -2,6 +2,7 @@
 using System.Management.Automation;
 using Microsoft.Xrm.Sdk;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace Microsoft.Xrm.DevOps.Data.PowerShell.Cmdlets
 {
@@ -18,10 +19,10 @@ namespace Microsoft.Xrm.DevOps.Data.PowerShell.Cmdlets
         public String[] Fetches { get; set; }
 
         [Parameter(Position = 3)]
-        public Dictionary<String, String[]> Identifiers = new Dictionary<String, String[]>();
+        public Hashtable Identifiers = new Hashtable();
 
         [Parameter(Position = 4)]
-        public Dictionary<String, Boolean> DisablePlugins = new Dictionary<String, Boolean>();
+        public Hashtable DisablePlugins = new Hashtable();
 
         [Parameter(Position = 5)]
         public Boolean DisablePluginsGlobally = false;
@@ -39,12 +40,15 @@ namespace Microsoft.Xrm.DevOps.Data.PowerShell.Cmdlets
                 db.AppendData(fetch);
 
             if (this.Identifiers.Keys.Count > 0)
-                foreach (var identifier in this.Identifiers)
-                    db.SetIdentifier(identifier.Key, identifier.Value);
+                foreach (String key in this.Identifiers.Keys)
+                {
+                    String[] identifier = Array.ConvertAll<object, string>((Object[])this.Identifiers[key], delegate (object obj) { return (string)obj; });
+                    db.SetIdentifier(key, identifier);
+                }
 
             if (this.DisablePlugins.Keys.Count > 0)
-                foreach (var disablePlugin in this.DisablePlugins)
-                    db.SetPluginsDisabled(disablePlugin.Key, disablePlugin.Value);
+                foreach (String key in this.DisablePlugins.Keys)
+                    db.SetPluginsDisabled(key, (Boolean)DisablePlugins[key]);
 
             if (this.DisablePluginsGlobally)
                 db.SetPluginsDisabled(true);
