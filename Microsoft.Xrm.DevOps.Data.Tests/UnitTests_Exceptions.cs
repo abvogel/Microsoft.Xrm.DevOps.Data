@@ -100,7 +100,6 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             
             var ex = Assert.ThrowsException<Exception>(() => DataBuilder.AppendData(SupportMethods.GetCustomerTypeFetch()));
-            Assert.AreEqual(ex.Message, "Failed to retrieve fetch results.");
         }
 
         [TestMethod]
@@ -127,7 +126,6 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             DataBuilder DataBuilder = new DataBuilder(fakedService);
 
             var ex = Assert.ThrowsException<Exception>(() => DataBuilder.AppendData(SupportMethods.GetCustomerTypeFetch()));
-            Assert.AreEqual(ex.Message, String.Format("Failed to retrieve fetch results."));
         }
 
         [TestMethod]

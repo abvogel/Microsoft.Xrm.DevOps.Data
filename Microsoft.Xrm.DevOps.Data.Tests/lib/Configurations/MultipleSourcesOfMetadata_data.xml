@@ -1,0 +1,151 @@
+﻿<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <entity name="account" displayname="Account">
+    <records>
+      <record id="832193cb-f381-47c0-b059-662bdfcf1261">
+        <field name="accountid" value="832193cb-f381-47c0-b059-662bdfcf1261" />
+        <field name="createdby" value="f0205357-124a-4b5a-9163-5cca2b3d3e8d" lookupentity="systemuser" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+  <entity name="theme" displayname="Theme">
+    <records>
+      <record id="581ba8b5-f3cf-422e-8030-e2a645b39971">
+        <field name="isdefaulttheme" value="False" />
+        <field name="themeid" value="581ba8b5-f3cf-422e-8030-e2a645b39971" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+  <entity name="incident" displayname="Case">
+    <records>
+      <record id="616f5b50-774d-e911-a96a-000d3a1d23d3">
+        <field name="customerid" value="9a913e9f-cbb8-e711-a968-000d3a192387" lookupentity="contact" lookupentityname="Andrew Vogel" />
+        <field name="incidentid" value="616f5b50-774d-e911-a96a-000d3a1d23d3" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+  <entity name="knowledgearticle" displayname="Knowledge Article">
+    <records>
+      <record id="6ecdf2da-dae1-e711-9403-0003ff863885">
+        <field name="expiredreviewoptions" value="1" />
+        <field name="knowledgearticleid" value="6ecdf2da-dae1-e711-9403-0003ff863885" />
+        <field name="publishon" value="12/19/2017 4:57:00 PM" />
+      </record>
+      <record id="f835a513-ed9e-e711-9401-0003ff66fbff">
+        <field name="expirationstateid" value="3" />
+        <field name="knowledgearticleid" value="f835a513-ed9e-e711-9401-0003ff66fbff" />
+      </record>
+      <record id="165ef3a6-ef9e-e711-80fd-3863bb2eb058">
+        <field name="knowledgearticleid" value="165ef3a6-ef9e-e711-80fd-3863bb2eb058" />
+        <field name="previousarticlecontentid" value="f835a513-ed9e-e711-9401-0003ff66fbff" lookupentity="knowledgearticle" lookupentityname="demo Article for QA " />
+      </record>
+      <record id="4bfd843b-e99e-e711-9401-0003ff66fbff">
+        <field name="description" value="Testing the new search fields" />
+        <field name="keywords" value="keywords here" />
+        <field name="knowledgearticleid" value="4bfd843b-e99e-e711-9401-0003ff66fbff" />
+        <field name="ownerid" value="cdffaae5-55b0-e711-a95c-000d3a192e9a" lookupentity="systemuser" lookupentityname="Andrew Vogel" />
+        <field name="statecode" value="3" />
+        <field name="statuscode" value="7" />
+      </record>
+      <record id="a737336f-4472-e711-9401-0003ff86444f">
+        <field name="knowledgearticleid" value="a737336f-4472-e711-9401-0003ff86444f" />
+        <field name="stageid" value="0c6ed1c6-e9f1-4b43-8d9b-f680fded9b67" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+  <entity name="msdyn_resourcerequirementdetail" displayname="Resource Requirement Detail">
+    <records>
+      <record id="73d453d8-774d-e911-a96a-000d3a1d23d3">
+        <field name="msdyn_hours" value="5.0000000000" />
+        <field name="msdyn_resourcerequirementdetailid" value="73d453d8-774d-e911-a96a-000d3a1d23d3" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+  <entity name="msdyn_purchaseorderproduct" displayname="Purchase Order Product">
+    <records>
+      <record id="fbb6f525-794d-e911-a96a-000d3a1d23d3">
+        <field name="msdyn_purchaseorderproductid" value="fbb6f525-794d-e911-a96a-000d3a1d23d3" />
+        <field name="msdyn_quantity" value="73.25" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+  <entity name="invoice" displayname="Invoice">
+    <records>
+      <record id="e45e1402-7c4d-e911-a96a-000d3a1d23d3">
+        <field name="invoiceid" value="e45e1402-7c4d-e911-a96a-000d3a1d23d3" />
+        <field name="totaltax" value="0.0000" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+  <entity name="msdyn_approval" displayname="Approval">
+    <records>
+      <record id="3ff9afe1-7c4d-e911-a96a-000d3a1d23d3">
+        <field name="activityid" value="3ff9afe1-7c4d-e911-a96a-000d3a1d23d3" />
+        <field name="customers" value="" lookupentity="" lookupentityname="">
+          <activitypointerrecords id="3d12ac27-7d4d-e911-a96a-000d3a1d23d3">
+            <field name="partyid" value="9a913e9f-cbb8-e711-a968-000d3a192387" lookupentity="contact" lookupentityname="Andrew Vogel" />
+            <field name="activityid" value="3ff9afe1-7c4d-e911-a96a-000d3a1d23d3" lookupentity="activitypointer" />
+            <field name="ownerid" value="be9135c6-f5a9-e711-a95c-000d3a192e9a" lookupentity="systemuser" />
+            <field name="participationtypemask" value="11" />
+            <field name="instancetypecode" value="0" />
+            <field name="donotemail" value="False" />
+            <field name="donotfax" value="False" />
+            <field name="donotpostalmail" value="False" />
+            <field name="donotphone" value="False" />
+            <field name="ispartydeleted" value="False" />
+            <field name="activitypartyid" value="3d12ac27-7d4d-e911-a96a-000d3a1d23d3" />
+          </activitypointerrecords>
+          <activitypointerrecords id="3e12ac27-7d4d-e911-a96a-000d3a1d23d3">
+            <field name="partyid" value="669537c3-a4bd-e711-a950-000d3a1087a0" lookupentity="account" lookupentityname="test" />
+            <field name="activityid" value="3ff9afe1-7c4d-e911-a96a-000d3a1d23d3" lookupentity="activitypointer" />
+            <field name="ownerid" value="be9135c6-f5a9-e711-a95c-000d3a192e9a" lookupentity="systemuser" />
+            <field name="participationtypemask" value="11" />
+            <field name="instancetypecode" value="0" />
+            <field name="donotemail" value="False" />
+            <field name="donotfax" value="False" />
+            <field name="donotpostalmail" value="False" />
+            <field name="donotphone" value="False" />
+            <field name="ispartydeleted" value="False" />
+            <field name="activitypartyid" value="3e12ac27-7d4d-e911-a96a-000d3a1d23d3" />
+          </activitypointerrecords>
+        </field>
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+  <entity name="systemuser" displayname="User">
+    <records>
+      <record id="00e7b0b9-1ace-e711-a970-000d3a192311">
+        <field name="systemuserid" value="00e7b0b9-1ace-e711-a970-000d3a192311" />
+      </record>
+      <record id="16b8a7ea-7d3f-4856-85a1-59f98ffcfafe">
+        <field name="firstname" value="Andrew" />
+        <field name="lastname" value="Vogel" />
+        <field name="systemuserid" value="16b8a7ea-7d3f-4856-85a1-59f98ffcfafe" />
+      </record>
+      <record id="f0205357-124a-4b5a-9163-5cca2b3d3e8d">
+        <field name="systemuserid" value="f0205357-124a-4b5a-9163-5cca2b3d3e8d" />
+      </record>
+      <record id="cdffaae5-55b0-e711-a95c-000d3a192e9a">
+        <field name="systemuserid" value="cdffaae5-55b0-e711-a95c-000d3a192e9a" />
+      </record>
+    </records>
+    <m2mrelationships>
+      <m2mrelationship sourceid="00e7b0b9-1ace-e711-a970-000d3a192311" targetentityname="role" targetentitynameidfield="roleid" m2mrelationshipname="systemuserroles">
+        <targetids>
+          <targetid>cad52a75-568c-e611-80d4-00155d42a122</targetid>
+          <targetid>3dac4d9e-568c-e611-80d4-00155d42a122</targetid>
+          <targetid>85d865b5-fea1-e611-8116-00155da84013</targetid>
+          <targetid>e186d6f0-28d6-4bfc-bea5-71e44c3e13a4</targetid>
+          <targetid>52d9415f-86f4-e611-8128-e0071b6a4261</targetid>
+        </targetids>
+      </m2mrelationship>
+    </m2mrelationships>
+  </entity>
+</entities>
