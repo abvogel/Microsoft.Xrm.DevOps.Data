@@ -67,9 +67,11 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\DataBuilder.cs" />
-    <Compile Include="Cmdlets\Export-CrmDataBuilder.cs" />
-    <Compile Include="Cmdlets\Get-CrmDataBuilder.cs" />
+    <Compile Include="Classes\CrmDataPackage.cs" />
+    <Compile Include="Cmdlets\Merge-CrmDataPackage.cs" />
+    <Compile Include="Cmdlets\Add-FetchesToCrmDataPackage.cs" />
+    <Compile Include="Cmdlets\Export-CrmDataPackage.cs" />
+    <Compile Include="Cmdlets\Get-CrmDataPackage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
