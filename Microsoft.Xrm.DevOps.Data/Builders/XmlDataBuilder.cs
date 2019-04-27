@@ -151,7 +151,8 @@ namespace Microsoft.Xrm.DevOps.Data
                     break;
                 case Sdk.Metadata.AttributeTypeCode.Lookup:
                 case Sdk.Metadata.AttributeTypeCode.Owner:
-                        var EntityReference = (EntityReference)attribute.Value;
+                case Sdk.Metadata.AttributeTypeCode.Customer:
+                    var EntityReference = (EntityReference)attribute.Value;
                         FieldNode.Value = EntityReference.Id.ToString();
                         FieldNode.Lookupentity = EntityReference.LogicalName;
                         FieldNode.Lookupentityname = EntityReference.Name;
@@ -161,7 +162,6 @@ namespace Microsoft.Xrm.DevOps.Data
                 case Sdk.Metadata.AttributeTypeCode.Status:
                     FieldNode.Value = ((OptionSetValue)attribute.Value).Value.ToString();
                     break;
-                case Sdk.Metadata.AttributeTypeCode.Customer:
                 case Sdk.Metadata.AttributeTypeCode.PartyList:
                     FieldNode.Value = String.Empty;
                     FieldNode.Lookupentity = String.Empty;

@@ -10,13 +10,10 @@ namespace Microsoft.Xrm.DevOps.Data.PowerShell.Cmdlets
     [OutputType(typeof(PowerShell.CrmDataPackage))]
     public class ExportCrmDataPackage : PSCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true)]
-        public IOrganizationService Conn { get; set; }
-
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true)]
         public CrmDataPackage Package { get; set; }
 
-        [Parameter(Position = 2)]
+        [Parameter(Position = 1)]
         public String ZipPath { private get; set; }
 
         protected override void ProcessRecord()

@@ -10,18 +10,15 @@ namespace Microsoft.Xrm.DevOps.Data.PowerShell.Cmdlets
     [Cmdlet(VerbsData.Merge, "CrmDataPackage")]
     public class MergeCrmDataPackage : PSCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true)]
-        public IOrganizationService Conn { get; set; }
-
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true)]
         public CrmDataPackage SourcePackage { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true)]
+        [Parameter(Position = 1, Mandatory = true)]
         public CrmDataPackage AdditionalPackage { get; set; }
 
         protected override void ProcessRecord()
         {
-            DevOps.Data.DataBuilder db = new DevOps.Data.DataBuilder(this.Conn);
+            DevOps.Data.DataBuilder db = new DevOps.Data.DataBuilder();
 
             db.AppendData(SourcePackage.Data, SourcePackage.Schema);
             db.AppendData(AdditionalPackage.Data, AdditionalPackage.Schema);

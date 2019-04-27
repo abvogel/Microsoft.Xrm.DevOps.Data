@@ -75,11 +75,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Debug.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="LICENSE" />
     <None Include="Microsoft.Xrm.DevOps.Data.PowerShell.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="package-lock.json" />
     <None Include="package.json" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -90,4 +92,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Debug robocopy ../../ . Debug.ps1</PostBuildEvent>
+  </PropertyGroup>
 </Project>
