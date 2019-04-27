@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xrm.DevOps.Data.SupportClasses;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 
 namespace Microsoft.Xrm.DevOps.Data
 {
-    public class BuilderEntityMetadata
+    internal class BuilderEntityMetadata
     {
         public EntityMetadata Metadata { get; set; }
-        public EntityMetadata PartyMetadata { get; set; }
+        public Boolean FetchedAllMetadata = false;
         public List<String> Attributes { get; private set; }
         public List<String> Identifiers = new List<String>();
-        public Boolean PluginsDisabled = false;
+        public Boolean? PluginsDisabled = null;
         public Queue<Entity> Entities { get; set; }
         public Dictionary<String, Dictionary<Guid, List<Guid>>> RelatedEntities = new Dictionary<String, Dictionary<Guid, List<Guid>>>();
 
@@ -20,6 +21,11 @@ namespace Microsoft.Xrm.DevOps.Data
         {
             Entities = new Queue<Entity>();
             Attributes = new List<string>();
+            Metadata = new EntityMetadata();
+            List<AttributeMetadata> attributeMetadatas = new List<AttributeMetadata>();
+            List<ManyToManyRelationshipMetadata> manyToManyRelationshipMetadatas = new List<ManyToManyRelationshipMetadata>();
+            Metadata.SetSealedPropertyValue("Attributes", attributeMetadatas.ToArray());
+            Metadata.SetSealedPropertyValue("ManyToManyRelationships", manyToManyRelationshipMetadatas.ToArray());
         }
 
         public void AppendEntity(Entity entity)
@@ -35,15 +41,15 @@ namespace Microsoft.Xrm.DevOps.Data
         public void AppendM2MDataToEntity(String relationshipName, Dictionary<Guid, List<Guid>> relatedEntities)
         {
             if (!RelatedEntities.ContainsKey(relationshipName))
-                RelatedEntities[relationshipName] = new Dictionary<Guid, List<Guid>>();
+                this.RelatedEntities[relationshipName] = new Dictionary<Guid, List<Guid>>();
 
             foreach (var id in relatedEntities.Keys)
             {
                 if (!RelatedEntities[relationshipName].ContainsKey(id))
-                    RelatedEntities[relationshipName][id] = new List<Guid>();
+                    this.RelatedEntities[relationshipName][id] = new List<Guid>();
 
-                RelatedEntities[relationshipName][id].AddRange(relatedEntities[id]);
-                RelatedEntities[relationshipName][id] = RelatedEntities[relationshipName][id].Distinct().ToList();
+                this.RelatedEntities[relationshipName][id].AddRange(relatedEntities[id]);
+                this.RelatedEntities[relationshipName][id] = RelatedEntities[relationshipName][id].Distinct().ToList();
             }
         }
 

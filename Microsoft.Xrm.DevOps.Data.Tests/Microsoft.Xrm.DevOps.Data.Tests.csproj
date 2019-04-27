@@ -155,6 +155,8 @@
     <Compile Include="lib\PrimitiveTypes\StringTypeEntity.cs" />
     <Compile Include="lib\PrimitiveTypes\UniqueIdentifierTypeEntity.cs" />
     <Compile Include="UnitTests_Configurations.cs" />
+    <Compile Include="UnitTests_Data_Imports.cs" />
+    <Compile Include="UnitTests_Schema_Imports.cs" />
     <Compile Include="UnitTests_Schema_Primitives.cs" />
     <Compile Include="UnitTests_Exceptions.cs" />
     <Compile Include="UnitTests_Data_Primitives.cs" />
@@ -176,6 +178,8 @@
   <ItemGroup>
     <Content Include="lib\Configurations\AllEntities_SomePluginsDisabled_MixedIdentifiers_data.xml" />
     <Content Include="lib\Configurations\AllEntities_SomePluginsDisabled_MixedIdentifiers_data_schema.xml" />
+    <Content Include="lib\Configurations\MultipleSourcesOfMetadata_data.xml" />
+    <Content Include="lib\Configurations\MultipleSourcesOfMetadata_schema.xml" />
     <Content Include="lib\Configurations\MultiValueIdentifierSchema_data.xml" />
     <Content Include="lib\Configurations\MultiValueIdentifierSchema_data_schema.xml" />
     <Content Include="lib\Configurations\SingleEntity_AllPluginsDisabled_data.xml" />

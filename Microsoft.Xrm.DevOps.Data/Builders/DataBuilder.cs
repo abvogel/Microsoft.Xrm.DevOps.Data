@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Xml;
 using System.Collections.Generic;
-using System.Text;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 using Microsoft.Xrm.Sdk.Messages;
-using Microsoft.Xrm.Tooling.Connector;
 using Microsoft.Xrm.Sdk.Query;
 using System.Linq;
-using Microsoft.Crm.Sdk.Messages;
+using System.Xml.Serialization;
 
 namespace Microsoft.Xrm.DevOps.Data
 {
-    public class DataBuilder
+    public partial class DataBuilder
     {
+        #region Declarations
         private Dictionary<String, BuilderEntityMetadata> _Entities = new Dictionary<String, BuilderEntityMetadata>();
         private Boolean? _PluginsDisabled = null;
         private IOrganizationService _service;
@@ -25,39 +24,11 @@ namespace Microsoft.Xrm.DevOps.Data
                 this._service = value;
             }
         }
+        #endregion
 
-        private void VerifyEntityExists(String logicalName)
+        public DataBuilder()
         {
-            if (!_Entities.ContainsKey(logicalName))
-            {
-                _Entities[logicalName] = new BuilderEntityMetadata();
-            }
 
-            VerifyMetadataExists(logicalName);
-        }
-
-        private void VerifyMetadataExists(String logicalName) {
-            if (_Entities[logicalName].Metadata == null
-                    && this.Service != null) {
-                var retrieveEntityRequest = new RetrieveEntityRequest();
-                retrieveEntityRequest.LogicalName = logicalName;
-                retrieveEntityRequest.EntityFilters = EntityFilters.Attributes;
-                RetrieveEntityResponse RetrieveEntityResponse = (RetrieveEntityResponse)Service.Execute(retrieveEntityRequest);
-                _Entities[logicalName].Metadata = RetrieveEntityResponse.EntityMetadata;
-
-                var PartyTypeAttribute = Array.Find(_Entities[logicalName].Metadata.Attributes, s => s.AttributeType.Equals(AttributeTypeCode.PartyList));
-                if (PartyTypeAttribute != null)
-                {
-                    retrieveEntityRequest.LogicalName = "activityparty";
-                    retrieveEntityRequest.EntityFilters = EntityFilters.Attributes;
-                    RetrieveEntityResponse = (RetrieveEntityResponse)Service.Execute(retrieveEntityRequest);
-
-                    if (RetrieveEntityResponse != null)
-                    {
-                        _Entities[logicalName].PartyMetadata = RetrieveEntityResponse.EntityMetadata;
-                    }
-                }
-            }
         }
 
         public DataBuilder(IOrganizationService service)
@@ -67,22 +38,15 @@ namespace Microsoft.Xrm.DevOps.Data
 
         public void AppendData(Entity entity)
         {
-            VerifyEntityExists(entity.LogicalName);
-
-            // Always include the guid as a field if it is set for the entity.
-            if (entity.Id != Guid.Empty)
-            {
-                entity[_Entities[entity.LogicalName].Metadata.PrimaryIdAttribute] = entity.Id;
-            }
-
-            _Entities[entity.LogicalName].AppendEntity(entity);
+            this.VerifyEntityExists(entity.LogicalName);
+            this._Entities[entity.LogicalName].AppendEntity(entity);
         }
 
         public void AppendData(List<Entity> entities)
         {
             foreach (var entity in entities)
             {
-                AppendData(entity);
+                this.AppendData(entity);
             }
         }
 
@@ -90,19 +54,21 @@ namespace Microsoft.Xrm.DevOps.Data
         {
             foreach (var entity in entityCollection.Entities)
             {
-                AppendData(entity);
+                this.AppendData(entity);
             }
         }
 
         public void AppendData(String logicalName, Dictionary<String, Object> entity)
         {
+            this.VerifyEntityExists(logicalName);
+            this.RefreshMetadataFromConnection(logicalName);
+            var primaryIdField = _Entities[logicalName].Metadata.PrimaryIdAttribute;
+
             Entity newEntity = new Entity(logicalName);
             foreach (var keyValuePair in entity)
             {
-                // trimend to compensate for MS bug that adds extra whitespace
                 if (newEntity.Id == Guid.Empty &&
-                      ((keyValuePair.Key.ToLower().TrimEnd() == "ReturnProperty_Id")
-                    || (keyValuePair.Key.ToLower() == logicalName.ToLower() + "id")))
+                      (keyValuePair.Key.ToLower() == primaryIdField))
                 {
                     newEntity.Id = Guid.Parse(keyValuePair.Value.ToString());
                 }
@@ -116,14 +82,14 @@ namespace Microsoft.Xrm.DevOps.Data
                 newEntity[keyValuePair.Key] = keyValuePair.Value;
             }
 
-            AppendData(newEntity);
+            this.AppendData(newEntity);
         }
 
         public void AppendData(String logicalName, Dictionary<String, Object>[] entities)
         {
             foreach (var entity in entities)
             {
-                AppendData(logicalName, entity);
+                this.AppendData(logicalName, entity);
             }
         }
 
@@ -138,29 +104,199 @@ namespace Microsoft.Xrm.DevOps.Data
             {
                 RetrieveMultipleResponse retrieveMultipleResponse = (RetrieveMultipleResponse)this._service.Execute(req);
 
+                if (retrieveMultipleResponse.EntityCollection.Entities.Count == 0)
+                    return;
+
                 if (HasManyToManyAttribute(fetchXml))
                 {
-                    AppendM2MData(retrieveMultipleResponse.EntityCollection);
+                    this.AppendM2MData(retrieveMultipleResponse.EntityCollection);
                 }
                 else
                 {
-                    AppendData(retrieveMultipleResponse.EntityCollection);
+                    this.AppendData(retrieveMultipleResponse.EntityCollection);
+                }
+
+                this.RefreshMetadataFromConnection(retrieveMultipleResponse.EntityCollection.EntityName);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("Failed to retrieve fetch results: {0}.", ex.Message));
+            }
+        }
+
+        public void AppendData(String DataXML, String SchemaXML)
+        {
+            var _dataXml = new XmlDocument();
+            _dataXml.LoadXml(DataXML);
+
+            var _schemaXml = new XmlDocument();
+            _schemaXml.LoadXml(SchemaXML);
+
+            this.AppendData(_dataXml, _schemaXml);
+        }
+
+        public void AppendData(XmlDocument DataXML, XmlDocument SchemaXML)
+        {
+            var dataSerializer = new XmlSerializer(typeof(Data.DataXml.Entities));
+            XmlReader dataReader = new XmlNodeReader(DataXML);
+            var data = (Data.DataXml.Entities)dataSerializer.Deserialize(dataReader);
+
+            var schemaSerializer = new XmlSerializer(typeof(Data.SchemaXml.Entities));
+            XmlReader schemaReader = new XmlNodeReader(SchemaXML);
+            var schema = (Data.SchemaXml.Entities)schemaSerializer.Deserialize(schemaReader);
+
+            this.AppendData(data, schema);
+        }
+
+        protected void AppendData(Data.DataXml.Entities DataXML, Data.SchemaXml.Entities SchemaXML)
+        {
+            foreach (var entity in DataXML.Entity)
+            {
+                String logicalName = entity.Name;
+                var schemaData = SchemaXML.Entity.Where(x => x.Name.Equals(logicalName)).First();
+                this.VerifyEntityExists(schemaData);
+                this.AddMetadataFromSchema(schemaData);
+
+                foreach (var record in entity.Records.Record)
+                {
+                    Entity holdingEntity = new Entity(logicalName, Guid.Parse(record.Id));
+                    foreach (var field in record.Field)
+                    {
+                        holdingEntity[field.Name] = Builders.XmlImporter.GetObjectFromFieldNodeType(field, schemaData);
+                    }
+                    this.AppendData(holdingEntity);
+                }
+
+                if (this._Entities[logicalName].Identifiers.Count == 0)
+                {
+                    List<String> setIdentifiers = schemaData.Fields.Field.Where(field => field.UpdateCompare == "true").Select(field => field.Name).ToList();
+                    if (setIdentifiers.Count == 0)
+                    {
+                        setIdentifiers.Add(schemaData.Primaryidfield);
+                    }
+                    this._Entities[logicalName].Identifiers = setIdentifiers;
+                }
+                    
+                if (this._Entities[logicalName].PluginsDisabled == null 
+                        && !String.IsNullOrEmpty(schemaData.Disableplugins))
+                {
+                    this._Entities[logicalName].PluginsDisabled = Boolean.Parse(schemaData.Disableplugins);
+                }
+
+                foreach (var relationship in entity.M2mrelationships.M2mrelationship)
+                {
+                    Dictionary<Guid, List<Guid>> relationshipPairs = new Dictionary<Guid, List<Guid>>();
+                    List<Guid> targetids = new List<Guid>();
+
+                    foreach (var targetid in relationship.Targetids.Targetid)
+                    {
+                        targetids.Add(Guid.Parse(targetid));
+                    }
+
+                    relationshipPairs.Add(Guid.Parse(relationship.Sourceid), targetids);
+                    this._Entities[entity.Name].AppendM2MDataToEntity(relationship.M2mrelationshipname, relationshipPairs);
                 }
             }
-            catch (Exception)
+        }
+
+        public void SetIdentifier(String LogicalName, String[] Identifier)
+        {
+            this.VerifyEntityExists(LogicalName);
+            this._Entities[LogicalName].Identifiers = new List<String>();
+            foreach (String partialIdentifier in Identifier)
             {
-                throw new Exception("Failed to retrieve fetch results.");
+                this._Entities[LogicalName].Identifiers.Add(partialIdentifier);
+            };
+        }
+
+        public void SetIdentifier(String logicalName, String identifier)
+        {
+            this.VerifyEntityExists(logicalName);
+            this._Entities[logicalName].Identifiers = new List<string>() { identifier };
+        }
+
+        public void SetPluginsDisabled(Boolean disabled)
+        {
+            this._PluginsDisabled = disabled;
+        }
+
+        public void SetPluginsDisabled(String logicalName, Boolean disabled)
+        {
+            this.VerifyEntityExists(logicalName);
+            this._Entities[logicalName].PluginsDisabled = disabled;
+        }
+
+        public XmlDocument BuildSchemaXML()
+        {
+            foreach (var logicalName in this._Entities.Keys)
+            {
+                // Commit global plugin disable state if it was set
+                if (_PluginsDisabled != null)
+                    this._Entities[logicalName].PluginsDisabled = (bool)_PluginsDisabled;
+
+                this.FinalizeEntity(logicalName);
             }
+
+            return XmlSchemaBuilder.ToXmlDocument(_Entities);
+        }
+
+        public XmlDocument BuildDataXML()
+        {
+            foreach (var logicalName in this._Entities.Keys)
+            {
+                this.FinalizeEntity(logicalName);
+            }
+
+            return XmlDataBuilder.ToXmlDocument(_Entities);
+        }
+
+        public XmlDocument BuildContentTypesXML()
+        {
+            String contentType = "<?xml version=\"1.0\" encoding=\"utf-8\"?><Types xmlns=\"http://schemas.openxmlformats.org/package/2006/content-types\"><Default Extension=\"xml\" ContentType=\"application/octet-stream\" /></Types>";
+            XmlDocument content = new XmlDocument();
+            content.LoadXml(contentType);
+            return content;
+        }
+
+        #region Private Methods
+        private void VerifyEntityExists(String logicalName)
+        {
+            if (!this._Entities.ContainsKey(logicalName))
+            {
+                this._Entities[logicalName] = new BuilderEntityMetadata();
+            }
+        }
+
+        private void VerifyEntityExists(SchemaXml.Entity schemaXML)
+        {
+            if (!this._Entities.ContainsKey(schemaXML.Name))
+            {
+                this._Entities[schemaXML.Name] = new BuilderEntityMetadata();
+            }
+        }
+
+        private void RefreshMetadataFromConnection(String logicalName)
+        {
+            if (this.Service != null
+                    && this._Entities[logicalName].FetchedAllMetadata == false)
+            {
+                var retrieveEntityRequest = new RetrieveEntityRequest();
+                retrieveEntityRequest.LogicalName = logicalName;
+                retrieveEntityRequest.EntityFilters = EntityFilters.Attributes;
+                RetrieveEntityResponse RetrieveEntityResponse = (RetrieveEntityResponse)Service.Execute(retrieveEntityRequest);
+                this._Entities[logicalName].Metadata = RetrieveEntityResponse.EntityMetadata;
+                this._Entities[logicalName].FetchedAllMetadata = true;
+            }
+        }
+
+        private void AddMetadataFromSchema(SchemaXml.Entity schemaXML)
+        {
+            this._Entities[schemaXML.Name].Metadata = Builders.XmlImporter.GenerateAdditionalMetadata(this._Entities[schemaXML.Name].Metadata, schemaXML);
         }
 
         private void AppendM2MData(EntityCollection queryResponse)
         {
             var SourceEntity = queryResponse.EntityName;
-
-            if (queryResponse.Entities.Count == 0)
-            {
-                return;
-            }
 
             Dictionary<Guid, List<Guid>> relationshipPairs = new Dictionary<Guid, List<Guid>>();
             String relationshipName = queryResponse.Entities[0].Attributes.Where(x => x.Value is AliasedValue).Select(x => ((AliasedValue)x.Value).EntityLogicalName).First();
@@ -177,8 +313,12 @@ namespace Microsoft.Xrm.DevOps.Data
                 relationshipPairs[record.Id].Add(relatedId);
             }
 
-            VerifyEntityExists(SourceEntity);
-            _Entities[SourceEntity].AppendM2MDataToEntity(relationshipName, relationshipPairs);
+            this.VerifyEntityExists(SourceEntity);
+            foreach (var relationshipPair in relationshipPairs)
+            {
+                this._Entities[SourceEntity].AppendEntity(new Entity(SourceEntity, relationshipPair.Key));
+            }
+            this._Entities[SourceEntity].AppendM2MDataToEntity(relationshipName, relationshipPairs);
         }
 
         private bool HasManyToManyAttribute(string fetchXml)
@@ -194,86 +334,53 @@ namespace Microsoft.Xrm.DevOps.Data
             return false;
         }
 
-        public void SetIdentifier(String logicalName, String[] identifiers)
-        {
-            VerifyEntityExists(logicalName);
-            _Entities[logicalName].Identifiers = new List<String>(identifiers);
-        }
-
-        public void SetIdentifier(String logicalName, String identifier)
-        {
-            VerifyEntityExists(logicalName);
-            _Entities[logicalName].Identifiers = new List<string>() { identifier };
-        }
-
-        public void SetPluginsDisabled(Boolean disabled) {
-            _PluginsDisabled = disabled;
-        }
-
-        public void SetPluginsDisabled(String logicalName, Boolean disabled)
-        {
-            VerifyEntityExists(logicalName);
-            _Entities[logicalName].PluginsDisabled = disabled;
-        }
-
-        public XmlDocument BuildSchemaXML() {
-            foreach (var logicalName in _Entities.Keys)
-            {
-                // Commit global plugin disable state if it was set
-                if (_PluginsDisabled != null)
-                    _Entities[logicalName].PluginsDisabled = (bool)_PluginsDisabled;
-
-                FinalizeEntity(logicalName);
-            }
-
-            return XmlSchemaBuilder.ToXmlDocument(_Entities);
-        }
-
-        public XmlDocument BuildDataXML() {
-            foreach (var logicalName in _Entities.Keys)
-            {
-                FinalizeEntity(logicalName);
-            }
-
-            return XmlDataBuilder.ToXmlDocument(_Entities);
-        }
-
-        public XmlDocument BuildContentTypesXML()
-        {
-            String contentType = "<?xml version=\"1.0\" encoding=\"utf-8\"?><Types xmlns=\"http://schemas.openxmlformats.org/package/2006/content-types\"><Default Extension=\"xml\" ContentType=\"application/octet-stream\" /></Types>";
-            XmlDocument content = new XmlDocument();
-            content.LoadXml(contentType);
-            return content;
-        }
-
         private void FinalizeEntity(string logicalName)
         {
+            // Always include the guid as a field if it is set for the entity.
+            this.AppendIdFieldsForMissingIds(logicalName);
+
             // Add record stub to support internal lookups where the record doesn't exist
-            List<AttributeMetadata> lookups = GetFieldsThatAreEntityReference(logicalName);
-            AppendStubRecordsForInternalLookups(logicalName, lookups);
+            List<AttributeMetadata> lookups = this.GetFieldsThatAreEntityReference(logicalName);
+            this.AppendStubRecordsForInternalLookups(logicalName, lookups);
 
             // Add record stub to support m2m relationships
-            if (_Entities[logicalName].RelatedEntities.Count > 0)
-                AppendStubRecordsForM2MRelationships(logicalName);
+            if (this._Entities[logicalName].RelatedEntities.Count > 0)
+                this.AppendStubRecordsForM2MRelationships(logicalName);
 
             // Commit identifier - merge duplicates based on chosen identifier
-            _Entities[logicalName].CommitIdentifier();
+            this._Entities[logicalName].CommitIdentifier();
+        }
+
+        private void AppendIdFieldsForMissingIds(string logicalName)
+        {
+            var newEntities = new List<Entity>();
+
+            foreach (var entity in _Entities[logicalName].Entities)
+            {
+                var newEntity = new Entity(entity.LogicalName, entity.Id);
+                newEntity[_Entities[entity.LogicalName].Metadata.PrimaryIdAttribute] = entity.Id;
+                newEntities.Add(newEntity);
+            }
+
+            this.AppendData(newEntities);
         }
 
         private void AppendStubRecordsForInternalLookups(string logicalName, List<AttributeMetadata> lookups)
         {
             var stubRecords = new List<Entity>();
-            foreach (Entity record in _Entities[logicalName].Entities)
+            foreach (Entity record in this._Entities[logicalName].Entities)
             {
                 foreach (AttributeMetadata fieldMetadata in lookups)
                 {
                     if (!record.Contains(fieldMetadata.LogicalName))
                         continue;
 
-                    var recordField = (EntityReference)record[fieldMetadata.LogicalName];
-
-                    if (_Entities.ContainsKey(recordField.LogicalName))
-                        stubRecords.Add(new Entity(recordField.LogicalName, recordField.Id));
+                    else if (record[fieldMetadata.LogicalName] is EntityReference)
+                    {
+                        var recordField = (EntityReference)record[fieldMetadata.LogicalName];
+                        if (_Entities.ContainsKey(recordField.LogicalName))
+                            stubRecords.Add(new Entity(recordField.LogicalName, recordField.Id));
+                    }
                 }
             }
             this.AppendData(stubRecords);
@@ -281,9 +388,9 @@ namespace Microsoft.Xrm.DevOps.Data
 
         private List<AttributeMetadata> GetFieldsThatAreEntityReference(string logicalName)
         {
-            return _Entities[logicalName].Metadata.Attributes.Where(x =>
+            return this._Entities[logicalName].Metadata.Attributes.Where(x =>
             {
-                if (_Entities[logicalName].Attributes.Contains(x.LogicalName))
+                if (this._Entities[logicalName].Attributes.Contains(x.LogicalName))
                 {
                     switch (x.AttributeType)
                     {
@@ -302,7 +409,7 @@ namespace Microsoft.Xrm.DevOps.Data
         private void AppendStubRecordsForM2MRelationships(string logicalName)
         {
             var stubRecords = new List<Entity>();
-            foreach (var Relationship in _Entities[logicalName].RelatedEntities)
+            foreach (var Relationship in this._Entities[logicalName].RelatedEntities)
             {
                 foreach (var RelatedEntityPair in Relationship.Value)
                 {
@@ -311,5 +418,6 @@ namespace Microsoft.Xrm.DevOps.Data
             }
             this.AppendData(stubRecords);
         }
+        #endregion
     }
 }

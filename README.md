@@ -15,16 +15,43 @@ https://www.powershellgallery.com/packages/Microsoft.Xrm.DevOps.Data.PowerShell/
 
 ## Example Code
     $Conn = Get-CrmConnection -Interactive
-    $build = Get-CrmDataBuilder;
-    $build.FetchCollection = @("<fetch><entity name='category'><all-attributes /></entity></fetch>");
-    Export-CrmDataBuilder -Conn $Conn -Builder $build -ZipPath c:\data.zip
-## Other Features
-### Per entity custom identifiers
-    $build.Identifiers["category"] = @("categoryid"); # default
-    $build.Identifiers["contact"] = @("firstname", "lastname", "birthdate");
-### Per entity capability to disable plugins
-    $build.DisablePlugins["contact"] = $false; # default
-    $build.DisablePlugins["category"] = $true;
-### Global ability to disable plugins for all imported entities
-    $build.DisablePluginsGlobally = $false; # default
-    $build.DisablePluginsGlobally = $true;
+    $anotherPackage = Get-CrmDataPackage -Conn $Conn -Fetches @("<fetch><entity name='account'><all-attributes/></entity></fetch>");
+    Get-CrmDataPackage -Conn $Conn -Fetches `
+        @("<fetch><entity name='contact'><all-attributes/></entity></fetch>", "<fetch><entity name='category'><all-attributes/></entity></fetch>") `
+        | Add-CrmDataPackage -Fetches @("<fetch><entity name='knowledgearticle'><all-attributes/></entity></fetch>") `
+        | Merge-CrmDataPackage -AdditionalPackage $anotherPackage `
+        | Export-CrmDataPackage -ZipPath $env:USERPROFILE\Downloads\testrun.zip
+    
+    Get-CrmDataPackage -Conn $Conn -Fetches @("<fetch><entity name='contact'><all-attributes/></entity></fetch>") -Identifiers @{ "contact" = @("firstname", "lastname", "birthdate") } -DisablePluginsGlobally $true | Export-CrmDataPackage -ZipPath "$env:USERPROFILE\Desktop\contacts.zip";
+## Commands
+### Get-CrmDataPackage
+    Returns object CrmDataPackage used by this module
+    -Fetches takes an array of fetches 
+        e.g. @($fetch1, $fetch2);
+    -Identifiers Dictionary<String, String[]>
+        Default is the primarykey
+        e.g. @{ "contact" = @("firstname", "lastname", "birthdate") };
+    -DisablePlugins Dictionary<String, Boolean>
+        Default is false
+        e.g. @{ "contact" = $false };
+    -DisablePluginsGlobally Boolean
+        e.g. $false;
+
+### Add-CrmDataPackage
+    Returns object CrmDataPackage
+    Same as Get-CrmDataPackage except it can take a CrmDataPackage via pipe, or input Package
+
+### Merge-CrmDataPackage
+    Returns object CrmDataPackage
+    Takes two CrmDataPackages as inputs. Values in the second package override the first.
+
+### Export-CrmDataPackage
+    Returns nothing.
+    -Package takes a CrmDataPackage
+    -ZipPath takes a "$env:USERPROFILE\Downloads\thedata.zip"
+
+### CrmDataPackage
+    Contains three XmlDocuments representing the three XML files that go in a Configuration Migration Data Package.
+    -ContentTypes
+    -Data
+    -Schema

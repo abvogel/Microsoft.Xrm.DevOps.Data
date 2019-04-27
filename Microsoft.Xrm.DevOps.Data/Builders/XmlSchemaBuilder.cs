@@ -11,7 +11,7 @@ using Microsoft.Xrm.Sdk.Metadata;
 
 namespace Microsoft.Xrm.DevOps.Data
 {
-    public class XmlSchemaBuilder
+    internal class XmlSchemaBuilder
     {
         internal static XmlDocument ToXmlDocument(Dictionary<string, BuilderEntityMetadata> entities)
         {
@@ -66,7 +66,8 @@ namespace Microsoft.Xrm.DevOps.Data
                 Etc = builderEntityMetadata.Metadata.ObjectTypeCode.ToString(),
                 Primaryidfield = builderEntityMetadata.Metadata.PrimaryIdAttribute,
                 Primarynamefield = builderEntityMetadata.Metadata.PrimaryNameAttribute,
-                Disableplugins = (builderEntityMetadata.PluginsDisabled ? "true" : "false"),
+                Disableplugins = (builderEntityMetadata.PluginsDisabled == null
+                                   || builderEntityMetadata.PluginsDisabled == false ? "false" : "true"),
                 Fields = new SchemaXml.Fields()
                 {
                     Field = new List<SchemaXml.Field>()
@@ -159,7 +160,6 @@ namespace Microsoft.Xrm.DevOps.Data
 
             throw new Exception("Unknown Field Node Type.");
         }
-
 
         private static String GetFieldNodeLookupType(AttributeMetadata attribute)
         {

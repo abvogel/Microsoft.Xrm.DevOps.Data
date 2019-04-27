@@ -1,0 +1,69 @@
+﻿<entities>
+  <entity name="account" displayname="Account" etc="1" primaryidfield="accountid" disableplugins="false">
+    <fields>
+      <field updateCompare="true" displayname="Account" name="accountid" type="guid" primaryKey="true" />
+      <field displayname="Created By" name="createdby" type="entityreference" lookupType="contact" />
+    </fields>
+  </entity>
+  <entity name="theme" displayname="Theme" etc="2015" primaryidfield="themeid" primarynamefield="name" disableplugins="false">
+    <fields>
+      <field displayname="Default Theme" name="isdefaulttheme" type="bool" />
+      <field updateCompare="true" displayname="Theme" name="themeid" type="guid" primaryKey="true" />
+    </fields>
+  </entity>
+  <entity name="incident" displayname="Case" etc="112" primaryidfield="incidentid" primarynamefield="title" disableplugins="false">
+    <fields>
+      <field displayname="Customer" name="customerid" type="entityreference" lookupType="account|contact" />
+      <field updateCompare="true" displayname="Case" name="incidentid" type="guid" primaryKey="true" />
+    </fields>
+  </entity>
+  <entity name="knowledgearticle" displayname="Knowledge Article" etc="9953" primaryidfield="knowledgearticleid" primarynamefield="title" disableplugins="false">
+    <fields>
+      <field displayname="Short Description" name="description" type="string" />
+      <field displayname="Expiration State Id" name="expirationstateid" type="number" />
+      <field displayname="Expired Review Options" name="expiredreviewoptions" type="optionsetvalue" />
+      <field displayname="Keywords" name="keywords" type="string" />
+      <field updateCompare="true" displayname="Knowledge Article" name="knowledgearticleid" type="guid" primaryKey="true" />
+      <field displayname="Owner" name="ownerid" type="owner" />
+      <field displayname="Previous Article Content ID" name="previousarticlecontentid" type="entityreference" lookupType="knowledgearticle" />
+      <field displayname="Publish On" name="publishon" type="datetime" />
+      <field displayname="Stage Id" name="stageid" type="guid" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+    </fields>
+  </entity>
+  <entity name="msdyn_resourcerequirementdetail" displayname="Resource Requirement Detail" etc="10022" primaryidfield="msdyn_resourcerequirementdetailid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Hours" name="msdyn_hours" type="decimal" customfield="true" />
+      <field updateCompare="true" displayname="Resource Requirement Detail" name="msdyn_resourcerequirementdetailid" type="guid" primaryKey="true" />
+    </fields>
+  </entity>
+  <entity name="msdyn_purchaseorderproduct" displayname="Purchase Order Product" etc="10149" primaryidfield="msdyn_purchaseorderproductid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field updateCompare="true" displayname="Purchase Order Product" name="msdyn_purchaseorderproductid" type="guid" primaryKey="true" />
+      <field displayname="Quantity" name="msdyn_quantity" type="float" customfield="true" />
+    </fields>
+  </entity>
+  <entity name="invoice" displayname="Invoice" etc="1090" primaryidfield="invoiceid" primarynamefield="name" disableplugins="false">
+    <fields>
+      <field updateCompare="true" displayname="Invoice" name="invoiceid" type="guid" primaryKey="true" />
+      <field displayname="Total Tax" name="totaltax" type="money" />
+    </fields>
+  </entity>
+  <entity name="msdyn_approval" displayname="Approval" etc="10032" primaryidfield="activityid" primarynamefield="subject" disableplugins="false">
+    <fields>
+      <field updateCompare="true" displayname="Approval" name="activityid" type="guid" primaryKey="true" />
+      <field displayname="Customers" name="customers" type="partylist" />
+    </fields>
+  </entity>
+  <entity name="systemuser" displayname="User" etc="8" primaryidfield="systemuserid" disableplugins="false">
+    <fields>
+      <field displayname="First Name" name="firstname" type="string" />
+      <field displayname="Last Name" name="lastname" type="string" />
+      <field updateCompare="true" displayname="User" name="systemuserid" type="guid" primaryKey="true" />
+    </fields>
+    <relationships>
+      <relationship name="systemuserroles" manyToMany="true" isreflexive="false" relatedEntityName="systemuserroles" m2mTargetEntity="role" m2mTargetEntityPrimaryKey="roleid" />
+    </relationships>
+  </entity>
+</entities>

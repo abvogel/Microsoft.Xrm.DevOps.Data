@@ -206,7 +206,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 DataBuilder.BuildSchemaXML().InnerXml,
                 SupportMethods.GetSingleEntity_AllPluginsDisabledEntityExpectedSchema());
         }
-        
+
         [TestMethod]
         public void AllEntities_SomePluginsDisabled_MixedIdentifiers()
         {
@@ -311,6 +311,196 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             Assert.AreEqual(
                 DataBuilder.BuildSchemaXML().InnerXml,
                 SupportMethods.GetAllEntities_SomePluginsDisabled_MixedIdentifiersExpectedSchema());
+        }
+
+        [TestMethod]
+        public void AllEntities_SomePluginsDisabled_MixedIdentifiers_SchemaImported()
+        {
+            XrmFakedContext fakedContext = new XrmFakedContext();
+            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            db.AppendData(SupportMethods.GetAllEntities_SomePluginsDisabled_MixedIdentifiersExpectedData(), SupportMethods.GetAllEntities_SomePluginsDisabled_MixedIdentifiersExpectedSchema());
+
+            Assert.AreEqual(
+                db.BuildSchemaXML().InnerXml,
+                SupportMethods.GetAllEntities_SomePluginsDisabled_MixedIdentifiersExpectedSchema());
+        }
+
+        [TestMethod]
+        public void AllEntities_SomePluginsDisabled_MixedIdentifiers_DataImported()
+        {
+            XrmFakedContext fakedContext = new XrmFakedContext();
+            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            db.AppendData(SupportMethods.GetAllEntities_SomePluginsDisabled_MixedIdentifiersExpectedData(), SupportMethods.GetAllEntities_SomePluginsDisabled_MixedIdentifiersExpectedSchema());
+
+            Assert.AreEqual(
+                db.BuildDataXML().InnerXml,
+                SupportMethods.GetAllEntities_SomePluginsDisabled_MixedIdentifiersExpectedData());
+        }
+
+        [TestMethod]
+        public void MultipleSourcesOfMetadata_DataImported()
+        {
+            var fakedContext = new XrmFakedContext();
+            fakedContext.InitializeMetadata(typeof(CrmEarlyBound.CrmServiceContext).Assembly);
+
+            Guid targetGuid = Guid.Parse("f0205357-124a-4b5a-9163-5cca2b3d3e8d");
+            Entity AccountWithExternalLookup = new Entity("account", Guid.Parse("832193cb-f381-47c0-b059-662bdfcf1261"));
+            AccountWithExternalLookup["createdby"] = new EntityReference("systemuser", targetGuid);
+
+            Entity SystemUser = new Entity("systemuser", Guid.Parse("16b8a7ea-7d3f-4856-85a1-59f98ffcfafe"));
+            SystemUser["firstname"] = "Andrew";
+            SystemUser["lastname"] = "Vogel";
+
+            fakedContext.Initialize(new List<Entity>() { AccountWithExternalLookup, SystemUser });
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var logicalName = ((RetrieveEntityRequest)req).LogicalName;
+                var entityMetadata = fakedContext.GetEntityMetadataByName(logicalName);
+
+                switch (entityMetadata.LogicalName)
+                {
+                    case SupportMethods.AccountLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.AccountDisplayName, 1033);
+                        entityMetadata.Attributes.First(a => a.LogicalName == "createdby").SetSealedPropertyValue("DisplayName", new Label("Created By", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "createdby").SetSealedPropertyValue("Targets", new String[] { "contact" });
+                        entityMetadata.Attributes.First(a => a.LogicalName == "accountid").SetSealedPropertyValue("DisplayName", new Label("Account", 1033));
+                        break;
+                    case SupportMethods.UserLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.UserDisplayName, 1033);
+                        entityMetadata.Attributes.First(a => a.LogicalName == "firstname").SetSealedPropertyValue("DisplayName", new Label("First Name", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "lastname").SetSealedPropertyValue("DisplayName", new Label("Last Name", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "systemuserid").SetSealedPropertyValue("DisplayName", new Label("User", 1033));
+                        entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("IntersectEntityName", "systemuserroles");
+                        entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("Entity2LogicalName", "role");
+                        entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("Entity2IntersectAttribute", "roleid");
+                        break;
+                    default:
+                        break;
+                }
+
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
+
+            DataBuilder db = new DataBuilder(fakedService);
+            db.AppendData("<fetch><entity name='account'><attribute name='accountid'/><attribute name='createdby'/></entity></fetch>");
+
+            db.AppendData(SupportMethods.GetBooleanTypeExpectedData(), SupportMethods.GetBooleanTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetCustomerTypeExpectedData(), SupportMethods.GetCustomerTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetDateTimeTypeExpectedData(), SupportMethods.GetDateTimeTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetDecimalTypeExpectedData(), SupportMethods.GetDecimalTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetDoubleTypeExpectedData(), SupportMethods.GetDoubleTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetIntegerTypeExpectedData(), SupportMethods.GetIntegerTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetLookupTypeExpectedData(), SupportMethods.GetLookupTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetMemoTypeExpectedData(), SupportMethods.GetMemoTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetMoneyTypeExpectedData(), SupportMethods.GetMoneyTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetOwnerTypeExpectedData(), SupportMethods.GetOwnerTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetPartyListTypeExpectedData(), SupportMethods.GetPartyListTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetPicklistTypeExpectedData(), SupportMethods.GetPicklistTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetStateTypeExpectedData(), SupportMethods.GetStateTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetStatusTypeExpectedData(), SupportMethods.GetStatusTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetStringTypeExpectedData(), SupportMethods.GetStringTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetUniqueIdentifierTypeExpectedData(), SupportMethods.GetUniqueIdentifierTypeExpectedSchema());
+            db.AppendData(SupportMethods.Getm2mRelationshipTypeExpectedData(), SupportMethods.Getm2mRelationshipTypeExpectedSchema());
+
+            db.AppendData("<fetch><entity name='systemuser'><attribute name='systemuserid'/><attribute name='firstname'/><attribute name='lastname'/></entity></fetch>");
+
+            db.SetIdentifier("systemuser", "systemuserid");
+
+            Assert.AreEqual(
+                db.BuildDataXML().InnerXml,
+                SupportMethods.LoadXmlFile("../../lib/Configurations/MultipleSourcesOfMetadata_data.xml"));
+        }
+
+        [TestMethod]
+        public void MultipleSourcesOfMetadata_SchemaImported()
+        {
+            var fakedContext = new XrmFakedContext();
+            fakedContext.InitializeMetadata(typeof(CrmEarlyBound.CrmServiceContext).Assembly);
+
+            Guid targetGuid = Guid.Parse("f0205357-124a-4b5a-9163-5cca2b3d3e8d");
+            Entity AccountWithExternalLookup = new Entity("account", Guid.Parse("832193cb-f381-47c0-b059-662bdfcf1261"));
+            AccountWithExternalLookup["createdby"] = new EntityReference("systemuser", targetGuid);
+
+            Entity SystemUser = new Entity("systemuser", Guid.Parse("16b8a7ea-7d3f-4856-85a1-59f98ffcfafe"));
+            SystemUser["firstname"] = "Andrew";
+            SystemUser["lastname"] = "Vogel";
+
+            fakedContext.Initialize(new List<Entity>() { AccountWithExternalLookup, SystemUser });
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var logicalName = ((RetrieveEntityRequest)req).LogicalName;
+                var entityMetadata = fakedContext.GetEntityMetadataByName(logicalName);
+
+                switch (entityMetadata.LogicalName)
+                {
+                    case SupportMethods.AccountLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.AccountDisplayName, 1033);
+                        entityMetadata.Attributes.First(a => a.LogicalName == "createdby").SetSealedPropertyValue("DisplayName", new Label("Created By", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "createdby").SetSealedPropertyValue("Targets", new String[] { "contact" });
+                        entityMetadata.Attributes.First(a => a.LogicalName == "accountid").SetSealedPropertyValue("DisplayName", new Label("Account", 1033));
+                        break;
+                    case SupportMethods.UserLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.UserDisplayName, 1033);
+                        entityMetadata.Attributes.First(a => a.LogicalName == "firstname").SetSealedPropertyValue("DisplayName", new Label("First Name", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "lastname").SetSealedPropertyValue("DisplayName", new Label("Last Name", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "systemuserid").SetSealedPropertyValue("DisplayName", new Label("User", 1033));
+                        entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("IntersectEntityName", "systemuserroles");
+                        entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("Entity2LogicalName", "role");
+                        entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("Entity2IntersectAttribute", "roleid");
+                        break;
+                    default:
+                        break;
+                }
+
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
+
+            DataBuilder db = new DataBuilder(fakedService);
+            db.AppendData("<fetch><entity name='account'><attribute name='accountid'/><attribute name='createdby'/></entity></fetch>");
+
+            db.AppendData(SupportMethods.GetBooleanTypeExpectedData(), SupportMethods.GetBooleanTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetCustomerTypeExpectedData(), SupportMethods.GetCustomerTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetDateTimeTypeExpectedData(), SupportMethods.GetDateTimeTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetDecimalTypeExpectedData(), SupportMethods.GetDecimalTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetDoubleTypeExpectedData(), SupportMethods.GetDoubleTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetIntegerTypeExpectedData(), SupportMethods.GetIntegerTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetLookupTypeExpectedData(), SupportMethods.GetLookupTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetMemoTypeExpectedData(), SupportMethods.GetMemoTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetMoneyTypeExpectedData(), SupportMethods.GetMoneyTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetOwnerTypeExpectedData(), SupportMethods.GetOwnerTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetPartyListTypeExpectedData(), SupportMethods.GetPartyListTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetPicklistTypeExpectedData(), SupportMethods.GetPicklistTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetStateTypeExpectedData(), SupportMethods.GetStateTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetStatusTypeExpectedData(), SupportMethods.GetStatusTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetStringTypeExpectedData(), SupportMethods.GetStringTypeExpectedSchema());
+            db.AppendData(SupportMethods.GetUniqueIdentifierTypeExpectedData(), SupportMethods.GetUniqueIdentifierTypeExpectedSchema());
+            db.AppendData(SupportMethods.Getm2mRelationshipTypeExpectedData(), SupportMethods.Getm2mRelationshipTypeExpectedSchema());
+
+            db.AppendData("<fetch><entity name='systemuser'><attribute name='systemuserid'/><attribute name='firstname'/><attribute name='lastname'/></entity></fetch>");
+
+            db.SetIdentifier("systemuser", "systemuserid");
+
+            Assert.AreEqual(
+                db.BuildSchemaXML().InnerXml,
+                SupportMethods.LoadXmlFile("../../lib/Configurations/MultipleSourcesOfMetadata_schema.xml"));
         }
     }
 }

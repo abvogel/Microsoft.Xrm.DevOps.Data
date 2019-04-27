@@ -10,7 +10,7 @@ using Microsoft.Xrm.Sdk.Metadata;
 
 namespace Microsoft.Xrm.DevOps.Data
 {
-    public class XmlDataBuilder
+    internal class XmlDataBuilder
     {
         internal static XmlDocument ToXmlDocument(Dictionary<string, BuilderEntityMetadata> entities)
         {
@@ -149,10 +149,10 @@ namespace Microsoft.Xrm.DevOps.Data
                 case Sdk.Metadata.AttributeTypeCode.Money:
                     FieldNode.Value = ((Microsoft.Xrm.Sdk.Money)attribute.Value).Value.ToString();
                     break;
-                case Sdk.Metadata.AttributeTypeCode.Customer:
                 case Sdk.Metadata.AttributeTypeCode.Lookup:
                 case Sdk.Metadata.AttributeTypeCode.Owner:
-                        var EntityReference = (EntityReference)attribute.Value;
+                case Sdk.Metadata.AttributeTypeCode.Customer:
+                    var EntityReference = (EntityReference)attribute.Value;
                         FieldNode.Value = EntityReference.Id.ToString();
                         FieldNode.Lookupentity = EntityReference.LogicalName;
                         FieldNode.Lookupentityname = EntityReference.Name;
@@ -196,7 +196,7 @@ namespace Microsoft.Xrm.DevOps.Data
 
             foreach (var attribute in entity.Attributes)
             {
-                ActivitypointerNode.Field.Add(GenerateFieldNode(attribute, builderEntityMetadata.PartyMetadata.Attributes.Where(a => a.LogicalName.Equals(attribute.Key)).First(), builderEntityMetadata));
+                ActivitypointerNode.Field.Add(GenerateFieldNode(attribute, Builders.ActivityPartyMetadata.Build().Attributes.Where(a => a.LogicalName.Equals(attribute.Key)).First(), builderEntityMetadata));
             }
 
             return ActivitypointerNode;
