@@ -35,4 +35,5 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    ArtifactName: 'PowerShellModule'
+    PathtoPublish: '$(Build.SourcesDirectory)\Microsoft.Xrm.DevOps.Data\bin\'
+    ArtifactName: 'Microsoft.Xrm.DevOps.Data.PowerShell'
