@@ -18,7 +18,7 @@ https://www.powershellgallery.com/packages/Microsoft.Xrm.DevOps.Data.PowerShell/
     $anotherPackage = Get-CrmDataPackage -Conn $Conn -Fetches @("<fetch><entity name='account'><all-attributes/></entity></fetch>");
     Get-CrmDataPackage -Conn $Conn -Fetches `
         @("<fetch><entity name='contact'><all-attributes/></entity></fetch>", "<fetch><entity name='category'><all-attributes/></entity></fetch>") `
-        | Add-CrmDataPackage -Fetches @("<fetch><entity name='knowledgearticle'><all-attributes/></entity></fetch>") `
+        | Add-CrmDataPackage -Conn $Conn -Fetches @("<fetch><entity name='knowledgearticle'><all-attributes/></entity></fetch>") `
         | Merge-CrmDataPackage -AdditionalPackage $anotherPackage `
         | Export-CrmDataPackage -ZipPath $env:USERPROFILE\Downloads\testrun.zip
     
