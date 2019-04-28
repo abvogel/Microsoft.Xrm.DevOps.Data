@@ -27,30 +27,48 @@ namespace Microsoft.Xrm.DevOps.Data.PowerShell.Cmdlets
 
         protected override void ProcessRecord()
         {
+            GenerateVerboseMessage("Generating DataBuilder Instance.");
             DevOps.Data.DataBuilder db = new DevOps.Data.DataBuilder(this.Conn);
 
             if (this.Fetches.Length == 0)
                 throw new Exception("No fetches provided.");
 
             foreach (String fetch in this.Fetches)
+            {
+                GenerateVerboseMessage(String.Format("Appending fetch: {0}", fetch));
                 db.AppendData(fetch);
+            }
 
             if (this.Identifiers.Keys.Count > 0)
+            {
+                GenerateVerboseMessage("Setting identifiers.");
                 foreach (String key in this.Identifiers.Keys)
                 {
                     String[] identifier = Array.ConvertAll<object, string>((Object[])this.Identifiers[key], delegate (object obj) { return (string)obj; });
+                    GenerateVerboseMessage(String.Format("Setting entity/identifier: {0}/{1}", key, String.Join(",", identifier)));
                     db.SetIdentifier(key, identifier);
                 }
+            }
 
             if (this.DisablePlugins.Keys.Count > 0)
+            {
+                GenerateVerboseMessage("Disabling plugins.");
                 foreach (String key in this.DisablePlugins.Keys)
+                {
+                    GenerateVerboseMessage(String.Format("Setting entity/disable: {0}/{1}", key, DisablePlugins[key].ToString()));
                     db.SetPluginsDisabled(key, (Boolean)DisablePlugins[key]);
+                }
+            }
 
             if (this.DisablePluginsGlobally)
+            {
+                GenerateVerboseMessage("Disabling plugins globally.");
                 db.SetPluginsDisabled(true);
+            }
 
             try
             {
+                GenerateVerboseMessage("Generating CrmDataPackage.");
                 var Package = new CrmDataPackage()
                 {
                     ContentTypes = db.BuildContentTypesXML(),
@@ -58,12 +76,18 @@ namespace Microsoft.Xrm.DevOps.Data.PowerShell.Cmdlets
                     Schema = db.BuildSchemaXML()
                 };
 
+                GenerateVerboseMessage("Writing CrmDataPackage to output.");
                 base.WriteObject(Package);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        private void GenerateVerboseMessage(string v)
+        {
+            WriteVerbose(String.Format("{0} {1}: {2}", DateTime.Now.ToShortTimeString(), "Get-CrmDataPackage", v));
         }
     }
 }

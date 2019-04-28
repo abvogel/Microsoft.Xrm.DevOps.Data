@@ -18,26 +18,36 @@ namespace Microsoft.Xrm.DevOps.Data.PowerShell.Cmdlets
 
         protected override void ProcessRecord()
         {
+            GenerateVerboseMessage("Generating DataBuilder Instance.");
             DevOps.Data.DataBuilder db = new DevOps.Data.DataBuilder();
 
+            GenerateVerboseMessage("Appending Source CrmDataPackage.");
             db.AppendData(SourcePackage.Data, SourcePackage.Schema);
+            GenerateVerboseMessage("Appending Additional CrmDataPackage.");
             db.AppendData(AdditionalPackage.Data, AdditionalPackage.Schema);
 
             try
             {
-                var package = new CrmDataPackage()
+                GenerateVerboseMessage("Generating CrmDataPackage.");
+                var Package = new CrmDataPackage()
                 {
                     ContentTypes = db.BuildContentTypesXML(),
                     Data = db.BuildDataXML(),
                     Schema = db.BuildSchemaXML()
                 };
 
-                base.WriteObject(package);
+                GenerateVerboseMessage("Writing CrmDataPackage to output.");
+                base.WriteObject(Package);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        private void GenerateVerboseMessage(string v)
+        {
+            WriteVerbose(String.Format("{0} {1}: {2}", DateTime.Now.ToShortTimeString(), "Merge-CrmDataPackage", v));
         }
     }
 }
