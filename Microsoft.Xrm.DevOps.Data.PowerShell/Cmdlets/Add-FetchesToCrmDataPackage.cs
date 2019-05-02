@@ -5,8 +5,8 @@ using System.Collections;
 
 namespace Microsoft.Xrm.DevOps.Data.PowerShell.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Add, "CrmDataPackage")]
-    public class AddCrmDataPackage : PSCmdlet
+    [Cmdlet(VerbsCommon.Add, "FetchesToCrmDataPackage")]
+    public class AddFetchesToCrmDataPackage : PSCmdlet
     {
         [Parameter(Position = 0, Mandatory = true)]
         public IOrganizationService Conn { get; set; }

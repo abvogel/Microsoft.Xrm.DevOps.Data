@@ -156,6 +156,7 @@
     <Compile Include="lib\PrimitiveTypes\UniqueIdentifierTypeEntity.cs" />
     <Compile Include="UnitTests_Configurations.cs" />
     <Compile Include="UnitTests_Data_Imports.cs" />
+    <Compile Include="UnitTests_Remove_Operations.cs" />
     <Compile Include="UnitTests_Schema_Imports.cs" />
     <Compile Include="UnitTests_Schema_Primitives.cs" />
     <Compile Include="UnitTests_Exceptions.cs" />
@@ -209,6 +210,7 @@
     <Content Include="lib\PrimitiveTypes\LookupType.xml" />
     <Content Include="lib\PrimitiveTypes\LookupTypedata.xml" />
     <Content Include="lib\PrimitiveTypes\LookupTypedata_schema.xml" />
+    <Content Include="lib\PrimitiveTypes\m2mRelationshipTypedata2.xml" />
     <Content Include="lib\PrimitiveTypes\m2mRelationshipTypedata.xml" />
     <Content Include="lib\PrimitiveTypes\m2mRelationshipTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\MemoType.xml" />

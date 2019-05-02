@@ -113,6 +113,39 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             return entities;
         }
 
+        public static Entity[] Getm2mRelationshipTypePartialEntities()
+        {
+            Entity[] entities = new Entity[]
+            {
+                new Entity("systemuser")
+                {
+                    Id = Guid.Parse("00e7b0b9-1ace-e711-a970-000d3a192311")
+                },
+                new Entity("role")
+                {
+                    Id = Guid.Parse("cad52a75-568c-e611-80d4-00155d42a122")
+                },
+                new Entity("role")
+                {
+                    Id = Guid.Parse("3dac4d9e-568c-e611-80d4-00155d42a122")
+                },
+                new Entity("role")
+                {
+                    Id = Guid.Parse("85d865b5-fea1-e611-8116-00155da84013")
+                },
+                new Entity("role")
+                {
+                    Id = Guid.Parse("e186d6f0-28d6-4bfc-bea5-71e44c3e13a4")
+                },
+                new Entity("role")
+                {
+                    Id = Guid.Parse("52d9415f-86f4-e611-8128-e0071b6a4261")
+                }
+            };
+
+            return entities;
+        }
+
         public static AssociateRequest Getm2mRelationshipTypeAssociateRequest()
         {
             Guid sourceId = Guid.Parse("00e7b0b9-1ace-e711-a970-000d3a192311");
@@ -184,6 +217,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public static String Getm2mRelationshipTypeExpectedData()
         {
             return LoadXmlFile(@"../../lib/PrimitiveTypes/m2mRelationshipTypedata.xml");
+        }
+
+        public static String Getm2mRelationshipTypeExpectedData2()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/m2mRelationshipTypedata2.xml");
         }
 
         public static String Getm2mRelationshipTypeExpectedSchema()

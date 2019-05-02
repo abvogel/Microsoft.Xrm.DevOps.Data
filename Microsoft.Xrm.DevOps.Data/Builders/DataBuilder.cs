@@ -185,20 +185,78 @@ namespace Microsoft.Xrm.DevOps.Data
 
                 foreach (var relationship in entity.M2mrelationships.M2mrelationship)
                 {
-                    Dictionary<Guid, List<Guid>> relationshipPairs = new Dictionary<Guid, List<Guid>>();
-                    List<Guid> targetids = new List<Guid>();
-
-                    foreach (var targetid in relationship.Targetids.Targetid)
-                    {
-                        targetids.Add(Guid.Parse(targetid));
-                    }
-
-                    relationshipPairs.Add(Guid.Parse(relationship.Sourceid), targetids);
+                    Dictionary<Guid, List<Guid>> relationshipPairs = CompileRelationshipData(relationship);
                     this._Entities[entity.Name].AppendM2MDataToEntity(relationship.M2mrelationshipname, relationshipPairs);
                 }
             }
         }
 
+        public void RemoveData(Entity entity)
+        {
+            this.VerifyEntityExists(entity.LogicalName);
+            this._Entities[entity.LogicalName].RemoveAttributesWhereIdentical(entity);
+        }
+
+        public void RemoveData(Entity[] entities)
+        {
+            foreach (var entity in entities)
+            {
+                this.VerifyEntityExists(entity.LogicalName);
+                this._Entities[entity.LogicalName].RemoveAttributesWhereIdentical(entity);
+            }
+        }
+
+        public void RemoveData(String DataXML, String SchemaXML)
+        {
+            var _dataXml = new XmlDocument();
+            _dataXml.LoadXml(DataXML);
+
+            var _schemaXml = new XmlDocument();
+            _schemaXml.LoadXml(SchemaXML);
+
+            RemoveData(_dataXml, _schemaXml);
+        }
+
+        public void RemoveData(XmlDocument DataXML, XmlDocument SchemaXML)
+        {
+            var dataSerializer = new XmlSerializer(typeof(Data.DataXml.Entities));
+            XmlReader dataReader = new XmlNodeReader(DataXML);
+            var data = (Data.DataXml.Entities)dataSerializer.Deserialize(dataReader);
+
+            var schemaSerializer = new XmlSerializer(typeof(Data.SchemaXml.Entities));
+            XmlReader schemaReader = new XmlNodeReader(SchemaXML);
+            var schema = (Data.SchemaXml.Entities)schemaSerializer.Deserialize(schemaReader);
+
+            RemoveData(data, schema);
+        }
+
+        protected void RemoveData(Data.DataXml.Entities DataXML, Data.SchemaXml.Entities SchemaXML)
+        {
+            foreach (var entity in DataXML.Entity)
+            {
+                String logicalName = entity.Name;
+                var schemaData = SchemaXML.Entity.Where(x => x.Name.Equals(logicalName)).First();
+                this.VerifyEntityExists(schemaData);
+                this.AddMetadataFromSchema(schemaData);
+
+                foreach (var record in entity.Records.Record)
+                {
+                    Entity holdingEntity = new Entity(logicalName, Guid.Parse(record.Id));
+                    foreach (var field in record.Field)
+                    {
+                        holdingEntity[field.Name] = Builders.XmlImporter.GetObjectFromFieldNodeType(field, schemaData);
+                    }
+                    this.RemoveData(holdingEntity);
+                }
+
+                foreach (var relationship in entity.M2mrelationships.M2mrelationship)
+                {
+                    Dictionary<Guid, List<Guid>> relationshipPairs = CompileRelationshipData(relationship);
+                    this._Entities[logicalName].RemoveRelationshipsWhereIdentical(relationship.M2mrelationshipname, relationshipPairs);
+                }
+            }
+        }
+        
         public void SetIdentifier(String LogicalName, String[] Identifier)
         {
             this.VerifyEntityExists(LogicalName);
@@ -273,6 +331,20 @@ namespace Microsoft.Xrm.DevOps.Data
             {
                 this._Entities[schemaXML.Name] = new BuilderEntityMetadata();
             }
+        }
+
+        private static Dictionary<Guid, List<Guid>> CompileRelationshipData(DataXml.M2mrelationship relationship)
+        {
+            Dictionary<Guid, List<Guid>> relationshipPairs = new Dictionary<Guid, List<Guid>>();
+            List<Guid> targetids = new List<Guid>();
+
+            foreach (var targetid in relationship.Targetids.Targetid)
+            {
+                targetids.Add(Guid.Parse(targetid));
+            }
+
+            relationshipPairs.Add(Guid.Parse(relationship.Sourceid), targetids);
+            return relationshipPairs;
         }
 
         private void RefreshMetadataFromConnection(String logicalName)

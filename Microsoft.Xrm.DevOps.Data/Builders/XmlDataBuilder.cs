@@ -47,6 +47,9 @@ namespace Microsoft.Xrm.DevOps.Data
             };
 
             foreach (var logicalname in entities.Keys) {
+                if (entities[logicalname].Entities.Count == 0 && entities[logicalname].RelatedEntities.Count == 0)
+                    continue;
+
                 EntitiesNode.Entity.Add(GenerateEntityNode(logicalname, entities[logicalname]));
             }
 

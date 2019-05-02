@@ -1,4 +1,5 @@
-﻿using Microsoft.Xrm.Sdk.Metadata;
+﻿using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Metadata;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,12 @@ namespace Microsoft.Xrm.DevOps.Data.SupportClasses
 {
     static class SupportMethods
     {
+
+        public static void SetSealedPropertyValue(this Entity entity, string sPropertyName, object value)
+        {
+            entity.GetType().GetProperty(sPropertyName).SetValue(entity, value, null);
+        }
+
         public static void SetSealedPropertyValue(this EntityMetadata entityMetadata, string sPropertyName, object value)
         {
             entityMetadata.GetType().GetProperty(sPropertyName).SetValue(entityMetadata, value, null);
