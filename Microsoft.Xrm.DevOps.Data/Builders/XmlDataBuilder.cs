@@ -89,11 +89,17 @@ namespace Microsoft.Xrm.DevOps.Data
 
                 foreach (KeyValuePair<Guid, List<Guid>> relationshipPair in builderEntityMetadata.RelatedEntities[relationshipName])
                 {
+                    string targetPrimaryKey = relationshipMetadata.Entity2IntersectAttribute;
+                    if (relationshipMetadata.Entity1LogicalName == relationshipMetadata.Entity2LogicalName)
+                    {
+                        targetPrimaryKey = relationshipMetadata.Entity2IntersectAttribute.Substring(0, relationshipMetadata.Entity2IntersectAttribute.Length - 3);
+                    }
+
                     var relationship = new M2mrelationship()
                     {
                         Sourceid = relationshipPair.Key.ToString(),
                         Targetentityname = relationshipMetadata.Entity2LogicalName,
-                        Targetentitynameidfield = relationshipMetadata.Entity2IntersectAttribute,
+                        Targetentitynameidfield = targetPrimaryKey,
                         M2mrelationshipname = relationshipMetadata.IntersectEntityName,
                         Targetids = new Targetids()
                         {

@@ -109,7 +109,7 @@ namespace Microsoft.Xrm.DevOps.Data
 
                 if (HasManyToManyAttribute(fetchXml))
                 {
-                    this.AppendM2MData(retrieveMultipleResponse.EntityCollection);
+                    this.AppendM2MData(retrieveMultipleResponse.EntityCollection, GetFirstLinkEntityName(fetchXml));
                 }
                 else
                 {
@@ -354,7 +354,7 @@ namespace Microsoft.Xrm.DevOps.Data
             {
                 var retrieveEntityRequest = new RetrieveEntityRequest();
                 retrieveEntityRequest.LogicalName = logicalName;
-                retrieveEntityRequest.EntityFilters = EntityFilters.Attributes;
+                retrieveEntityRequest.EntityFilters = EntityFilters.All;
                 RetrieveEntityResponse RetrieveEntityResponse = (RetrieveEntityResponse)Service.Execute(retrieveEntityRequest);
                 this._Entities[logicalName].Metadata = RetrieveEntityResponse.EntityMetadata;
                 this._Entities[logicalName].FetchedAllMetadata = true;
@@ -366,12 +366,17 @@ namespace Microsoft.Xrm.DevOps.Data
             this._Entities[schemaXML.Name].Metadata = Builders.XmlImporter.GenerateAdditionalMetadata(this._Entities[schemaXML.Name].Metadata, schemaXML);
         }
 
-        private void AppendM2MData(EntityCollection queryResponse)
+        private void AppendM2MData(EntityCollection queryResponse, String FirstLinkEntityName)
         {
             var SourceEntity = queryResponse.EntityName;
 
             Dictionary<Guid, List<Guid>> relationshipPairs = new Dictionary<Guid, List<Guid>>();
             String relationshipName = queryResponse.Entities[0].Attributes.Where(x => x.Value is AliasedValue).Select(x => ((AliasedValue)x.Value).EntityLogicalName).First();
+
+            if (RelationshipIsReflexive(queryResponse.EntityName, relationshipName))
+            {
+                relationshipName = FirstLinkEntityName;
+            }
 
             foreach (var record in queryResponse.Entities)
             {
@@ -393,6 +398,11 @@ namespace Microsoft.Xrm.DevOps.Data
             this._Entities[SourceEntity].AppendM2MDataToEntity(relationshipName, relationshipPairs);
         }
 
+        private bool RelationshipIsReflexive(string entityName, string relationshipName)
+        {
+            return entityName.Equals(relationshipName);
+        }
+
         private bool HasManyToManyAttribute(string fetchXml)
         {
             XmlDocument xml = new XmlDocument();
@@ -404,6 +414,14 @@ namespace Microsoft.Xrm.DevOps.Data
             }
 
             return false;
+        }
+
+        private string GetFirstLinkEntityName(string fetchXml)
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(fetchXml);
+
+            return xml.SelectSingleNode("fetch/entity/link-entity[@intersect='true']/@name").Value;
         }
 
         private void FinalizeEntity(string logicalName)

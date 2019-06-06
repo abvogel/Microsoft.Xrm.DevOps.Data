@@ -104,6 +104,12 @@ namespace Microsoft.Xrm.DevOps.Data
                 {
                     var relationshipMetadata = builderEntityMetadata.Metadata.ManyToManyRelationships.Where(x => x.IntersectEntityName == relationshipname).First();
                     
+                    string targetPrimaryKey = relationshipMetadata.Entity2IntersectAttribute;
+                    if (relationshipMetadata.Entity1LogicalName == relationshipMetadata.Entity2LogicalName)
+                    {
+                        targetPrimaryKey = relationshipMetadata.Entity2IntersectAttribute.Substring(0, relationshipMetadata.Entity2IntersectAttribute.Length - 3);
+                    }
+
                     entityNode.Relationships.Relationship.Add(new SchemaXml.Relationship()
                     {
                         Name = relationshipname,
@@ -111,8 +117,9 @@ namespace Microsoft.Xrm.DevOps.Data
                         Isreflexive = (relationshipMetadata.Entity1LogicalName == relationshipMetadata.Entity2LogicalName).ToString().ToLower(),
                         RelatedEntityName = relationshipMetadata.IntersectEntityName,
                         M2mTargetEntity = relationshipMetadata.Entity2LogicalName,
-                        M2mTargetEntityPrimaryKey = relationshipMetadata.Entity2IntersectAttribute
+                        M2mTargetEntityPrimaryKey = targetPrimaryKey
                     });
+
                 }
             }
 
