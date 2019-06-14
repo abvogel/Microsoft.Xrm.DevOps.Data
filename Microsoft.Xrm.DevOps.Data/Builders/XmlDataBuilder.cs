@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -128,12 +128,32 @@ namespace Microsoft.Xrm.DevOps.Data
             };
 
             foreach (var attribute in entity.Attributes) {
-                RecordNode.Field.Add(GenerateFieldNode(attribute, builderEntityMetadata.Metadata.Attributes.Where(a => a.LogicalName.Equals(attribute.Key)).First(), builderEntityMetadata));
+                var attributeMetadata = builderEntityMetadata.Metadata.Attributes.Where(a => a.LogicalName.Equals(attribute.Key)).First();
+
+                if (!IsSupportedAttributeType(attributeMetadata.AttributeType))
+                    continue;
+
+                RecordNode.Field.Add(GenerateFieldNode(attribute, attributeMetadata, builderEntityMetadata));
             }
 
             RecordNode.Field.Sort((x, y) => string.Compare(x.Name, y.Name));
 
             return RecordNode;
+        }
+
+        private static bool IsSupportedAttributeType(AttributeTypeCode? attributeType)
+        {
+            switch (attributeType)
+            {
+                case AttributeTypeCode.CalendarRules:
+                case AttributeTypeCode.Virtual:
+                case AttributeTypeCode.BigInt:
+                case AttributeTypeCode.ManagedProperty:
+                case AttributeTypeCode.EntityName:
+                    return false;
+                default:
+                    return true;
+            }
         }
 
         private static DataXml.Field GenerateFieldNode(KeyValuePair<string, object> attribute, Sdk.Metadata.AttributeMetadata attributeMetadata, BuilderEntityMetadata builderEntityMetadata)
@@ -189,7 +209,7 @@ namespace Microsoft.Xrm.DevOps.Data
                 case Sdk.Metadata.AttributeTypeCode.ManagedProperty:
                 case Sdk.Metadata.AttributeTypeCode.EntityName:
                 default:
-                    throw new Exception("Unknown Field Node Type.");
+                    throw new Exception(String.Format("GenerateFieldNode: Unknown Field Node Type - {0}", attributeMetadata.AttributeType));
             }
 
             return FieldNode;
