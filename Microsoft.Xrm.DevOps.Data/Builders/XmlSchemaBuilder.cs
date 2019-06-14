@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -77,6 +77,10 @@ namespace Microsoft.Xrm.DevOps.Data
             foreach (var attribute in builderEntityMetadata.Attributes)
             {
                 var AttributeMetadata = builderEntityMetadata.Metadata.Attributes.Where(a => a.LogicalName == attribute).First();
+
+                if (!IsSupportedAttributeType(AttributeMetadata.AttributeType))
+                    continue;
+
                 SchemaXml.Field field = new SchemaXml.Field()
                 {
                     Displayname = AttributeMetadata.DisplayName.LocalizedLabels[0].Label,
@@ -126,6 +130,21 @@ namespace Microsoft.Xrm.DevOps.Data
             return entityNode;
         }
 
+        private static bool IsSupportedAttributeType(AttributeTypeCode? attributeType)
+        {
+            switch (attributeType)
+            {
+                case AttributeTypeCode.CalendarRules:
+                case AttributeTypeCode.Virtual:
+                case AttributeTypeCode.BigInt:
+                case AttributeTypeCode.ManagedProperty:
+                case AttributeTypeCode.EntityName:
+                    return false;
+                default:
+                    return true;
+            }
+        }
+
         private static String GetFieldNodeType(AttributeMetadata attribute)
         {
             switch (attribute.AttributeType)
@@ -161,11 +180,23 @@ namespace Microsoft.Xrm.DevOps.Data
                     return "string";
                 case AttributeTypeCode.Uniqueidentifier:
                     return "guid";
+                case AttributeTypeCode.CalendarRules:
+                    break;
+                case AttributeTypeCode.Virtual:
+                    break;
+                case AttributeTypeCode.BigInt:
+                    break;
+                case AttributeTypeCode.ManagedProperty:
+                    break;
+                case AttributeTypeCode.EntityName:
+                    break;
                 default:
                     break;
             }
 
-            throw new Exception("Unknown Field Node Type.");
+                
+
+            throw new Exception(String.Format("GetFieldNodeType: Unknown Field Node Type - {0}.", attribute.AttributeType));
         }
 
         private static String GetFieldNodeLookupType(AttributeMetadata attribute)
