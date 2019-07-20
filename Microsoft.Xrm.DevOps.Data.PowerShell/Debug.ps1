@@ -3,12 +3,8 @@ Import-Module .\Microsoft.Xrm.DevOps.Data.PowerShell.dll -Force;
 $Conn = Get-CrmConnection -Interactive;
 
 $json = ConvertFrom-Json -InputObject '{
-      "solutionName": "Sym_Remote_Build",
+      "solutionName": "Test_Build",
       "fetches": [
-        {
-          "identifier": "po_optionitem",
-          "fetch": "<fetch><entity name=\"po_optionitem\"><attribute name=\"statecode\"/><attribute name=\"po_label\"/><attribute name=\"bby_lineofbusinessid\"/><attribute name=\"po_optionitemid\"/><attribute name=\"po_optioncode\"/><attribute name=\"po_optionsconfigurationid\"/><attribute name=\"po_sortserialno\"/><attribute name=\"po_optionsconfigurationidname\"/><attribute name=\"po_sortorder\"/><attribute name=\"statuscode\"/><attribute name=\"po_value\"/><attribute name=\"bby_lineofbusinessidname\"/><filter><condition attribute=\"po_optionitemid\" operator=\"eq\" value=\"1DCE667F-FF77-E911-A96B-000D3A1D23D3\"/></filter></entity></fetch>"
-        },
         {
           "identifier": "msdyusd_agentscriptaction",
           "fetch": "<fetch><entity name=\"msdyusd_agentscriptaction\" ><attribute name=\"msdyusd_agentscriptactionid\" /><link-entity name=\"msdyusd_subactioncalls\" from=\"msdyusd_agentscriptactionidtwo\" to=\"msdyusd_agentscriptactionid\" intersect=\"true\" ><attribute name=\"msdyusd_agentscriptactionidtwo\" /><link-entity name=\"msdyusd_agentscriptaction\" from=\"msdyusd_agentscriptactionid\" to=\"msdyusd_agentscriptactionidone\" ><attribute name=\"msdyusd_agentscriptactionid\" /></link-entity></link-entity></entity></fetch>"
