@@ -196,13 +196,7 @@ namespace Microsoft.Xrm.DevOps.Data
                     break;
             }
 
-<<<<<<< HEAD
             throw new Exception(String.Format("GetFieldNodeType: Unknown Field Node Type - {0}:{1} - {2}:{3}", attribute.EntityLogicalName, attribute.LogicalName, attribute.AttributeTypeName.Value, attribute.AttributeType));
-=======
-                
-
-            throw new Exception(String.Format("GetFieldNodeType: Unknown Field Node Type - {0}.", attribute.AttributeType));
->>>>>>> 753536b50f306fe593873c334f030cc5b97617c5
         }
 
         private static String GetFieldNodeLookupType(AttributeMetadata attribute)
