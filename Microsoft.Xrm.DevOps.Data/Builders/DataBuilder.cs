@@ -39,6 +39,7 @@ namespace Microsoft.Xrm.DevOps.Data
         public void AppendData(Entity entity)
         {
             this.VerifyEntityExists(entity.LogicalName);
+            this.RefreshMetadataFromConnection(entity.LogicalName);
             this._Entities[entity.LogicalName].AppendEntity(entity);
         }
 
@@ -150,6 +151,12 @@ namespace Microsoft.Xrm.DevOps.Data
 
         protected void AppendData(Data.DataXml.Entities DataXML, Data.SchemaXml.Entities SchemaXML)
         {
+            foreach (var schemaData in SchemaXML.Entity)
+            {
+                this.VerifyEntityExists(schemaData);
+                this.AddMetadataFromSchema(schemaData);
+            }
+
             foreach (var entity in DataXML.Entity)
             {
                 String logicalName = entity.Name;
@@ -286,24 +293,33 @@ namespace Microsoft.Xrm.DevOps.Data
 
         public XmlDocument BuildSchemaXML()
         {
-            foreach (var logicalName in this._Entities.Keys)
+            this._Entities.Keys.ToList().ForEach(logicalName =>
+            {
+                this.AppendData(GetStubRecords(logicalName));
+            });
+
+            this._Entities.Keys.ToList().ForEach(logicalName =>
             {
                 // Commit global plugin disable state if it was set
                 if (_PluginsDisabled != null)
                     this._Entities[logicalName].PluginsDisabled = (bool)_PluginsDisabled;
-
                 this.FinalizeEntity(logicalName);
-            }
+            });
 
             return XmlSchemaBuilder.ToXmlDocument(_Entities);
         }
 
         public XmlDocument BuildDataXML()
         {
-            foreach (var logicalName in this._Entities.Keys)
+            this._Entities.Keys.ToList().ForEach(logicalName =>
+            {
+                this.AppendData(GetStubRecords(logicalName));
+            });
+
+            this._Entities.Keys.ToList().ForEach(logicalName =>
             {
                 this.FinalizeEntity(logicalName);
-            }
+            });
 
             return XmlDataBuilder.ToXmlDocument(_Entities);
         }
@@ -424,18 +440,25 @@ namespace Microsoft.Xrm.DevOps.Data
             return xml.SelectSingleNode("fetch/entity/link-entity[@intersect='true']/@name").Value;
         }
 
+        private List<Entity> GetStubRecords(string logicalName)
+        {
+            List<Entity> stubRecords = new List<Entity>();
+
+            // Add record stub to support internal lookups where the record doesn't exist
+            List<AttributeMetadata> lookups = this.GetFieldsThatAreEntityReference(logicalName);
+                stubRecords.AddRange(this.GetStubRecordsForInternalLookups(logicalName, lookups));
+
+            // Add record stub to support m2m relationships
+            if (this._Entities[logicalName].RelatedEntities.Count > 0)
+                stubRecords.AddRange(this.GetStubRecordsForM2MRelationships(logicalName));
+
+            return stubRecords;
+        }
+
         private void FinalizeEntity(string logicalName)
         {
             // Always include the guid as a field if it is set for the entity.
             this.AppendIdFieldsForMissingIds(logicalName);
-
-            // Add record stub to support internal lookups where the record doesn't exist
-            List<AttributeMetadata> lookups = this.GetFieldsThatAreEntityReference(logicalName);
-            this.AppendStubRecordsForInternalLookups(logicalName, lookups);
-
-            // Add record stub to support m2m relationships
-            if (this._Entities[logicalName].RelatedEntities.Count > 0)
-                this.AppendStubRecordsForM2MRelationships(logicalName);
 
             // Commit identifier - merge duplicates based on chosen identifier
             this._Entities[logicalName].CommitIdentifier();
@@ -455,7 +478,7 @@ namespace Microsoft.Xrm.DevOps.Data
             this.AppendData(newEntities);
         }
 
-        private void AppendStubRecordsForInternalLookups(string logicalName, List<AttributeMetadata> lookups)
+        private List<Entity> GetStubRecordsForInternalLookups(string logicalName, List<AttributeMetadata> lookups)
         {
             var stubRecords = new List<Entity>();
             foreach (Entity record in this._Entities[logicalName].Entities)
@@ -473,7 +496,7 @@ namespace Microsoft.Xrm.DevOps.Data
                     }
                 }
             }
-            this.AppendData(stubRecords);
+            return stubRecords;
         }
 
         private List<AttributeMetadata> GetFieldsThatAreEntityReference(string logicalName)
@@ -496,17 +519,20 @@ namespace Microsoft.Xrm.DevOps.Data
             }).ToList();
         }
 
-        private void AppendStubRecordsForM2MRelationships(string logicalName)
+        private List<Entity> GetStubRecordsForM2MRelationships(string logicalName)
         {
             var stubRecords = new List<Entity>();
             foreach (var Relationship in this._Entities[logicalName].RelatedEntities)
             {
+                var targetLogicalName = this._Entities[logicalName].Metadata.ManyToManyRelationships.Where(x => x.SchemaName == Relationship.Key || x.IntersectEntityName == Relationship.Key).Select(x => x.Entity2LogicalName).FirstOrDefault();
+
                 foreach (var RelatedEntityPair in Relationship.Value)
                 {
                     stubRecords.Add(new Entity(logicalName, RelatedEntityPair.Key));
+                    RelatedEntityPair.Value.ToList<Guid>().ForEach(stubRecordId => stubRecords.Add(new Entity(targetLogicalName, stubRecordId)));
                 }
             }
-            this.AppendData(stubRecords);
+            return stubRecords;
         }
         #endregion
     }

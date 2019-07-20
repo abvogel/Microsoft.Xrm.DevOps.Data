@@ -317,7 +317,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void AllEntities_SomePluginsDisabled_MixedIdentifiers_SchemaImported()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetAllEntities_SomePluginsDisabled_MixedIdentifiersExpectedData(), SupportMethods.GetAllEntities_SomePluginsDisabled_MixedIdentifiersExpectedSchema());
 
             Assert.AreEqual(
@@ -329,7 +329,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void AllEntities_SomePluginsDisabled_MixedIdentifiers_DataImported()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetAllEntities_SomePluginsDisabled_MixedIdentifiersExpectedData(), SupportMethods.GetAllEntities_SomePluginsDisabled_MixedIdentifiersExpectedSchema());
 
             Assert.AreEqual(
@@ -373,6 +373,27 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                         entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("IntersectEntityName", "systemuserroles");
                         entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("Entity2LogicalName", "role");
                         entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("Entity2IntersectAttribute", "roleid");
+                        break;
+                    case SupportMethods.ThemeLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.ThemeDisplayName, 1033);
+                        break;
+                    case SupportMethods.IncidentLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.IncidentDisplayName, 1033);
+                        break;
+                    case SupportMethods.ResourceRequirementDetailLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.ResourceRequirementDetailDisplayName, 1033);
+                        break;
+                    case SupportMethods.PurchaseOrderProductLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.PurchaseOrderProductDisplayName, 1033);
+                        break;
+                    case SupportMethods.InvoiceLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.InvoiceDisplayName, 1033);
+                        break;
+                    case SupportMethods.ApprovalLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.ApprovalDisplayName, 1033);
+                        break;
+                    case SupportMethods.SecurityRoleLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.SecurityRoleDisplayName, 1033);
                         break;
                     default:
                         break;
@@ -456,6 +477,71 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                         entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("IntersectEntityName", "systemuserroles");
                         entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("Entity2LogicalName", "role");
                         entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("Entity2IntersectAttribute", "roleid");
+                        break;
+                    case SupportMethods.ThemeLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.ThemeDisplayName, 1033);
+                        entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "name");
+                        entityMetadata.Attributes.First(a => a.LogicalName == "themeid").SetSealedPropertyValue("DisplayName", new Label("Theme", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "isdefaulttheme").SetSealedPropertyValue("DisplayName", new Label("Default Theme", 1033));
+                        break;
+                    case SupportMethods.IncidentLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.IncidentDisplayName, 1033);
+                        entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "title");
+                        entityMetadata.Attributes.First(a => a.LogicalName == "incidentid").SetSealedPropertyValue("DisplayName", new Label("Case", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "customerid").SetSealedPropertyValue("DisplayName", new Label("Customer", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "customerid").SetSealedPropertyValue("AttributeType", Sdk.Metadata.AttributeTypeCode.Customer);
+                        entityMetadata.Attributes.First(a => a.LogicalName == "customerid").SetSealedPropertyValue("Targets", new String[] { "account", "contact" });
+                        break;
+                    case SupportMethods.ResourceRequirementDetailLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.ResourceRequirementDetailDisplayName, 1033);
+                        entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "msdyn_name");
+                        entityMetadata.Attributes.First(a => a.LogicalName == "msdyn_hours").SetSealedPropertyValue("DisplayName", new Label("Hours", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "msdyn_hours").SetSealedPropertyValue("IsCustomAttribute", true);
+                        entityMetadata.Attributes.First(a => a.LogicalName == "msdyn_resourcerequirementdetailid").SetSealedPropertyValue("DisplayName", new Label("Resource Requirement Detail", 1033));
+                        break;
+                    case SupportMethods.PurchaseOrderProductLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.PurchaseOrderProductDisplayName, 1033);
+                        entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "msdyn_name");
+                        entityMetadata.Attributes.First(a => a.LogicalName == "msdyn_quantity").SetSealedPropertyValue("DisplayName", new Label("Quantity", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "msdyn_quantity").SetSealedPropertyValue("IsCustomAttribute", true);
+                        entityMetadata.Attributes.First(a => a.LogicalName == "msdyn_purchaseorderproductid").SetSealedPropertyValue("DisplayName", new Label("Purchase Order Product", 1033));
+                        break;
+                    case SupportMethods.InvoiceLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.InvoiceDisplayName, 1033);
+                        entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "name");
+                        entityMetadata.Attributes.First(a => a.LogicalName == "invoiceid").SetSealedPropertyValue("DisplayName", new Label("Invoice", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "totaltax").SetSealedPropertyValue("DisplayName", new Label("Total Tax", 1033));
+                        break;
+                    case SupportMethods.ApprovalLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.ApprovalDisplayName, 1033);
+                        entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "subject");
+                        entityMetadata.Attributes.First(a => a.LogicalName == "activityid").SetSealedPropertyValue("DisplayName", new Label("Activity", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "customers").SetSealedPropertyValue("DisplayName", new Label("Customers", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "customers").SetSealedPropertyValue("AttributeType", Sdk.Metadata.AttributeTypeCode.PartyList);
+                        break;
+                    case SupportMethods.SecurityRoleLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.SecurityRoleDisplayName, 1033);
+                        entityMetadata.Attributes.First(a => a.LogicalName == "roleid").SetSealedPropertyValue("DisplayName", new Label("Role", 1033));
+                        break;
+                    case SupportMethods.KnowledgeArticleLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.KnowledgeArticleDisplayName, 1033);
+                        entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "title");
+                        entityMetadata.Attributes.First(a => a.LogicalName == "keywords").SetSealedPropertyValue("DisplayName", new Label("Keywords", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "keywords").SetSealedPropertyValue("AttributeType", Sdk.Metadata.AttributeTypeCode.Memo);
+                        entityMetadata.Attributes.First(a => a.LogicalName == "knowledgearticleid").SetSealedPropertyValue("DisplayName", new Label("Knowledge Article", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "publishon").SetSealedPropertyValue("DisplayName", new Label("Publish On", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "expirationstateid").SetSealedPropertyValue("DisplayName", new Label("Expiration State Id", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "previousarticlecontentid").SetSealedPropertyValue("DisplayName", new Label("Previous Article Content ID", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "previousarticlecontentid").SetSealedPropertyValue("Targets", new String[] { "knowledgearticle" });
+                        entityMetadata.Attributes.First(a => a.LogicalName == "ownerid").SetSealedPropertyValue("DisplayName", new Label("Owner", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "ownerid").SetSealedPropertyValue("AttributeType", Sdk.Metadata.AttributeTypeCode.Owner);
+                        entityMetadata.Attributes.First(a => a.LogicalName == "expiredreviewoptions").SetSealedPropertyValue("DisplayName", new Label("Expired Review Options", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "statecode").SetSealedPropertyValue("DisplayName", new Label("Status", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "statuscode").SetSealedPropertyValue("DisplayName", new Label("Status Reason", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "stageid").SetSealedPropertyValue("DisplayName", new Label("Stage Id", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "stageid").SetSealedPropertyValue("AttributeType", Sdk.Metadata.AttributeTypeCode.Uniqueidentifier);
+                        entityMetadata.Attributes.First(a => a.LogicalName == "description").SetSealedPropertyValue("DisplayName", new Label("Short Description", 1033));
+                        entityMetadata.Attributes.First(a => a.LogicalName == "articlepublicnumber").SetSealedPropertyValue("DisplayName", new Label("Article Public Number", 1033));
                         break;
                     default:
                         break;

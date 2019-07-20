@@ -350,15 +350,28 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 
             fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
             {
-                var entityMetadata = fakedContext.GetEntityMetadataByName(SupportMethods.UserLogicalName);
+                var logicalName = ((RetrieveEntityRequest)req).LogicalName;
+                var entityMetadata = fakedContext.GetEntityMetadataByName(logicalName);
 
-                entityMetadata.DisplayName = new Label(SupportMethods.UserDisplayName, 1033);
-                entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "fullname");
-                entityMetadata.Attributes.First(a => a.LogicalName == "systemuserid").SetSealedPropertyValue("DisplayName", new Label("User", 1033));
-                entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("IntersectEntityName", "systemuserroles");
-                entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("Entity2LogicalName", "role");
-                entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("Entity2IntersectAttribute", "roleid");
-                
+                switch (entityMetadata.LogicalName)
+                {
+                    case SupportMethods.UserLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.UserDisplayName, 1033);
+                        entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "fullname");
+                        entityMetadata.Attributes.First(a => a.LogicalName == "systemuserid").SetSealedPropertyValue("DisplayName", new Label("User", 1033));
+                        entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("IntersectEntityName", "systemuserroles");
+                        entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("Entity2LogicalName", "role");
+                        entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "systemuserroles_association").SetSealedPropertyValue("Entity2IntersectAttribute", "roleid");
+                        break;
+                    case SupportMethods.SecurityRoleLogicalName:
+                        entityMetadata.DisplayName = new Label(SupportMethods.SecurityRoleDisplayName, 1033);
+                        entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "name");
+                        entityMetadata.Attributes.First(a => a.LogicalName == "roleid").SetSealedPropertyValue("DisplayName", new Label("Role", 1033));
+                        break;
+                    default:
+                        break;
+                }
+
                 var response = new RetrieveEntityResponse()
                 {
                     Results = new ParameterCollection

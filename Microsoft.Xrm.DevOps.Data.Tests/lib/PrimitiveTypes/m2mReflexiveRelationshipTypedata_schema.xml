@@ -1,0 +1,10 @@
+<entities >
+  <entity name="msdyusd_agentscriptaction" displayname="Action Call" etc="10335" primaryidfield="msdyusd_agentscriptactionid" primarynamefield="msdyusd_name" disableplugins="false">
+    <fields>
+      <field updateCompare="true" displayname="Agent Script Action" name="msdyusd_agentscriptactionid" type="guid" primaryKey="true" />
+    </fields>
+    <relationships>
+      <relationship name="msdyusd_subactioncalls" manyToMany="true" isreflexive="true" relatedEntityName="msdyusd_subactioncalls" m2mTargetEntity="msdyusd_agentscriptaction" m2mTargetEntityPrimaryKey="msdyusd_agentscriptactionid" />
+    </relationships>
+  </entity>
+</entities>

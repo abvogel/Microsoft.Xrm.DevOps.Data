@@ -156,9 +156,98 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         }
 
         [TestMethod]
+        public void ReflexiveM2MRelationship_Data()
+        {
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
+                SupportMethods.AgentScriptActionLogicalName,
+                SupportMethods.AgentScriptActionDisplayName,
+                SupportMethods.Getm2mReflexiveRelationshipTypeEntities());
+            fakedContext.AddRelationship("msdyusd_subactioncalls", new XrmFakedRelationship
+            {
+                IntersectEntity = "msdyusd_subactioncalls",
+                Entity1LogicalName = "msdyusd_agentscriptaction",
+                Entity1Attribute = "msdyusd_agentscriptactionidone",
+                Entity2LogicalName = "msdyusd_agentscriptaction",
+                Entity2Attribute = "msdyusd_agentscriptactionidtwo"
+            });
+
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var entityMetadata = fakedContext.GetEntityMetadataByName(SupportMethods.AgentScriptActionLogicalName);
+
+                entityMetadata.DisplayName = new Label(SupportMethods.AgentScriptActionDisplayName, 1033);
+                entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "msdyusd_name");
+                entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "msdyusd_subactioncalls").SetSealedPropertyValue("IntersectEntityName", "msdyusd_subactioncalls");
+                entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "msdyusd_subactioncalls").SetSealedPropertyValue("Entity1LogicalName", "msdyusd_agentscriptaction");
+                entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "msdyusd_subactioncalls").SetSealedPropertyValue("Entity2LogicalName", "msdyusd_agentscriptaction");
+                entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "msdyusd_subactioncalls").SetSealedPropertyValue("Entity2IntersectAttribute", "msdyusd_agentscriptactionidtwo");
+
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
+            SupportMethods.Getm2mReflexiveRelationshipTypeAssociateRequests().ToList<AssociateRequest>().ForEach(r => fakedService.Execute(r));
+
+
+            DataBuilder DataBuilder = new DataBuilder(fakedService);
+            DataBuilder.AppendData(SupportMethods.Getm2mReflexiveRelationshipTypeFetch());
+
+            Assert.AreEqual(DataBuilder.BuildDataXML().InnerXml, SupportMethods.Getm2mReflexiveRelationshipTypeExpectedData());
+        }
+
+        [TestMethod]
         public void ReflexiveM2MRelationship_Schema()
         {
-            // does not support yet.
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
+                SupportMethods.AgentScriptActionLogicalName,
+                SupportMethods.AgentScriptActionDisplayName,
+                SupportMethods.Getm2mReflexiveRelationshipTypeEntities());
+            fakedContext.AddRelationship("msdyusd_subactioncalls", new XrmFakedRelationship
+            {
+                IntersectEntity = "msdyusd_subactioncalls",
+                Entity1LogicalName = "msdyusd_agentscriptaction",
+                Entity1Attribute = "msdyusd_agentscriptactionidone",
+                Entity2LogicalName = "msdyusd_agentscriptaction",
+                Entity2Attribute = "msdyusd_agentscriptactionidtwo"
+            });
+
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var entityMetadata = fakedContext.GetEntityMetadataByName(SupportMethods.AgentScriptActionLogicalName);
+
+                entityMetadata.DisplayName = new Label(SupportMethods.AgentScriptActionDisplayName, 1033);
+                entityMetadata.SetSealedPropertyValue("PrimaryNameAttribute", "msdyusd_name");
+                entityMetadata.Attributes.First(a => a.LogicalName == "msdyusd_agentscriptactionid").SetSealedPropertyValue("DisplayName", new Label("Agent Script Action", 1033));
+                entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "msdyusd_subactioncalls").SetSealedPropertyValue("IntersectEntityName", "msdyusd_subactioncalls");
+                entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "msdyusd_subactioncalls").SetSealedPropertyValue("Entity1LogicalName", "msdyusd_agentscriptaction");
+                entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "msdyusd_subactioncalls").SetSealedPropertyValue("Entity2LogicalName", "msdyusd_agentscriptaction");
+                entityMetadata.ManyToManyRelationships.First(m => m.SchemaName == "msdyusd_subactioncalls").SetSealedPropertyValue("Entity2IntersectAttribute", "msdyusd_agentscriptactionidtwo");
+
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
+            SupportMethods.Getm2mReflexiveRelationshipTypeAssociateRequests().ToList<AssociateRequest>().ForEach(r => fakedService.Execute(r));
+
+
+            DataBuilder DataBuilder = new DataBuilder(fakedService);
+            DataBuilder.AppendData(SupportMethods.Getm2mReflexiveRelationshipTypeFetch());
+
+            Assert.AreEqual(DataBuilder.BuildSchemaXML().InnerXml, SupportMethods.Getm2mReflexiveRelationshipTypeExpectedSchema());
         }
     }
 }

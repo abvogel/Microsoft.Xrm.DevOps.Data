@@ -16,7 +16,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void BooleanTypeData()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetBooleanTypeExpectedData(), SupportMethods.GetBooleanTypeExpectedSchema());
 
             Assert.AreEqual(
@@ -28,7 +28,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void CustomerType()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetCustomerTypeExpectedData(), SupportMethods.GetCustomerTypeExpectedSchema());
 
             Assert.AreEqual(
@@ -40,7 +40,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void DateTimeType()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetDateTimeTypeExpectedData(), SupportMethods.GetDateTimeTypeExpectedSchema());
 
             Assert.AreEqual(
@@ -52,7 +52,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void DecimalType()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetDecimalTypeExpectedData(), SupportMethods.GetDecimalTypeExpectedSchema());
 
             Assert.AreEqual(
@@ -64,7 +64,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void DoubleType()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetDoubleTypeExpectedData(), SupportMethods.GetDoubleTypeExpectedSchema());
 
             Assert.AreEqual(
@@ -76,7 +76,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void IntegerType()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetIntegerTypeExpectedData(), SupportMethods.GetIntegerTypeExpectedSchema());
 
             Assert.AreEqual(
@@ -88,7 +88,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void LookupType()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetLookupTypeExpectedData(), SupportMethods.GetLookupTypeExpectedSchema());
 
             Assert.AreEqual(
@@ -100,7 +100,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void MemoType()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetMemoTypeExpectedData(), SupportMethods.GetMemoTypeExpectedSchema());
 
             Assert.AreEqual(
@@ -112,7 +112,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void MoneyType()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetMoneyTypeExpectedData(), SupportMethods.GetMoneyTypeExpectedSchema());
 
             Assert.AreEqual(
@@ -124,7 +124,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void OwnerType()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetOwnerTypeExpectedData(), SupportMethods.GetOwnerTypeExpectedSchema());
 
             Assert.AreEqual(
@@ -136,7 +136,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void PartyListType()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetPartyListTypeExpectedData(), SupportMethods.GetPartyListTypeExpectedSchema());
 
             Assert.AreEqual(
@@ -148,7 +148,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void PicklistType()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetPicklistTypeExpectedData(), SupportMethods.GetPicklistTypeExpectedSchema());
 
             Assert.AreEqual(
@@ -160,7 +160,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void StateType()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetStateTypeExpectedData(), SupportMethods.GetStateTypeExpectedSchema());
 
             Assert.AreEqual(
@@ -172,7 +172,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void StatusType()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetStatusTypeExpectedData(), SupportMethods.GetStatusTypeExpectedSchema());
 
             Assert.AreEqual(
@@ -184,7 +184,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void StringType()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetStringTypeExpectedData(), SupportMethods.GetStringTypeExpectedSchema());
 
             Assert.AreEqual(
@@ -196,7 +196,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void UniqueidentifierType()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetUniqueIdentifierTypeExpectedData(), SupportMethods.GetUniqueIdentifierTypeExpectedSchema());
 
             Assert.AreEqual(
@@ -208,7 +208,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public void m2mRelationshipType()
         {
             XrmFakedContext fakedContext = new XrmFakedContext();
-            DataBuilder db = new DataBuilder(fakedContext.GetOrganizationService());
+            DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.Getm2mRelationshipTypeExpectedData(), SupportMethods.Getm2mRelationshipTypeExpectedSchema());
 
             Assert.AreEqual(

@@ -144,6 +144,7 @@
     <Compile Include="lib\PrimitiveTypes\DoubleTypeEntity.cs" />
     <Compile Include="lib\PrimitiveTypes\IntegerTypeEntity.cs" />
     <Compile Include="lib\PrimitiveTypes\LookupTypeEntity.cs" />
+    <Compile Include="lib\PrimitiveTypes\m2mReflexiveRelationshipTypeEntity.cs" />
     <Compile Include="lib\PrimitiveTypes\m2mRelationshipTypeEntity.cs" />
     <Compile Include="lib\PrimitiveTypes\MemoTypeEntity.cs" />
     <Compile Include="lib\PrimitiveTypes\MoneyTypeEntity.cs" />
@@ -210,6 +211,8 @@
     <Content Include="lib\PrimitiveTypes\LookupType.xml" />
     <Content Include="lib\PrimitiveTypes\LookupTypedata.xml" />
     <Content Include="lib\PrimitiveTypes\LookupTypedata_schema.xml" />
+    <Content Include="lib\PrimitiveTypes\m2mReflexiveRelationshipTypedata.xml" />
+    <Content Include="lib\PrimitiveTypes\m2mReflexiveRelationshipTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\m2mRelationshipTypedata2.xml" />
     <Content Include="lib\PrimitiveTypes\m2mRelationshipTypedata.xml" />
     <Content Include="lib\PrimitiveTypes\m2mRelationshipTypedata_schema.xml" />

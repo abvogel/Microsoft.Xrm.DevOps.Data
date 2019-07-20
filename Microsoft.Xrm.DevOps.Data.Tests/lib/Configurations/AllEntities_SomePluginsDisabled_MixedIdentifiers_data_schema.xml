@@ -1,14 +1,14 @@
 <entities >
-  <entity name="theme" displayname="Theme" etc="2015" primaryidfield="themeid" primarynamefield="name" disableplugins="false">
-    <fields>
-      <field displayname="Default Theme" name="isdefaulttheme" type="bool" />
-      <field updateCompare="true" displayname="Theme" name="themeid" type="guid" primaryKey="true" />
-    </fields>
-  </entity>
   <entity name="incident" displayname="Case" etc="112" primaryidfield="incidentid" primarynamefield="title" disableplugins="true">
     <fields>
       <field displayname="Customer" name="customerid" type="entityreference" lookupType="account|contact" />
       <field updateCompare="true" displayname="Case" name="incidentid" type="guid" primaryKey="true" />
+    </fields>
+  </entity>
+  <entity name="invoice" displayname="Invoice" etc="1090" primaryidfield="invoiceid" primarynamefield="name" disableplugins="false">
+    <fields>
+      <field updateCompare="true" displayname="Invoice" name="invoiceid" type="guid" primaryKey="true" />
+      <field displayname="Total Tax" name="totaltax" type="money" />
     </fields>
   </entity>
   <entity name="knowledgearticle" displayname="Knowledge Article" etc="9953" primaryidfield="knowledgearticleid" primarynamefield="title" disableplugins="true">
@@ -27,10 +27,10 @@
       <field displayname="Status Reason" name="statuscode" type="status" />
     </fields>
   </entity>
-  <entity name="msdyn_resourcerequirementdetail" displayname="Resource Requirement Detail" etc="10022" primaryidfield="msdyn_resourcerequirementdetailid" primarynamefield="msdyn_name" disableplugins="false">
+  <entity name="msdyn_approval" displayname="Approval" etc="10032" primaryidfield="activityid" primarynamefield="subject" disableplugins="false">
     <fields>
-      <field displayname="Hours" name="msdyn_hours" type="decimal" customfield="true" />
-      <field updateCompare="true" displayname="Resource Requirement Detail" name="msdyn_resourcerequirementdetailid" type="guid" primaryKey="true" />
+      <field updateCompare="true" displayname="Activity" name="activityid" type="guid" primaryKey="true" />
+      <field displayname="Customers" name="customers" type="partylist" />
     </fields>
   </entity>
   <entity name="msdyn_purchaseorderproduct" displayname="Purchase Order Product" etc="10149" primaryidfield="msdyn_purchaseorderproductid" primarynamefield="msdyn_name" disableplugins="false">
@@ -39,16 +39,16 @@
       <field displayname="Quantity" name="msdyn_quantity" type="float" customfield="true" />
     </fields>
   </entity>
-  <entity name="invoice" displayname="Invoice" etc="1090" primaryidfield="invoiceid" primarynamefield="name" disableplugins="false">
+  <entity name="msdyn_resourcerequirementdetail" displayname="Resource Requirement Detail" etc="10022" primaryidfield="msdyn_resourcerequirementdetailid" primarynamefield="msdyn_name" disableplugins="false">
     <fields>
-      <field updateCompare="true" displayname="Invoice" name="invoiceid" type="guid" primaryKey="true" />
-      <field displayname="Total Tax" name="totaltax" type="money" />
+      <field displayname="Hours" name="msdyn_hours" type="decimal" customfield="true" />
+      <field updateCompare="true" displayname="Resource Requirement Detail" name="msdyn_resourcerequirementdetailid" type="guid" primaryKey="true" />
     </fields>
   </entity>
-  <entity name="msdyn_approval" displayname="Approval" etc="10032" primaryidfield="activityid" primarynamefield="subject" disableplugins="false">
+  <entity name="theme" displayname="Theme" etc="2015" primaryidfield="themeid" primarynamefield="name" disableplugins="false">
     <fields>
-      <field updateCompare="true" displayname="Activity" name="activityid" type="guid" primaryKey="true" />
-      <field displayname="Customers" name="customers" type="partylist" />
+      <field displayname="Default Theme" name="isdefaulttheme" type="bool" />
+      <field updateCompare="true" displayname="Theme" name="themeid" type="guid" primaryKey="true" />
     </fields>
   </entity>
 </entities>

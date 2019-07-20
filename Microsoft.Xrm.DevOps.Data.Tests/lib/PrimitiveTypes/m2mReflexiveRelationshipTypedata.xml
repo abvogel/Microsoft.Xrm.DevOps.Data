@@ -1,0 +1,36 @@
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <entity name="msdyusd_agentscriptaction" displayname="Action Call">
+    <records>
+      <record id="1f422d2e-4a2f-e711-8113-5065f38a0a21">
+        <field name="msdyusd_agentscriptactionid" value="1f422d2e-4a2f-e711-8113-5065f38a0a21" />
+      </record>
+      <record id="ac631683-7b81-e911-a97a-000d3a1d2344">
+        <field name="msdyusd_agentscriptactionid" value="ac631683-7b81-e911-a97a-000d3a1d2344" />
+      </record>
+      <record id="c710eaf1-7981-e911-a97a-000d3a1d2344">
+        <field name="msdyusd_agentscriptactionid" value="c710eaf1-7981-e911-a97a-000d3a1d2344" />
+      </record>
+      <record id="c9b0d574-7a81-e911-a97a-000d3a1d2344">
+        <field name="msdyusd_agentscriptactionid" value="c9b0d574-7a81-e911-a97a-000d3a1d2344" />
+      </record>
+    </records>
+    <m2mrelationships>
+      <m2mrelationship sourceid="c710eaf1-7981-e911-a97a-000d3a1d2344" targetentityname="msdyusd_agentscriptaction" targetentitynameidfield="msdyusd_agentscriptactionid" m2mrelationshipname="msdyusd_subactioncalls">
+        <targetids>
+          <targetid>1f422d2e-4a2f-e711-8113-5065f38a0a21</targetid>
+        </targetids>
+      </m2mrelationship>
+      <m2mrelationship sourceid="c9b0d574-7a81-e911-a97a-000d3a1d2344" targetentityname="msdyusd_agentscriptaction" targetentitynameidfield="msdyusd_agentscriptactionid" m2mrelationshipname="msdyusd_subactioncalls">
+        <targetids>
+          <targetid>1f422d2e-4a2f-e711-8113-5065f38a0a21</targetid>
+          <targetid>ac631683-7b81-e911-a97a-000d3a1d2344</targetid>
+        </targetids>
+      </m2mrelationship>
+      <m2mrelationship sourceid="ac631683-7b81-e911-a97a-000d3a1d2344" targetentityname="msdyusd_agentscriptaction" targetentitynameidfield="msdyusd_agentscriptactionid" m2mrelationshipname="msdyusd_subactioncalls">
+        <targetids>
+          <targetid>1f422d2e-4a2f-e711-8113-5065f38a0a21</targetid>
+        </targetids>
+      </m2mrelationship>
+    </m2mrelationships>
+  </entity>
+</entities>

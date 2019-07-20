@@ -8,15 +8,6 @@
     </records>
     <m2mrelationships />
   </entity>
-  <entity name="theme" displayname="Theme">
-    <records>
-      <record id="581ba8b5-f3cf-422e-8030-e2a645b39971">
-        <field name="isdefaulttheme" value="False" />
-        <field name="themeid" value="581ba8b5-f3cf-422e-8030-e2a645b39971" />
-      </record>
-    </records>
-    <m2mrelationships />
-  </entity>
   <entity name="incident" displayname="Case">
     <records>
       <record id="616f5b50-774d-e911-a96a-000d3a1d23d3">
@@ -26,17 +17,17 @@
     </records>
     <m2mrelationships />
   </entity>
+  <entity name="invoice" displayname="Invoice">
+    <records>
+      <record id="e45e1402-7c4d-e911-a96a-000d3a1d23d3">
+        <field name="invoiceid" value="e45e1402-7c4d-e911-a96a-000d3a1d23d3" />
+        <field name="totaltax" value="0.0000" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
   <entity name="knowledgearticle" displayname="Knowledge Article">
     <records>
-      <record id="6ecdf2da-dae1-e711-9403-0003ff863885">
-        <field name="expiredreviewoptions" value="1" />
-        <field name="knowledgearticleid" value="6ecdf2da-dae1-e711-9403-0003ff863885" />
-        <field name="publishon" value="12/19/2017 4:57:00 PM" />
-      </record>
-      <record id="f835a513-ed9e-e711-9401-0003ff66fbff">
-        <field name="expirationstateid" value="3" />
-        <field name="knowledgearticleid" value="f835a513-ed9e-e711-9401-0003ff66fbff" />
-      </record>
       <record id="165ef3a6-ef9e-e711-80fd-3863bb2eb058">
         <field name="knowledgearticleid" value="165ef3a6-ef9e-e711-80fd-3863bb2eb058" />
         <field name="previousarticlecontentid" value="f835a513-ed9e-e711-9401-0003ff66fbff" lookupentity="knowledgearticle" lookupentityname="demo Article for QA " />
@@ -49,36 +40,18 @@
         <field name="statecode" value="3" />
         <field name="statuscode" value="7" />
       </record>
+      <record id="6ecdf2da-dae1-e711-9403-0003ff863885">
+        <field name="expiredreviewoptions" value="1" />
+        <field name="knowledgearticleid" value="6ecdf2da-dae1-e711-9403-0003ff863885" />
+        <field name="publishon" value="12/19/2017 4:57:00 PM" />
+      </record>
       <record id="a737336f-4472-e711-9401-0003ff86444f">
         <field name="knowledgearticleid" value="a737336f-4472-e711-9401-0003ff86444f" />
         <field name="stageid" value="0c6ed1c6-e9f1-4b43-8d9b-f680fded9b67" />
       </record>
-    </records>
-    <m2mrelationships />
-  </entity>
-  <entity name="msdyn_resourcerequirementdetail" displayname="Resource Requirement Detail">
-    <records>
-      <record id="73d453d8-774d-e911-a96a-000d3a1d23d3">
-        <field name="msdyn_hours" value="5.0000000000" />
-        <field name="msdyn_resourcerequirementdetailid" value="73d453d8-774d-e911-a96a-000d3a1d23d3" />
-      </record>
-    </records>
-    <m2mrelationships />
-  </entity>
-  <entity name="msdyn_purchaseorderproduct" displayname="Purchase Order Product">
-    <records>
-      <record id="fbb6f525-794d-e911-a96a-000d3a1d23d3">
-        <field name="msdyn_purchaseorderproductid" value="fbb6f525-794d-e911-a96a-000d3a1d23d3" />
-        <field name="msdyn_quantity" value="73.25" />
-      </record>
-    </records>
-    <m2mrelationships />
-  </entity>
-  <entity name="invoice" displayname="Invoice">
-    <records>
-      <record id="e45e1402-7c4d-e911-a96a-000d3a1d23d3">
-        <field name="invoiceid" value="e45e1402-7c4d-e911-a96a-000d3a1d23d3" />
-        <field name="totaltax" value="0.0000" />
+      <record id="f835a513-ed9e-e711-9401-0003ff66fbff">
+        <field name="expirationstateid" value="3" />
+        <field name="knowledgearticleid" value="f835a513-ed9e-e711-9401-0003ff66fbff" />
       </record>
     </records>
     <m2mrelationships />
@@ -119,6 +92,44 @@
     </records>
     <m2mrelationships />
   </entity>
+  <entity name="msdyn_purchaseorderproduct" displayname="Purchase Order Product">
+    <records>
+      <record id="fbb6f525-794d-e911-a96a-000d3a1d23d3">
+        <field name="msdyn_purchaseorderproductid" value="fbb6f525-794d-e911-a96a-000d3a1d23d3" />
+        <field name="msdyn_quantity" value="73.25" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+  <entity name="msdyn_resourcerequirementdetail" displayname="Resource Requirement Detail">
+    <records>
+      <record id="73d453d8-774d-e911-a96a-000d3a1d23d3">
+        <field name="msdyn_hours" value="5.0000000000" />
+        <field name="msdyn_resourcerequirementdetailid" value="73d453d8-774d-e911-a96a-000d3a1d23d3" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+  <entity name="role" displayname="Security Role">
+    <records>
+      <record id="3dac4d9e-568c-e611-80d4-00155d42a122">
+        <field name="roleid" value="3dac4d9e-568c-e611-80d4-00155d42a122" />
+      </record>
+      <record id="52d9415f-86f4-e611-8128-e0071b6a4261">
+        <field name="roleid" value="52d9415f-86f4-e611-8128-e0071b6a4261" />
+      </record>
+      <record id="85d865b5-fea1-e611-8116-00155da84013">
+        <field name="roleid" value="85d865b5-fea1-e611-8116-00155da84013" />
+      </record>
+      <record id="cad52a75-568c-e611-80d4-00155d42a122">
+        <field name="roleid" value="cad52a75-568c-e611-80d4-00155d42a122" />
+      </record>
+      <record id="e186d6f0-28d6-4bfc-bea5-71e44c3e13a4">
+        <field name="roleid" value="e186d6f0-28d6-4bfc-bea5-71e44c3e13a4" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
   <entity name="systemuser" displayname="User">
     <records>
       <record id="00e7b0b9-1ace-e711-a970-000d3a192311">
@@ -129,11 +140,11 @@
         <field name="lastname" value="Vogel" />
         <field name="systemuserid" value="16b8a7ea-7d3f-4856-85a1-59f98ffcfafe" />
       </record>
-      <record id="f0205357-124a-4b5a-9163-5cca2b3d3e8d">
-        <field name="systemuserid" value="f0205357-124a-4b5a-9163-5cca2b3d3e8d" />
-      </record>
       <record id="cdffaae5-55b0-e711-a95c-000d3a192e9a">
         <field name="systemuserid" value="cdffaae5-55b0-e711-a95c-000d3a192e9a" />
+      </record>
+      <record id="f0205357-124a-4b5a-9163-5cca2b3d3e8d">
+        <field name="systemuserid" value="f0205357-124a-4b5a-9163-5cca2b3d3e8d" />
       </record>
     </records>
     <m2mrelationships>
@@ -147,5 +158,14 @@
         </targetids>
       </m2mrelationship>
     </m2mrelationships>
+  </entity>
+  <entity name="theme" displayname="Theme">
+    <records>
+      <record id="581ba8b5-f3cf-422e-8030-e2a645b39971">
+        <field name="isdefaulttheme" value="False" />
+        <field name="themeid" value="581ba8b5-f3cf-422e-8030-e2a645b39971" />
+      </record>
+    </records>
+    <m2mrelationships />
   </entity>
 </entities>

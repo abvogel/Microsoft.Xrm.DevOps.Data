@@ -1,4 +1,9 @@
 <entities >
+  <entity name="role" displayname="Security Role" etc="1036" primaryidfield="roleid" primarynamefield="name" disableplugins="false">
+    <fields>
+      <field updateCompare="true" displayname="Role" name="roleid" type="guid" primaryKey="true" />
+    </fields>
+  </entity>
   <entity name="systemuser" displayname="User" etc="8" primaryidfield="systemuserid" primarynamefield="fullname" disableplugins="false">
     <fields>
       <field updateCompare="true" displayname="User" name="systemuserid" type="guid" primaryKey="true" />

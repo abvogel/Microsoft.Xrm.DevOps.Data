@@ -12,6 +12,8 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public const String AccountDisplayName = "Account";
         public const String ActivityPartyLogicalName = "activityparty";
         public const String ActivityPartyDisplayName = "Activity Party";
+        public const String AgentScriptActionLogicalName = "msdyusd_agentscriptaction";
+        public const String AgentScriptActionDisplayName = "Action Call";
         public const String ContactLogicalName = "contact";
         public const String ContactDisplayName = "Contact";
         public const String ThemeLogicalName = "theme";
@@ -32,6 +34,8 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public const String ApprovalDisplayName = "Approval";
         public const String UserLogicalName = "systemuser";
         public const String UserDisplayName = "User";
+        public const String SecurityRoleLogicalName = "role";
+        public const String SecurityRoleDisplayName = "Security Role";
 
         public static XrmFakedContext SetupPrimitiveFakedService(string LogicalName, string DisplayName, Entity Entity)
         {
@@ -53,7 +57,28 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             });
             return fakedContext;
         }
-        
+
+        public static XrmFakedContext SetupPrimitiveFakedService(string LogicalName, string DisplayName, Entity[] Entity)
+        {
+            var fakedContext = new XrmFakedContext();
+            fakedContext.InitializeMetadata(typeof(CrmEarlyBound.CrmServiceContext).Assembly);
+            fakedContext.Initialize(Entity);
+            fakedContext.AddExecutionMock<RetrieveEntityRequest>(req =>
+            {
+                var entityMetadata = fakedContext.GetEntityMetadataByName(LogicalName);
+                entityMetadata.DisplayName = new Label(DisplayName, 1033);
+                var response = new RetrieveEntityResponse()
+                {
+                    Results = new ParameterCollection
+                        {
+                            { "EntityMetadata", entityMetadata }
+                        }
+                };
+                return response;
+            });
+            return fakedContext;
+        }
+
         public static String LoadXmlFile(string Path) {
             XmlDocument doc = new XmlDocument();
             doc.Load(Path);

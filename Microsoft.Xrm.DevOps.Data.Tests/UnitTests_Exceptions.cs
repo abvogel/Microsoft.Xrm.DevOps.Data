@@ -46,11 +46,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             DataBuilder.AppendData(SupportMethods.GetCustomerTypeFetch());
 
             var ex = Assert.ThrowsException<Exception>(() => DataBuilder.BuildSchemaXML());
-            Assert.AreEqual(ex.Message, "Unknown Field Node Type.");
+            Assert.AreEqual(ex.Message, "GetFieldNodeType: Unknown Field Node Type - incident:customerid - LookupType:21");
         }
 
         [TestMethod]
-        public void UnsupportedTypeCode_Throws()
+        public void UnsupportedTypeCode_SkipsField()
         {
             XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.IncidentLogicalName,
@@ -83,8 +83,9 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             DataBuilder DataBuilder = new DataBuilder(fakedService);
             DataBuilder.AppendData(SupportMethods.GetCustomerTypeFetch());
 
-            var ex = Assert.ThrowsException<Exception>(() => DataBuilder.BuildDataXML());
-            Assert.AreEqual(ex.Message, "Unknown Field Node Type.");
+            var XML = DataBuilder.BuildDataXML();
+            Assert.AreEqual(1, XML.SelectSingleNode("//records/record").ChildNodes.Count);
+            Assert.AreEqual("incidentid", XML.SelectSingleNode("//records/record/field/@name").Value);
         }
 
         [TestMethod]
