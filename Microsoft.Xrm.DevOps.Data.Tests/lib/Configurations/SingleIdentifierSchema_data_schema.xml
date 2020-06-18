@@ -1,5 +1,5 @@
 <entities >
-  <entity name="contact" displayname="Contact" etc="2" primaryidfield="contactid" primarynamefield="fullname" disableplugins="false">
+  <entity name="contact" displayname="Contact" etc="2" primaryidfield="contactid" primarynamefield="fullname" disableplugins="false" skipupdate="false">
     <fields>
       <field displayname="Contact" name="contactid" type="guid" primaryKey="true" />
       <field updateCompare="true" displayname="Email" name="emailaddress1" type="string" />

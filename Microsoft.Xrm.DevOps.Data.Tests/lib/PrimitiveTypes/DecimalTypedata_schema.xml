@@ -1,5 +1,5 @@
 <entities >
-  <entity name="msdyn_resourcerequirementdetail" displayname="Resource Requirement Detail" etc="10022" primaryidfield="msdyn_resourcerequirementdetailid" primarynamefield="msdyn_name" disableplugins="false">
+  <entity name="msdyn_resourcerequirementdetail" displayname="Resource Requirement Detail" etc="10022" primaryidfield="msdyn_resourcerequirementdetailid" primarynamefield="msdyn_name" disableplugins="false" skipupdate="false">
     <fields>
       <field displayname="Hours" name="msdyn_hours" type="decimal" customfield="true" />
       <field updateCompare="true" displayname="Resource Requirement Detail" name="msdyn_resourcerequirementdetailid" type="guid" primaryKey="true" />
