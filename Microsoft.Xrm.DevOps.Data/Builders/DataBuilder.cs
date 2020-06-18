@@ -376,9 +376,11 @@ namespace Microsoft.Xrm.DevOps.Data
                 this._Entities[logicalName].FetchedAllMetadata = true;
             }
         }
-
+   
         private void AddMetadataFromSchema(SchemaXml.Entity schemaXML)
         {
+            this._Entities[schemaXML.Name].PluginsDisabled = schemaXML.Disableplugins == "true";
+            this._Entities[schemaXML.Name].SkipUpdate = schemaXML.Skipupdate == "true";
             this._Entities[schemaXML.Name].Metadata = Builders.XmlImporter.GenerateAdditionalMetadata(this._Entities[schemaXML.Name].Metadata, schemaXML);
         }
 
