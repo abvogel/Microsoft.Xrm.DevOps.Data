@@ -1,5 +1,5 @@
 <entities >
-  <entity name="incident" displayname="Case" etc="112" primaryidfield="incidentid" primarynamefield="title" disableplugins="false">
+  <entity name="incident" displayname="Case" etc="112" primaryidfield="incidentid" primarynamefield="title" disableplugins="false" skipupdate="false">
     <fields>
       <field displayname="Customer" name="customerid" type="entityreference" lookupType="account|contact" />
       <field updateCompare="true" displayname="Case" name="incidentid" type="guid" primaryKey="true" />

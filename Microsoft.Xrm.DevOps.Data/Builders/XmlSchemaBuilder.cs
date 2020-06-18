@@ -70,6 +70,8 @@ namespace Microsoft.Xrm.DevOps.Data
                 Primarynamefield = builderEntityMetadata.Metadata.PrimaryNameAttribute,
                 Disableplugins = (builderEntityMetadata.PluginsDisabled == null
                                    || builderEntityMetadata.PluginsDisabled == false ? "false" : "true"),
+                Skipupdate = (builderEntityMetadata.SkipUpdate == null
+                                    || builderEntityMetadata.SkipUpdate == false ? "false" : "true"),
                 Fields = new SchemaXml.Fields()
                 {
                     Field = new List<SchemaXml.Field>()

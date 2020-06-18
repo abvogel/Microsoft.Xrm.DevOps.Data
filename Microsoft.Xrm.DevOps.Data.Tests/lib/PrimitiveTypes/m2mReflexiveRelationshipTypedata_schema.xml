@@ -1,5 +1,5 @@
 <entities >
-  <entity name="msdyusd_agentscriptaction" displayname="Action Call" etc="10335" primaryidfield="msdyusd_agentscriptactionid" primarynamefield="msdyusd_name" disableplugins="false">
+  <entity name="msdyusd_agentscriptaction" displayname="Action Call" etc="10335" primaryidfield="msdyusd_agentscriptactionid" primarynamefield="msdyusd_name" disableplugins="false" skipupdate="false">
     <fields>
       <field updateCompare="true" displayname="Agent Script Action" name="msdyusd_agentscriptactionid" type="guid" primaryKey="true" />
     </fields>

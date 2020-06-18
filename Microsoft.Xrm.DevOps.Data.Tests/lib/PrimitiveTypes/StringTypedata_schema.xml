@@ -1,5 +1,5 @@
 <entities >
-  <entity name="knowledgearticle" displayname="Knowledge Article" etc="9953" primaryidfield="knowledgearticleid" primarynamefield="title" disableplugins="false">
+  <entity name="knowledgearticle" displayname="Knowledge Article" etc="9953" primaryidfield="knowledgearticleid" primarynamefield="title" disableplugins="false" skipupdate="false">
     <fields>
       <field displayname="Short Description" name="description" type="string" />
       <field updateCompare="true" displayname="Knowledge Article" name="knowledgearticleid" type="guid" primaryKey="true" />

@@ -1,5 +1,5 @@
 <entities >
-  <entity name="account" displayname="Account" etc="1" primaryidfield="accountid" primarynamefield="name" disableplugins="true">
+  <entity name="account" displayname="Account" etc="1" primaryidfield="accountid" primarynamefield="name" disableplugins="true" skipupdate="false">
     <fields>
       <field updateCompare="true" displayname="Account" name="accountid" type="guid" primaryKey="true" />
       <field displayname="Account Name" name="name" type="string" />

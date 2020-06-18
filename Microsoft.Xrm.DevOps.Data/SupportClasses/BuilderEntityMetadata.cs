@@ -14,6 +14,7 @@ namespace Microsoft.Xrm.DevOps.Data
         public List<String> Attributes { get; private set; }
         public List<String> Identifiers = new List<String>();
         public Boolean? PluginsDisabled = null;
+        public Boolean? SkipUpdate = null;
         public Queue<Entity> Entities { get; set; }
         public Dictionary<String, Dictionary<Guid, List<Guid>>> RelatedEntities = new Dictionary<String, Dictionary<Guid, List<Guid>>>();
 

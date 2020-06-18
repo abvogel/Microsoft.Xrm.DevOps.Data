@@ -1,5 +1,5 @@
 <entities >
-  <entity name="invoice" displayname="Invoice" etc="1090" primaryidfield="invoiceid" primarynamefield="name" disableplugins="false">
+  <entity name="invoice" displayname="Invoice" etc="1090" primaryidfield="invoiceid" primarynamefield="name" disableplugins="false" skipupdate="false">
     <fields>
       <field updateCompare="true" displayname="Invoice" name="invoiceid" type="guid" primaryKey="true" />
       <field displayname="Total Tax" name="totaltax" type="money" />

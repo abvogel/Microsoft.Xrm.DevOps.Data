@@ -25,6 +25,8 @@ namespace Microsoft.Xrm.DevOps.Data.SchemaXml
         public string Primarynamefield { get; set; }
         [XmlAttribute(AttributeName = "disableplugins")]
         public string Disableplugins { get; set; }
+        [XmlAttribute(AttributeName = "skipupdate")]
+        public string Skipupdate {get; set;}
         [XmlElement(ElementName = "fields")]
         public Fields Fields { get; set; }
         [XmlElement(ElementName = "relationships")]
