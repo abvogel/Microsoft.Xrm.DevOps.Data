@@ -1,5 +1,4 @@
-
-[![Build Status](https://dev.azure.com/MicrosoftXrmDevOpsData/Microsoft.Xrm.DevOps.Data/_apis/build/status/abvogel.Microsoft.Xrm.DevOps.Data?branchName=master)](https://dev.azure.com/MicrosoftXrmDevOpsData/Microsoft.Xrm.DevOps.Data/_build/latest?definitionId=1&branchName=master)
+[![Build Status](https://dev.azure.com/MicrosoftXrmDevOps/Microsoft.Xrm.DevOps.Data/_apis/build/status/abvogel.Microsoft.Xrm.DevOps.Data?branchName=master)](https://dev.azure.com/MicrosoftXrmDevOps/Microsoft.Xrm.DevOps.Data/_build/latest?definitionId=1&branchName=master)
 
 # Microsoft.Xrm.DevOps.Data
 This library provides an easy way to generate **filtered** data compatible with the Configuration Data Migration Tool. These zip files can be used to push specific records between Dynamics 365 environments using the Dynamics 365 Package Deployer.
