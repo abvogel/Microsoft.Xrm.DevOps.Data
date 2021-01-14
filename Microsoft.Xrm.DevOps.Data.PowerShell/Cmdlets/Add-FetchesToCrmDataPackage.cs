@@ -26,6 +26,8 @@ namespace Microsoft.Xrm.DevOps.Data.PowerShell.Cmdlets
         [Parameter(Position = 5)]
         public Boolean DisablePluginsGlobally = false;
 
+        // add skipupdate flag
+
         protected override void ProcessRecord()
         {
             GenerateVerboseMessage("Generating DataBuilder Instance.");

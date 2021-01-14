@@ -12,7 +12,7 @@
 RootModule = './Microsoft.Xrm.DevOps.Data.PowerShell.dll'
 
 # Version number of this module.
-ModuleVersion = '1.3.1'
+ModuleVersion = '1.4.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -107,7 +107,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Adds support for the skipupdate attribute in Microsoft Dynamics 365 Configuration Data Migration Tool.'
+        ReleaseNotes = 'Increases retrieved records beyond the 5000 limit.'
 
     } # End of PSData hashtable
 
