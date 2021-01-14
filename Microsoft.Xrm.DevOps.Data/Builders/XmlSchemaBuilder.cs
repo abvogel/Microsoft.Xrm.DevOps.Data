@@ -85,9 +85,13 @@ namespace Microsoft.Xrm.DevOps.Data
                 if (!IsSupportedAttributeType(AttributeMetadata.AttributeType))
                     continue;
 
+                var DisplayName = AttributeMetadata.LogicalName;
+                if (AttributeMetadata.DisplayName.LocalizedLabels.Count > 0)
+                    DisplayName = AttributeMetadata.DisplayName.LocalizedLabels[0].Label;
+
                 SchemaXml.Field field = new SchemaXml.Field()
                 {
-                    Displayname = AttributeMetadata.DisplayName.LocalizedLabels[0].Label,
+                    Displayname = DisplayName,
                     Name = AttributeMetadata.LogicalName,
                     Type = GetFieldNodeType(AttributeMetadata),
                     LookupType = GetFieldNodeLookupType(AttributeMetadata),

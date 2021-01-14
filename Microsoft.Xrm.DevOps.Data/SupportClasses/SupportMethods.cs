@@ -118,7 +118,7 @@ namespace Microsoft.Xrm.DevOps.Data.SupportClasses
             if (cookie != null)
             {
                 XmlAttribute pagingAttr = doc.CreateAttribute("paging-cookie");
-                pagingAttr.Value = cookie;
+                pagingAttr.InnerXml = cookie;
                 attrs.Append(pagingAttr);
             }
 
@@ -134,7 +134,7 @@ namespace Microsoft.Xrm.DevOps.Data.SupportClasses
             XmlAttributeCollection attrs = doc.DocumentElement.Attributes;
 
             XmlAttribute pagingAttr = doc.CreateAttribute("paging-cookie");
-            pagingAttr.Value = cookie;
+            pagingAttr.InnerXml = cookie;
             attrs.Append(pagingAttr);
 
             XmlAttribute pageAttr = doc.CreateAttribute("page");

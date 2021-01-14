@@ -1,6 +1,6 @@
 {
   "name": "microsoft.xrm.devops.data.powershell",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "default description",
   "main": "PackageDeploymentSnapIn.cs",
   "dependencies": {},
