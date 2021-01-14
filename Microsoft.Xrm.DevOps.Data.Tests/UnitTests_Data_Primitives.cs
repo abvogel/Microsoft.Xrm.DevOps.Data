@@ -22,7 +22,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
-            DataBuilder.AppendData(SupportMethods.GetBooleanTypeFetch());
+            DataBuilder.AppendData(SupportMethods.GetBooleanTypeFetch_TopIsOne());
             Assert.AreEqual(
                 DataBuilder.BuildDataXML().InnerXml, 
                 SupportMethods.GetBooleanTypeExpectedData());

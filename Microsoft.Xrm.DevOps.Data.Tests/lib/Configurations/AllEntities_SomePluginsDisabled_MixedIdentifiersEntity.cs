@@ -110,6 +110,38 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             return entities;
         }
 
+        public static List<Entity> GetSingleEntity_MoreThan5000RowsEntity()
+        {
+            List<Entity> entities = new List<Entity>();
+
+            for (int i = 0; i < 6000; i++)
+            {
+                Entity entity1 = new Entity("theme");
+                entity1["isdefaulttheme"] = true;
+                entity1.Id = Guid.NewGuid();
+                entity1["themeid"] = entity1.Id;
+                entities.Add(entity1);
+            }
+
+            return entities;
+        }
+
+        public static List<Entity> GetSingleEntity_TenRowsEntity()
+        {
+            List<Entity> entities = new List<Entity>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                Entity entity1 = new Entity("theme");
+                entity1["isdefaulttheme"] = true;
+                entity1.Id = Guid.NewGuid();
+                entity1["themeid"] = entity1.Id;
+                entities.Add(entity1);
+            }
+
+            return entities;
+        }
+
         public static String GetAllEntities_SomePluginsDisabled_MixedIdentifiersThemeFetch()
         {
             return "<fetch><entity name='theme'><attribute name='themeid'/><attribute name='isdefaulttheme'/><filter type='and'><condition attribute='isdefaulttheme' operator='not-null'/></filter></entity></fetch>";

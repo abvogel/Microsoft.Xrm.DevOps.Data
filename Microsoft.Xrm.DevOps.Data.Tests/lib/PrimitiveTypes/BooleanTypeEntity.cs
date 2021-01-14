@@ -44,9 +44,18 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             return result;
         }
 
-        public static String GetBooleanTypeFetch()
+        public static String GetBooleanTypeFetch_NoTopOrCount()
+        {
+            return "<fetch><entity name='theme'><attribute name='isdefaulttheme'/><filter type='and'><condition attribute='isdefaulttheme' operator='not-null'/></filter></entity></fetch>";
+        }
+
+        public static String GetBooleanTypeFetch_TopIsOne()
         {
             return "<fetch top='1'><entity name='theme'><attribute name='isdefaulttheme'/><filter type='and'><condition attribute='isdefaulttheme' operator='not-null'/></filter></entity></fetch>";
+        }
+        public static String GetBooleanTypeFetch_CountIsOne()
+        {
+            return "<fetch count='1'><entity name='theme'><attribute name='isdefaulttheme'/><filter type='and'><condition attribute='isdefaulttheme' operator='not-null'/></filter></entity></fetch>";
         }
 
         public static String GetBooleanTypeExpectedData()

@@ -43,7 +43,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             IOrganizationService fakedService = fakedContext.GetOrganizationService();
 
             DataBuilder DataBuilder = new DataBuilder(fakedService);
-            DataBuilder.AppendData(SupportMethods.GetBooleanTypeFetch());
+            DataBuilder.AppendData(SupportMethods.GetBooleanTypeFetch_TopIsOne());
 
             String DataBuilderXML = DataBuilder.BuildSchemaXML().InnerXml;
             String RealXml = SupportMethods.GetBooleanTypeExpectedSchema();

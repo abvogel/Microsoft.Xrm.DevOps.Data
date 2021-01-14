@@ -17,8 +17,8 @@ namespace Microsoft.Xrm.DevOps.Data
         private Boolean? _PluginsDisabled = null;
         private IOrganizationService _service;
         public IOrganizationService Service {
-            get { 
-                return _service; 
+            get {
+                return _service;
             }
             private set {
                 this._service = value;
@@ -96,28 +96,23 @@ namespace Microsoft.Xrm.DevOps.Data
 
         public void AppendData(String fetchXml)
         {
-            RetrieveMultipleRequest req = new RetrieveMultipleRequest
-            {
-                Query = new FetchExpression(fetchXml)
-            };
-
             try
             {
-                RetrieveMultipleResponse retrieveMultipleResponse = (RetrieveMultipleResponse)this._service.Execute(req);
+                List<Entity> retrievedEntities = SupportClasses.SupportMethods.RetrieveAllRecords(this._service, fetchXml);
 
-                if (retrieveMultipleResponse.EntityCollection.Entities.Count == 0)
+                if (retrievedEntities.Count == 0)
                     return;
 
                 if (HasManyToManyAttribute(fetchXml))
                 {
-                    this.AppendM2MData(retrieveMultipleResponse.EntityCollection, GetFirstLinkEntityName(fetchXml));
+                    this.AppendM2MData(retrievedEntities, GetFirstLinkEntityName(fetchXml));
                 }
                 else
                 {
-                    this.AppendData(retrieveMultipleResponse.EntityCollection);
+                    this.AppendData(retrievedEntities);
                 }
 
-                this.RefreshMetadataFromConnection(retrieveMultipleResponse.EntityCollection.EntityName);
+                this.RefreshMetadataFromConnection(retrievedEntities[0].LogicalName);
             }
             catch (Exception ex)
             {
@@ -183,8 +178,8 @@ namespace Microsoft.Xrm.DevOps.Data
                     }
                     this._Entities[logicalName].Identifiers = setIdentifiers;
                 }
-                    
-                if (this._Entities[logicalName].PluginsDisabled == null 
+
+                if (this._Entities[logicalName].PluginsDisabled == null
                         && !String.IsNullOrEmpty(schemaData.Disableplugins))
                 {
                     this._Entities[logicalName].PluginsDisabled = Boolean.Parse(schemaData.Disableplugins);
@@ -263,7 +258,7 @@ namespace Microsoft.Xrm.DevOps.Data
                 }
             }
         }
-        
+
         public void SetIdentifier(String LogicalName, String[] Identifier)
         {
             this.VerifyEntityExists(LogicalName);
@@ -376,7 +371,7 @@ namespace Microsoft.Xrm.DevOps.Data
                 this._Entities[logicalName].FetchedAllMetadata = true;
             }
         }
-   
+
         private void AddMetadataFromSchema(SchemaXml.Entity schemaXML)
         {
             this._Entities[schemaXML.Name].PluginsDisabled = schemaXML.Disableplugins == "true";
@@ -386,17 +381,22 @@ namespace Microsoft.Xrm.DevOps.Data
 
         private void AppendM2MData(EntityCollection queryResponse, String FirstLinkEntityName)
         {
-            var SourceEntity = queryResponse.EntityName;
+            AppendM2MData(queryResponse.Entities.ToList(), FirstLinkEntityName);
+        }
+
+        private void AppendM2MData(List<Entity> queryResponse, String FirstLinkEntityName)
+        {
+            var SourceEntity = queryResponse.FirstOrDefault().LogicalName;
 
             Dictionary<Guid, List<Guid>> relationshipPairs = new Dictionary<Guid, List<Guid>>();
-            String relationshipName = queryResponse.Entities[0].Attributes.Where(x => x.Value is AliasedValue).Select(x => ((AliasedValue)x.Value).EntityLogicalName).First();
+            String relationshipName = queryResponse.FirstOrDefault().Attributes.Where(x => x.Value is AliasedValue).Select(x => ((AliasedValue)x.Value).EntityLogicalName).First();
 
-            if (RelationshipIsReflexive(queryResponse.EntityName, relationshipName))
+            if (RelationshipIsReflexive(queryResponse.FirstOrDefault().LogicalName, relationshipName))
             {
                 relationshipName = FirstLinkEntityName;
             }
 
-            foreach (var record in queryResponse.Entities)
+            foreach (var record in queryResponse)
             {
                 Guid relatedId = ((Guid)record.Attributes.Where(x => x.Value is AliasedValue).Select(x => ((AliasedValue)x.Value).Value).First());
 

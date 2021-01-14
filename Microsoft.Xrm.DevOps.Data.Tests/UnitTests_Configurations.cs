@@ -338,6 +338,55 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         }
 
         [TestMethod]
+        public void SingleEntity_MoreThan5000Records()
+        {
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
+                SupportMethods.ThemeLogicalName,
+                SupportMethods.ThemeDisplayName,
+                SupportMethods.GetSingleEntity_MoreThan5000RowsEntity().ToArray());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
+
+            DataBuilder DataBuilder = new DataBuilder(fakedService);
+            DataBuilder.AppendData(SupportMethods.GetBooleanTypeFetch_NoTopOrCount());
+
+            var innerXml = DataBuilder.BuildDataXML();
+            Assert.IsTrue(innerXml.SelectSingleNode("//entities/entity/records").ChildNodes.Count > 5000);
+        }
+
+        [TestMethod]
+        public void SingleEntity_MoreThan5000RecordsWithTopIsOne_ReturnsOne()
+        {
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
+                SupportMethods.ThemeLogicalName,
+                SupportMethods.ThemeDisplayName,
+                SupportMethods.GetSingleEntity_MoreThan5000RowsEntity().ToArray());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
+
+            DataBuilder DataBuilder = new DataBuilder(fakedService);
+            DataBuilder.AppendData(SupportMethods.GetBooleanTypeFetch_TopIsOne());
+
+            var innerXml = DataBuilder.BuildDataXML();
+            Assert.IsTrue(innerXml.SelectSingleNode("//entities/entity/records").ChildNodes.Count == 1);
+        }
+
+
+        [TestMethod]
+        public void SingleEntity_TenRecords_WithCountAsOne_ReturnsTen()
+        {
+            XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
+                SupportMethods.ThemeLogicalName,
+                SupportMethods.ThemeDisplayName,
+                SupportMethods.GetSingleEntity_TenRowsEntity().ToArray());
+            IOrganizationService fakedService = fakedContext.GetOrganizationService();
+
+            DataBuilder DataBuilder = new DataBuilder(fakedService);
+            DataBuilder.AppendData(SupportMethods.GetBooleanTypeFetch_CountIsOne());
+
+            var innerXml = DataBuilder.BuildDataXML();
+            Assert.IsTrue(innerXml.SelectSingleNode("//entities/entity/records").ChildNodes.Count == 10);
+        }
+
+        [TestMethod]
         public void MultipleSourcesOfMetadata_DataImported()
         {
             var fakedContext = new XrmFakedContext();
