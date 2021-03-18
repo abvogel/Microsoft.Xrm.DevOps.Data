@@ -3,6 +3,13 @@
 # Microsoft.Xrm.DevOps.Data
 This library provides an easy way to generate **filtered** data compatible with the Configuration Data Migration Tool. These zip files can be used to push specific records between Dynamics 365 environments using the Dynamics 365 Package Deployer.
 
+* 118 unit tests providing 100% code coverage. Since launch, test driven development has resulted in 0 known bugs and allowed new features to be added with high confidence.
+Driven by FetchXML which supports all CRM importable field types, including many to many relationships and rarely used CRM types (e.g. double). Because it uses FetchXML, filtered queries can be generated using CRM Advanced Find, or XrmToolbox's Fetch Builder for easy setup and verification.
+* Native commands to generate, extend, merge, and subtract data packages from a saved file or live system. This provides the capability of comparing environments as well as generating delta packages which substantially reduces deployment risk and time.
+* Is 100% compatible with the Microsoft Configuration Migration Data Deployer generated XML files and import/export commands. Unit tests often compare library results against real Microsoft results verifying not just schema compatibility but format equivalence.
+* Extended capabilities by having default values set where users often experience problems. This means records will by default be compared against records of the same guid, not the name field, and that plugins will by default be disabled for releases. These can be changed as necessary, but substantially reduce testing and deployment issues.
+* Behind the scenes algorithms that keep your entities, fields, and values ordered the same between runs. Checking data changes into source control and comparing results now makes sense as the delta is an actual delta between environments, not output formats.
+
 # Microsoft.Xrm.DevOps.Data.PowerShell
 This wrapper uses the Microsoft.Xrm.DevOps.Data library providing a simple PowerShell interface.
 
