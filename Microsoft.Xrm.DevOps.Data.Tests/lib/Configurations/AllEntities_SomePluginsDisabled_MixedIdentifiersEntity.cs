@@ -51,7 +51,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             entity6.Id = Guid.Parse("cea06e98-364e-e711-810e-e0071b6a82d1");
             entity6["keywords"] = "Loyalty, Winning, Hurricanes";
             entity6["knowledgearticleid"] = Guid.Parse("cea06e98-364e-e711-810e-e0071b6a82d1");
-            entity6["publishon"] = DateTime.Parse("6/12/2017 9:45:00 AM");
+            entity6["publishon"] = DateTime.Parse("2017-06-12T09:45:00.0000000Z");
             entity6["ownerid"] = new EntityReference("systemuser", Guid.Parse("cdffaae5-55b0-e711-a95c-000d3a192e9a")) { Name = "Andrew Vogel" };
             entity6["statecode"] = new OptionSetValue(1);
             entity6["statuscode"] = new OptionSetValue(5);
@@ -64,7 +64,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             entity7["keywords"] = "Grassroot, Pixel";
             entity7["knowledgearticleid"] = Guid.Parse("75a90062-4c5c-e711-810e-e0071b6a82d1");
             entity7["previousarticlecontentid"] = new EntityReference("knowledgearticle", Guid.Parse("8f9d8286-430c-e711-8121-e0071b6ac0e1")) { Name = "Mbps vs. MBps" };
-            entity7["publishon"] = DateTime.Parse("6/12/2017 9:45:00 AM");
+            entity7["publishon"] = DateTime.Parse("2017-06-12T09:45:00.0000000Z");
             entity7["ownerid"] = new EntityReference("systemuser", Guid.Parse("cdffaae5-55b0-e711-a95c-000d3a192e9a")) { Name = "Andrew Vogel" };
             entity7["statecode"] = new OptionSetValue(6);
             entity7["statuscode"] = new OptionSetValue(13);

@@ -166,8 +166,10 @@ namespace Microsoft.Xrm.DevOps.Data
 
             switch (attributeMetadata.AttributeType)
             {
-                case Sdk.Metadata.AttributeTypeCode.Boolean:
                 case Sdk.Metadata.AttributeTypeCode.DateTime:       // If need to convert to UTC may need to be isolated
+                    FieldNode.Value = ((DateTime)attribute.Value).ToString("o");
+                    break;
+                case Sdk.Metadata.AttributeTypeCode.Boolean:
                 case Sdk.Metadata.AttributeTypeCode.Decimal:        // Precision should carry from initial value
                 case Sdk.Metadata.AttributeTypeCode.Double:
                 case Sdk.Metadata.AttributeTypeCode.Integer:

@@ -5,6 +5,7 @@ using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace Microsoft.Xrm.DevOps.Data.Builders
                     value.Name = field.Lookupentityname;
                     return value;
                 case "datetime":
-                    return DateTime.Parse(field.Value);
+                    return DateTime.Parse(field.Value, CultureInfo.CurrentCulture, DateTimeStyles.AdjustToUniversal);
                 case "decimal":
                     return Decimal.Parse(field.Value);
                 case "float":
