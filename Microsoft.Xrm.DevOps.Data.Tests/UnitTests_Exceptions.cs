@@ -9,7 +9,7 @@ using System.Linq;
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
     [TestClass]
-    public class Exceptions
+    public class Exceptions : TestBase
     {
         [TestMethod]
         public void InvalidAttributeTypeCode_Throws()

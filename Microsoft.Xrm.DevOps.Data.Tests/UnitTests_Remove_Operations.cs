@@ -10,7 +10,7 @@ using System.Reflection;
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
     [TestClass]
-    public class RemoveOperations
+    public class RemoveOperations : TestBase
     {
         [TestMethod]
         public void RemoveEntityWithSingleField_RemovesField()

@@ -10,7 +10,7 @@ using System.Reflection;
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
     [TestClass]
-    public class DataPrimitives
+    public class DataPrimitives : TestBase
     {
         [TestMethod]
         public void BooleanType()

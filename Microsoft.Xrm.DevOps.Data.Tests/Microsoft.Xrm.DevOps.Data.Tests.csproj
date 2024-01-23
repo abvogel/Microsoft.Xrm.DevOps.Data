@@ -155,6 +155,7 @@
     <Compile Include="lib\PrimitiveTypes\StatusTypeEntity.cs" />
     <Compile Include="lib\PrimitiveTypes\StringTypeEntity.cs" />
     <Compile Include="lib\PrimitiveTypes\UniqueIdentifierTypeEntity.cs" />
+    <Compile Include="TestBase.cs" />
     <Compile Include="UnitTests_Configurations.cs" />
     <Compile Include="UnitTests_Data_Imports.cs" />
     <Compile Include="UnitTests_Remove_Operations.cs" />
