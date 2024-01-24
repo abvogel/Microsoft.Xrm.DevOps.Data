@@ -1,10 +1,9 @@
-
 <entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" timestamp="3/23/2019 8:56:32 AM">
   <entity name="knowledgearticle" displayname="Knowledge Article">
     <records>
       <record id="6ecdf2da-dae1-e711-9403-0003ff863885">
         <field name="knowledgearticleid" value="6ecdf2da-dae1-e711-9403-0003ff863885" />
-        <field name="publishon" value="2017-12-19T16:57:00.0000000Z" />
+        <field name="publishon" value="12/19/2017 4:57:00 PM" />
       </record>
     </records>
     <m2mrelationships />

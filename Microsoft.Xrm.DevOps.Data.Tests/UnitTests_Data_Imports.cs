@@ -4,14 +4,21 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
     [TestClass]
-    public class DataImports
+    public class DataImports : TestBase
     {
+        /// <summary>
+        /// <see cref="DynamicDataAttribute"/> directly doesn't want to invoke base class GetCultures method, so just "duplicate:  it here
+        /// </summary>
+        public static IEnumerable<object[]> GetCulturesTestData() => GetCultures();
+
         [TestMethod]
         public void BooleanTypeData()
         {
@@ -36,9 +43,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 SupportMethods.GetCustomerTypeExpectedData());
         }
 
-        [TestMethod]
-        public void DateTimeType()
+        [DataTestMethod]
+        [DynamicData(nameof(GetCulturesTestData), DynamicDataSourceType.Method)]
+        public void DateTimeType(CultureInfo culture)
         {
+            SetCulture(culture);
             XrmFakedContext fakedContext = new XrmFakedContext();
             DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetDateTimeTypeExpectedData(), SupportMethods.GetDateTimeTypeExpectedSchema());
@@ -48,9 +57,27 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 SupportMethods.GetDateTimeTypeExpectedData());
         }
 
-        [TestMethod]
-        public void DecimalType()
+        //[TestMethod, Description("Ensure that if data.xml contains date serialized in en-US local fomat it can be deserialized to correct date.")]
+        [DataTestMethod]
+        [DynamicData(nameof(GetCulturesTestData), DynamicDataSourceType.Method)]
+        public void DateTimeType_FromLocalDate(CultureInfo culture)
         {
+            SetCulture(culture);
+            //SetCulture(CultureInfo.CreateSpecificCulture("en-US"));
+            XrmFakedContext fakedContext = new XrmFakedContext();
+            DataBuilder db = new DataBuilder();
+            db.AppendData(SupportMethods.GetDateTimeEnUsDateFormatTypeExpectedData(), SupportMethods.GetDateTimeTypeExpectedSchema());
+
+            Assert.AreEqual(
+                db.BuildDataXML().InnerXml,
+                SupportMethods.GetDateTimeTypeExpectedData());
+        }
+
+        [DataTestMethod]
+        [DynamicData(nameof(GetCulturesTestData), DynamicDataSourceType.Method)]
+        public void DecimalType(CultureInfo culture)
+        {
+            SetCulture(culture);
             XrmFakedContext fakedContext = new XrmFakedContext();
             DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetDecimalTypeExpectedData(), SupportMethods.GetDecimalTypeExpectedSchema());
@@ -60,9 +87,39 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 SupportMethods.GetDecimalTypeExpectedData());
         }
 
-        [TestMethod]
-        public void DoubleType()
+        [TestMethod, Description("Ensure that data previously serialized in locale where comma is separator can be used in a culture where dot is separator")]
+        public void DecimalType_DotToComma()
         {
+            SetCulture(CultureInfo.CreateSpecificCulture("de-DE"));
+            //SetCulture(CultureInfo.InvariantCulture);
+            XrmFakedContext fakedContext = new XrmFakedContext();
+            DataBuilder db = new DataBuilder();
+            db.AppendData(SupportMethods.GetDecimalTypeExpectedData(SupportMethods.Separator.Dot), SupportMethods.GetDecimalTypeExpectedSchema());
+
+            //The Culture regulates what is the resulting decimal separator within xml
+            Assert.AreEqual(
+                db.BuildDataXML().InnerXml,
+                SupportMethods.GetDecimalTypeExpectedData(SupportMethods.Separator.Comma));
+        }
+
+        [TestMethod, Description("Ensure that data previously serialized in locale where comma is separator can be used in a culture where dot is separator")]
+        public void DecimalType_CommaToDot()
+        {
+            SetCulture(CultureInfo.InvariantCulture);
+            XrmFakedContext fakedContext = new XrmFakedContext();
+            DataBuilder db = new DataBuilder();
+            db.AppendData(SupportMethods.GetDecimalTypeExpectedData(SupportMethods.Separator.Comma), SupportMethods.GetDecimalTypeExpectedSchema());
+
+            Assert.AreEqual(
+                db.BuildDataXML().InnerXml,
+                SupportMethods.GetDecimalTypeExpectedData(SupportMethods.Separator.Dot));
+        }
+
+        [DataTestMethod]
+        [DynamicData(nameof(GetCulturesTestData), DynamicDataSourceType.Method)]
+        public void DoubleType(CultureInfo culture)
+        {
+            SetCulture(culture);
             XrmFakedContext fakedContext = new XrmFakedContext();
             DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetDoubleTypeExpectedData(), SupportMethods.GetDoubleTypeExpectedSchema());
@@ -70,6 +127,32 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             Assert.AreEqual(
                 db.BuildDataXML().InnerXml,
                 SupportMethods.GetDoubleTypeExpectedData());
+        }
+
+        [TestMethod, Description("Ensure that data previously serialized in locale where comma is separator can be used in a culture where dot is separator")]
+        public void DoubleType_DotToComma()
+        {
+            SetCulture(CultureInfo.CreateSpecificCulture("de-DE"));
+            XrmFakedContext fakedContext = new XrmFakedContext();
+            DataBuilder db = new DataBuilder();
+            db.AppendData(SupportMethods.GetDoubleTypeExpectedData(SupportMethods.Separator.Dot), SupportMethods.GetDoubleTypeExpectedSchema());
+
+            Assert.AreEqual(
+                db.BuildDataXML().InnerXml,
+                SupportMethods.GetDoubleTypeExpectedData(SupportMethods.Separator.Comma));
+        }
+
+        [TestMethod, Description("Ensure that data previously serialized in locale where comma is separator can be used in a culture where dot is separator")]
+        public void DoubleType_CommaToDot()
+        {
+            SetCulture(CultureInfo.InvariantCulture);
+            XrmFakedContext fakedContext = new XrmFakedContext();
+            DataBuilder db = new DataBuilder();
+            db.AppendData(SupportMethods.GetDoubleTypeExpectedData(SupportMethods.Separator.Comma), SupportMethods.GetDoubleTypeExpectedSchema());
+
+            Assert.AreEqual(
+                db.BuildDataXML().InnerXml,
+                SupportMethods.GetDoubleTypeExpectedData(SupportMethods.Separator.Dot));
         }
 
         [TestMethod]
@@ -108,9 +191,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 SupportMethods.GetMemoTypeExpectedData());
         }
 
-        [TestMethod]
-        public void MoneyType()
+        [DataTestMethod]
+        [DynamicData(nameof(GetCulturesTestData), DynamicDataSourceType.Method)]
+        public void MoneyType(CultureInfo culture)
         {
+            SetCulture(culture);
             XrmFakedContext fakedContext = new XrmFakedContext();
             DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetMoneyTypeExpectedData(), SupportMethods.GetMoneyTypeExpectedSchema());
@@ -118,6 +203,32 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             Assert.AreEqual(
                 db.BuildDataXML().InnerXml,
                 SupportMethods.GetMoneyTypeExpectedData());
+        }
+
+        [TestMethod, Description("Ensure that data previously serialized in locale where comma is separator can be used in a culture where dot is separator")]
+        public void MoneyType_DotToComma()
+        {
+            SetCulture(CultureInfo.CreateSpecificCulture("de-DE"));
+            XrmFakedContext fakedContext = new XrmFakedContext();
+            DataBuilder db = new DataBuilder();
+            db.AppendData(SupportMethods.GetMoneyTypeExpectedData(SupportMethods.Separator.Dot), SupportMethods.GetMoneyTypeExpectedSchema());
+
+            Assert.AreEqual(
+                db.BuildDataXML().InnerXml,
+                SupportMethods.GetMoneyTypeExpectedData(SupportMethods.Separator.Comma));
+        }
+
+        [TestMethod, Description("Ensure that data previously serialized in locale where comma is separator can be used in a culture where dot is separator")]
+        public void MoneyType_CommaToDot()
+        {
+            SetCulture(CultureInfo.InvariantCulture);
+            XrmFakedContext fakedContext = new XrmFakedContext();
+            DataBuilder db = new DataBuilder();
+            db.AppendData(SupportMethods.GetMoneyTypeExpectedData(SupportMethods.Separator.Comma), SupportMethods.GetMoneyTypeExpectedSchema());
+
+            Assert.AreEqual(
+                db.BuildDataXML().InnerXml,
+                SupportMethods.GetMoneyTypeExpectedData(SupportMethods.Separator.Dot));
         }
 
         [TestMethod]

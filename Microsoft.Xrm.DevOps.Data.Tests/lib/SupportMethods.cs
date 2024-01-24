@@ -2,6 +2,7 @@ using FakeXrmEasy;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
 using System;
+using System.Globalization;
 using System.Xml;
 
 namespace Microsoft.Xrm.DevOps.Data.Tests
@@ -89,6 +90,18 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
 
             return doc.InnerXml;
         }
+
+        /// <summary>
+        /// Test data contains decimal numbers separated with either dot or comma as when data is being exported the delimiter will depend on cultre.
+        /// </summary>
+        public enum Separator { Dot, Comma }
+
+        /// <summary>
+        /// If separator value not set and current culrute number decimal separator is comma, use comm. Or when Separator is set to Comma.
+        /// </summary>
+        /// <param name="separator"></param>
+        /// <returns></returns>
+        static bool UseCommaSeparatedData(Separator? separator) => separator == Separator.Comma || (separator == null && CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator == ",");
     }
 }
 

@@ -28,6 +28,7 @@
 
 using Microsoft.Xrm.Sdk;
 using System;
+using System.Globalization;
 
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
@@ -38,7 +39,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             Entity result = new Entity("knowledgearticle");
             result.Id = Guid.Parse("6ecdf2da-dae1-e711-9403-0003ff863885");
             result["knowledgearticleid"] = Guid.Parse("6ecdf2da-dae1-e711-9403-0003ff863885");
-            result["publishon"] = DateTime.Parse("12/19/2017 4:57:00 PM"); // formatted is local. Property is UTC.
+            result["publishon"] = DateTime.Parse("2017-12-19T16:57:00.0000000Z", CultureInfo.CurrentCulture, DateTimeStyles.AdjustToUniversal); // formatted is local. Property is UTC.
             result.FormattedValues.Add("publishon", "12/19/2017 10:57 AM");
 
             return result;
@@ -52,6 +53,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public static String GetDateTimeTypeExpectedData()
         {
             return LoadXmlFile(@"../../lib/PrimitiveTypes/DateTimeTypedata.xml");
+        }
+
+        public static String GetDateTimeEnUsDateFormatTypeExpectedData()
+        {
+            return LoadXmlFile(@"../../lib/PrimitiveTypes/DateTimeTypedata_enusdateformat.xml");
         }
 
         public static String GetDateTimeTypeExpectedSchema()

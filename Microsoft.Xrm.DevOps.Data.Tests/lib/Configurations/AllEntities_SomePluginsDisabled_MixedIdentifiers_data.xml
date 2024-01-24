@@ -64,7 +64,7 @@
         <field name="keywords" value="Loyalty, Winning, Hurricanes" />
         <field name="knowledgearticleid" value="cea06e98-364e-e711-810e-e0071b6a82d1" />
         <field name="ownerid" value="cdffaae5-55b0-e711-a95c-000d3a192e9a" lookupentity="systemuser" lookupentityname="Andrew Vogel" />
-        <field name="publishon" value="6/12/2017 9:45:00 AM" />
+        <field name="publishon" value="2017-06-12T09:45:00.0000000Z" />
         <field name="stageid" value="11230204-8518-212c-81b5-aaed12ad363e" />
         <field name="statecode" value="1" />
         <field name="statuscode" value="5" />

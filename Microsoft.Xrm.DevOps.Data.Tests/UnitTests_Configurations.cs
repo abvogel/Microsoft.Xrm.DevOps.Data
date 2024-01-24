@@ -11,7 +11,7 @@ using System.Linq;
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
     [TestClass]
-    public class Configurations
+    public class Configurations : TestBase
     {
         [TestMethod]
         public void ObjectConstructor_Constructs()

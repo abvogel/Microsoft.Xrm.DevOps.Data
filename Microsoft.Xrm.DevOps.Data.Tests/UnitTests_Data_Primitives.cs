@@ -4,14 +4,21 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
     [TestClass]
-    public class DataPrimitives
+    public class DataPrimitives : TestBase
     {
+        /// <summary>
+        /// <see cref="DynamicDataAttribute"/> directly doesn't want to invoke base class GetCultures method, so just "duplicate:  it here
+        /// </summary>
+        public static IEnumerable<object[]> GetCulturesTestData() => GetCultures();
+
         [TestMethod]
         public void BooleanType()
         {
@@ -61,10 +68,12 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 DataBuilder.BuildDataXML().InnerXml, 
                 SupportMethods.GetDateTimeTypeExpectedData());
         }
-        
-        [TestMethod]
-        public void DecimalType()
+
+        [DataTestMethod]
+        [DynamicData(nameof(GetCulturesTestData), DynamicDataSourceType.Method)]
+        public void DecimalType(CultureInfo culture)
         {
+            SetCulture(culture);
             // DecimalType          msdyn_hours                        msdyn_resourcerequirementdetail           
             XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.ResourceRequirementDetailLogicalName, 
@@ -78,10 +87,12 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 DataBuilder.BuildDataXML().InnerXml, 
                 SupportMethods.GetDecimalTypeExpectedData());
         }
-        
-        [TestMethod]
-        public void DoubleType()
+
+        [DataTestMethod]
+        [DynamicData(nameof(GetCulturesTestData), DynamicDataSourceType.Method)]
+        public void DoubleType(CultureInfo culture)
         {
+            SetCulture(culture);
             // DoubleType           msdyn_quantity                     msdyn_purchaseorderproduct                
             XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.PurchaseOrderProductLogicalName, 
@@ -146,10 +157,12 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 DataBuilder.BuildDataXML().InnerXml, 
                 SupportMethods.GetMemoTypeExpectedData());
         }
-        
-        [TestMethod]
-        public void MoneyType()
+
+        [DataTestMethod]
+        [DynamicData(nameof(GetCulturesTestData), DynamicDataSourceType.Method)]
+        public void MoneyType(CultureInfo culture)
         {
+            SetCulture(culture);
             // MoneyType            totaltax                           invoice                                   
             XrmFakedContext fakedContext = SupportMethods.SetupPrimitiveFakedService(
                 SupportMethods.InvoiceLogicalName,

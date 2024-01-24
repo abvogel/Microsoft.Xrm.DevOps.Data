@@ -11,7 +11,7 @@ using System.Reflection;
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
     [TestClass]
-    public class SchemaPrimitives
+    public class SchemaPrimitives : TestBase
     {
         [TestMethod]
         public void BooleanType()

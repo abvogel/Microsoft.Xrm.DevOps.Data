@@ -1,0 +1,12 @@
+
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" timestamp="3/23/2019 9:29:08 AM">
+  <entity name="msdyn_resourcerequirementdetail" displayname="Resource Requirement Detail">
+    <records>
+      <record id="73d453d8-774d-e911-a96a-000d3a1d23d3">
+        <field name="msdyn_hours" value="5,0000000000" />
+        <field name="msdyn_resourcerequirementdetailid" value="73d453d8-774d-e911-a96a-000d3a1d23d3" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+</entities>

@@ -10,7 +10,7 @@ using System.Linq;
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
     [TestClass]
-    public class SpecialLogic
+    public class SpecialLogic : TestBase
     {
         [TestMethod]
         public void InternalLookup_Data()

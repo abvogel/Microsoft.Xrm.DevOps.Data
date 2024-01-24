@@ -5,6 +5,7 @@ using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,17 +28,17 @@ namespace Microsoft.Xrm.DevOps.Data.Builders
                     value.Name = field.Lookupentityname;
                     return value;
                 case "datetime":
-                    return DateTime.Parse(field.Value);
+                    return ParseDateTime(field.Value);
                 case "decimal":
-                    return Decimal.Parse(field.Value);
+                    return Decimal.Parse(field.Value.NormalizeSeparator());
                 case "float":
-                    return Double.Parse(field.Value);
+                    return Double.Parse(field.Value.NormalizeSeparator());
                 case "number":
                     return Int32.Parse(field.Value);
                 case "string":
                     return field.Value;
                 case "money":
-                    return new Money(Decimal.Parse(field.Value));
+                    return new Money(Decimal.Parse(field.Value.NormalizeSeparator()));
                 case "partylist":
                     return new EntityCollection(BuildActivityPartyList(field, schemaData));
                 case "optionsetvalue":
@@ -49,6 +50,20 @@ namespace Microsoft.Xrm.DevOps.Data.Builders
                 default:
                     throw new Exception(String.Format("Unknown Field Node Type: {0}", fieldSchemaData.Type));
             }
+        }
+
+        /// <summary>
+        /// Try to parse string to datetime. Initially does using currentculture. If that fails, tries InvariantCulture. This way, american dates deserialization will be supported no matter client culture.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        static DateTime ParseDateTime(string input)
+        {
+            if (DateTime.TryParse(input, CultureInfo.CurrentCulture, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out var result))
+            {
+                return result;
+            }
+            return DateTime.Parse(input, CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal);
         }
 
         private static IList<Sdk.Entity> BuildActivityPartyList(DataXml.Field field, SchemaXml.Entity schemaData)

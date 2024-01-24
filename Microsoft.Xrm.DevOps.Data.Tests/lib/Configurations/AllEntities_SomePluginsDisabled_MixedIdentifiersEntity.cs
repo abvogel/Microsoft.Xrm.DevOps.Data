@@ -51,7 +51,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             entity6.Id = Guid.Parse("cea06e98-364e-e711-810e-e0071b6a82d1");
             entity6["keywords"] = "Loyalty, Winning, Hurricanes";
             entity6["knowledgearticleid"] = Guid.Parse("cea06e98-364e-e711-810e-e0071b6a82d1");
-            entity6["publishon"] = DateTime.Parse("6/12/2017 9:45:00 AM");
+            entity6["publishon"] = DateTime.Parse("2017-06-12T09:45:00.0000000Z");
             entity6["ownerid"] = new EntityReference("systemuser", Guid.Parse("cdffaae5-55b0-e711-a95c-000d3a192e9a")) { Name = "Andrew Vogel" };
             entity6["statecode"] = new OptionSetValue(1);
             entity6["statuscode"] = new OptionSetValue(5);
@@ -64,7 +64,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             entity7["keywords"] = "Grassroot, Pixel";
             entity7["knowledgearticleid"] = Guid.Parse("75a90062-4c5c-e711-810e-e0071b6a82d1");
             entity7["previousarticlecontentid"] = new EntityReference("knowledgearticle", Guid.Parse("8f9d8286-430c-e711-8121-e0071b6ac0e1")) { Name = "Mbps vs. MBps" };
-            entity7["publishon"] = DateTime.Parse("6/12/2017 9:45:00 AM");
+            entity7["publishon"] = DateTime.Parse("2017-06-12T09:45:00.0000000Z");
             entity7["ownerid"] = new EntityReference("systemuser", Guid.Parse("cdffaae5-55b0-e711-a95c-000d3a192e9a")) { Name = "Andrew Vogel" };
             entity7["statecode"] = new OptionSetValue(6);
             entity7["statuscode"] = new OptionSetValue(13);
@@ -87,19 +87,19 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             Entity entity9 = new Entity("msdyn_resourcerequirementdetail");
             entity9.Id = Guid.Parse("73d453d8-774d-e911-a96a-000d3a1d23d3");
             entity9["msdyn_resourcerequirementdetailid"] = entity9.Id;
-            entity9["msdyn_hours"] = Decimal.Parse("5.0000000000");
+            entity9["msdyn_hours"] = Decimal.Parse("5.0000000000".NormalizeSeparator());
             entities.Add(entity9);
 
             Entity entity10 = new Entity("msdyn_purchaseorderproduct");
             entity10.Id = Guid.Parse("fbb6f525-794d-e911-a96a-000d3a1d23d3");
             entity10["msdyn_purchaseorderproductid"] = entity10.Id;
-            entity10["msdyn_quantity"] = Double.Parse("73.25");
+            entity10["msdyn_quantity"] = Double.Parse("73.25".NormalizeSeparator());
             entities.Add(entity10);
 
             Entity entity11 = new Entity("invoice");
             entity11.Id = Guid.Parse("e45e1402-7c4d-e911-a96a-000d3a1d23d3");
             entity11["invoiceid"] = entity11.Id;
-                Money moneyObject = new Money(Decimal.Parse("0.0000"));
+                Money moneyObject = new Money(Decimal.Parse("0.0000".NormalizeSeparator()));
             entity11["totaltax"] = moneyObject;
                 EntityReference transactioncurrencyER = new EntityReference("transactioncurrencyid", Guid.Parse("ff4bc237-a3a4-e711-a967-000d3a192828")) { Name = "US Dollar" };
             entity11["transactioncurrencyid"] = transactioncurrencyER;
