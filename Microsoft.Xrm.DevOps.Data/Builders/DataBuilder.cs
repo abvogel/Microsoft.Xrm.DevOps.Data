@@ -185,10 +185,13 @@ namespace Microsoft.Xrm.DevOps.Data
                     this._Entities[logicalName].PluginsDisabled = Boolean.Parse(schemaData.Disableplugins);
                 }
 
-                foreach (var relationship in entity.M2mrelationships.M2mrelationship)
+                if (entity.M2mrelationships != null)
                 {
-                    Dictionary<Guid, List<Guid>> relationshipPairs = CompileRelationshipData(relationship);
-                    this._Entities[entity.Name].AppendM2MDataToEntity(relationship.M2mrelationshipname, relationshipPairs);
+                    foreach (var relationship in entity.M2mrelationships.M2mrelationship)
+                    {
+                        Dictionary<Guid, List<Guid>> relationshipPairs = CompileRelationshipData(relationship);
+                        this._Entities[entity.Name].AppendM2MDataToEntity(relationship.M2mrelationshipname, relationshipPairs);
+                    }
                 }
             }
         }
@@ -251,10 +254,13 @@ namespace Microsoft.Xrm.DevOps.Data
                     this.RemoveData(holdingEntity);
                 }
 
-                foreach (var relationship in entity.M2mrelationships.M2mrelationship)
+                if (entity.M2mrelationships != null)
                 {
-                    Dictionary<Guid, List<Guid>> relationshipPairs = CompileRelationshipData(relationship);
-                    this._Entities[logicalName].RemoveRelationshipsWhereIdentical(relationship.M2mrelationshipname, relationshipPairs);
+                    foreach (var relationship in entity.M2mrelationships.M2mrelationship)
+                    {
+                        Dictionary<Guid, List<Guid>> relationshipPairs = CompileRelationshipData(relationship);
+                        this._Entities[logicalName].RemoveRelationshipsWhereIdentical(relationship.M2mrelationshipname, relationshipPairs);
+                    }
                 }
             }
         }
