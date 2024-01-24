@@ -4,6 +4,7 @@ using System.Management.Automation;
 using Microsoft.Xrm.Sdk;
 using System.Xml;
 using Ionic.Zip;
+using System.Linq;
 
 namespace Microsoft.Xrm.DevOps.Data.PowerShell.Cmdlets
 {
@@ -13,18 +14,42 @@ namespace Microsoft.Xrm.DevOps.Data.PowerShell.Cmdlets
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true)]
         public CrmDataPackage SourcePackage { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true)]
+        [Parameter(Position = 1)]
         public CrmDataPackage AdditionalPackage { get; set; }
 
+        CrmDataPackage mergedPackage = null;
+
         protected override void ProcessRecord()
+        {
+            if (AdditionalPackage != null)
+            {
+                var package = MergePackages(SourcePackage, AdditionalPackage);
+                GenerateVerboseMessage("Writing CrmDataPackage to output.");
+                WriteObject(package);
+            }
+            else
+            {
+                if (mergedPackage == null)
+                {
+                    //Initialize first package. If this would be the only package piped as SourcePackage, the same package will be returned.
+                    mergedPackage = this.SourcePackage;
+                }
+                else
+                {
+                    mergedPackage = MergePackages(mergedPackage, SourcePackage);
+                }
+            }
+        }
+
+        private CrmDataPackage MergePackages(CrmDataPackage sourcePackage, CrmDataPackage additionalPackage)
         {
             GenerateVerboseMessage("Generating DataBuilder Instance.");
             DevOps.Data.DataBuilder db = new DevOps.Data.DataBuilder();
 
             GenerateVerboseMessage("Appending Source CrmDataPackage.");
-            db.AppendData(SourcePackage.Data, SourcePackage.Schema);
+            db.AppendData(sourcePackage.Data, sourcePackage.Schema);
             GenerateVerboseMessage("Appending Additional CrmDataPackage.");
-            db.AppendData(AdditionalPackage.Data, AdditionalPackage.Schema);
+            db.AppendData(additionalPackage.Data, additionalPackage.Schema);
 
             try
             {
@@ -36,12 +61,21 @@ namespace Microsoft.Xrm.DevOps.Data.PowerShell.Cmdlets
                     Schema = db.BuildSchemaXML()
                 };
 
-                GenerateVerboseMessage("Writing CrmDataPackage to output.");
-                base.WriteObject(Package);
+                return Package;
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+        }
+
+        protected override void EndProcessing()
+        {
+            base.EndProcessing();
+            if (AdditionalPackage == null)
+            {
+                GenerateVerboseMessage("Writing CrmDataPackage to output.");
+                WriteObject(mergedPackage);
             }
         }
 
