@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\CrmDataPackage.cs" />
+    <Compile Include="Cmdlets\New-CrmDataPackage.cs" />
     <Compile Include="Cmdlets\Remove-CrmDataPackage.cs" />
     <Compile Include="Cmdlets\Import-CrmDataPackage.cs" />
     <Compile Include="Cmdlets\Merge-CrmDataPackage.cs" />
