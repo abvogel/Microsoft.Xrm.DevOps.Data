@@ -43,12 +43,30 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 SupportMethods.GetCustomerTypeExpectedData());
         }
 
-        [TestMethod]
-        public void DateTimeType()
+        [DataTestMethod]
+        [DynamicData(nameof(GetCulturesTestData), DynamicDataSourceType.Method)]
+        public void DateTimeType(CultureInfo culture)
         {
+            SetCulture(culture);
             XrmFakedContext fakedContext = new XrmFakedContext();
             DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetDateTimeTypeExpectedData(), SupportMethods.GetDateTimeTypeExpectedSchema());
+
+            Assert.AreEqual(
+                db.BuildDataXML().InnerXml,
+                SupportMethods.GetDateTimeTypeExpectedData());
+        }
+
+        //[TestMethod, Description("Ensure that if data.xml contains date serialized in en-US local fomat it can be deserialized to correct date.")]
+        [DataTestMethod]
+        [DynamicData(nameof(GetCulturesTestData), DynamicDataSourceType.Method)]
+        public void DateTimeType_FromLocalDate(CultureInfo culture)
+        {
+            SetCulture(culture);
+            //SetCulture(CultureInfo.CreateSpecificCulture("en-US"));
+            XrmFakedContext fakedContext = new XrmFakedContext();
+            DataBuilder db = new DataBuilder();
+            db.AppendData(SupportMethods.GetDateTimeEnUsDateFormatTypeExpectedData(), SupportMethods.GetDateTimeTypeExpectedSchema());
 
             Assert.AreEqual(
                 db.BuildDataXML().InnerXml,

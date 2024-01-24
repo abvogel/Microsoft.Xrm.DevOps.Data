@@ -28,7 +28,7 @@ namespace Microsoft.Xrm.DevOps.Data.Builders
                     value.Name = field.Lookupentityname;
                     return value;
                 case "datetime":
-                    return DateTime.Parse(field.Value, CultureInfo.CurrentCulture, DateTimeStyles.AdjustToUniversal);
+                    return ParseDateTime(field.Value);
                 case "decimal":
                     return Decimal.Parse(field.Value.NormalizeSeparator());
                 case "float":
@@ -50,6 +50,20 @@ namespace Microsoft.Xrm.DevOps.Data.Builders
                 default:
                     throw new Exception(String.Format("Unknown Field Node Type: {0}", fieldSchemaData.Type));
             }
+        }
+
+        /// <summary>
+        /// Try to parse string to datetime. Initially does using currentculture. If that fails, tries InvariantCulture. This way, american dates deserialization will be supported no matter client culture.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        static DateTime ParseDateTime(string input)
+        {
+            if (DateTime.TryParse(input, CultureInfo.CurrentCulture, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out var result))
+            {
+                return result;
+            }
+            return DateTime.Parse(input, CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal);
         }
 
         private static IList<Sdk.Entity> BuildActivityPartyList(DataXml.Field field, SchemaXml.Entity schemaData)

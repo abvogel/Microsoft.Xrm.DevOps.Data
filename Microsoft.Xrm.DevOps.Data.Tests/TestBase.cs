@@ -32,6 +32,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
         public static IEnumerable<object[]> GetCultures()
         {
             yield return new object[] { CultureInfo.InvariantCulture };
+            yield return new object[] { new CultureInfo("en-US") };
             yield return new object[] { new CultureInfo("en-GB") };
             yield return new object[] { new CultureInfo("de-DE") };
             yield return new object[] { new CultureInfo("fr-FR") };

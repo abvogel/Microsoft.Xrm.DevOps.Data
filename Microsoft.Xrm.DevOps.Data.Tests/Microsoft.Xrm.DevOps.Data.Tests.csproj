@@ -198,6 +198,7 @@
     <Content Include="lib\PrimitiveTypes\CustomerTypedata.xml" />
     <Content Include="lib\PrimitiveTypes\CustomerTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\DateTimeType.xml" />
+    <Content Include="lib\PrimitiveTypes\DateTimeTypedata_enusdateformat.xml" />
     <Content Include="lib\PrimitiveTypes\DateTimeTypedata.xml" />
     <Content Include="lib\PrimitiveTypes\DateTimeTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\DecimalType.xml" />
