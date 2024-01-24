@@ -30,15 +30,15 @@ namespace Microsoft.Xrm.DevOps.Data.Builders
                 case "datetime":
                     return DateTime.Parse(field.Value, CultureInfo.CurrentCulture, DateTimeStyles.AdjustToUniversal);
                 case "decimal":
-                    return Decimal.Parse(field.Value);
+                    return Decimal.Parse(field.Value.NormalizeSeparator());
                 case "float":
-                    return Double.Parse(field.Value);
+                    return Double.Parse(field.Value.NormalizeSeparator());
                 case "number":
                     return Int32.Parse(field.Value);
                 case "string":
                     return field.Value;
                 case "money":
-                    return new Money(Decimal.Parse(field.Value));
+                    return new Money(Decimal.Parse(field.Value.NormalizeSeparator()));
                 case "partylist":
                     return new EntityCollection(BuildActivityPartyList(field, schemaData));
                 case "optionsetvalue":

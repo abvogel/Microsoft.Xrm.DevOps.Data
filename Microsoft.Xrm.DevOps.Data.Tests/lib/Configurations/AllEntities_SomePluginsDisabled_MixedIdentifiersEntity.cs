@@ -87,19 +87,19 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             Entity entity9 = new Entity("msdyn_resourcerequirementdetail");
             entity9.Id = Guid.Parse("73d453d8-774d-e911-a96a-000d3a1d23d3");
             entity9["msdyn_resourcerequirementdetailid"] = entity9.Id;
-            entity9["msdyn_hours"] = Decimal.Parse("5.0000000000");
+            entity9["msdyn_hours"] = Decimal.Parse("5.0000000000".NormalizeSeparator());
             entities.Add(entity9);
 
             Entity entity10 = new Entity("msdyn_purchaseorderproduct");
             entity10.Id = Guid.Parse("fbb6f525-794d-e911-a96a-000d3a1d23d3");
             entity10["msdyn_purchaseorderproductid"] = entity10.Id;
-            entity10["msdyn_quantity"] = Double.Parse("73.25");
+            entity10["msdyn_quantity"] = Double.Parse("73.25".NormalizeSeparator());
             entities.Add(entity10);
 
             Entity entity11 = new Entity("invoice");
             entity11.Id = Guid.Parse("e45e1402-7c4d-e911-a96a-000d3a1d23d3");
             entity11["invoiceid"] = entity11.Id;
-                Money moneyObject = new Money(Decimal.Parse("0.0000"));
+                Money moneyObject = new Money(Decimal.Parse("0.0000".NormalizeSeparator()));
             entity11["totaltax"] = moneyObject;
                 EntityReference transactioncurrencyER = new EntityReference("transactioncurrencyid", Guid.Parse("ff4bc237-a3a4-e711-a967-000d3a192828")) { Name = "US Dollar" };
             entity11["transactioncurrencyid"] = transactioncurrencyER;

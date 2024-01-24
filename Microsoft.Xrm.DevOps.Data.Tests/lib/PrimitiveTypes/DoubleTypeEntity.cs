@@ -28,6 +28,7 @@
 
 using Microsoft.Xrm.Sdk;
 using System;
+using System.Globalization;
 
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
@@ -38,8 +39,8 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             Entity result = new Entity("msdyn_purchaseorderproduct");
             result.Id = Guid.Parse("fbb6f525-794d-e911-a96a-000d3a1d23d3");
             result["msdyn_purchaseorderproductid"] = result.Id;
-            result["msdyn_quantity"] = Double.Parse("73.25");
-            result.FormattedValues.Add("msdyn_quantity", "73.25");
+            result["msdyn_quantity"] = Double.Parse("73.25".NormalizeSeparator());
+            result.FormattedValues.Add("msdyn_quantity", "73.25".NormalizeSeparator());
 
             return result;
         }
@@ -49,9 +50,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             return "<fetch top='1'><entity name='msdyn_purchaseorderproduct'><attribute name='msdyn_quantity'/><filter type='and'><condition attribute='msdyn_quantity' operator='not-null'/></filter></entity></fetch>";
         }
 
-        public static String GetDoubleTypeExpectedData()
+        public static String GetDoubleTypeExpectedData(Separator? separator = null)
         {
-            return LoadXmlFile(@"../../lib/PrimitiveTypes/DoubleTypedata.xml");
+            return UseCommaSeparatedData(separator)
+                ? LoadXmlFile(@"../../lib/PrimitiveTypes/DoubleTypedata_comma.xml")
+                : LoadXmlFile(@"../../lib/PrimitiveTypes/DoubleTypedata.xml");
         }
 
         public static String GetDoubleTypeExpectedSchema()

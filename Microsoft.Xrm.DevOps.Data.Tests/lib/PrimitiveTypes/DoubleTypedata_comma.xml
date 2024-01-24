@@ -1,0 +1,12 @@
+
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" timestamp="3/23/2019 9:37:59 AM">
+  <entity name="msdyn_purchaseorderproduct" displayname="Purchase Order Product">
+    <records>
+      <record id="fbb6f525-794d-e911-a96a-000d3a1d23d3">
+        <field name="msdyn_purchaseorderproductid" value="fbb6f525-794d-e911-a96a-000d3a1d23d3" />
+        <field name="msdyn_quantity" value="73,25" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+</entities>

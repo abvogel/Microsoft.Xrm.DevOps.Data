@@ -4,6 +4,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
@@ -12,6 +14,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
     [TestClass]
     public class RemoveOperations : TestBase
     {
+        /// <summary>
+        /// <see cref="DynamicDataAttribute"/> directly doesn't want to invoke base class GetCultures method, so just "duplicate:  it here
+        /// </summary>
+        public static IEnumerable<object[]> GetCulturesTestData() => GetCultures();
+
         [TestMethod]
         public void RemoveEntityWithSingleField_RemovesField()
         {
@@ -124,9 +131,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 SupportMethods.GetIntegerTypeExpectedData());
         }
 
-        [TestMethod]
-        public void DecimalRemove()
+        [DataTestMethod]
+        [DynamicData(nameof(GetCulturesTestData), DynamicDataSourceType.Method)]
+        public void DecimalRemove(CultureInfo culture)
         {
+            SetCulture(culture);
             DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetIntegerTypeExpectedData(), SupportMethods.GetIntegerTypeExpectedSchema());
             db.AppendData(SupportMethods.GetDecimalTypeExpectedData(), SupportMethods.GetDecimalTypeExpectedSchema());
@@ -138,9 +147,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 SupportMethods.GetIntegerTypeExpectedData());
         }
 
-        [TestMethod]
-        public void DoubleRemove()
+        [DataTestMethod]
+        [DynamicData(nameof(GetCulturesTestData), DynamicDataSourceType.Method)]
+        public void DoubleRemove(CultureInfo culture)
         {
+            SetCulture(culture);
             DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetIntegerTypeExpectedData(), SupportMethods.GetIntegerTypeExpectedSchema());
             db.AppendData(SupportMethods.GetDoubleTypeExpectedData(), SupportMethods.GetDoubleTypeExpectedSchema());
@@ -194,9 +205,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
                 SupportMethods.GetIntegerTypeExpectedData());
         }
 
-        [TestMethod]
-        public void MoneyRemove()
+        [DataTestMethod]
+        [DynamicData(nameof(GetCulturesTestData), DynamicDataSourceType.Method)]
+        public void MoneyRemove(CultureInfo culture)
         {
+            SetCulture(culture);
             DataBuilder db = new DataBuilder();
             db.AppendData(SupportMethods.GetIntegerTypeExpectedData(), SupportMethods.GetIntegerTypeExpectedSchema());
             db.AppendData(SupportMethods.GetMoneyTypeExpectedData(), SupportMethods.GetMoneyTypeExpectedSchema());

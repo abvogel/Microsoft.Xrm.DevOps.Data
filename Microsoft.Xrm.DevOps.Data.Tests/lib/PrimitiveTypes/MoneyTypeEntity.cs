@@ -45,6 +45,7 @@
 
 using Microsoft.Xrm.Sdk;
 using System;
+using System.Globalization;
 
 namespace Microsoft.Xrm.DevOps.Data.Tests
 {
@@ -52,7 +53,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
     {
         public static Entity GetMoneyTypeEntity()
         {
-            Money m = new Money(Decimal.Parse("0.0000"));
+            Money m = new Money(Decimal.Parse("0.0000".NormalizeSeparator()));
             EntityReference t = new EntityReference("transactioncurrencyid", Guid.Parse("ff4bc237-a3a4-e711-a967-000d3a192828"));
                 t.Name = "US Dollar";
 
@@ -60,7 +61,7 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             result.Id = Guid.Parse("e45e1402-7c4d-e911-a96a-000d3a1d23d3");
             result["invoiceid"] = result.Id;
             result["totaltax"] = m;
-            result.FormattedValues.Add("totaltax", "$0.00");
+            result.FormattedValues.Add("totaltax", "$0.00".NormalizeSeparator());
             result["transactioncurrencyid"] = t;
             result.FormattedValues.Add("transactioncurrencyid", "US Dollar");
 
@@ -72,9 +73,11 @@ namespace Microsoft.Xrm.DevOps.Data.Tests
             return "<fetch top='1'><entity name='invoice'><attribute name='totaltax'/><filter type='and'><condition attribute='totaltax' operator='not-null'/></filter></entity></fetch>";
         }
 
-        public static String GetMoneyTypeExpectedData()
+        public static String GetMoneyTypeExpectedData(Separator? separator = null)
         {
-            return LoadXmlFile(@"../../lib/PrimitiveTypes/MoneyTypedata.xml");
+            return UseCommaSeparatedData(separator)
+                ? LoadXmlFile(@"../../lib/PrimitiveTypes/MoneyTypedata_comma.xml")
+                : LoadXmlFile(@"../../lib/PrimitiveTypes/MoneyTypedata.xml");
         }
 
         public static String GetMoneyTypeExpectedSchema()

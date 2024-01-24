@@ -201,9 +201,11 @@
     <Content Include="lib\PrimitiveTypes\DateTimeTypedata.xml" />
     <Content Include="lib\PrimitiveTypes\DateTimeTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\DecimalType.xml" />
+    <Content Include="lib\PrimitiveTypes\DecimalTypedata_comma.xml" />
     <Content Include="lib\PrimitiveTypes\DecimalTypedata.xml" />
     <Content Include="lib\PrimitiveTypes\DecimalTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\DoubleType.xml" />
+    <Content Include="lib\PrimitiveTypes\DoubleTypedata_comma.xml" />
     <Content Include="lib\PrimitiveTypes\DoubleTypedata.xml" />
     <Content Include="lib\PrimitiveTypes\DoubleTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\IntegerType.xml" />
@@ -221,6 +223,7 @@
     <Content Include="lib\PrimitiveTypes\MemoTypedata.xml" />
     <Content Include="lib\PrimitiveTypes\MemoTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\MoneyType.xml" />
+    <Content Include="lib\PrimitiveTypes\MoneyTypedata_comma.xml" />
     <Content Include="lib\PrimitiveTypes\MoneyTypedata.xml" />
     <Content Include="lib\PrimitiveTypes\MoneyTypedata_schema.xml" />
     <Content Include="lib\PrimitiveTypes\OwnerType.xml" />
