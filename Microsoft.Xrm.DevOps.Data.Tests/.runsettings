@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- For more information, see https://docs.microsoft.com/en-us/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file  -->
+<RunSettings>
+  <!-- Configurations that affect the Test Framework -->
+  <RunConfiguration>
+    <!-- Quick and dirty workaround because of inconsistent XML namespace serialization order between x86 and x64 test runs: https://github.com/abvogel/Microsoft.Xrm.DevOps.Data/issues/21 -->
+    <TargetPlatform>x86</TargetPlatform>
+  </RunConfiguration>
+</RunSettings>
