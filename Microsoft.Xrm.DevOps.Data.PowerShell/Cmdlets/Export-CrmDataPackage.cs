@@ -3,6 +3,8 @@ using System.IO;
 using System.Management.Automation;
 using Microsoft.Xrm.Sdk;
 using Ionic.Zip;
+using System.Xml;
+using System.Text;
 
 namespace Microsoft.Xrm.DevOps.Data.PowerShell.Cmdlets
 {
@@ -93,18 +95,25 @@ namespace Microsoft.Xrm.DevOps.Data.PowerShell.Cmdlets
             Directory.CreateDirectory(DirectoryPath);
             if (ConfirmOverwrite(contentTypesPath) && ShouldProcess(contentTypesPath, "Save"))
             {
-                GenerateVerboseMessage($"1/3 Saving {contentTypesPath}");
-                Package.ContentTypes.Save(contentTypesPath);
+                SaveXmlDocument(Package.ContentTypes, contentTypesPath);
             }
             if (ConfirmOverwrite(dataPath) && ShouldProcess(dataPath, "Save"))
             {
-                GenerateVerboseMessage($"2/3 Saving {dataPath}");
-                Package.Data.Save(dataPath);
+                SaveXmlDocument(Package.Data, dataPath);
             }
             if (ConfirmOverwrite(schemaPath) && ShouldProcess(schemaPath, "Save"))
             {
-                GenerateVerboseMessage($"3/3 Saving {schemaPath}");
-                Package.Schema.Save(schemaPath);
+                
+                SaveXmlDocument(Package.Schema, schemaPath);
+            }
+        }
+
+        private void SaveXmlDocument(XmlDocument document, string output)
+        {
+            GenerateVerboseMessage($"Saving {output}");
+            using (var sw = new StreamWriter(output, append: false, encoding: Encoding.UTF8))
+            {
+                document.Save(sw);
             }
         }
 
